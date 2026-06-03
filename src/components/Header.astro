@@ -1,0 +1,151 @@
+---
+---
+<header class="w-full bg-white shadow-sm sticky top-0 z-50">
+  <div class="flex items-stretch">
+
+    <!-- ── Left: Logo + Company Name ───────────────── -->
+    <div class="flex items-center flex-shrink-0 pl-4 md:pl-8 lg:pl-12 pr-6 py-3">
+      <a href="/" class="flex items-center gap-3" aria-label="株式会社 イトピック トップへ">
+        <img
+          src="/images/itpc-logo.svg"
+          alt="イトピックロゴ"
+          class="w-[70px] h-auto flex-shrink-0"
+        />
+        <span class="font-noto font-bold text-[#333333] whitespace-nowrap leading-none" style="font-size: var(--fs-h4);">
+  株式会社 イトピック
+</span>
+      </a>
+    </div>
+
+    <!-- ── Right: Nav + Contact Button ─────────────── -->
+    <div class="hidden lg:flex items-stretch flex-1 justify-end">
+
+      <!-- Nav Links -->
+      <nav class="flex items-center gap-1 xl:gap-2 pr-6 xl:pr-10" aria-label="グローバルナビゲーション">
+        <a
+          href="/service"
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
+          style="font-size: var(--fs-small);"
+        >
+          業務内容
+        </a>
+        <a
+          href="/#strengths"
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
+          style="font-size: var(--fs-small);"
+        >
+          私たちの強み
+        </a>
+        <a
+          href="/works"
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
+          style="font-size: var(--fs-small);"
+        >
+          取引実績
+        </a>
+        <a
+          href="/company"
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
+          style="font-size: var(--fs-small);"
+        >
+          会社概要
+        </a>
+        <a
+          href="/news"
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
+          style="font-size: var(--fs-small);"
+        >
+          お知らせ
+        </a>
+      </nav>
+
+      <!-- Contact Button -->
+      <a
+        href="/contact"
+        class="font-noto font-bold text-white bg-[#004896] hover:bg-[#003a7a] transition-colors duration-200 flex items-center justify-center whitespace-nowrap px-8 xl:px-12 self-stretch"
+        style="font-size: var(--fs-small);"
+        aria-label="お問い合わせページへ"
+      >
+        お問い合わせ
+      </a>
+    </div>
+
+    <!-- ── Mobile: Hamburger Button ─────────────────── -->
+    <div class="lg:hidden flex items-center ml-auto pr-4">
+      <button
+        id="hamburger-btn"
+        type="button"
+        class="flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded focus:outline-none"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="block w-6 h-[2px] bg-[#004896] transition-all duration-300" id="hb-line1"></span>
+        <span class="block w-6 h-[2px] bg-[#004896] transition-all duration-300" id="hb-line2"></span>
+        <span class="block w-6 h-[2px] bg-[#004896] transition-all duration-300" id="hb-line3"></span>
+      </button>
+    </div>
+
+  </div><!-- /flex wrapper -->
+
+  <!-- ── Mobile Menu Drawer ─────────────────────────── -->
+  <nav
+    id="mobile-menu"
+    class="lg:hidden hidden flex-col bg-white border-t border-gray-100 px-4 pb-6 pt-4"
+    aria-label="モバイルナビゲーション"
+  >
+    <a href="/service" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">業務内容</a>
+    <a href="/#strengths" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">私たちの強み</a>
+    <a href="/works" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">取引実績</a>
+    <a href="/company" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">会社概要</a>
+    <a href="/news" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">お知らせ</a>
+    <a
+      href="/contact"
+      class="font-noto font-bold text-white bg-[#004896] hover:bg-[#003a7a] transition-colors duration-200 mt-4 py-3 text-center rounded block"
+      style="font-size: var(--fs-small);"
+    >
+      お問い合わせ
+    </a>
+  </nav>
+
+</header>
+
+<script>
+  const btn = document.getElementById('hamburger-btn');
+  const menu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('hb-line1');
+  const line2 = document.getElementById('hb-line2');
+  const line3 = document.getElementById('hb-line3');
+
+  if (btn && menu && line1 && line2 && line3) {
+    btn.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      if (isOpen) {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+        btn.setAttribute('aria-expanded', 'false');
+        line1.style.transform = '';
+        line2.style.opacity = '1';
+        line3.style.transform = '';
+      } else {
+        menu.classList.remove('hidden');
+        menu.classList.add('flex');
+        btn.setAttribute('aria-expanded', 'true');
+        line1.style.transform = 'translateY(7px) rotate(45deg)';
+        line2.style.opacity = '0';
+        line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+        btn.setAttribute('aria-expanded', 'false');
+        line1.style.transform = '';
+        line2.style.opacity = '1';
+        line3.style.transform = '';
+      });
+    });
+  }
+</script>

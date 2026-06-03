@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="お問い合わせ | 株式会社 イトピック">
+<main>
+
+  <!-- PAGE HERO -->
+  <section id="page-hero-contact"
+           class="w-full bg-white relative overflow-hidden"
+           style="max-height: 455px; min-height: clamp(200px, 28vw, 455px);">
+    <div class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none"
+         style="left: 50%; transform: translateX(-50%); z-index: 0;" aria-hidden="true">
+      <div class="absolute top-0 right-0"
+           style="width: clamp(260px, 28vw, 420px); height: clamp(260px, 28vw, 420px); opacity: 0.55;">
+        <img src="/images/ibaraki_bg.png" alt="" class="w-full h-full object-contain object-right-top" />
+      </div>
+    </div>
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-4 md:px-8 xl:px-0"
+         style="min-height: clamp(200px, 28vw, 455px);">
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
+         style="font-size: var(--fs-small); letter-spacing: 0.18em;">Contact</p>
+      <h1 class="font-noto font-bold text-[#333333] leading-tight mb-6"
+          style="font-size: var(--fs-display);">お問い合わせ</h1>
+      <nav aria-label="パンくずリスト">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"
+                 style="font-size: var(--fs-small);">ホーム</a></li>
+          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-hidden="true">&gt;</li>
+          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-current="page">お問い合わせ</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN VISUAL -->
+  <div class="w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+    <img src="/images/contact_mb.png" alt="お問い合わせメインビジュアル"
+         class="w-full h-full object-cover object-center" />
+  </div>
+
+<!-- FORM -->
+  <section id="contact-form" class="w-full bg-bg-white"
+           style="padding-top: var(--sp-section-lg); padding-bottom: var(--sp-section-md);">
+    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+      <!-- 💡 左右マージンを自動（mx-auto）にし、テキストを中央揃え（text-center）に -->
+      <div class="mb-12 lg:mb-16 text-center max-w-[600px] mx-auto">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
+           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Mail Form</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-4"
+            style="font-size: var(--fs-h2);">メールフォーム</h2>
+        <p class="font-noto font-medium text-[#555] leading-loose" style="font-size: var(--fs-body);">
+          内容を確認の上、担当者より2営業日以内にご連絡いたします。
+        </p>
+      </div>
+
+
+      <form action="https://ssgform.com/s/YOUR_FORM_ID" method="post"
+            class="bg-white rounded-[12px] px-6 py-10 md:px-12 md:py-14 shadow-sm">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div>
+            <label class="block font-noto font-bold text-[#333333] mb-2" style="font-size: var(--fs-small);">
+              お名前<span class="required-badge">必須</span>
+            </label>
+            <input type="text" name="お名前" placeholder="例：山田 太郎" required autocomplete="name" class="form-input" />
+          </div>
+          <div>
+            <label class="block font-noto font-bold text-[#333333] mb-2" style="font-size: var(--fs-small);">
+              貴社名<span class="optional-badge">任意</span>
+            </label>
+            <input type="text" name="貴社名" placeholder="例：株式会社○○" autocomplete="organization" class="form-input" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div>
+            <label class="block font-noto font-bold text-[#333333] mb-2" style="font-size: var(--fs-small);">
+              メールアドレス<span class="required-badge">必須</span>
+            </label>
+            <input type="email" name="メールアドレス" placeholder="例：info@example.com" required autocomplete="email" class="form-input" />
+          </div>
+          <div>
+            <label class="block font-noto font-bold text-[#333333] mb-2" style="font-size: var(--fs-small);">
+              電話番号<span class="optional-badge">任意</span>
+            </label>
+            <input type="tel" name="電話番号" placeholder="例：029-000-0000" autocomplete="tel" class="form-input" />
+          </div>
+        </div>
+
+        <div class="mb-16">
+          <label class="block font-noto font-bold text-[#333333] mb-4" style="font-size: var(--fs-small);">
+            お問い合わせの種類<span class="optional-badge">任意</span>
+          </label>
+          <div class="check-group">
+            <label class="check-label"><input type="checkbox" name="お問い合わせの種類" value="イベント企画" />イベント企画</label>
+            <label class="check-label"><input type="checkbox" name="お問い合わせの種類" value="式典運営" />式典運営</label>
+            <label class="check-label"><input type="checkbox" name="お問い合わせの種類" value="映像制作" />映像制作</label>
+            <label class="check-label"><input type="checkbox" name="お問い合わせの種類" value="印刷物制作" />印刷物制作</label>
+            <label class="check-label"><input type="checkbox" name="お問い合わせの種類" value="ノベルティ制作" />ノベルティ制作</label>
+            <label class="check-label"><input type="checkbox" name="お問い合わせの種類" value="その他" />その他</label>
+          </div>
+        </div>
+
+        <div class="mb-16">
+          <label class="block font-noto font-bold text-[#333333] mb-4" style="font-size: var(--fs-small);">
+            お問い合わせの目的<span class="optional-badge">任意</span>
+          </label>
+          <div class="check-group">
+            <label class="check-label"><input type="radio" name="お問い合わせの目的" value="相談したい" />相談したい</label>
+            <label class="check-label"><input type="radio" name="お問い合わせの目的" value="見積もりを取りたい" />見積もりを取りたい</label>
+            <label class="check-label"><input type="radio" name="お問い合わせの目的" value="打ち合わせを希望" />打ち合わせを希望</label>
+            <label class="check-label"><input type="radio" name="お問い合わせの目的" value="資料請求" />資料請求</label>
+            <label class="check-label"><input type="radio" name="お問い合わせの目的" value="その他" />その他</label>
+          </div>
+        </div>
+
+        <div class="mb-20">
+          <label class="block font-noto font-bold text-[#333333] mb-2" style="font-size: var(--fs-small);">
+            お問い合わせ内容<span class="required-badge">必須</span>
+          </label>
+          <textarea name="お問い合わせ内容" rows="7" placeholder="お問い合わせ内容をご記入ください。"
+                    required class="form-input" style="resize: vertical; min-height: 160px;"></textarea>
+        </div>
+
+        <div class="mb-20 p-5 bg-[#F0F6FA] rounded-[8px]">
+          <p class="font-noto font-medium text-[#555555] leading-loose mb-4" style="font-size: var(--fs-caption);">
+            お送りいただいた個人情報は、お問い合わせへの返答にのみ使用いたします。<br />
+            <a href="/privacy" class="text-[#004896] underline underline-offset-2 hover:opacity-70 transition-opacity duration-200">プライバシーポリシー</a>をご確認の上、同意いただける場合はチェックを入れてください。
+          </p>
+          <label class="check-label">
+            <input type="checkbox" name="プライバシーポリシー同意" value="同意する" required />
+            <span class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-small);">
+              プライバシーポリシーに同意する
+            </span>
+          </label>
+        </div>
+
+        <div class="flex justify-center">
+          <button type="submit"
+                  class="group font-noto font-bold text-white inline-flex items-center justify-center gap-4
+                         rounded-[8px] transition-opacity duration-300 hover:opacity-85"
+                  style="background: linear-gradient(to right, #4982C2, #004896);
+                         font-size: var(--fs-body-lg);
+                         padding: clamp(16px, 1.5vw + 10px, 22px) clamp(48px, 5.6vw + 27px, 100px);">
+            送信する
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- PHONE -->
+  <section class="w-full bg-white" style="padding-bottom: var(--sp-section-md);">
+    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+      <div class="bg-[#004896] rounded-[16px] overflow-hidden"
+           style="padding: clamp(36px, 5vw, 70px) clamp(24px, 5vw, 80px);">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          <div>
+            <p class="font-inter font-bold text-white tracking-widest mb-3 opacity-60"
+               style="font-size: var(--fs-caption); letter-spacing: 0.18em;">PHONE</p>
+            <p class="font-noto font-bold text-white mb-2" style="font-size: var(--fs-h3);">お電話でのお問い合わせ</p>
+            <p class="font-noto font-medium text-white opacity-70" style="font-size: var(--fs-caption);">受付時間：平日 9:00〜18:00（土日祝を除く）</p>
+          </div>
+          <a href="tel:0292534387" class="flex items-center gap-4 group flex-shrink-0">
+            <div class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center
+                        group-hover:bg-opacity-30 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                   stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 9.81 19.79 19.79 0 0 1 1.08 1.18 2 2 0 0 1 3.08 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <span class="font-inter font-bold text-white"
+                  style="font-size: var(--fs-h1); letter-spacing: 0.04em; line-height: 1;">
+              029-253-4387
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注釈 -->
+  <section class="w-full bg-bg-white" style="padding-bottom: var(--sp-section-md);">
+    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+      <div class="border-t border-[#D1D9E6] pt-8">
+        <ul class="font-noto font-medium text-[#777777] leading-loose space-y-2"
+            style="font-size: var(--fs-caption);">
+          <li>※ お問い合わせの内容によっては、回答までにお時間をいただく場合がございます。</li>
+          <li>※ 土日祝日・年末年始のお問い合わせは、翌営業日以降のご返答となります。</li>
+          <li>※ 送信後、自動返信メールをお送りします。届かない場合は迷惑メールフォルダをご確認ください。</li>
+          <li>※ 個人情報の取り扱いについては<a href="/privacy" class="text-[#004896] underline underline-offset-2 hover:opacity-70 transition-opacity duration-200">プライバシーポリシー</a>をご確認ください。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+</Layout>

@@ -1,0 +1,127 @@
+---
+---
+<footer class="w-full bg-white border-t border-[#E0E6EF]">
+
+  <!-- ── メインフッターエリア ─────────────────── -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 section-sm">
+
+    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-10 md:gap-8">
+
+      <!-- ── ① 会社情報 ──────────────────────── -->
+      <div class="flex flex-col items-center md:items-start
+                  pb-10 md:pb-0 border-b border-[#E8EEF5] md:border-none md:flex-shrink-0">
+        <a href="/" class="flex items-center gap-3 mb-6" aria-label="株式会社 イトピック トップへ">
+          <img src="/images/itpc-logo.svg" alt="イトピックロゴ"
+               class="w-[54px] h-auto flex-shrink-0" />
+          <span class="font-noto font-bold text-[#333333]"
+                style="font-size: var(--fs-h4);">
+            株式会社 イトピック
+          </span>
+        </a>
+        <address class="not-italic text-center md:text-left space-y-2">
+          <p class="font-noto font-medium text-[#666666] leading-relaxed text-sm">
+            〒311-4163 茨城県水戸市加倉井町341-6
+          </p>
+          <p class="font-noto font-medium text-[#666666] leading-relaxed text-sm">
+            TEL：<a href="tel:0292534387"
+                   class="hover:text-[#004896] transition-colors duration-200">029-253-4387</a>
+            　｜　FAX：029-253-1415
+          </p>
+        </address>
+      </div>
+
+      <!-- ── ② Navigation ───────────────────── -->
+      <div class="flex flex-col items-center md:items-start
+                  pb-10 md:py-0 border-b border-[#E8EEF5] md:border-none">
+        <p class="font-inter font-bold text-[#4982C2] mb-6 tracking-[0.2em] text-sm">
+          NAVIGATION
+        </p>
+        <div class="grid grid-cols-2 gap-x-10 gap-y-4 text-left">
+          <a href="/service"
+             class="font-noto font-medium text-[#333333] hover:text-[#004896]
+                    transition-colors duration-200"
+             style="font-size: var(--fs-small);">業務内容</a>
+          <a href="/company"
+             class="font-noto font-medium text-[#333333] hover:text-[#004896]
+                    transition-colors duration-200"
+             style="font-size: var(--fs-small);">会社概要</a>
+          <a href="/#strengths"
+             class="font-noto font-medium text-[#333333] hover:text-[#004896]
+                    transition-colors duration-200"
+             style="font-size: var(--fs-small);">私たちの強み</a>
+          <a href="/news"
+             class="font-noto font-medium text-[#333333] hover:text-[#004896]
+                    transition-colors duration-200"
+             style="font-size: var(--fs-small);">お知らせ</a>
+          <a href="/works"
+             class="font-noto font-medium text-[#333333] hover:text-[#004896]
+                    transition-colors duration-200"
+             style="font-size: var(--fs-small);">取引実績</a>
+        </div>
+      </div>
+
+      <!-- ── ③ Contact ──────────────────────── -->
+      <div class="flex flex-col items-center md:items-start md:flex-shrink-0 md:w-[340px]">
+        <p class="font-inter font-bold text-[#4982C2] mb-5 tracking-[0.2em] text-sm">
+          CONTACT
+        </p>
+        <p class="font-noto font-medium text-[#777777] leading-relaxed mb-6 w-full text-xs md:text-sm">
+          行政・自治体をはじめ多種多様なニーズに対し、柔軟なご提案が可能です。
+        </p>
+        <a href="/contact"
+           class="group font-noto font-medium text-white inline-flex items-center justify-between
+                  w-[70%] md:w-full px-6 py-4 rounded-[8px]
+                  transition-opacity duration-300 hover:opacity-85"
+           style="background: linear-gradient(to right, #4982C2, #004896);
+                  font-size: var(--fs-small);">
+          無料相談はこちら
+          <span class="font-inter font-bold inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+
+    </div><!-- /3カラム -->
+  </div><!-- /メインフッター -->
+
+  <!-- ── ボトムバー ───────────────────────────── -->
+  <div class="border-t border-gray-200">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8
+                flex items-center justify-between pt-6 pb-6 md:pt-5 md:pb-5">
+
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-5">
+        <p class="font-inter text-xs text-gray-400">
+          © 2026 ITPC Co., Ltd.
+        </p>
+        <a href="/privacy"
+           class="font-noto font-medium text-gray-500 hover:text-[#004896]
+                  transition-colors duration-200 whitespace-nowrap text-xs">
+          プライバシーポリシー
+        </a>
+      </div>
+
+      <button type="button"
+              id="page-top-btn"
+              class="flex-shrink-0 w-10 h-10 bg-[#004896] hover:bg-[#4982C2]
+                     transition-colors duration-300 flex items-center justify-center
+                     rounded-[4px]"
+              aria-label="ページトップへ戻る">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             fill="none" stroke="white" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="w-5 h-5">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+</footer>
+
+<script>
+  const topBtn = document.getElementById('page-top-btn');
+  if (topBtn) {
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>

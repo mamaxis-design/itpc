@@ -1,0 +1,309 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="会社概要 | 株式会社 イトピック">
+<main>
+
+  <!-- PAGE HERO -->
+  <section
+    id="page-hero-company"
+    class="w-full bg-white relative overflow-hidden"
+    style="max-height: 455px; min-height: clamp(200px, 28vw, 455px);"
+  >
+    <div
+      class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none"
+      style="left: 50%; transform: translateX(-50%); z-index: 0;"
+      aria-hidden="true"
+    >
+      <div class="absolute top-0 right-0"
+           style="width: clamp(260px, 28vw, 420px); height: clamp(260px, 28vw, 420px); opacity: 0.55;">
+        <img src="/images/ibaraki_bg.png" alt=""
+             class="w-full h-full object-contain object-right-top" />
+      </div>
+    </div>
+    <div
+      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-4 md:px-8 xl:px-0"
+      style="min-height: clamp(200px, 28vw, 455px);"
+    >
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
+         style="font-size: var(--fs-small); letter-spacing: 0.18em;">About Us</p>
+      <h1 class="font-noto font-bold text-[#333333] leading-tight mb-6"
+          style="font-size: var(--fs-display);">会社概要</h1>
+      <nav aria-label="パンくずリスト">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li>
+            <a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"
+               style="font-size: var(--fs-small);">ホーム</a>
+          </li>
+          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-hidden="true">&gt;</li>
+          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-current="page">会社概要</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN VISUAL -->
+  <div class="w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+    <img src="/images/company_main.png" alt="会社概要メインビジュアル"
+         class="w-full h-full object-cover object-center" />
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section id="company-philosophy" class="w-full bg-[#004896] section-xl">
+    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0 flex flex-col items-center text-center">
+      <p class="font-inter font-bold text-white tracking-widest mb-8 opacity-70"
+         style="font-size: var(--fs-small); letter-spacing: 0.22em;">Philosophy</p>
+      <h2 class="font-noto font-bold text-white leading-tight mb-14"
+          style="font-size: var(--fs-h1);">企業理念</h2>
+      <p class="font-noto font-bold text-white leading-snug mb-14"
+         style="font-size: var(--fs-h2); letter-spacing: 0.04em;">地域の想いを、形にする。</p>
+      <div class="font-noto font-medium text-white text-left leading-loose space-y-4 max-w-[900px]"
+           style="font-size: var(--fs-body-lg); opacity: 0.92;">
+        <p>茨城県に根ざした長きにわたる歩みの中で培った信頼とノウハウを活かし、自治体・行政機関・地域企業のコミュニケーション活動を、トータルでサポートし続けます。</p>
+        <p>地域の節目を彩る式典、地域の絆を育むイベント、未来へ想いを伝える映像制作。どのプロジェクトにも、お客様の想いと地域への誇りが込められています。</p>
+        <p>私たちはその想いを形にするために、誠実な姿勢と確かな技術でプロジェクトを最後までサポートします。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESSAGE -->
+  <section id="company-message" class="w-full bg-[#F0F6FA] relative overflow-hidden section-lg">
+    <div class="absolute top-0 right-0 pointer-events-none select-none"
+         aria-hidden="true"
+         style="z-index: 0; line-height: 1.3; overflow: visible;">
+      <span class="font-inter font-bold"
+            style="font-size: clamp(40px, 9vw, 140px); color: rgba(0, 72, 150, 0.07);
+                   letter-spacing: -0.01em; white-space: nowrap; display: block;">
+        CEO Message
+      </span>
+    </div>
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+      <div class="mb-16 lg:mb-20">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
+           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Message</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight"
+            style="font-size: var(--fs-h2);">代表挨拶</h2>
+      </div>
+      <div class="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-20">
+        <div class="flex-shrink-0 lg:w-[420px] xl:w-[460px]">
+          <div class="flex gap-6 items-start">
+            <div class="flex-shrink-0 w-[3px] bg-[#004896] self-stretch"></div>
+            <div>
+              <p class="font-noto font-bold text-[#004896]"
+                 style="font-size: var(--fs-h3); letter-spacing: 0.02em; line-height: 1.5;">
+                地域の想いを、形にする。<br />それが弊社の使命です。
+              </p>
+            </div>
+          </div>
+          <div class="mt-14 lg:mt-20 flex flex-col items-start gap-3 pl-9">
+            <p class="font-noto font-medium text-[#555]" style="font-size: var(--fs-caption);">代表取締役</p>
+            <img src="/images/company_sign.png" alt="藤田和男 署名" class="h-auto"
+                 style="width: clamp(120px, 18vw, 180px);" />
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="w-[50px] h-[2px] bg-[#4982C2] mb-10"></div>
+          <div class="font-noto font-medium text-[#333333] leading-loose space-y-6"
+               style="font-size: var(--fs-body-lg);">
+            <p>弊社は1988年の創業以来、茨城県内の行政機関・自治体をはじめ、多くのお客様とともにイベント・式典の企画・運営に携わってまいりました。</p>
+            <p>地域の節目を彩る記念式典、地域の絆を育むイベント、未来へのメッセージを伝えるプロモーション映像——。どのプロジェクトにも、お客様の想いと地域への誇りが込められています。弊社はその想いを形にするために、本日に至るまで誠実に取り組んでまいりました。</p>
+            <p>「窓口を一本化し、最後まで責任を持って対応する」というワンストップの姿勢は、創業当初から変わらぬ弊社の強みです。これからも地域に根ざしたパートナーとして、皆様のプロジェクトを全力でサポートしてまいります。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY INFO -->
+  <section id="company-info" class="w-full bg-white section-lg">
+    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+      <div class="mb-12 lg:mb-16">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
+           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Company Info</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight"
+            style="font-size: var(--fs-h2);">会社情報</h2>
+      </div>
+      <div class="border border-[#E0E6EF] rounded-[4px] overflow-hidden">
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">商号</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <p class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-body);">株式会社イトピック</p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">本社所在地</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <p class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-body);">茨城県水戸市加倉井町341-6</p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-start md:items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">役員氏名</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5">
+            <div class="font-noto font-medium text-[#333333] space-y-3" style="font-size: var(--fs-body);">
+              <div class="flex gap-8">
+                <span class="flex-shrink-0 w-[80px]">代表取締役</span><span>藤田 和男</span>
+              </div>
+              <div class="flex gap-8">
+                <span class="flex-shrink-0 w-[80px]">取締役</span>
+                <div class="flex flex-col gap-1">
+                  <span>藤田 真哉</span><span>塩谷 尚樹</span><span>山崎 淳一</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">設立</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <p class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-body);">1988年（昭和62年）4月16日</p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">事業内容</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <p class="font-noto font-medium text-[#333333] leading-relaxed" style="font-size: var(--fs-body);">総合企画、一般印刷、広告代理業、映像制作、広報啓発グッズ製作、イベント・式典企画運営</p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">資本金</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <p class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-body);">1,500万円</p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">従業員数</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <p class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-body);">4名</p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-start md:items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">主な取引先（敬称略）</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <p class="font-noto font-medium text-[#333333] leading-relaxed" style="font-size: var(--fs-body);">茨城県庁、（一社）茨城県観光物産協会、各土木事務所、茨城県商工会連合会、水戸市、常陸大宮市、笠間市、城里町、大子町、大洗町、東海村、他県内市町村、（株）茨城新聞社、JA茨城県中央会、日本赤十字社茨城県支部、（公財）茨城県開発公社、（公社）茨城県農林振興公社、コマツ茨城工場</p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">取引金融機関</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <div class="font-noto font-medium text-[#333333] space-y-1" style="font-size: var(--fs-body);">
+              <p>常陽銀行見和支店</p><p>筑波銀行石川町支店</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row">
+          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+            <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">関連会社</p>
+          </div>
+          <div class="flex-1 bg-white px-8 py-5 flex items-center">
+            <p class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-body);">株式会社パロス</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ACCESS -->
+  <section id="company-access" class="w-full bg-white pb-[var(--sp-section-lg)]">
+    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+      <div class="mb-10 lg:mb-14">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
+           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Access</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight"
+            style="font-size: var(--fs-h2);">所在地・アクセス</h2>
+
+      </div>
+ <div class="w-full overflow-hidden rounded-[4px] mb-20" style="height: clamp(280px, 40vw, 560px);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3211.9588743762756!2d140.37804749999998!3d36.38598959999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602221979e5228fb%3A0x4ccc310262b4c3d2!2z44CSMzExLTQxNjMg6Iyo5Z-O55yM5rC05oi45biC5Yqg5YCJ5LqV55S677yT77yU77yR4oiS77yW!5e0!3m2!1sja!2sjp!4v1780459799439!5m2!1sja!2sjp"
+          width="100%" height="100%"
+          style="border: 0; display: block;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="株式会社イトピック 所在地マップ"
+        ></iframe>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#E0E6EF] rounded-[8px] overflow-hidden">
+        <div class="flex flex-col p-8 lg:p-10 bg-[#004896] text-white
+                    border-b border-[#ffffff20] md:border-b-0 md:border-r md:border-[#ffffff20]">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-8 h-8 opacity-70">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+          <p class="font-inter font-bold tracking-widest mb-4 opacity-60" style="font-size: var(--fs-caption); letter-spacing: 0.16em;">ADDRESS</p>
+          <p class="font-noto font-bold text-white mb-5" style="font-size: var(--fs-body-lg);">所在地</p>
+          <address class="not-italic font-noto font-medium text-white opacity-85 leading-loose space-y-2 mt-auto"
+                   style="font-size: var(--fs-small);">
+            <p>〒311-4163<br />茨城県水戸市加倉井町341-6</p>
+            <p class="mt-3">TEL：<a href="tel:0292534387" class="underline underline-offset-4 hover:opacity-70 transition-opacity duration-200">029-253-4387</a></p>
+          </address>
+        </div>
+        <div class="flex flex-col p-8 lg:p-10 bg-white border-b border-[#E0E6EF] md:border-b-0 md:border-r md:border-[#E0E6EF]">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#004896" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+              <rect x="2" y="7" width="20" height="10" rx="2"/>
+              <path d="M5 7V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2"/>
+              <circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/>
+            </svg>
+          </div>
+          <p class="font-inter font-bold tracking-widest mb-4 text-[#4982C2]" style="font-size: var(--fs-caption); letter-spacing: 0.16em;">BY CAR</p>
+          <p class="font-noto font-bold text-[#333333] mb-5" style="font-size: var(--fs-body-lg);">お車でお越しの場合</p>
+          <ul class="font-noto font-medium text-[#333333] leading-loose space-y-3 mt-auto" style="font-size: var(--fs-small);">
+            <li class="flex gap-3 items-start">
+              <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#F0F6FA] text-[#004896] font-bold flex items-center justify-center text-xs mt-0.5">1</span>
+              <span>常磐自動車道「水戸IC」より約5分</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#F0F6FA] text-[#004896] font-bold flex items-center justify-center text-xs mt-0.5">2</span>
+              <span>国道50号線「加倉井町」交差点を水戸IC側から来た場合は「左折」、笠間・筑西方面から来た場合は「右折」となります。</span>
+            </li>
+          </ul>
+          <p class="font-noto font-medium text-[#888] mt-5" style="font-size: var(--fs-caption);">※敷地内に無料駐車場（4台）がございます。</p>
+        </div>
+        <div class="flex flex-col p-8 lg:p-10 bg-white">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#004896" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+              <rect x="4" y="3" width="16" height="14" rx="3"/>
+              <path d="M4 11h16"/><path d="M8 17l-2 4"/><path d="M16 17l2 4"/><path d="M9 21h6"/>
+              <circle cx="9" cy="7" r="1"/><circle cx="15" cy="7" r="1"/>
+            </svg>
+          </div>
+          <p class="font-inter font-bold tracking-widest mb-4 text-[#4982C2]" style="font-size: var(--fs-caption); letter-spacing: 0.16em;">BY TRAIN / TAXI</p>
+          <p class="font-noto font-bold text-[#333333] mb-5" style="font-size: var(--fs-body-lg);">電車・タクシーでお越しの場合</p>
+          <div class="font-noto font-medium text-[#333333] leading-loose mt-auto" style="font-size: var(--fs-small);">
+            <div class="flex gap-3 items-start">
+              <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#F0F6FA] text-[#004896] font-bold flex items-center justify-center text-xs mt-0.5">1</span>
+              <span>JR常磐線「赤塚駅」北口より<br />タクシーで約10分</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+</Layout>
