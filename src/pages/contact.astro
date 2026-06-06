@@ -15,11 +15,11 @@ import Layout from '../layouts/Layout.astro';
         <img src="/images/ibaraki_bg.png" alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-4 md:px-8 xl:px-0"
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
          style="min-height: clamp(200px, 28vw, 455px);">
       <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
          style="font-size: var(--fs-small); letter-spacing: 0.18em;">Contact</p>
-      <h1 class="font-noto font-bold text-[#333333] leading-tight mb-6"
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
           style="font-size: var(--fs-display);">お問い合わせ</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
@@ -33,17 +33,18 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- MAIN VISUAL -->
-  <div class="w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
     <img src="/images/contact_mb.png" alt="お問い合わせメインビジュアル"
-         class="w-full h-full object-cover object-center" />
+         loading="eager"
+         class="absolute inset-0 w-full h-full object-cover object-center" />
   </div>
 
 <!-- FORM -->
   <section id="contact-form" class="w-full bg-bg-white"
            style="padding-top: var(--sp-section-lg); padding-bottom: var(--sp-section-md);">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
       <!-- 💡 左右マージンを自動（mx-auto）にし、テキストを中央揃え（text-center）に -->
-      <div class="mb-12 lg:mb-16 text-center max-w-[600px] mx-auto">
+      <div data-a="fade" class="mb-12 lg:mb-16 text-center max-w-[600px] mx-auto">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
            style="font-size: var(--fs-small); letter-spacing: 0.18em;">Mail Form</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-4"
@@ -54,8 +55,10 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
 
-      <form action="https://ssgform.com/s/YOUR_FORM_ID" method="post"
-            class="bg-white rounded-[12px] px-6 py-10 md:px-12 md:py-14 shadow-sm">
+      <form data-a="fade" action="https://ssgform.com/s/YCmO2VUgUBqf" method="post"
+            class="bg-white rounded-[12px] py-10 md:py-14 shadow-sm">
+        <input type="hidden" name="_redirect"
+               value="https://cloudflare-workers-autoconfig-itpc.snsstartdiary.workers.dev/thanks/" />
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           <div>
@@ -157,9 +160,9 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- PHONE -->
-  <section class="w-full bg-white" style="padding-bottom: var(--sp-section-md);">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
-      <div class="bg-[#004896] rounded-[16px] overflow-hidden"
+  <section class="w-full bg-white" style="padding-bottom: var(--sp-section-sm);">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+      <div data-a="fade" class="bg-[#004896] rounded-[16px] overflow-hidden"
            style="padding: clamp(36px, 5vw, 70px) clamp(24px, 5vw, 80px);">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div>
@@ -188,8 +191,8 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- 注釈 -->
   <section class="w-full bg-bg-white" style="padding-bottom: var(--sp-section-md);">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
-      <div class="border-t border-[#D1D9E6] pt-8">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+      <div>
         <ul class="font-noto font-medium text-[#777777] leading-loose space-y-2"
             style="font-size: var(--fs-caption);">
           <li>※ お問い合わせの内容によっては、回答までにお時間をいただく場合がございます。</li>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
 ---
 <Layout title="会社概要 | 株式会社 イトピック">
 <main>
@@ -22,12 +23,12 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
     <div
-      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-4 md:px-8 xl:px-0"
+      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
       style="min-height: clamp(200px, 28vw, 455px);"
     >
       <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
          style="font-size: var(--fs-small); letter-spacing: 0.18em;">About Us</p>
-      <h1 class="font-noto font-bold text-[#333333] leading-tight mb-6"
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
           style="font-size: var(--fs-display);">会社概要</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
@@ -43,26 +44,35 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- MAIN VISUAL -->
-  <div class="w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
     <img src="/images/company_main.png" alt="会社概要メインビジュアル"
-         class="w-full h-full object-cover object-center" />
+         loading="eager"
+         class="absolute inset-0 w-full h-full object-cover object-center" />
   </div>
 
   <!-- PHILOSOPHY -->
-  <section id="company-philosophy" class="w-full bg-[#004896] section-xl">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0 flex flex-col items-center text-center">
-      <p class="font-inter font-bold text-white tracking-widest mb-8 opacity-70"
-         style="font-size: var(--fs-small); letter-spacing: 0.22em;">Philosophy</p>
-      <h2 class="font-noto font-bold text-white leading-tight mb-14"
-          style="font-size: var(--fs-h1);">企業理念</h2>
-      <p class="font-noto font-bold text-white leading-snug mb-14"
-         style="font-size: var(--fs-h2); letter-spacing: 0.04em;">地域の想いを、形にする。</p>
+  <section id="company-philosophy" class="w-full bg-[#004896] section-lg lg:section-xl">
+<div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0 flex flex-col items-center text-center">
+      <!-- mb-8 を削除し、style属性に margin-bottom の clamp を追加 -->
+      <p class="font-inter font-bold text-white tracking-widest opacity-70"
+         style="font-size: var(--fs-small); letter-spacing: 0.22em; margin-bottom: clamp(16px, calc(1.5vw + 10.38px), 32px);">Philosophy</p>
+      
+      <!-- mb-10 を削除し、style属性に margin-bottom の clamp を追加 -->
+      <h2 class="font-noto font-bold text-white leading-tight"
+          style="font-size: var(--fs-h1); margin-bottom: clamp(20px, calc(1.88vw + 12.96px), 40px);">企業理念</h2>
+      
+      <!-- mb-14 を削除し、style属性に margin-bottom の clamp を追加 -->
+      <p class="font-noto font-bold text-white leading-snug"
+         style="font-size: var(--fs-h2); letter-spacing: 0.04em; margin-bottom: clamp(28px, calc(2.63vw + 18.14px), 56px);">地域の想いを、形にする。</p>
+         
       <div class="font-noto font-medium text-white text-left leading-loose space-y-4 max-w-[900px]"
            style="font-size: var(--fs-body-lg); opacity: 0.92;">
         <p>茨城県に根ざした長きにわたる歩みの中で培った信頼とノウハウを活かし、自治体・行政機関・地域企業のコミュニケーション活動を、トータルでサポートし続けます。</p>
         <p>地域の節目を彩る式典、地域の絆を育むイベント、未来へ想いを伝える映像制作。どのプロジェクトにも、お客様の想いと地域への誇りが込められています。</p>
         <p>私たちはその想いを形にするために、誠実な姿勢と確かな技術でプロジェクトを最後までサポートします。</p>
       </div>
+</div>
+
     </div>
   </section>
 
@@ -77,14 +87,18 @@ import Layout from '../layouts/Layout.astro';
         CEO Message
       </span>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
-      <div class="mb-16 lg:mb-20">
-        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
-           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Message</p>
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+      <!-- mb-16 lg:mb-20 を削除し style でレスポンシブ余白化 -->
+      <div data-a="fade" style="margin-bottom: clamp(32px, calc(4.51vw + 15.1px), 80px);">
+        <!-- mb-4 を削除し style でレスポンシブ余白化 -->
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest"
+           style="font-size: var(--fs-small); letter-spacing: 0.18em; margin-bottom: clamp(12px, calc(0.38vw + 10.59px), 16px);">Message</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight"
             style="font-size: var(--fs-h2);">代表挨拶</h2>
       </div>
-      <div class="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-20">
+      
+      <!-- gap-12 lg:gap-20 を削除し style でレスポンシブgap化 -->
+      <div data-a="fade" class="flex flex-col lg:flex-row lg:items-start" style="gap: clamp(28px, calc(4.88vw + 9.69px), 80px);">
         <div class="flex-shrink-0 lg:w-[420px] xl:w-[460px]">
           <div class="flex gap-6 items-start">
             <div class="flex-shrink-0 w-[3px] bg-[#004896] self-stretch"></div>
@@ -95,35 +109,42 @@ import Layout from '../layouts/Layout.astro';
               </p>
             </div>
           </div>
-          <div class="mt-14 lg:mt-20 flex flex-col items-start gap-3 pl-9">
-            <p class="font-noto font-medium text-[#555]" style="font-size: var(--fs-caption);">代表取締役</p>
-            <img src="/images/company_sign.png" alt="藤田和男 署名" class="h-auto"
-                 style="width: clamp(120px, 18vw, 180px);" />
-          </div>
         </div>
         <div class="flex-1 min-w-0">
-          <div class="w-[50px] h-[2px] bg-[#4982C2] mb-10"></div>
+          <!-- mb-10 を削除し style でレスポンシブ余白化 -->
+<div class="hidden lg:block w-[50px] h-[2px] bg-[#4982C2]" style="margin-bottom: clamp(20px, calc(1.88vw + 12.96px), 40px);"></div>
           <div class="font-noto font-medium text-[#333333] leading-loose space-y-6"
                style="font-size: var(--fs-body-lg);">
             <p>弊社は1988年の創業以来、茨城県内の行政機関・自治体をはじめ、多くのお客様とともにイベント・式典の企画・運営に携わってまいりました。</p>
             <p>地域の節目を彩る記念式典、地域の絆を育むイベント、未来へのメッセージを伝えるプロモーション映像——。どのプロジェクトにも、お客様の想いと地域への誇りが込められています。弊社はその想いを形にするために、本日に至るまで誠実に取り組んでまいりました。</p>
             <p>「窓口を一本化し、最後まで責任を持って対応する」というワンストップの姿勢は、創業当初から変わらぬ弊社の強みです。これからも地域に根ざしたパートナーとして、皆様のプロジェクトを全力でサポートしてまいります。</p>
           </div>
+          <!-- 代表取締役 + 署名：テキスト右側にサインが重なる自然な署名レイアウト -->
+          <div class="mt-8 flex justify-end w-full">
+            <div class="relative inline-flex items-center" style="height: 60px;">
+              <span class="font-noto font-medium text-[#555] whitespace-nowrap relative z-10"
+                    style="font-size: 15px;">代表取締役</span>
+              <img src="/images/company_sign.png" alt="藤田和男 署名"
+                   class="object-contain h-auto w-[110px] lg:w-[160px]"
+                   style="margin-left: 12px; mix-blend-mode: multiply;" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+</div>
+
   </section>
 
   <!-- COMPANY INFO -->
   <section id="company-info" class="w-full bg-white section-lg">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
-      <div class="mb-12 lg:mb-16">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+      <div data-a="fade" class="mb-12 lg:mb-16">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
            style="font-size: var(--fs-small); letter-spacing: 0.18em;">Company Info</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight"
             style="font-size: var(--fs-h2);">会社情報</h2>
       </div>
-      <div class="border border-[#E0E6EF] rounded-[4px] overflow-hidden">
+      <div data-a="fade" class="border border-[#E0E6EF] rounded-[4px] overflow-hidden">
         <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
           <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
             <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">商号</p>
@@ -163,7 +184,7 @@ import Layout from '../layouts/Layout.astro';
             <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-small);">設立</p>
           </div>
           <div class="flex-1 bg-white px-8 py-5 flex items-center">
-            <p class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-body);">1988年（昭和62年）4月16日</p>
+            <p class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-body);">1988年（昭和63年）4月16日</p>
           </div>
         </div>
         <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
@@ -222,15 +243,15 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- ACCESS -->
   <section id="company-access" class="w-full bg-white pb-[var(--sp-section-lg)]">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
-      <div class="mb-10 lg:mb-14">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+      <div data-a="fade" class="mb-10 lg:mb-14">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
            style="font-size: var(--fs-small); letter-spacing: 0.18em;">Access</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight"
             style="font-size: var(--fs-h2);">所在地・アクセス</h2>
 
       </div>
- <div class="w-full overflow-hidden rounded-[4px] mb-20" style="height: clamp(280px, 40vw, 560px);">
+ <div data-a="fade" class="w-full overflow-hidden rounded-[4px] mb-20" style="height: clamp(280px, 40vw, 560px);">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3211.9588743762756!2d140.37804749999998!3d36.38598959999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602221979e5228fb%3A0x4ccc310262b4c3d2!2z44CSMzExLTQxNjMg6Iyo5Z-O55yM5rC05oi45biC5Yqg5YCJ5LqV55S677yT77yU77yR4oiS77yW!5e0!3m2!1sja!2sjp!4v1780459799439!5m2!1sja!2sjp"
           width="100%" height="100%"
@@ -241,7 +262,7 @@ import Layout from '../layouts/Layout.astro';
           title="株式会社イトピック 所在地マップ"
         ></iframe>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#E0E6EF] rounded-[8px] overflow-hidden">
+      <div data-a="stagger" class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#E0E6EF] rounded-[8px] overflow-hidden">
         <div class="flex flex-col p-8 lg:p-10 bg-[#004896] text-white
                     border-b border-[#ffffff20] md:border-b-0 md:border-r md:border-[#ffffff20]">
           <div class="mb-6">
@@ -304,6 +325,80 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <!-- RELATED PAGES -->
+  <!-- sectionに px-6 md:px-0 を追加して、スマホ時に確実に左右24pxの余白を確保しました -->
+<section id="related-pages" class="w-full bg-white py-[80px] px-6 md:px-0">
+    <div class="inner md:px-0">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-[75px]">
+        <a href="/service"
+           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+                  flex flex-row items-center justify-between
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
+          <div class="flex-1 pr-4">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
+               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Works</p>
+            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">事業内容</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
+               style="font-size: var(--fs-small);">
+              式典・イベントの企画運営を中心としたワンストップ事業をご紹介します。
+            </p>
+          </div>
+          <div class="flex-shrink-0 w-10 h-10 rounded-full border border-white flex items-center justify-center group-hover:bg-white transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-4 h-4 text-white group-hover:text-[#004896] transition-colors duration-300">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+        <a href="/#strengths"
+           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+                  flex flex-row items-center justify-between
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
+          <div class="flex-1 pr-4">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
+               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Strengths</p>
+            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">私たちの強み</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
+               style="font-size: var(--fs-small);">
+              多彩なイベント・式典をサポートしてきた私たちの強みをご紹介します。
+            </p>
+          </div>
+          <div class="flex-shrink-0 w-10 h-10 rounded-full border border-white flex items-center justify-center group-hover:bg-white transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-4 h-4 text-white group-hover:text-[#004896] transition-colors duration-300">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+        <a href="/works"
+           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+                  flex flex-row items-center justify-between
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
+          <div class="flex-1 pr-4">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
+               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Works</p>
+            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">取引実績</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
+               style="font-size: var(--fs-small);">
+              行政機関をはじめ、多くの地域の皆様との豊富な取引実績をご紹介します。
+            </p>
+          </div>
+          <div class="flex-shrink-0 w-10 h-10 rounded-full border border-white flex items-center justify-center group-hover:bg-white transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-4 h-4 text-white group-hover:text-[#004896] transition-colors duration-300">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
 
 </main>
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
 ---
 <Layout title="事業内容 | 株式会社 イトピック">
 <main>
@@ -16,11 +17,11 @@ import Layout from '../layouts/Layout.astro';
         <img src="/images/ibaraki_bg.png" alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-4 md:px-8 xl:px-0"
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
          style="min-height: clamp(200px, 28vw, 455px);">
       <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
          style="font-size: var(--fs-small); letter-spacing: 0.18em;">Services</p>
-      <h1 class="font-noto font-bold text-[#333333] leading-tight mb-6"
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
           style="font-size: var(--fs-display);">事業内容</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
@@ -34,17 +35,18 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- MAIN VISUAL -->
-  <div class="w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
     <img src="/images/seavice_main.png" alt="事業内容メインビジュアル"
-         class="w-full h-full object-cover object-center" />
+         loading="eager"
+         class="absolute inset-0 w-full h-full object-cover object-center" />
   </div>
 
   <!-- HERO 01 -->
   <section id="service-hero-01" class="w-full bg-white flex items-center justify-center"
            style="min-height: clamp(360px, 50vw, 728px);">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8
+      <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8
                 flex flex-col items-center justify-center text-center section-md">
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-8"
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-6 md:mb-8"
          style="font-size: var(--fs-small); letter-spacing: 0.2em;">Main Service</p>
       <h2 class="font-noto font-bold text-[#004896] leading-snug mb-10"
           style="font-size: var(--fs-h1); letter-spacing: 0.05em;">
@@ -61,9 +63,9 @@ import Layout from '../layouts/Layout.astro';
   <!-- HERO 02 -->
   <section id="service-hero-02" class="w-full relative"
            style="min-height: clamp(600px, 180vw, calc(705px + 750px + 200px));">
-    <div class="absolute top-0 left-0 w-full overflow-hidden"
+    <div id="svc-hero-bg-wrap" class="absolute top-0 left-0 w-full overflow-hidden"
          style="height: clamp(220px, 55vw, 1000px); z-index: 0;">
-      <img src="/images/services_main.JPG" alt="" aria-hidden="true"
+      <img id="svc-hero-bg-img" src="/images/services_main.JPG" alt="" aria-hidden="true"
            class="w-full h-full object-cover object-center" />
       <div class="hidden lg:block absolute inset-0"
            style="background: linear-gradient(to bottom, rgba(73,145,178,0.52) 0%, rgba(73,145,178,0.38) 28%, rgba(255,255,255,0.72) 62%, rgba(255,255,255,0.96) 82%, rgba(255,255,255,1.0) 100%);"></div>
@@ -75,12 +77,12 @@ import Layout from '../layouts/Layout.astro';
     <div class="hero-content-wrap hidden lg:block absolute w-full max-w-[1440px] px-0"
          style="top: 705px; left: 50%; transform: translateX(-50%); z-index: 10;">
       <div class="flex flex-row items-start" style="column-gap: 7rem; padding-bottom: var(--sp-section-xl);">
-        <div class="flex-shrink-0 overflow-hidden rounded-[4px] w-[640px]"
+        <div id="svc-hero-pc-img" class="flex-shrink-0 overflow-hidden rounded-[4px] w-[640px]"
              style="height: clamp(320px, 50vw, 750px);">
           <img src="/images/service_hiro_main.png" alt="企画・運営の現場"
                class="w-full h-full object-cover object-center" />
         </div>
-        <div class="flex-1 min-w-0" style="padding-top: 0; margin-bottom: 3rem;">
+        <div id="svc-hero-pc-txt" class="flex-1 min-w-0" style="padding-top: 0; margin-bottom: 3rem;">
           <div style="margin-bottom: var(--sp-gap-md);">
             <span class="font-noto font-bold text-white rounded-[2px]"
                   style="font-size: var(--fs-h2); background: linear-gradient(to right, #004896, #3C73B5); display: block; width: fit-content; padding: 10px 20px; margin-bottom: 6px;">
@@ -109,7 +111,7 @@ import Layout from '../layouts/Layout.astro';
     <!-- SP -->
     <div class="lg:hidden relative z-10 w-full bg-transparent"
          style="padding-top: clamp(120px, 35vw, 200px); padding-bottom: clamp(32px, 8vw, 60px);">
-      <div class="px-4 py-10 bg-white rounded-t-[16px]">
+      <div class="px-6 py-10 bg-white rounded-t-[16px]">
         <div class="overflow-hidden rounded-[4px] w-full mb-8" style="height: clamp(240px, 60vw, 420px);">
           <img src="/images/service_hiro_main.png" alt="企画・運営の現場"
                class="w-full h-full object-cover object-center" />
@@ -143,7 +145,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ATTACHED SERVICES -->
   <section id="attached-services" class="w-full bg-[#F0F6FA] section-xl">
     <div class="inner">
-      <div class="text-center px-4" style="margin-bottom: var(--sp-section-md);">
+      <div data-a="fade" class="text-center px-6" style="margin-bottom: var(--sp-section-md);">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5"
            style="font-size: var(--fs-small); letter-spacing: 0.18em;">Attached Services</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"
@@ -160,7 +162,7 @@ import Layout from '../layouts/Layout.astro';
         <!-- 01: デザイン・印刷 -->
         <div id="design" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
-            <div class="flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
+            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
               <h3 class="font-noto font-bold text-[#333333]"
                   style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-md);">デザイン・印刷</h3>
               <div class="h-[3px] bg-[#4982C2] w-[150px]" style="margin-bottom: var(--sp-gap-md);"></div>
@@ -169,10 +171,10 @@ import Layout from '../layouts/Layout.astro';
               <div class="font-noto font-medium text-[#333333] leading-loose space-y-[20px]"
                    style="font-size: var(--fs-body);">
                 <p>招待状、パンフレット、看板など、イベントに必要な各種デザイン・印刷物を制作します。統一感のあるビジュアルで、イベント全体の世界観を構築します。</p>
-                <p>「分かりやすさ」と「高い品格」、そして統一感のあるビジュアル構築により、催事の価値を高めるとともに、来場者を迷わせない確実な会場導線を実現します。</p>
+                <p>「わかりやすさ」と「高い品格」、そして統一感のあるビジュアル構築により、催事の価値を高めるとともに、来場者を迷わせない確実な会場導線を実現します。</p>
               </div>
             </div>
-            <div class="flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
+            <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
                         bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
               <img src="/images/print_img.png" alt="デザイン・印刷 実績"
                    class="w-full lg:h-[650px] object-contain" />
@@ -183,7 +185,7 @@ import Layout from '../layouts/Layout.astro';
         <!-- 02: ノベルティ・商品 -->
         <div id="novelty" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
-            <div class="flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
+            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
               <h3 class="font-noto font-bold text-[#333333]"
                   style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-md);">ノベルティ・商品</h3>
               <div class="h-[3px] bg-[#4982C2] w-[150px]" style="margin-bottom: var(--sp-gap-md);"></div>
@@ -195,7 +197,7 @@ import Layout from '../layouts/Layout.astro';
                 <p>ターゲットの年齢層に合わせたノベルティ選定から、名入れデザイン、製造、会場への確実な納品まで一括で対応。徹底したスケジュール管理により、スムーズな催事運営を支えます。</p>
               </div>
             </div>
-            <div class="flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
+            <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
                         bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
               <img src="/images/goods_img.png" alt="ノベルティ・商品 実績"
                    class="w-full lg:h-[650px] object-contain" />
@@ -206,7 +208,7 @@ import Layout from '../layouts/Layout.astro';
         <!-- 03: 映像制作 -->
         <div id="video" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
-            <div class="flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
+            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
               <h3 class="font-noto font-bold text-[#333333]"
                   style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-md);">映像制作</h3>
               <div class="h-[3px] bg-[#4982C2] w-[150px]" style="margin-bottom: var(--sp-gap-md);"></div>
@@ -215,10 +217,10 @@ import Layout from '../layouts/Layout.astro';
               <div class="font-noto font-medium text-[#333333] leading-loose space-y-[20px]"
                    style="font-size: var(--fs-body);">
                 <p>式典やイベントの公式記録映像から、事業の魅力を伝えるPR動画まで、目的に合わせた最適な映像制作をご提供します。</p>
-                <p>行政機関のイベントにふさわしい、「誰にでも分かりやすく、上品な映像」を制作します。ホームページや、その後のPR活動にもそのまま長く使える確実な映像をお届けします。</p>
+                <p>行政機関のイベントにふさわしい、「誰にでもわかりやすく、上品な映像」を制作します。ホームページや、その後のPR活動にもそのまま長く使える確実な映像をお届けします。</p>
               </div>
             </div>
-            <div class="flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
+            <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
                         bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
               <img src="/images/movie_img.png" alt="映像制作 実績"
                    class="w-full lg:h-[650px] object-contain" />
@@ -233,8 +235,8 @@ import Layout from '../layouts/Layout.astro';
   <!-- SERVICE FLOW -->
   <section id="service-flow" class="w-full bg-white"
            style="padding-top: var(--sp-section-xl); padding-bottom: var(--sp-section-lg);">
-    <div class="inner px-4 lg:px-0">
-      <div class="text-center" style="margin-bottom: var(--sp-section-md);">
+    <div class="inner px-6 lg:px-0">
+      <div data-a="fade" class="text-center" style="margin-bottom: var(--sp-section-md);">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5"
            style="font-size: var(--fs-small); letter-spacing: 0.18em;">Flow</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"
@@ -252,7 +254,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">全体の流れ</p>
         </div>
-        <div class="flex flex-col lg:flex-row items-stretch">
+        <div data-a="fade" class="flex flex-col lg:flex-row items-stretch">
           {[
             { num: '1', label: '打ち合わせ\n御見積り', last: false },
             { num: '2', label: '企画\n制作準備', last: false },
@@ -294,7 +296,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">各ステップの詳細</p>
         </div>
 
-        <div class="space-y-4 w-full mx-0">
+        <div data-a="stagger" class="space-y-4 w-full mx-0">
 
           <!-- 1: イベント企画 -->
           <div class="border border-[#D8E4F0] rounded-[8px] overflow-hidden">
@@ -440,8 +442,8 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- RELATED PAGES -->
-  <section id="related-pages" class="w-full bg-white py-[80px]">
-    <div class="inner px-4 lg:px-0">
+  <section id="related-pages" class="w-full bg-white py-[80px] px-6 md:px-0">
+    <div class="inner px-6 lg:px-0">
       <div class="flex flex-col md:flex-row gap-8 md:gap-[75px]">
         <a href="/#strengths"
            class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
@@ -510,8 +512,168 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <ContactSection />
+
 </main>
 </Layout>
+
+<script>
+  // ================================================================
+  // service.astro — GSAP 高度アニメーション ver.2
+  // 1. #service-hero-02: 強烈なパララックス + PC 2カラム大胆フェードイン
+  // 2. #attached-services: 画像コード分解・バラバラ組み上がり演出
+  // ================================================================
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ──────────────────────────────────────────────────────────────────
+  // 1-A. 背景パララックス ― 「明確な速度差」でスクロールに連動
+  //      yPercent: +25 → -25 = 合計 50% の差 → 手前コンテンツと
+  //      明らかに違う速度で動く交差感を生み出す
+  // ──────────────────────────────────────────────────────────────────
+  const heroBgImg   = document.querySelector<HTMLElement>('#svc-hero-bg-img');
+  const heroSection = document.querySelector<HTMLElement>('#service-hero-02');
+
+  if (heroBgImg && heroSection) {
+    // scale: 1.35 → 上下に余裕を持たせ、大きく動かしても白隙間ゼロ
+    gsap.set(heroBgImg, { scale: 1.35, transformOrigin: 'center center' });
+    gsap.fromTo(heroBgImg,
+      { yPercent: 25 },
+      {
+        yPercent: -25,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top bottom',   // セクション天端が画面下端に入ったとき開始
+          end:   'bottom top',   // セクション下端が画面上端を越えたとき終了
+          scrub: true,           // スクロールに完全同期
+        },
+      }
+    );
+  }
+
+  // ──────────────────────────────────────────────────────────────────
+  // レスポンシブ分岐: PC (≥1024px) で大迫力エフェクト、SP はシンプル
+  // ──────────────────────────────────────────────────────────────────
+  const mm = gsap.matchMedia();
+
+  // ═══════════════════════════════════════════════════════════════════
+  // PC ONLY
+  // ═══════════════════════════════════════════════════════════════════
+  mm.add('(min-width: 1024px)', function () {
+
+    // ────────────────────────────────────────────────────────────────
+    // 1-B. PC 2カラム: 左写真が先に大きく浮き上がり、右テキストが
+    //      続けて時間差で登場 ― 単なるフェードより立体的な入場感
+    // ────────────────────────────────────────────────────────────────
+    const pcWrap = document.querySelector<HTMLElement>('.hero-content-wrap');
+    const pcImg  = document.querySelector<HTMLElement>('#svc-hero-pc-img');
+    const pcTxt  = document.querySelector<HTMLElement>('#svc-hero-pc-txt');
+
+    if (pcWrap && pcImg && pcTxt) {
+      // 初期状態: 下に沈んでいる + 少しスケールダウン
+      gsap.set(pcImg, { opacity: 0, y: 90, scale: 0.94 });
+      gsap.set(pcTxt.querySelectorAll<HTMLElement>(':scope > *'), { opacity: 0, y: 60, x: 30 });
+
+      const tlHero = gsap.timeline({
+        scrollTrigger: { trigger: pcWrap, start: 'top 80%', once: true },
+      });
+      tlHero
+        // 左: 写真が勢いよく浮き上がりながらスケールが戻る
+        .to(pcImg, {
+          opacity: 1, y: 0, scale: 1,
+          duration: 1.2, ease: 'power3.out',
+        })
+        // 右: 見出し〜段落が斜め方向から飛び込む
+        .to(
+          pcTxt.querySelectorAll<HTMLElement>(':scope > *'),
+          { opacity: 1, y: 0, x: 0, duration: 1.0, ease: 'power3.out', stagger: 0.15 },
+          '-=0.8'
+        );
+    }
+
+    // ────────────────────────────────────────────────────────────────
+    // 2. #attached-services 画像シャッターリバール
+    //    - clip-path: inset(0 100% 0 0) → inset(0 0% 0 0) で
+    //      右端からシャッターが開くように画像を表示
+    //    - scale と組み合わせて奥行き感を演出
+    // ────────────────────────────────────────────────────────────────
+    function buildShutterReveal(card: HTMLElement) {
+      const imgCol = card.querySelector<HTMLElement>('.svc-card-img-col');
+      if (!imgCol) return;
+      const img = imgCol.querySelector<HTMLElement>('img');
+      if (!img) return;
+
+      // 初期状態: 右端から完全に覆われ、わずかにズームアウト
+      gsap.set(img, {
+        clipPath: 'inset(0 100% 0 0 round 4px)',
+        scale: 1.08,
+        transformOrigin: 'center center',
+      });
+
+      // シャッターが左へ開きながらスケールが戻る
+      gsap.to(img, {
+        clipPath: 'inset(0 0% 0 0 round 4px)',
+        scale: 1,
+        duration: 1.2,
+        ease: 'power4.inOut',
+        scrollTrigger: {
+          trigger: imgCol,
+          start: 'top 78%',
+          once: true,
+        },
+      });
+    }
+
+    // テキスト列は左から飛び込む + 画像と同時スタート
+    function animateTextCol(card: HTMLElement) {
+      const txtCol = card.querySelector<HTMLElement>('.svc-card-txt-col');
+      if (!txtCol) return;
+      gsap.set(txtCol.querySelectorAll<HTMLElement>(':scope > *'), { opacity: 0, x: -40, y: 20 });
+      gsap.to(txtCol.querySelectorAll<HTMLElement>(':scope > *'), {
+        opacity: 1, x: 0, y: 0,
+        duration: 0.9, ease: 'power2.out',
+        stagger: 0.12,
+        scrollTrigger: { trigger: card, start: 'top 76%', once: true },
+        delay: 0.25,
+      });
+    }
+
+    // 画像・テキスト両方セットアップ
+    const setupAll = () => {
+      ['design', 'novelty', 'video'].forEach(function (id) {
+        const card = document.getElementById(id);
+        if (!card) return;
+        buildShutterReveal(card);
+        animateTextCol(card);
+      });
+    };
+
+    // すでに全リソース読込済みなら即実行
+    if (document.readyState === 'complete') {
+      setupAll();
+    } else {
+      window.addEventListener('load', setupAll, { once: true });
+    }
+
+  }); // end PC
+
+  // ═══════════════════════════════════════════════════════════════════
+  // SP ONLY: シンプルだが気持ちいいフェードイン
+  // ═══════════════════════════════════════════════════════════════════
+  mm.add('(max-width: 1023px)', function () {
+    ['design', 'novelty', 'video'].forEach(function (id) {
+      const card = document.getElementById(id);
+      if (!card) return;
+      gsap.set(card, { opacity: 0, y: 40 });
+      gsap.to(card, {
+        opacity: 1, y: 0, duration: 0.9, ease: 'power2.out',
+        scrollTrigger: { trigger: card, start: 'top 88%', once: true },
+      });
+    });
+  }); // end SP
+</script>
 
 <script>
   (function () {

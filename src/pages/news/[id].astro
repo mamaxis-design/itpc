@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { getAllNewsIds, getNewsById, formatDate, formatDatetime } from '../../lib/microcms';
+
+export async function getStaticPaths() {
+  const ids = await getAllNewsIds();
+  return ids.map((id) => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+const article = await getNewsById(id);
+
+if (!article) {
+  return Astro.redirect('/news');
+}
+
+const categoryColors: Record<string, string> = {
+  'お知らせ': 'border-[#004896] text-[#004896]',
+  '実績':     'border-[#004896] text-[#004896]',
+  '新着情報': 'border-[#004896] text-[#004896]',
+};
+---
+
+<Layout title={`${article.title} | 株式会社 イトピック`}>
+<main>
+
+  <!-- =============================================
+       PAGE HERO
+  ============================================== -->
+  <section
+    class="w-full bg-white relative overflow-hidden"
+    style="max-height: 455px; min-height: clamp(200px, 28vw, 455px);"
+  >
+    <div
+      class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none"
+      style="left: 50%; transform: translateX(-50%); z-index: 0;"
+      aria-hidden="true"
+    >
+      <div class="absolute top-0 right-0"
+           style="width: clamp(260px, 28vw, 420px); height: clamp(260px, 28vw, 420px); opacity: 0.55;">
+        <img src="/images/ibaraki_bg.png" alt=""
+             class="w-full h-full object-contain object-right-top" />
+      </div>
+    </div>
+    <div
+      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
+      style="min-height: clamp(200px, 28vw, 455px);"
+    >
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
+         style="font-size: var(--fs-small); letter-spacing: 0.18em;">News</p>
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
+          style="font-size: var(--fs-display);">お知らせ</h1>
+      <nav aria-label="パンくずリスト">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li>
+            <a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"
+               style="font-size: var(--fs-small);">ホーム</a>
+          </li>
+          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-hidden="true">&gt;</li>
+          <li>
+            <a href="/news" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"
+               style="font-size: var(--fs-small);">お知らせ</a>
+          </li>
+          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-hidden="true">&gt;</li>
+          <li class="font-noto font-medium text-[#333333] truncate max-w-[200px] sm:max-w-none"
+              style="font-size: var(--fs-small);" aria-current="page">{article.title}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- =============================================
+       MAIN VISUAL
+  ============================================== -->
+  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+    <img src="/images/news_mb.png" alt="お知らせメインビジュアル"
+         loading="eager"
+         class="absolute inset-0 w-full h-full object-cover object-center" />
+  </div>
+
+  <!-- =============================================
+       ARTICLE
+  ============================================== -->
+  <section class="w-full bg-white section-lg">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8">
+      <div class="max-w-[1440px] mx-auto">
+
+      <!-- セクションヘッダー -->
+      <div data-a="fade" class="mb-12 lg:mb-16">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
+           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Latest News</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight"
+            style="font-size: var(--fs-h2);">お知らせ</h2>
+      </div>
+
+      <!-- 記事ヘッダー -->
+      <header data-a="fade" class="mb-10 md:mb-14 pb-8 border-b border-[#E0E6EF]">
+        <!-- カテゴリ＋日付 -->
+        <div class="flex flex-wrap items-center gap-3 mb-5">
+          <span
+            class={`font-noto font-medium border px-4 py-1 rounded-[2px] whitespace-nowrap
+                    ${categoryColors[article.category] ?? 'border-[#999] text-[#999] bg-[#f5f5f5]'}`}
+            style="font-size: 12px; min-width: 80px; text-align: center;"
+          >
+            {article.category}
+          </span>
+          <time
+            datetime={formatDatetime(article.publishedAt)}
+            class="font-inter font-bold text-[#004896]"
+            style="font-size: var(--fs-small);"
+          >
+            {formatDate(article.publishedAt)}
+          </time>
+        </div>
+
+        <!-- タイトル -->
+        <h2 class="font-noto font-bold text-[#333333] leading-snug"
+            style="font-size: var(--fs-h3);">
+          {article.title}
+        </h2>
+      </header>
+
+      <!-- 記事本文 -->
+      <div data-a="fade" class="news-body font-noto font-medium text-[#333333] leading-loose"
+           style="font-size: var(--fs-body);">
+        {article.body
+          ? <Fragment set:html={article.body} />
+          : <p class="text-[#999]">本文はありません。</p>
+        }
+      </div>
+
+      <!-- 一覧へ戻るボタン -->
+      <div class="mt-16 pt-10 border-t border-[#E0E6EF] flex justify-center">
+        <a href="/news"
+           class="group inline-flex items-center gap-3 font-noto font-medium text-white
+                  px-10 py-4 rounded-[15px] transition-opacity duration-300 hover:opacity-85"
+           style="background: linear-gradient(to right, #4982C2, #004896); font-size: var(--fs-body);">
+          <span class="font-inter font-bold inline-block transition-transform duration-300 group-hover:-translate-x-1">←</span>
+          お知らせ一覧に戻る
+        </a>
+      </div>
+
+      </div><!-- /max-w-[860px] -->
+    </div>
+  </section>
+
+  <ContactSection />
+
+</main>
+</Layout>
+
+<style>
+  /* microCMS リッチエディター本文のスタイル */
+  .news-body :global(h2) {
+    font-size: var(--fs-h3);
+    font-weight: 700;
+    color: #004896;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #E0E6EF;
+  }
+  .news-body :global(h3) {
+    font-size: var(--fs-h4);
+    font-weight: 700;
+    color: #333333;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .news-body :global(p) {
+    margin-bottom: 1.5rem;
+  }
+  .news-body :global(a) {
+    color: #004896;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .news-body :global(a:hover) {
+    opacity: 0.7;
+  }
+  .news-body :global(ul),
+  .news-body :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .news-body :global(ul) {
+    list-style-type: disc;
+  }
+  .news-body :global(ol) {
+    list-style-type: decimal;
+  }
+  .news-body :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .news-body :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+  .news-body :global(blockquote) {
+    border-left: 4px solid #4982C2;
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0;
+    background: #F0F6FA;
+    color: #555;
+    border-radius: 0 4px 4px 0;
+  }
+  .news-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: var(--fs-small);
+  }
+  .news-body :global(th),
+  .news-body :global(td) {
+    border: 1px solid #E0E6EF;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+  .news-body :global(th) {
+    background: #EEF4FC;
+    font-weight: 700;
+    color: #004896;
+  }
+</style>

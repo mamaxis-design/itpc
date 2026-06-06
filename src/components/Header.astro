@@ -1,10 +1,10 @@
 ---
 ---
-<header class="w-full bg-white shadow-sm sticky top-0 z-50">
+<header class="w-full bg-white shadow-sm sticky top-0 z-50 relative">
   <div class="flex items-stretch">
 
     <!-- ── Left: Logo + Company Name ───────────────── -->
-    <div class="flex items-center flex-shrink-0 pl-4 md:pl-8 lg:pl-12 pr-6 py-3">
+    <div class="flex items-center flex-shrink-0 pl-6 md:pl-8 lg:pl-12 pr-6 py-3">
       <a href="/" class="flex items-center gap-3" aria-label="株式会社 イトピック トップへ">
         <img
           src="/images/itpc-logo.svg"
@@ -71,7 +71,7 @@
     </div>
 
     <!-- ── Mobile: Hamburger Button ─────────────────── -->
-    <div class="lg:hidden flex items-center ml-auto pr-4">
+    <div class="lg:hidden flex items-center ml-auto pr-6">
       <button
         id="hamburger-btn"
         type="button"
@@ -91,7 +91,8 @@
   <!-- ── Mobile Menu Drawer ─────────────────────────── -->
   <nav
     id="mobile-menu"
-    class="lg:hidden hidden flex-col bg-white border-t border-gray-100 px-4 pb-6 pt-4"
+    class="lg:hidden hidden flex-col bg-white border-t border-gray-100 px-6 pb-6 pt-4
+           absolute top-full left-0 right-0 z-50 shadow-md"
     aria-label="モバイルナビゲーション"
   >
     <a href="/service" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">業務内容</a>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
 ---
 <Layout title="取引実績 | 株式会社 イトピック">
 <main>
@@ -16,11 +17,11 @@ import Layout from '../layouts/Layout.astro';
         <img src="/images/ibaraki_bg.png" alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-4 md:px-8 xl:px-0"
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
          style="min-height: clamp(200px, 28vw, 455px);">
       <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
          style="font-size: var(--fs-small); letter-spacing: 0.18em;">Our Works</p>
-      <h1 class="font-noto font-bold text-[#333333] leading-tight mb-6"
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
           style="font-size: var(--fs-display);">取引実績</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
@@ -34,32 +35,31 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- MAIN VISUAL -->
-  <div class="w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
     <img src="/images/works_mb.jpg" alt="取引実績メインビジュアル"
-         class="w-full h-full object-cover object-center" />
+         loading="eager"
+         class="absolute inset-0 w-full h-full object-cover object-center" />
   </div>
 
   <!-- HERO 01 -->
-  <section id="works-hero-01" class="w-full bg-white flex items-center justify-center">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0
-                flex flex-col items-center justify-center text-center"
-         style="padding-top: var(--sp-section-xl); padding-bottom: var(--sp-section-xl);">
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-8"
+  <section id="works-hero-01" class="w-full bg-white flex items-center justify-center py-14 lg:py-36">
+    <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0 flex flex-col items-center justify-center text-center">
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 lg:mb-8"
          style="font-size: var(--fs-small); letter-spacing: 0.2em;">Achievements since 1988</p>
       <h2 class="font-noto font-bold text-[#004896] leading-snug"
           style="font-size: var(--fs-h1); letter-spacing: 0.05em;">
         創業以来の歩みと実績
       </h2>
     </div>
-  </section>
+</section>
 
   <!-- HERO 02 -->
   <section id="works-hero-02" class="w-full bg-white">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
       <div class="flex flex-col lg:flex-row lg:items-start"
            style="column-gap: 7rem; padding-top:0; padding-bottom: var(--sp-section-lg);">
-        <div class="flex-1 min-w-0 px-4 md:px-0">
-          <h3 class="font-noto font-bold text-[#333333] leading-snug mb-6"
+        <div data-a="fade" class="flex-1 min-w-0 md:px-0">
+          <h3 class="font-noto font-bold text-[#333333] leading-normal mb-6"
               style="font-size: var(--fs-h3); letter-spacing: 0.02em;">
             創業以来、変わらぬ姿勢で<br />プロジェクトに向き合ってきました。
           </h3>
@@ -71,8 +71,8 @@ import Layout from '../layouts/Layout.astro';
             <p>ここでは、直近の代表的な実績をカテゴリ別にご紹介します。掲載内容はクライアントの許諾範囲内での表記となります。</p>
           </div>
         </div>
-        <div class="flex-shrink-0 overflow-hidden rounded-[4px]
-                    w-full px-4 md:px-0 mt-10 lg:mt-0 lg:w-[560px]"
+        <div data-a="fade" class="flex-shrink-0 overflow-hidden rounded-[4px]
+                    w-full md:px-0 mt-10 lg:mt-0 lg:w-[560px]"
              style="height: clamp(280px, 38vw, 560px);">
           <img src="/images/works_main.JPG" alt="創業以来の歩みと実績"
                class="w-full h-full object-cover object-center" />
@@ -86,19 +86,19 @@ import Layout from '../layouts/Layout.astro';
     <div class="absolute inset-0" aria-hidden="true">
       <img src="/images/works_bg.jpg" alt="" class="w-full h-full object-cover object-center" />
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0 section-lg">
-      <div class="text-left md:text-center mb-16 lg:mb-20">
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0 section-lg">
+      <div data-a="fade" class="text-left md:text-center mb-16 lg:mb-20">
         <p class="font-inter font-bold text-white tracking-widest mb-5 opacity-80"
            style="font-size: var(--fs-small); letter-spacing: 0.2em;">Numbers</p>
         <h2 class="font-noto font-bold text-white leading-tight mb-6"
             style="font-size: var(--fs-h2);">数字で見る、これまでの歩み</h2>
         <p class="font-noto font-medium text-white opacity-85 leading-loose text-left md:text-center"
-           style="font-size: var(--fs-small);">
+           style="font-size: var(--fs-body);">
           創業からの年数、累計取引件数、取引先団体数など、これまでの歩みを数字でご紹介します。
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
-        <div class="flex flex-col px-4 md:px-8 lg:px-12 pb-10 md:pb-0 md:border-r md:border-white md:border-opacity-25">
+      <div data-a="stagger" class="grid grid-cols-1 md:grid-cols-3 gap-0">
+        <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-10 md:pb-0 md:border-r md:border-white md:border-opacity-25">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
           <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left" style="font-size: var(--fs-body);">創業からの年数</p>
           <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left" style="font-size: var(--fs-caption);">1988年 創業</p>
@@ -113,7 +113,7 @@ import Layout from '../layouts/Layout.astro';
             </p>
           </div>
         </div>
-        <div class="flex flex-col px-4 md:px-8 lg:px-12 pb-10 md:pb-0 md:border-r md:border-white md:border-opacity-25">
+        <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-10 md:pb-0 md:border-r md:border-white md:border-opacity-25">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
           <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left" style="font-size: var(--fs-body);">累計取引件数</p>
           <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left" style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
@@ -129,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
             </p>
           </div>
         </div>
-        <div class="flex flex-col px-4 md:px-8 lg:px-12 pb-0">
+        <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-0">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
           <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left" style="font-size: var(--fs-body);">取引先団体数</p>
           <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left" style="font-size: var(--fs-caption);">行政機関・企業・団体</p>
@@ -151,19 +151,19 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- RATIO -->
   <section id="works-ratio" class="w-full bg-[#F0F6FA] section-lg">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
-      <div class="text-left md:text-center mb-14 lg:mb-20">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+      <div data-a="fade" class="text-left md:text-center mb-14 lg:mb-20">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5"
            style="font-size: var(--fs-small); letter-spacing: 0.2em;">Data Visualization</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"
             style="font-size: var(--fs-h2);">取引先の構成比率</h2>
         <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"
-           style="font-size: var(--fs-small);">
+           style="font-size: var(--fs-body);">
           全体の8割が行政・自治体関連の公的案件であり、そのうち半分が県関連の事業です。<br class="hidden md:block" />
           県庁や市町村、公社、商工会から民間企業まで、多様なクライアントとパートナーシップを築いています。
         </p>
       </div>
-      <div class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
+      <div data-a="fade" class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
         <div class="flex-shrink-0 flex flex-col items-center justify-center"
              style="width: 100%; max-width: 432px; margin: 0 auto;">
           <div class="relative" style="width: 400px; height: 400px;">
@@ -225,14 +225,14 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- WORKS LIST -->
   <section id="works-list" class="w-full bg-white section-lg">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
-      <div class="text-left md:text-center mb-12 lg:mb-16">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+      <div data-a="fade" class="text-left md:text-center mb-12 lg:mb-16">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5"
            style="font-size: var(--fs-small); letter-spacing: 0.2em;">Works</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"
             style="font-size: var(--fs-h2);">カテゴリ別 実績一覧</h2>
         <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"
-           style="font-size: var(--fs-small);">
+           style="font-size: var(--fs-body);">
           これまでの代表的な実績と、直近の掲載可能な実績一覧です。<br class="hidden md:block" />
           サービスカテゴリを選んでご覧ください。
         </p>
@@ -288,17 +288,17 @@ import Layout from '../layouts/Layout.astro';
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">イベント実績</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 lg:mb-24">
           {[
-            { img: 'works_design_01.jpg', title: '下水道フェア', client: '茨城県流域下水道事務所' },
-            { img: 'works_design_02.jpg', title: '茨城空港1000万人達成イベント', client: '茨城県' },
-            { img: 'works_design_03.jpg', title: 'ワールドカップメモリアルフェスティバル', client: '茨城県' },
-            { img: 'works_design_04.jpg', title: '茨城をたべよう収穫祭', client: '茨城県' },
-            { img: 'works_design_05.jpg', title: 'いばらき絵文プレ大会', client: '茨城県' },
-            { img: 'works_design_06.jpg', title: 'みんなのまいいん大集合', client: '茨城県大子町' },
-            { img: 'works_design_07.jpg', title: 'いばらき夏の観光キャンペーン', client: '（一社）茨城県観光物産協会' },
-            { img: 'works_design_08.jpg', title: '民族芸能大会2015', client: '茨城県' },
-            { img: 'works_design_09.jpg', title: 'ミルクメッセいばらき', client: '茨城県牛乳普及協会' },
+            { img: 'works_event_01.jpg', title: '下水道フェア', client: '茨城県流域下水道事務所' },
+            { img: 'works_event_02.jpg', title: '茨城空港1000万人達成イベント', client: '茨城県' },
+            { img: 'works_event_03.jpg', title: 'ワールドカップメモリアルフェスティバル', client: '茨城県' },
+            { img: 'works_event_04.jpg', title: '茨城をたべよう収穫祭', client: '茨城県' },
+            { img: 'works_event_05.jpg', title: 'いばらき絵文プレ大会', client: '茨城県' },
+            { img: 'works_event_06.jpg', title: 'みんなのまいいん大集合', client: '茨城県大子町' },
+            { img: 'works_event_07.jpg', title: 'いばらき夏の観光キャンペーン', client: '（一社）茨城県観光物産協会' },
+            { img: 'works_event_08.jpg', title: '民族芸能大会2015', client: '茨城県' },
+            { img: 'works_event_09.jpg', title: 'ミルクメッセいばらき', client: '茨城県牛乳普及協会' },
           ].map(({ img, title, client }) => (
             <div class="group cursor-pointer">
               <div class="overflow-hidden rounded-[6px] mb-3" style="aspect-ratio:4/3;">
@@ -365,9 +365,15 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
-            { img: 'works_design_01.jpg', title: '都市計画道路開通式', client: '茨城県' },
-            { img: 'works_design_02.jpg', title: '全国スポーツ推進委員研究協議会茨城大会', client: '茨城県' },
-            { img: 'works_design_03.jpg', title: '北沢トンネル開通記念式典', client: '茨城県' },
+            { img: 'works_ceremony_01.jpg', title: '主要地方道つくば野田線菅生大橋開通式典',   client: '茨城県石下土木事務所' },
+            { img: 'works_ceremony_02.jpg', title: '筑西つくば線バイパス開通式典',             client: '筑西土木事務所' },
+            { img: 'works_ceremony_03.jpg', title: 'つくばみらい市市制10周年記念式典',         client: 'つくばみらい市' },
+            { img: 'works_ceremony_04.jpg', title: '道の駅常陸大宮竣工式典',                   client: '常陸大宮市' },
+            { img: 'works_ceremony_05.jpg', title: '茨城県日立港区第3ふ頭併用記念式典',        client: '日立港振興協会' },
+            { img: 'works_ceremony_06.jpg', title: 'つくばみらい市市制10周年記念式典',         client: 'つくばみらい市' },
+            { img: 'works_ceremony_07.jpg', title: '袋田の滝国名勝指定記念式典',               client: '大子町' },
+            { img: 'works_ceremony_08.jpg', title: '偕楽園見晴亭落成式',                       client: '茨城県水戸土木事務所' },
+            { img: 'works_ceremony_09.jpg', title: '国道245号線湊大橋開通式典',                client: '茨城県水戸土木事務所' },
           ].map(({ img, title, client }) => (
             <div class="group cursor-pointer">
               <div class="overflow-hidden rounded-[6px] mb-3" style="aspect-ratio:4/3;">
@@ -487,14 +493,20 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
-            { img: 'works_design_01.jpg', title: 'KOUSEI-REN 事業案内パンフレット', client: '茨城県' },
-            { img: 'works_design_02.jpg', title: 'みらいへのライン 入学案内', client: '茨城県立産業技術専門学院' },
-            { img: 'works_design_03.jpg', title: 'OTSUKA factory パンフレット', client: '大塚食品' },
+            { img: 'works_design_01.jpg', title: '会社案内パンフレット',       client: 'ひたちなかエネルギーロジテック（株）' },
+            { img: 'works_design_02.jpg', title: 'いばらきの初詣',             client: '茨城県' },
+            { img: 'works_design_03.jpg', title: '大塚製作所70年の歩み',       client: '大塚製作所' },
+            { img: 'works_design_04.jpg', title: '大子町要覧',                 client: '大子町' },
+            { img: 'works_design_05.jpg', title: '城里町要覧',                 client: '城里町' },
+            { img: 'works_design_06.jpg', title: '那珂市要覧',                 client: '那珂市' },
+            { img: 'works_design_07.jpg', title: '水府村記念誌',               client: '水府村' },
+            { img: 'works_design_08.jpg', title: '金砂郷町記念誌',             client: '金砂郷町' },
+            { img: 'works_design_09.jpg', title: '御前山村記念誌',             client: '御前山村' },
           ].map(({ img, title, client }) => (
             <div class="group cursor-pointer">
-              <div class="overflow-hidden rounded-[6px] mb-3" style="aspect-ratio:4/3;">
+              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center" style="aspect-ratio: 4/3;">
                 <img src={`/images/${img}`} alt={title}
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                     class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
               </div>
               <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body);">{title}</p>
               <p class="font-noto font-medium text-[#666]" style="font-size: var(--fs-caption);">{client}</p>
@@ -591,14 +603,20 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
-            { img: 'works_design_04.jpg', title: 'IBR オリジナルマスク・グッズ', client: '茨城空港' },
-            { img: 'works_design_05.jpg', title: 'IBARAKI 法被・ノベルティ各種', client: '茨城県' },
-            { img: 'works_design_06.jpg', title: 'オリジナルエコバッグ・記念品', client: '各種団体' },
+            { img: 'works_goods_01.jpg', title: '茨城空港プリンタブルマスク',             client: '茨城県' },
+            { img: 'works_goods_02.jpg', title: '法被',                                   client: '茨城県観光物産協会' },
+            { img: 'works_goods_03.jpg', title: '茨城空港10周年記念',                     client: '茨城県' },
+            { img: 'works_goods_04.jpg', title: 'クリアファイル',                         client: '日本赤十字社茨城県支部' },
+            { img: 'works_goods_05.jpg', title: 'はんどちゃんノベルティ',                 client: '茨城県社会福祉協議会' },
+            { img: 'works_goods_06.jpg', title: 'ストップくんカード・他',                 client: '茨城県' },
+            { img: 'works_goods_07.jpg', title: 'ピンバッチ',                             client: '大洗リサイクル機構' },
+            { img: 'works_goods_08.jpg', title: 'オリジナル扇子',                         client: 'JA茨城県中央会' },
+            { img: 'works_goods_09.jpg', title: '国民文化祭・いばらきノベルティ各種',     client: '茨城県' },
           ].map(({ img, title, client }) => (
             <div class="group cursor-pointer">
-              <div class="overflow-hidden rounded-[6px] mb-3" style="aspect-ratio:4/3;">
+              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center" style="aspect-ratio: 4/3;">
                 <img src={`/images/${img}`} alt={title}
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                     class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
               </div>
               <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body);">{title}</p>
               <p class="font-noto font-medium text-[#666]" style="font-size: var(--fs-caption);">{client}</p>
@@ -665,14 +683,20 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
-            { img: 'works_design_07.jpg', title: 'かねふくめんたいパーク 記録DVD', client: '茨城県' },
-            { img: 'works_design_08.jpg', title: '茨城港開港50周年記念講演会・祝賀会 記念DVD', client: '茨城県' },
-            { img: 'works_design_09.jpg', title: '第56回全国植樹祭 記録映像', client: '茨城県' },
+            { img: 'works_movie_01.jpg', title: 'やまびこ厚生園紹介',                                     client: 'やまびこ厚生園' },
+            { img: 'works_movie_02.jpg', title: '鹿島港50周年記念講演会・祝賀会記録映像',                 client: '鹿島港振興協会' },
+            { img: 'works_movie_03.jpg', title: 'プロモーションビデオ Blu-ray Disc',                      client: '大縄林業株式会社' },
+            { img: 'works_movie_04.jpg', title: 'ぼくの・わたしのリサイクル ～東海村"ごみゼロ"への取組み～DVD', client: '東海村' },
+            { img: 'works_movie_05.jpg', title: '思いやりあふれる看護を伝えようDVD',                      client: '土浦協同病院' },
+            { img: 'works_movie_06.jpg', title: '茨城県原子力安全協定締結30年を振り返って',               client: '茨城県・茨城県原子力安全協定推進協議会' },
+            { img: 'works_movie_07.jpg', title: 'いばらき農産物ネットカタログDVD・ビデオ',               client: '茨城県' },
+            { img: 'works_movie_08.jpg', title: '第56回全国植樹祭DVD・ビデオ',                           client: '茨城県' },
+            { img: 'works_movie_09.jpg', title: '第74回全国学校歯科保健研究大会ホームページ',             client: 'トップツアー（株）水戸支店' },
           ].map(({ img, title, client }) => (
             <div class="group cursor-pointer">
-              <div class="overflow-hidden rounded-[6px] mb-3" style="aspect-ratio:4/3;">
+              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center" style="aspect-ratio: 4/3;">
                 <img src={`/images/${img}`} alt={title}
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                     class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
               </div>
               <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body);">{title}</p>
               <p class="font-noto font-medium text-[#666]" style="font-size: var(--fs-caption);">{client}</p>
@@ -716,6 +740,79 @@ import Layout from '../layouts/Layout.astro';
 
     </div>
   </section>
+
+  <!-- RELATED PAGES -->
+  <section id="related-pages" class="w-full bg-white py-[80px] px-6 md:px-0">
+    <div class="inner px-6 lg:px-0">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-[75px]">
+      <a href="/service"
+           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+                  flex flex-row items-center justify-between
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
+          <div class="flex-1 pr-4">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
+               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Works</p>
+            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">事業内容</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
+               style="font-size: var(--fs-small);">
+              式典・イベントの企画運営を中心としたワンストップ事業をご紹介します。
+            </p>
+          </div>
+          <div class="flex-shrink-0 w-10 h-10 rounded-full border border-white flex items-center justify-center group-hover:bg-white transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-4 h-4 text-white group-hover:text-[#004896] transition-colors duration-300">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+        <a href="/#strengths"
+           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+                  flex flex-row items-center justify-between
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
+          <div class="flex-1 pr-4">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
+               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Strengths</p>
+            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">私たちの強み</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
+               style="font-size: var(--fs-small);">
+              多彩なイベント・式典をサポートしてきた私たちの強みをご紹介します。
+            </p>
+          </div>
+          <div class="flex-shrink-0 w-10 h-10 rounded-full border border-white flex items-center justify-center group-hover:bg-white transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-4 h-4 text-white group-hover:text-[#004896] transition-colors duration-300">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+        <a href="/company"
+           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+                  flex flex-row items-center justify-between
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
+          <div class="flex-1 pr-4">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
+               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">About Us</p>
+            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">会社概要</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
+               style="font-size: var(--fs-small);">
+              株式会社イトピックの企業理念や代表挨拶、会社概要をご紹介します。
+            </p>
+          </div>
+          <div class="flex-shrink-0 w-10 h-10 rounded-full border border-white flex items-center justify-center group-hover:bg-white transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-4 h-4 text-white group-hover:text-[#004896] transition-colors duration-300">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
 
 </main>
 </Layout>

@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
 
 const articles = [
   {
     num: '01',
     title: '個人情報の管理',
-    body: `株式会社イトピック（以下「当社」）は、お客様の個人情報を正確かつ最新の状態に保ち、個人情報への不正アクセス・紛失・破損・改ざん・漏洩などを防止するため、セキュリティシステムの維持・管理体制の整備・社員教育の徹底等の必要な措置を講じ、安全対策を実施し個人情報の厳重な管理を行ないます。`,
+    body: `株式会社イトピック（以下「当社」）は、お客様の個人情報を正確かつ最新の状態に保ち、個人情報への不正アクセス・紛失・破損・改ざん・漏洩などを防止するため、セキュリティシステムの維持・管理体制の整備・社員教育の徹底等の必要な措置を講じ、安全対策を実施し個人情報の厳重な管理を行います。`,
   },
   {
     num: '02',
@@ -68,12 +69,12 @@ const articles = [
       </div>
     </div>
     <div
-      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-4 md:px-8 xl:px-0"
+      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
       style="min-height: clamp(200px, 28vw, 455px);"
     >
       <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
          style="font-size: var(--fs-small); letter-spacing: 0.18em;">Privacy Policy</p>
-      <h1 class="font-noto font-bold text-[#333333] leading-tight mb-6"
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
           style="font-size: var(--fs-display);">プライバシーポリシー</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
@@ -94,21 +95,22 @@ const articles = [
   <!-- =============================================
        MAIN VISUAL
   ============================================== -->
-  <div class="w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
     <img src="/images/privacy_mb.png" alt="プライバシーポリシーメインビジュアル"
-         class="w-full h-full object-cover object-center" />
+         loading="eager"
+         class="absolute inset-0 w-full h-full object-cover object-center" />
   </div>
 
   <!-- =============================================
        INTRO
   ============================================== -->
   <section class="w-full bg-[#F0F6FA] section-md">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0 flex flex-col items-center text-center">
+    <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0 flex flex-col items-center text-center">
       <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-8 opacity-70"
          style="font-size: var(--fs-small); letter-spacing: 0.22em;">Our Commitment</p>
       <h2 class="font-noto font-bold text-[#004896] leading-tight mb-10"
           style="font-size: var(--fs-h2);">個人情報保護方針</h2>
-      <p class="font-noto font-medium leading-loose max-w-2xl mx-auto text-center opacity-90 px-4"
+      <p class="font-noto font-medium leading-loose max-w-2xl mx-auto text-center opacity-90 px-6"
          style="font-size: var(--fs-body-lg);">
         株式会社イトピック（以下「当社」）は、お客様の個人情報保護を重要な経営課題と位置づけ、以下の方針に基づき個人情報の適切な保護に努めます。
       </p>
@@ -119,10 +121,10 @@ const articles = [
        ARTICLES
   ============================================== -->
   <section class="w-full bg-white section-lg">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
 
       <!-- セクションヘッダー -->
-      <div class="mb-14 lg:mb-20">
+      <div data-a="fade" class="mb-14 lg:mb-20">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
            style="font-size: var(--fs-small); letter-spacing: 0.18em;">Articles</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight"
@@ -132,7 +134,7 @@ const articles = [
       <!-- 条項リスト -->
       <div class="border-t border-[#E0E6EF]">
         {articles.map((article) => (
-          <div class="grid grid-cols-1 md:grid-cols-[500px_1fr]
+          <div data-a="fade" class="grid grid-cols-1 md:grid-cols-[500px_1fr]
                       border-b border-[#E0E6EF]
                       py-10 md:py-14
                       gap-4 md:gap-x-20 md:gap-y-0">
@@ -223,6 +225,8 @@ const articles = [
 
     </div>
   </section>
+
+  <ContactSection />
 
 </main>
 </Layout>

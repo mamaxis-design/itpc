@@ -1,55 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { getAllNews, formatDate, formatDatetime } from '../../lib/microcms';
 
-const newsItems = [
-  {
-    id: '001',
-    date: '2026-04-22',
-    dateLabel: '2026.04.22',
-    category: 'お知らせ',
-    title: 'ゴールデンウィーク期間中（4/26〜5/6）の営業についてのお知らせ。',
-  },
-  {
-    id: '002',
-    date: '2026-03-02',
-    dateLabel: '2026.03.02',
-    category: '実績',
-    title: '茨城県○○市「市制施行50周年記念式典」を開催いたしました。',
-  },
-  {
-    id: '003',
-    date: '2026-02-21',
-    dateLabel: '2026.02.21',
-    category: 'お知らせ',
-    title: '新サービス「オンラインイベント支援プラン」の提供を開始しました。',
-  },
-  {
-    id: '004',
-    date: '2026-01-10',
-    dateLabel: '2026.01.10',
-    category: '新着情報',
-    title: '2026年の営業開始は1月6日（火）からとなります。本年もどうぞよろしくお願いいたします。',
-  },
-  {
-    id: '005',
-    date: '2025-12-18',
-    dateLabel: '2025.12.18',
-    category: '実績',
-    title: '（一社）茨城県観光物産協会「いばらき夏の観光キャンペーン2025」の企画運営を担当しました。',
-  },
-  {
-    id: '006',
-    date: '2025-11-04',
-    dateLabel: '2025.11.04',
-    category: 'お知らせ',
-    title: '年末年始の休業期間（12/28〜1/5）についてのお知らせ。',
-  },
-];
+const { contents: newsItems, totalCount } = await getAllNews();
 
 const categoryColors: Record<string, string> = {
   'お知らせ': 'border-[#004896] text-[#004896]',
-  '実績':     'border-[#4982C2] text-[#4982C2]',
-  '新着情報': 'border-[#6CA87C] text-[#6CA87C]',
+  '実績':     'border-[#004896] text-[#004896]',
+  '新着情報': 'border-[#004896] text-[#004896]',
 };
 ---
 <Layout title="お知らせ | 株式会社 イトピック">
@@ -75,12 +34,12 @@ const categoryColors: Record<string, string> = {
       </div>
     </div>
     <div
-      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-4 md:px-8 xl:px-0"
+      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
       style="min-height: clamp(200px, 28vw, 455px);"
     >
       <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
          style="font-size: var(--fs-small); letter-spacing: 0.18em;">News</p>
-      <h1 class="font-noto font-bold text-[#333333] leading-tight mb-6"
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
           style="font-size: var(--fs-display);">お知らせ</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
@@ -98,19 +57,20 @@ const categoryColors: Record<string, string> = {
   <!-- =============================================
        MAIN VISUAL
   ============================================== -->
-  <div class="w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
+  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
     <img src="/images/news_mb.png" alt="お知らせメインビジュアル"
-         class="w-full h-full object-cover object-center" />
+         loading="eager"
+         class="absolute inset-0 w-full h-full object-cover object-center" />
   </div>
 
   <!-- =============================================
        NEWS LIST
   ============================================== -->
   <section id="news-list" class="w-full bg-white section-lg">
-    <div class="w-full max-w-[1440px] mx-auto px-4 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
 
       <!-- セクションヘッダー -->
-      <div class="mb-12 lg:mb-16">
+      <div data-a="fade" class="mb-12 lg:mb-16">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
            style="font-size: var(--fs-small); letter-spacing: 0.18em;">Latest News</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight"
@@ -118,7 +78,7 @@ const categoryColors: Record<string, string> = {
       </div>
 
       <!-- カテゴリフィルター -->
-      <div class="flex flex-wrap items-center gap-3 mb-10 lg:mb-14"
+      <div data-a="fade" class="flex flex-wrap items-center gap-3 mb-10 lg:mb-14"
            role="list" aria-label="カテゴリ絞り込み">
         <button
           type="button"
@@ -143,9 +103,9 @@ const categoryColors: Record<string, string> = {
         <button
           type="button"
           data-filter="実績"
-          class="filter-btn font-noto font-medium text-[#4982C2] bg-white
-                 px-5 py-2 rounded-full border border-[#4982C2]
-                 hover:bg-[#4982C2] hover:text-white transition-colors duration-200"
+          class="filter-btn font-noto font-medium text-[#004896] bg-white
+                 px-5 py-2 rounded-full border border-[#004896]
+                 hover:bg-[#004896] hover:text-white transition-colors duration-200"
           style="font-size: var(--fs-caption);"
         >
           実績
@@ -153,9 +113,9 @@ const categoryColors: Record<string, string> = {
         <button
           type="button"
           data-filter="新着情報"
-          class="filter-btn font-noto font-medium text-[#6CA87C] bg-white
-                 px-5 py-2 rounded-full border border-[#6CA87C]
-                 hover:bg-[#6CA87C] hover:text-white transition-colors duration-200"
+          class="filter-btn font-noto font-medium text-[#004896] bg-white
+                 px-5 py-2 rounded-full border border-[#004896]
+                 hover:bg-[#004896] hover:text-white transition-colors duration-200"
           style="font-size: var(--fs-caption);"
         >
           新着情報
@@ -166,22 +126,25 @@ const categoryColors: Record<string, string> = {
       <div id="news-list-items" class="border-t border-[#E0E6EF]">
         {newsItems.map((item) => (
           <article
+            data-a="fade"
             class="news-article"
             data-category={item.category}
           >
-            <div
-              class="flex flex-col sm:flex-row sm:items-center
+            <a
+              href={`/news/${item.id}`}
+              class="group flex flex-col sm:flex-row sm:items-center
                      gap-3 sm:gap-6
                      py-8 md:py-10
-                     border-b border-[#E0E6EF]"
+                     border-b border-[#E0E6EF]
+                     hover:opacity-75 transition-opacity duration-200"
             >
               <!-- 日付 -->
               <time
-                datetime={item.date}
+                datetime={formatDatetime(item.publishedAt)}
                 class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap"
                 style="font-size: var(--fs-small);"
               >
-                {item.dateLabel}
+                {formatDate(item.publishedAt)}
               </time>
 
               <!-- カテゴリタグ -->
@@ -201,7 +164,18 @@ const categoryColors: Record<string, string> = {
               >
                 {item.title}
               </p>
-            </div>
+
+              <!-- 詳細矢印 -->
+              <span class="hidden sm:flex flex-shrink-0 w-9 h-9 rounded-full border border-[#004896]
+                           items-center justify-center text-[#004896] ml-auto
+                           group-hover:bg-[#004896] group-hover:text-white transition-colors duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="w-4 h-4">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+            </a>
           </article>
         ))}
       </div>
@@ -282,6 +256,8 @@ const categoryColors: Record<string, string> = {
     </div>
   </section>
 
+  <ContactSection />
+
 </main>
 </Layout>
 
@@ -295,20 +271,13 @@ const categoryColors: Record<string, string> = {
       btn.addEventListener('click', function () {
         const filter = btn.getAttribute('data-filter') ?? 'all';
 
-        // アクティブ状態の切り替え
+        // アクティブ状態の切り替え（全カテゴリ #004896 統一）
         filterBtns.forEach(function (b) {
-          b.classList.remove('active', 'text-white', 'bg-[#004896]', 'bg-[#4982C2]', 'bg-[#6CA87C]');
+          b.classList.remove('active', 'text-white', 'bg-[#004896]');
+          b.classList.add('text-[#004896]', 'bg-white');
         });
-        btn.classList.add('active');
-        if (filter === 'all') {
-          btn.classList.add('text-white', 'bg-[#004896]');
-        } else if (filter === 'お知らせ') {
-          btn.classList.add('text-white', 'bg-[#004896]');
-        } else if (filter === '実績') {
-          btn.classList.add('text-white', 'bg-[#4982C2]');
-        } else if (filter === '新着情報') {
-          btn.classList.add('text-white', 'bg-[#6CA87C]');
-        }
+        btn.classList.remove('text-[#004896]', 'bg-white');
+        btn.classList.add('active', 'text-white', 'bg-[#004896]');
 
         // 表示切り替え
         let visibleCount = 0;

@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getLatestNews, formatDate, formatDatetime } from '../lib/microcms';
+
+const latestNews = await getLatestNews(3);
 ---
 <Layout title="株式会社 イトピック | ITPIC">
 <main>
@@ -25,13 +28,13 @@ import Layout from '../layouts/Layout.astro';
     ></div>
 
     <div
-      class="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-stretch px-4 md:px-8 lg:pl-[120px] lg:pr-0"
+      class="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-stretch px-6 md:px-8 lg:pl-[60px] lg:pr-0"
       style="min-height: 600px; max-height: 1200px; gap: 0;"
     >
       <!-- LEFT -->
       <div
         class="w-full flex flex-col justify-center py-16 lg:py-20 xl:py-28"
-        style="flex: 0 0 45%; min-width: 0;"
+        style="flex: 0 0 55%; min-width: 0;"
       >
         <p
           class="font-inter font-bold text-[#4982C2] mb-6 md:mb-8"
@@ -41,15 +44,15 @@ import Layout from '../layouts/Layout.astro';
         </p>
         <h1
           class="font-noto font-bold text-white leading-tight mb-8 md:mb-10 w-full"
-          style="font-size: var(--fs-h1); line-height: 1.5; letter-spacing: 2.05px;"
+          style="font-size: var(--fs-display); line-height: 1.5; letter-spacing: 2.05px;"
         >
-          <span class="text-[#4982C2]">35年超</span>の実績と創造力で、茨城の魅力を次世代へ。
+          <span class="text-[#4982C2]">35年超</span>の実績と創造力で、<br class="hidden lg:block" />茨城の魅力を次世代へ。
         </h1>
         <div
           class="font-noto font-medium text-white mb-10 md:mb-14 space-y-1"
           style="font-size: var(--fs-body-lg); line-height: 2.0; letter-spacing: 1.15px;"
         >
-          <p>茨城の魅力発信と地域活性に、</p>
+          <p>茨城の魅力発信と地域活性化に、</p>
           <p>長年取り組んできました。</p>
           <p>培ってきた確かな技術で、</p>
           <p>安心・安全なクリエイティブを提供します。</p>
@@ -68,8 +71,8 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- RIGHT: 縦スクロール画像 (PC) -->
       <div
-        class="hidden lg:flex items-start self-stretch overflow-hidden pr-[120px]"
-        style="flex: 1 1 0%; min-width: 0; padding-left: clamp(40px, 8vw, 150px);"
+        class="hidden lg:flex items-start self-stretch overflow-hidden pr-[80px]"
+        style="flex: 1 1 0%; min-width: 0; padding-left:0;"
         aria-hidden="true"
       >
         <div
@@ -97,16 +100,30 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <!-- SP: 横スクロールスライダー -->
-      <div class="lg:hidden w-full overflow-x-auto flex gap-3 pb-8 pt-4 snap-x snap-mandatory">
-        <div class="flex-shrink-0 snap-start overflow-hidden rounded-lg" style="width: 80vw; height: 200px;">
-          <img src="/images/mb_01.jpg" alt="実績写真1" class="object-cover w-full h-full" />
-        </div>
-        <div class="flex-shrink-0 snap-start overflow-hidden rounded-lg" style="width: 80vw; height: 200px;">
-          <img src="/images/mb_02.png" alt="実績写真2" class="object-cover w-full h-full" />
-        </div>
-        <div class="flex-shrink-0 snap-start overflow-hidden rounded-lg" style="width: 80vw; height: 200px;">
-          <img src="/images/mb_03.jpg" alt="実績写真3" class="object-cover w-full h-full" />
+      <!-- SP: 自動横マーキー（右→左 無限スクロール） -->
+      <div class="lg:hidden w-full overflow-hidden pb-8 pt-4" aria-hidden="true">
+        <div class="flex gap-4"
+             style="width: max-content; animation: marquee-horizontal 14s linear infinite;">
+          <!-- オリジナル3枚 -->
+          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
+            <img src="/images/mb_01.jpg" alt="実績写真1" class="object-cover w-full h-full" />
+          </div>
+          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
+            <img src="/images/mb_02.png" alt="実績写真2" class="object-cover w-full h-full" />
+          </div>
+          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
+            <img src="/images/mb_03.jpg" alt="実績写真3" class="object-cover w-full h-full" />
+          </div>
+          <!-- 複製3枚（シームレスループ用） -->
+          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
+            <img src="/images/mb_01.jpg" alt="" class="object-cover w-full h-full" />
+          </div>
+          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
+            <img src="/images/mb_02.png" alt="" class="object-cover w-full h-full" />
+          </div>
+          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
+            <img src="/images/mb_03.jpg" alt="" class="object-cover w-full h-full" />
+          </div>
         </div>
       </div>
 
@@ -120,7 +137,7 @@ import Layout from '../layouts/Layout.astro';
   ============================================== -->
   <section id="services" class="w-full bg-[#F0F6FA] overflow-hidden">
 
-    <div class="relative max-w-[1440px] mx-auto px-4 md:px-8 xl:pl-0 xl:pr-[120px]"
+    <div class="relative max-w-[1440px] mx-auto px-6 md:px-8 xl:pl-0 xl:pr-[120px]"
      style="padding-top: var(--sp-section-lg); padding-bottom: var(--sp-section-sm);">
 
       <div class="hidden lg:block absolute top-20 right-0 pointer-events-none"
@@ -129,13 +146,13 @@ import Layout from '../layouts/Layout.astro';
              class="w-full h-full object-contain" />
         <div class="absolute" style="top: 53%; left: 65%;">
           <span class="absolute rounded-full border border-[#4982C2]"
-                style="width:100px; height:100px; top:-50px; left:-50px;
+                style="width:100px; height:100px; top:-45px; left:-45px;
                        animation: ripple 3s ease-out 0s infinite;"></span>
           <span class="absolute rounded-full border border-[#4982C2]"
-                style="width:100px; height:100px; top:-50px; left:-50px;
+                style="width:100px; height:100px; top:-45px; left:-45px;
                        animation: ripple 3s ease-out 1s infinite;"></span>
           <span class="absolute rounded-full border border-[#4982C2]"
-                style="width:100px; height:100px; top:-50px; left:-50px;
+                style="width:100px; height:100px; top:-45px; left:-45px;
                        animation: ripple 3s ease-out 2s infinite;"></span>
           <span class="relative flex h-3 w-3" style="margin-top:-1.5px; margin-left:-1.5px;">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4982C2] opacity-70"></span>
@@ -153,7 +170,7 @@ import Layout from '../layouts/Layout.astro';
             style="font-size: var(--fs-h1);">
           確かな実現力とサービス
         </h2>
-        <p class="font-noto font-medium text-[#333333] leading-relaxed mb-10"
+        <p class="font-noto font-medium text-[#333333] leading-loose mb-10"
            style="font-size: var(--fs-body-lg);">
           株式会社イトピックでは、式典・イベントの企画運営を中心に、映像制作・デザイン制作・ノベルティ手配まで、プロジェクトに必要な幅広いクリエイティブをワンストップでご提供しています。
         </p>
@@ -204,12 +221,13 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <!-- 下部：3カラム・サービスカード -->
-    <div class="max-w-[1440px] mx-auto px-4 md:px-8 pb-0"
+    <div class="max-w-[1440px] mx-auto px-6 md:px-8 pb-0"
          style="margin-top: var(--sp-section-lg);">
       <h3 class="font-noto font-bold text-[#004896] text-center"
-          style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-lg);">
-        イベント・式典に合わせてご提供するサービス。
-      </h3>
+    style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-lg);">
+  イベント・式典に合わせて<br class="sm:hidden" />ご提供するサービス。
+</h3>
+
 
       <!-- PC cards -->
       <div class="hidden lg:flex lg:flex-row lg:justify-center lg:gap-[75px]" data-card-row>
@@ -293,17 +311,22 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- SP/MD cards -->
       <div class="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+        <!-- カード全体の高さを400pxに変更 -->
         <a href="/service#design"
            class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px]"
-           style="height: 515px;">
-          <div class="relative overflow-hidden shrink-0" style="height: 400px;">
-            <img src="/images/services_3_01.jpg" alt="デザイン・印刷"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                 style="object-position: 75% 85%; transform: scale(1.35); transform-origin: 75% 85%;" />
-            <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-transparent to-transparent p-5">
-              <p class="font-noto font-medium text-white leading-relaxed" style="font-size: var(--fs-small);">招待状、パンフレット、看板など、イベントに必要な各種デザイン・印刷物を制作します。</p>
-            </div>
-          </div>
+           style="height: 400px;">
+          <!-- 画像エリアの高さを300pxに変更 -->
+         <div class="relative overflow-hidden shrink-0" style="height: 300px;">
+  <!-- クラスから w-full h-full object-cover を削除し、styleで確実に130%拡大させて左上に固定しました -->
+  <img src="/images/services_3_01.jpg" alt="デザイン・印刷"
+       class="transition-transform duration-500 group-hover:scale-110"
+       style="width: 130%; height: 130%; object-fit: cover; object-position: 0% 0%;" />
+  <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-transparent to-transparent p-5">
+    <p class="font-noto font-medium text-white leading-relaxed" style="font-size: var(--fs-small);">招待状、パンフレット、看板など、イベントに必要な各種デザイン・印刷物を制作します。</p>
+  </div>
+</div>
+
+
           <div class="bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300 flex items-center justify-between px-5 flex-1">
             <div>
               <p class="font-noto font-medium text-[#4982C2] mb-1" style="font-size: var(--fs-small);">提案で伝えるデザイン</p>
@@ -314,10 +337,13 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
         </a>
+        
+        <!-- カード全体の高さを400pxに変更 -->
         <a href="/service#novelty"
            class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px]"
-           style="height: 515px;">
-          <div class="relative overflow-hidden shrink-0" style="height: 400px;">
+           style="height: 400px;">
+          <!-- 画像エリアの高さを300pxに変更 -->
+          <div class="relative overflow-hidden shrink-0" style="height: 300px;">
             <img src="/images/services_3_02.png" alt="ノベルティ・商品"
                  class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-transparent to-transparent p-5">
@@ -334,10 +360,13 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
         </a>
+        
+        <!-- カード全体の高さを400pxに変更 -->
         <a href="/service#video"
            class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px]"
-           style="height: 515px;">
-          <div class="relative overflow-hidden shrink-0" style="height: 400px;">
+           style="height: 400px;">
+          <!-- 画像エリアの高さを300pxに変更 -->
+          <div class="relative overflow-hidden shrink-0" style="height: 300px;">
             <img src="/images/services_3_03.jpg" alt="映像制作"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                  style="object-position: 50% 30%;" />
@@ -356,6 +385,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </a>
       </div>
+
 
     </div>
 
@@ -392,9 +422,9 @@ import Layout from '../layouts/Layout.astro';
                    -webkit-text-stroke: 2px #99abca; letter-spacing: 0.08em;">Our Strengths</span>
     </div>
 
-    <div class="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 section-lg">
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-8 section-lg">
 
-      <div class="mb-20 lg:mb-28">
+      <div class="mb-10 lg:mb-28">
         <p class="font-inter font-bold text-[#4982C2] mb-4 tracking-widest"
            style="font-size: var(--fs-small);">
           Our Strengths
@@ -529,7 +559,7 @@ import Layout from '../layouts/Layout.astro';
       <img src="/images/works_bg.jpg" alt="" class="w-full h-full object-cover object-center" />
     </div>
 
-    <div class="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8"
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-8"
          style="padding-top: var(--sp-section-lg); padding-bottom: var(--sp-section-md);">
 
       <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-6">
@@ -621,13 +651,14 @@ import Layout from '../layouts/Layout.astro';
        NEWS SECTION
   ============================================== -->
   <section id="news" class="w-full bg-white">
-    <div class="max-w-[1440px] mx-auto px-4 md:px-8 section-lg">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-8 section-lg">
       <div class="flex flex-col lg:flex-row lg:gap-20 xl:gap-28">
 
-        <div class="flex-shrink-0 lg:w-[260px] xl:w-[300px] mb-10 lg:mb-0 lg:pt-2">
+<div class="flex-shrink-0 lg:w-[260px] xl:w-[300px] mb-6 lg:mb-0 lg:pt-2">
           <p class="font-inter font-bold text-[#004896] mb-4 tracking-wider"
              style="font-size: var(--fs-body);">News</p>
-          <h2 class="font-noto font-bold text-[#333333] leading-tight mb-10"
+          
+          <h2 class="font-noto font-bold text-[#333333] leading-tight mb-6 lg:mb-10"
               style="font-size: var(--fs-h2);">お知らせ</h2>
           <a href="/news"
              class="group font-noto font-medium text-white inline-flex items-center justify-between
@@ -640,45 +671,31 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="flex-1 min-w-0">
-          <article class="news-item">
-            <a href="/news/001"
-               class="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5
-                      py-9 border-b border-[#E0E6EF] hover:opacity-70 transition-opacity duration-200">
-              <time class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap"
-                    datetime="2026-04-22" style="font-size: var(--fs-small);">2026.04.22</time>
-              <span class="flex-shrink-0 font-noto font-medium text-[#004896] border border-[#004896]
-                           px-3 py-0.5 text-center" style="font-size: var(--fs-caption); min-width: 72px;">お知らせ</span>
-              <p class="font-noto font-medium text-[#333333] leading-relaxed" style="font-size: var(--fs-body);">
-                ゴールデンウィーク期間中の営業についてのお知らせ。
-              </p>
-            </a>
-          </article>
-          <article class="news-item">
-            <a href="/news/002"
-               class="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5
-                      py-9 border-b border-[#E0E6EF] hover:opacity-70 transition-opacity duration-200">
-              <time class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap"
-                    datetime="2026-03-02" style="font-size: var(--fs-small);">2026.03.02</time>
-              <span class="flex-shrink-0 font-noto font-medium text-[#004896] border border-[#004896]
-                           px-3 py-0.5 text-center" style="font-size: var(--fs-caption); min-width: 72px;">実績</span>
-              <p class="font-noto font-medium text-[#333333] leading-relaxed" style="font-size: var(--fs-body);">
-                茨城県○○市「市制施行50周年記念式典」を開催いたしました。
-              </p>
-            </a>
-          </article>
-          <article class="news-item">
-            <a href="/news/003"
-               class="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5
-                      py-9 border-[#E0E6EF] hover:opacity-70 transition-opacity duration-200">
-              <time class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap"
-                    datetime="2026-02-21" style="font-size: var(--fs-small);">2026.02.21</time>
-              <span class="flex-shrink-0 font-noto font-medium text-[#004896] border border-[#004896]
-                           px-3 py-0.5 text-center" style="font-size: var(--fs-caption); min-width: 72px;">お知らせ</span>
-              <p class="font-noto font-medium text-[#333333] leading-relaxed" style="font-size: var(--fs-body);">
-                新サービス「オンラインイベント支援プラン」の提供を開始しました。
-              </p>
-            </a>
-          </article>
+          {latestNews.map((item, i) => (
+            <article class="news-item">
+              <a href={`/news/${item.id}`}
+                 class={`group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5
+                         py-9 border-b border-[#E0E6EF] hover:opacity-70 transition-opacity duration-200`}>
+                <time
+                  class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap"
+                  datetime={formatDatetime(item.publishedAt)}
+                  style="font-size: var(--fs-small);"
+                >
+                  {formatDate(item.publishedAt)}
+                </time>
+                <span
+                  class="flex-shrink-0 font-noto font-medium text-[#004896] border border-[#004896]
+                         px-3 py-0.5 text-center"
+                  style="font-size: var(--fs-caption); min-width: 72px;"
+                >
+                  {item.category}
+                </span>
+                <p class="font-noto font-medium text-[#333333] leading-relaxed" style="font-size: var(--fs-body);">
+                  {item.title}
+                </p>
+              </a>
+            </article>
+          ))}
           <div class="border-b border-[#E0E6EF]"></div>
         </div>
 
@@ -741,13 +758,13 @@ import Layout from '../layouts/Layout.astro';
       <div class="absolute inset-0" style="background: rgba(20, 28, 50, 0.8);"></div>
     </div>
 
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-8 section-md">
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 section-md">
 
       <p class="font-inter font-bold text-white text-center tracking-widest mb-5 opacity-90"
          style="font-size: var(--fs-small); letter-spacing: 4px;">Contact</p>
       <h2 class="font-noto font-bold text-white text-center leading-tight mb-8"
           style="font-size: var(--fs-h1);">お問い合わせ</h2>
-      <p class="font-noto font-medium text-white text-center opacity-90 mb-16 leading-relaxed"
+      <p class="font-noto font-medium text-white text-center opacity-90 mb-16 leading-loose md:leading-relaxed"
          style="font-size: var(--fs-body);">
         お客様のご要望に応じ様々なご提案が可能です。<br class="block md:hidden" />お気軽にご相談ください。
       </p>

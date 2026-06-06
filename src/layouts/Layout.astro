@@ -24,5 +24,184 @@ const { title, bodyClass = 'font-noto text-[#333333] bg-white' } = Astro.props;
   <Header />
   <slot />
   <Footer />
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ================================================================
+    // 共通フェード / スタガー (一度だけ登録すれば十分)
+    // ================================================================
+    function initFadeAnimations() {
+      gsap.utils.toArray<HTMLElement>('[data-a="fade"]').forEach(function(el) {
+        gsap.fromTo(el,
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+          }
+        );
+      });
+
+      gsap.utils.toArray<HTMLElement>('[data-a="stagger"]').forEach(function(container) {
+        const children = Array.from(container.querySelectorAll<HTMLElement>(':scope > *'));
+        if (!children.length) return;
+        gsap.fromTo(children,
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1, y: 0, duration: 0.75, ease: 'power2.out', stagger: 0.12,
+            scrollTrigger: { trigger: container, start: 'top 82%', once: true },
+          }
+        );
+      });
+    }
+
+    // ================================================================
+    // メインビジュアル パララックス
+    // ================================================================
+    function setupMvParallax() {
+      // 既存のMV ScrollTrigger を一掃してから再構築（ページ遷移対応）
+      ScrollTrigger.getAll().forEach(function(st) {
+        const t = st.trigger as Element | null;
+        if (t && t.hasAttribute('data-mv-parallax')) st.kill();
+      });
+
+      // スマホ (< 768px) は負荷を避けてスキップ
+      if (window.innerWidth < 768) return;
+
+      gsap.utils.toArray<HTMLElement>('[data-mv-parallax]').forEach(function(wrap) {
+        const img = wrap.querySelector<HTMLElement>('img');
+        if (!img) return;
+
+        // position:absolute の img を scale で「のびしろ」確保
+        // scale:1.4 → コンテナ高さ比 ±20% 動かしても隙間ゼロ
+        gsap.set(img, { scale: 1.4, transformOrigin: 'center center' });
+
+        gsap.fromTo(img,
+          { yPercent: 20 },   // 下にずらした状態からスタート
+          {
+            yPercent: -20,    // スクロールに従い上へ移動 → 手前テキストとのズレ感
+            ease: 'none',
+            scrollTrigger: {
+              trigger: wrap,
+              start: 'top bottom',        // MVが画面下端に入った瞬間に開始
+              end: 'bottom top',          // MVが画面上端を抜けたら終了
+              scrub: true,                // スクロールに完全同期
+              invalidateOnRefresh: true,  // リサイズ時の再計算
+            },
+          }
+        );
+      });
+
+      ScrollTrigger.refresh();
+    }
+
+    // ================================================================
+    // #contact グリッドリビール（背景・コンテンツの露出演出）
+    // ================================================================
+    function setupContactGridReveal() {
+      // 既存の #contact 用 ScrollTrigger を一掃（ページ遷移対応）
+      ScrollTrigger.getAll().forEach(function(st) {
+        const t = st.trigger as HTMLElement | null;
+        if (t && t.id === 'contact') st.kill();
+      });
+
+      document.querySelectorAll<HTMLElement>('#contact').forEach(function(section) {
+        section.querySelector('.contact-grid-overlay')?.remove();
+        delete section.dataset.gridAnim;
+
+        const cols = window.innerWidth < 768 ? 10 : 15;
+        const rows = window.innerWidth < 768 ? 8 : 10;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'contact-grid-overlay';
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.style.setProperty('--contact-grid-cols', String(cols));
+        overlay.style.setProperty('--contact-grid-rows', String(rows));
+
+        const blocks: HTMLDivElement[] = [];
+        for (let i = 0; i < cols * rows; i++) {
+          const block = document.createElement('div');
+          block.className = 'contact-grid-block';
+          overlay.appendChild(block);
+          blocks.push(block);
+        }
+
+        section.appendChild(overlay);
+        gsap.set(blocks, { scale: 1, opacity: 1 });
+
+        gsap.to(blocks, {
+          scale: 0,
+          opacity: 0,
+          duration: 0.45,
+          ease: 'power2.in',
+          stagger: {
+            amount: 1.0,
+            grid: [rows, cols],
+            from: 'end',   // 右下から左上へ → 下から上に消えていく印象
+          },
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            once: true,
+          },
+          onComplete: function() {
+            overlay.remove();
+          },
+        });
+
+        section.dataset.gridAnim = 'initialized';
+      });
+    }
+
+    // ================================================================
+    // 初期化エントリーポイント
+    // ================================================================
+    function initAll() {
+      initFadeAnimations();
+      setupMvParallax();
+      setupContactGridReveal();
+    }
+
+    // Astro ViewTransitions 対応 (ページ遷移のたびに再実行)
+    document.addEventListener('astro:page-load', initAll);
+
+    // ViewTransitions 未使用時 / 初回ロード (全リソース読み込み後に実行)
+    if (document.readyState === 'complete') {
+      initAll();
+    } else {
+      window.addEventListener('load', initAll, { once: true });
+    }
+  </script>
+
+  <script>
+    // ── 下層ページ h1 一文字ずつフェードイン（Vanilla JS） ──
+    function initPageTitleAnim() {
+      document.querySelectorAll<HTMLElement>('[data-title-anim]').forEach(function (h1) {
+        if (h1.dataset.anim === 'done') return;
+
+        const text = h1.textContent?.trim() ?? '';
+        h1.textContent = '';
+
+        [...text].forEach(function (char, i) {
+          const span = document.createElement('span');
+          span.className = 'page-title-char';
+          span.textContent = char;
+          span.style.animationDelay = (i * 0.12) + 's';
+          h1.appendChild(span);
+        });
+
+        h1.dataset.anim = 'done';
+      });
+    }
+
+    document.addEventListener('astro:page-load', initPageTitleAnim);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPageTitleAnim);
+    } else {
+      initPageTitleAnim();
+    }
+  </script>
 </body>
 </html>
