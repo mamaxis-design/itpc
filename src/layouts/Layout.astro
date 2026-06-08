@@ -276,6 +276,8 @@ const ogImageUrl = ogImage.startsWith('http')
     // 初回はスプラッシュ完了（loader:complete）後に初期化
     let isFirstPageLoad = true;
     document.addEventListener('astro:page-load', function () {
+      document.body.classList.remove('is-loading');
+
       if (!isFirstPageLoad) {
         initAll();
         return;

@@ -62,6 +62,16 @@
 
   const STORAGE_KEY = 'itpc-loader-seen';
 
+  function shouldSkipLoader() {
+    if (document.documentElement.classList.contains('loader-skip')) return true;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
+    try {
+      return !!sessionStorage.getItem(STORAGE_KEY);
+    } catch {
+      return true;
+    }
+  }
+
   function getLogoParts(loader: HTMLElement) {
     return Array.from(
       loader.querySelectorAll<SVGPathElement>('[data-logo-part]')
@@ -70,12 +80,26 @@
     });
   }
 
-  function finishLoader(loader: HTMLElement) {
+  function removeLoader(loader: HTMLElement) {
     document.body.classList.remove('is-loading');
     document.documentElement.classList.add('loader-skip');
     loader.remove();
+  }
+
+  function finishLoader(loader: HTMLElement) {
+    removeLoader(loader);
     document.dispatchEvent(new CustomEvent('loader:complete'));
   }
+
+  function dismissLoaderIfNeeded() {
+    const loader = document.getElementById('site-loader');
+    if (!loader) return false;
+    if (!shouldSkipLoader()) return false;
+    removeLoader(loader);
+    return true;
+  }
+
+  let animationStarted = false;
 
   function runSiteLoader() {
     const loader = document.getElementById('site-loader');
@@ -84,10 +108,12 @@
       return;
     }
 
-    if (document.documentElement.classList.contains('loader-skip')) {
+    if (shouldSkipLoader()) {
       finishLoader(loader);
       return;
     }
+
+    animationStarted = true;
 
     try {
       sessionStorage.setItem(STORAGE_KEY, '1');
@@ -132,10 +158,17 @@
       .to({}, { duration: 0.7 });
   }
 
-  let started = false;
   function initSiteLoader() {
-    if (started) return;
-    started = true;
+    // View Transitions で毎回 #site-loader が差し込まれるため、
+    // 2回目以降は即座に除去する（head の inline script は再実行されない）
+    if (dismissLoaderIfNeeded()) return;
+
+    if (animationStarted) {
+      const loader = document.getElementById('site-loader');
+      if (loader) removeLoader(loader);
+      return;
+    }
+
     runSiteLoader();
   }
 
