@@ -47,8 +47,25 @@
   /* 関連ページ・横並びカード列間 375px→12px, 1440px→40px */
   --sp-gap-related: clamp(12px, calc(2.35vw + 3.2px), 40px);
 
-  /* 2カラム：メディア列の幅（画像・図版） */
+  /* 2カラム：メディア列の幅（画像・図版）— lg以上で適用 */
   --col-media-width: clamp(280px, 38vw, 560px);
+}
+
+/* iPad（768〜1023px）：タイポ・余白をタブレット向けに抑制 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --fs-display: clamp(26px, 3.8vw, 36px);
+    --fs-h1:      clamp(22px, 3.2vw, 32px);
+    --fs-h2:      clamp(20px, 2.8vw, 28px);
+    --fs-h3:      clamp(18px, 2.4vw, 24px);
+    --fs-stat:    clamp(40px, 5vw, 56px);
+    --sp-section-sm: clamp(40px, 5vw, 56px);
+    --sp-section-md: clamp(48px, 5.5vw, 72px);
+    --sp-section-lg: clamp(48px, 6vw, 80px);
+    --sp-section-xl: clamp(56px, 7vw, 96px);
+    --sp-gap-strength: clamp(24px, 4vw, 40px);
+    --sp-gap-2col:     clamp(20px, 3.5vw, 40px);
+  }
 }
 
 /* ─── Font utility classes ──────────────────── */
@@ -201,15 +218,18 @@ select.form-input {
   .gap-fluid-strength { gap: var(--sp-gap-strength); }
   .gap-fluid-related  { gap: var(--sp-gap-related); }
 
-  /* 2カラム右（画像）列：幅をビューポートに追従、はみ出し防止 */
+  /* 2カラム右（画像）列：lg以上でのみ固定比率、タブレットは全幅 */
   .col-media {
     width: 100%;
     min-width: 0;
-    flex: 0 1 var(--col-media-width);
-    max-width: 48%;
+    flex: 1 1 auto;
+    max-width: 100%;
   }
-  @media (max-width: 767px) {
-    .col-media { max-width: 100%; flex: 1 1 auto; }
+  @media (min-width: 1024px) {
+    .col-media {
+      flex: 0 1 var(--col-media-width);
+      max-width: 48%;
+    }
   }
 }
 

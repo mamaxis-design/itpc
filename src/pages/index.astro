@@ -67,11 +67,11 @@ const jsonLd = {
     <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(8,20,55,0.92)_0%,rgba(8,20,55,0.82)_35%,rgba(8,20,55,0.55)_58%,rgba(8,20,55,0.10)_100%)]" aria-hidden="true"></div>
 
     <div
-      class="relative z-10 w-full flex flex-col md:flex-row items-start md:items-stretch px-6 md:px-8 lg:pl-[60px] lg:pr-0 min-h-[600px] max-h-[1200px] gap-0"
+      class="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-stretch px-6 md:px-8 lg:pl-[60px] lg:pr-0 min-h-[600px] max-h-[1200px] gap-0"
     >
       <!-- LEFT -->
       <div
-        class="w-full flex flex-col justify-center py-16 md:py-20 xl:py-28 flex-[0_0_55%] min-w-0"
+        class="w-full flex flex-col justify-center py-12 md:py-16 lg:py-20 xl:py-28 lg:flex-[0_0_55%] min-w-0"
       >
         <p
           class="font-inter font-bold text-[#4982C2] mb-6 md:mb-8 tracking-[3px]" 
@@ -81,7 +81,7 @@ const jsonLd = {
         <h1
           class="font-noto font-bold text-white leading-tight mb-8 md:mb-10 w-full leading-normal tracking-[2.05px]" 
          style="font-size: var(--fs-display);">
-          <span class="text-[#4982C2]">35年超</span>の実績と創造力で、<br class="hidden md:block" />茨城の魅力を次世代へ。
+          <span class="text-[#4982C2]">35年超</span>の実績と創造力で、<br class="hidden lg:block" />茨城の魅力を次世代へ。
         </h1>
         <div
           class="font-noto font-medium text-white mb-10 md:mb-14 space-y-1 leading-[2.0] tracking-[1.15px]" 
@@ -94,7 +94,7 @@ const jsonLd = {
         <div>
           <a
             href="/contact"
-            class="font-noto font-bold text-white bg-[#4982C2] hover:bg-[#3a6eaa] transition-colors duration-300 inline-flex items-center justify-center gap-3 w-[70%] md:w-full md:max-w-[438px] rounded-[32px] py-4 px-8" 
+            class="font-noto font-bold text-white bg-[#4982C2] hover:bg-[#3a6eaa] transition-colors duration-300 inline-flex items-center justify-center gap-3 w-[70%] max-w-full lg:max-w-[438px] rounded-[32px] py-4 px-8" 
            style="font-size: var(--fs-body-lg);">
             ご相談窓口はこちら
             <span class="font-inter font-bold text-xl">→</span>
@@ -104,7 +104,7 @@ const jsonLd = {
 
       <!-- RIGHT: 縦スクロール画像 (PC) -->
       <div
-        class="hidden md:flex items-start self-stretch overflow-hidden pr-[80px] flex-[1_1_0%] min-w-0 pl-0"
+        class="hidden lg:flex items-start self-stretch overflow-hidden pr-[80px] flex-[1_1_0%] min-w-0 pl-0"
         aria-hidden="true"
       >
         <div
@@ -132,7 +132,7 @@ const jsonLd = {
       </div>
 
       <!-- SP: 自動横マーキー（右→左 無限スクロール） -->
-      <div class="md:hidden w-full overflow-hidden pb-8 pt-4" aria-hidden="true">
+      <div class="lg:hidden w-full overflow-hidden pb-8 pt-4" aria-hidden="true">
         <div class="flex gap-4 w-max animate-[marquee-horizontal_14s_linear_infinite]">
           <!-- オリジナル3枚 -->
           <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
@@ -169,7 +169,7 @@ const jsonLd = {
 
     <div class="relative max-w-[1440px] mx-auto px-6 md:px-8 lg:pl-0 lg:pr-[120px] pt-[var(--sp-section-lg)] pb-[var(--sp-section-sm)]">
 
-      <div class="hidden md:block absolute top-20 right-0 pointer-events-none w-[528px] h-[552px] z-0">
+      <div class="hidden lg:block absolute top-20 right-0 pointer-events-none w-[min(528px,36vw)] h-[min(552px,38vw)] z-0">
         <Image src={ibarakiMap} alt="" class="w-full h-full object-contain" aria-hidden="true" />
         <div class="absolute top-[53%] left-[65%]" >
           <span class="absolute rounded-full border border-[#4982C2] w-[100px] h-[100px] -top-[45px] -left-[45px] ripple-1"></span>
@@ -182,7 +182,7 @@ const jsonLd = {
         </div>
       </div>
 
-      <div class="relative z-10 max-w-[1030px]">
+      <div class="relative z-10 w-full max-w-full lg:max-w-[1030px]">
         <p class="font-inter font-bold text-[#4982C2] mb-5 tracking-widest"  style="font-size: var(--fs-small);">
           Our Services
         </p>
@@ -204,16 +204,16 @@ const jsonLd = {
     <div class="w-full relative overflow-visible mb-[var(--sp-section-md)]"
          data-service-hero
          >
-      <div class="flex flex-col md:grid md:items-center overflow-visible md:grid-cols-[7fr_5fr]">
+      <div class="flex flex-col lg:grid lg:items-center overflow-visible lg:grid-cols-[7fr_5fr]">
         <div class="w-full overflow-hidden h-[clamp(300px,42vw,756px)]" >
           <Image src={servicesMain} alt="式典・イベントの企画運営" class="w-full h-full object-cover object-center" data-service-hero-img />
         </div>
         <div class="w-full bg-[#004896] flex flex-col justify-center
-                    px-10 py-14 md:pl-14 md:pr-[8vw] md:py-16 md:-ml-[6%] relative z-10
-                    rounded-none md:rounded-l-[18px] min-h-[clamp(280px,32vw,560px)]"
+                    px-6 py-12 md:px-10 md:py-14 lg:pl-14 lg:pr-[8vw] lg:py-16 lg:-ml-[6%] relative z-10
+                    rounded-none lg:rounded-l-[18px] min-h-[clamp(240px,32vw,560px)]"
              data-service-hero-box
              id="services-blue-box">
-          <div class="hidden md:block absolute inset-y-0 bg-[#004896] -z-10 pointer-events-none left-[18px] right-[calc(-1*(100vw-100%)/2-2px)]"></div>
+          <div class="hidden lg:block absolute inset-y-0 bg-[#004896] -z-10 pointer-events-none left-[18px] right-[calc(-1*(100vw-100%)/2-2px)]"></div>
           <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 tracking-[3px]"  style="font-size: var(--fs-caption);">
             Main Service
           </p>
@@ -231,12 +231,12 @@ const jsonLd = {
     <!-- 下部：3カラム・サービスカード -->
     <div class="max-w-[1440px] mx-auto px-6 md:px-8 pb-0 mt-[var(--sp-section-lg)]">
       <h3 class="font-noto font-bold text-[#004896] text-center mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h3);">
-  イベント・式典に合わせて<br class="md:hidden" />ご提供するサービス。
+  イベント・式典に合わせて<br class="lg:hidden" />ご提供するサービス。
 </h3>
 
 
       <!-- PC cards -->
-      <div class="hidden md:grid md:grid-cols-3 gap-fluid-related" data-card-row>
+      <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-fluid-related max-w-full" data-card-row>
         <a href="/service#design"
            data-fade
            class="group rounded-[15px] overflow-hidden flex flex-col min-w-0 w-full bg-[#004896] h-[clamp(400px,38vw,515px)]">
@@ -305,7 +305,7 @@ const jsonLd = {
       </div>
 
       <!-- SP/MD cards -->
-      <div class="md:hidden grid grid-cols-1 gap-8 justify-items-center">
+      <div class="md:hidden grid grid-cols-1 gap-8 justify-items-center w-full">
         <!-- カード全体の高さを400pxに変更 -->
         <a href="/service#design"
            class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px] h-[400px]">
@@ -419,17 +419,17 @@ const jsonLd = {
       </div>
 
       <!-- 01: 対応力 -->
-      <div class="flex flex-col md:flex-row md:items-center gap-[var(--sp-gap-md)] md:gap-[var(--sp-gap-strength)] mb-[var(--sp-section-md)] md:mb-[var(--sp-section-xl)]" data-strength="ltr">
-        <div class="flex-shrink-0 w-full md:w-[48%]" data-strength-img>
+      <div class="flex flex-col lg:flex-row lg:items-center gap-[var(--sp-gap-md)] lg:gap-[var(--sp-gap-strength)] mb-[var(--sp-section-md)] lg:mb-[var(--sp-section-xl)]" data-strength="ltr">
+        <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
           <div class="relative w-full pb-[75%]" >
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden translate-x-4 translate-y-4"></div>
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block translate-x-10 translate-y-10"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] lg:hidden translate-x-4 translate-y-4"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden lg:block translate-x-10 translate-y-10"></div>
             <div class="absolute inset-0 overflow-hidden rounded-[6px] z-10">
               <Image src={mbBg} alt="1988年創業の信頼・対応力" class="w-full h-full object-cover object-center" />
             </div>
           </div>
         </div>
-        <div class="flex-1 min-w-0 md:pl-6" data-strength-text>
+        <div class="flex-1 min-w-0 lg:pl-6" data-strength-text>
           <div class="flex items-baseline gap-4 mb-8">
             <span class="font-inter font-bold text-[#004896] leading-none"  style="font-size: var(--fs-display);">01</span>
             <span class="font-inter font-bold text-[#4982C2] tracking-widest"  style="font-size: var(--fs-caption);">Reliability</span>
@@ -445,17 +445,17 @@ const jsonLd = {
       </div>
 
       <!-- 02: 地域密着 -->
-      <div class="flex flex-col md:flex-row-reverse md:items-center gap-[var(--sp-gap-md)] md:gap-[var(--sp-gap-strength)] mb-[var(--sp-section-md)] md:mb-[var(--sp-section-xl)]" data-strength="rtl">
-        <div class="flex-shrink-0 w-full md:w-[48%]" data-strength-img>
+      <div class="flex flex-col lg:flex-row-reverse lg:items-center gap-[var(--sp-gap-md)] lg:gap-[var(--sp-gap-strength)] mb-[var(--sp-section-md)] lg:mb-[var(--sp-section-xl)]" data-strength="rtl">
+        <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
           <div class="relative w-full pb-[75%]" >
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden -translate-x-4 translate-y-4"></div>
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block -translate-x-10 translate-y-10"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] lg:hidden -translate-x-4 translate-y-4"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden lg:block -translate-x-10 translate-y-10"></div>
             <div class="absolute inset-0 overflow-hidden rounded-[6px] z-10">
               <Image src={koumon} alt="茨城県に根ざした地域密着" class="w-full h-full object-cover object-center" />
             </div>
           </div>
         </div>
-        <div class="flex-1 min-w-0 md:pr-6" data-strength-text>
+        <div class="flex-1 min-w-0 lg:pr-6" data-strength-text>
           <div class="flex items-baseline gap-4 mb-8">
             <span class="font-inter font-bold text-[#004896] leading-none"  style="font-size: var(--fs-display);">02</span>
             <span class="font-inter font-bold text-[#4982C2] tracking-widest"  style="font-size: var(--fs-caption);">Regional Roots</span>
@@ -471,17 +471,17 @@ const jsonLd = {
       </div>
 
       <!-- 03: ワンストップ -->
-      <div class="flex flex-col md:flex-row md:items-center gap-[var(--sp-gap-md)] md:gap-[var(--sp-gap-strength)]" data-strength="ltr">
-        <div class="flex-shrink-0 w-full md:w-[48%]" data-strength-img>
+      <div class="flex flex-col lg:flex-row lg:items-center gap-[var(--sp-gap-md)] lg:gap-[var(--sp-gap-strength)]" data-strength="ltr">
+        <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
           <div class="relative w-full pb-[75%]" >
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden translate-x-4 translate-y-4"></div>
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block translate-x-10 translate-y-10"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] lg:hidden translate-x-4 translate-y-4"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden lg:block translate-x-10 translate-y-10"></div>
             <div class="absolute inset-0 overflow-hidden rounded-[6px] z-10">
               <Image src={oneStop} alt="企画から納品までワンストップ" class="w-full h-full object-cover object-center" />
             </div>
           </div>
         </div>
-        <div class="flex-1 min-w-0 md:pl-6" data-strength-text>
+        <div class="flex-1 min-w-0 lg:pl-6" data-strength-text>
           <div class="flex items-baseline gap-4 mb-8">
             <span class="font-inter font-bold text-[#004896] leading-none"  style="font-size: var(--fs-display);">03</span>
             <span class="font-inter font-bold text-[#4982C2] tracking-widest"  style="font-size: var(--fs-caption);">One-Stop Service</span>
@@ -512,12 +512,12 @@ const jsonLd = {
 
     <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-8 pt-[var(--sp-section-lg)] pb-[var(--sp-section-md)]">
 
-      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
         <div>
           <p class="font-inter font-bold text-white tracking-widest mb-3 opacity-80"  style="font-size: var(--fs-small);">Our Works</p>
           <h2 class="font-noto font-bold text-white leading-tight"  style="font-size: var(--fs-h1);">確かな信頼と実績</h2>
         </div>
-        <div class="flex-shrink-0 md:pt-10">
+        <div class="flex-shrink-0 lg:pt-10">
           <a href="/works"
              class="group font-noto font-medium text-white border border-white rounded-full inline-flex items-center gap-3 px-7 py-3 hover:bg-white hover:text-[#004896] transition-colors duration-300"  style="font-size: var(--fs-small);">
             取引実績はこちら
@@ -533,20 +533,20 @@ const jsonLd = {
 
       <div class="border-t border-white opacity-30 mb-8"></div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0 mb-10 text-center md:text-left">
-        <div class="md:border-r md:border-white md:border-opacity-30 md:pr-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-0 mb-10 text-center lg:text-left">
+        <div class="lg:border-r lg:border-white lg:border-opacity-30 lg:pr-12">
           <p class="font-noto font-medium text-white opacity-80 mb-2"   style="font-size: var(--fs-body);">創業からの年数</p>
           <p class="font-noto font-medium text-white opacity-60 mb-4"   style="font-size: var(--fs-caption);">1988年 創業</p>
-          <div class="flex items-baseline gap-2 justify-center md:justify-start">
+          <div class="flex items-baseline gap-2 justify-center lg:justify-start">
             <span class="font-inter font-bold text-white js-counter leading-none"  data-target="38"
                    style="font-size: var(--fs-stat);">38</span>
             <span class="font-noto font-bold text-white"   style="font-size: var(--fs-h2);">年</span>
           </div>
         </div>
-        <div class="md:pl-12">
+        <div class="lg:pl-12">
           <p class="font-noto font-medium text-white opacity-80 mb-2"   style="font-size: var(--fs-body);">累計取引件数</p>
           <p class="font-noto font-medium text-white opacity-60 mb-4"   style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
-          <div class="flex items-baseline gap-1 justify-center md:justify-start">
+          <div class="flex items-baseline gap-1 justify-center lg:justify-start">
             <span class="font-inter font-bold text-white"   style="font-size: var(--fs-h2);">約</span>
             <span class="font-inter font-bold text-white js-counter leading-none mx-1"  data-target="3500" data-format="comma"
                    style="font-size: var(--fs-stat);">3,500</span>
@@ -559,26 +559,26 @@ const jsonLd = {
 
       <p class="font-noto font-medium text-white opacity-80 mb-8"   style="font-size: var(--fs-body);">取引先の構成比率</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 text-center md:text-left">
-        <div class="md:border-r md:border-white md:border-opacity-30 md:pr-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-0 text-center lg:text-left">
+        <div class="lg:border-r lg:border-white lg:border-opacity-30 lg:pr-10">
           <p class="font-noto font-medium text-white opacity-70 mb-4"   style="font-size: var(--fs-small);">行政機関・県関連</p>
-          <div class="flex items-baseline gap-1 justify-center md:justify-start">
+          <div class="flex items-baseline gap-1 justify-center lg:justify-start">
             <span class="font-inter font-bold text-white js-counter leading-none"  data-target="70"
                    style="font-size: var(--fs-stat);">70</span>
             <span class="font-inter font-bold text-white"   style="font-size: var(--fs-h3);">%</span>
           </div>
         </div>
-        <div class="md:border-r md:border-white md:border-opacity-30 md:px-10">
+        <div class="lg:border-r lg:border-white lg:border-opacity-30 lg:px-10">
           <p class="font-noto font-medium text-white opacity-70 mb-4"   style="font-size: var(--fs-small);">市町村・自治体</p>
-          <div class="flex items-baseline gap-1 justify-center md:justify-start">
+          <div class="flex items-baseline gap-1 justify-center lg:justify-start">
             <span class="font-inter font-bold text-white js-counter leading-none"  data-target="20"
                    style="font-size: var(--fs-stat);">20</span>
             <span class="font-inter font-bold text-white"   style="font-size: var(--fs-h3);">%</span>
           </div>
         </div>
-        <div class="md:pl-10">
+        <div class="lg:pl-10">
           <p class="font-noto font-medium text-white opacity-70 mb-4"   style="font-size: var(--fs-small);">一般企業・団体</p>
-          <div class="flex items-baseline gap-1 justify-center md:justify-start">
+          <div class="flex items-baseline gap-1 justify-center lg:justify-start">
             <span class="font-inter font-bold text-white js-counter leading-none"  data-target="10"
                    style="font-size: var(--fs-stat);">10</span>
             <span class="font-inter font-bold text-white"   style="font-size: var(--fs-h3);">%</span>
@@ -596,9 +596,9 @@ const jsonLd = {
   ============================================== -->
   <section id="news" class="w-full bg-white">
     <div class="max-w-[1440px] mx-auto px-6 md:px-8 section-lg">
-      <div class="flex flex-col md:flex-row gap-fluid-2col">
+      <div class="flex flex-col lg:flex-row gap-fluid-2col">
 
-<div class="flex-shrink-0 min-w-0 md:w-[clamp(220px,22vw,300px)] mb-6 md:mb-0 md:pt-2">
+<div class="flex-shrink-0 min-w-0 w-full lg:w-[clamp(220px,22vw,300px)] mb-6 lg:mb-0 lg:pt-2">
           <p class="font-inter font-bold text-[#004896] mb-4 tracking-wider"  style="font-size: var(--fs-body);">News</p>
           
           <h2 class="font-noto font-bold text-[#333333] leading-tight mb-6 md:mb-10"  style="font-size: var(--fs-h2);">お知らせ</h2>
@@ -646,12 +646,12 @@ const jsonLd = {
        COMPANY SECTION
   ============================================== -->
   <section id="about" class="w-full">
-    <div class="flex flex-col md:flex-row items-stretch">
-      <div class="w-full md:w-1/2 flex-shrink-0 overflow-hidden min-h-[clamp(280px,40vw,680px)]">
+    <div class="flex flex-col lg:flex-row items-stretch">
+      <div class="w-full lg:w-1/2 flex-shrink-0 overflow-hidden min-h-[clamp(280px,40vw,680px)]">
         <Image src={companyMain} alt="株式会社イトピック 本社外観" class="w-full h-full object-cover object-center" data-fade />
       </div>
-      <div class="w-full md:flex-1 bg-[#004896] flex flex-col justify-center
-                  px-8 py-16 md:px-12 md:px-20">
+      <div class="w-full lg:flex-1 bg-[#004896] flex flex-col justify-center
+                  px-6 py-12 md:px-8 md:py-16 lg:px-20">
         <p class="font-inter font-bold text-white tracking-widest mb-6 opacity-80 tracking-[3px]"  style="font-size: var(--fs-small);">Company</p>
         <h2 class="font-noto font-bold text-white leading-normal mb-8"  style="font-size: var(--fs-h2);">
           茨城と共に歩む、<br />制作プロダクション。
@@ -688,12 +688,12 @@ const jsonLd = {
       <p class="font-inter font-bold text-white text-center tracking-widest mb-5 opacity-90 tracking-[4px]"  style="font-size: var(--fs-small);">Contact</p>
       <h2 class="font-noto font-bold text-white text-center leading-tight mb-8"  style="font-size: var(--fs-h1);">お問い合わせ</h2>
       <p class="font-noto font-medium text-white text-center opacity-90 mb-16 leading-loose md:leading-relaxed"  style="font-size: var(--fs-body);">
-        お客様のご要望に応じ様々なご提案が可能です。<br class="block md:hidden" />お気軽にご相談ください。
+        お客様のご要望に応じ様々なご提案が可能です。<br class="block lg:hidden" />お気軽にご相談ください。
       </p>
 
       <div class="w-full bg-white">
-        <div class="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-[#E0E6EF]">
-          <div class="flex-1 flex flex-col items-center justify-center px-8 py-14 md:py-16">
+        <div class="flex flex-col lg:flex-row divide-y lg:divide-y-0 lg:divide-x divide-[#E0E6EF]">
+          <div class="flex-1 flex flex-col items-center justify-center px-6 py-12 md:px-8 md:py-14 lg:py-16">
             <p class="font-noto font-bold text-[#333333] mb-8 text-center"  style="font-size: var(--fs-h4);">フォームでのお問い合わせ</p>
             <a href="/contact"
                class="group font-noto font-medium text-white inline-flex items-center justify-between w-full max-w-[320px] px-7 py-4 rounded-[8px] transition-opacity duration-300 hover:opacity-85 bg-[linear-gradient(to_right,#4982C2,#004896)]"  style="font-size: var(--fs-body);">
@@ -701,7 +701,7 @@ const jsonLd = {
               <span class="font-inter font-bold inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
-          <div class="flex-1 flex flex-col items-center justify-center px-8 py-14 md:py-16">
+          <div class="flex-1 flex flex-col items-center justify-center px-6 py-12 md:px-8 md:py-14 lg:py-16">
             <p class="font-noto font-bold text-[#333333] mb-6 text-center"  style="font-size: var(--fs-h4);">お電話でのお問い合わせ</p>
             <a href="tel:0292534387"
                class="font-inter font-bold text-[#004896] hover:opacity-75 transition-opacity duration-200 mb-3 tracking-[0.02em] leading-none"  style="font-size: var(--fs-h1);">

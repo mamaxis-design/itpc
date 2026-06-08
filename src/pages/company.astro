@@ -49,7 +49,7 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
            class="mv-parallax-img absolute w-full object-cover object-center" />
   </div>
 
-  <section id="company-philosophy" class="w-full bg-[#004896] section-lg md:section-xl">
+  <section id="company-philosophy" class="w-full bg-[#004896] section-lg lg:section-xl">
     <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0 flex flex-col items-center text-center">
       <p class="font-inter font-bold text-white tracking-[0.22em] opacity-70 mb-[clamp(16px,calc(1.5vw+10.38px),32px)]"  style="font-size: var(--fs-small);">Philosophy</p>
       <h2 class="font-noto font-bold text-white leading-tight mb-[clamp(20px,calc(1.88vw+12.96px),40px)]"  style="font-size: var(--fs-h1);">企業理念</h2>
@@ -74,8 +74,8 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
         <h2 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h2);">代表挨拶</h2>
       </div>
 
-      <div data-a="fade" class="flex flex-col md:flex-row md:items-start gap-[clamp(28px,calc(4.88vw+9.69px),80px)]">
-        <div class="flex-shrink-0 min-w-0 md:flex-[0_1_clamp(260px,32vw,460px)] md:max-w-[42%]">
+      <div data-a="fade" class="flex flex-col lg:flex-row lg:items-start gap-[clamp(28px,calc(4.88vw+9.69px),80px)]">
+        <div class="flex-shrink-0 min-w-0 w-full lg:flex-[0_1_clamp(260px,32vw,460px)] lg:max-w-[42%]">
           <div class="flex gap-6 items-start">
             <div class="flex-shrink-0 w-[3px] bg-[#004896] self-stretch"></div>
             <div>
@@ -86,7 +86,7 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
           </div>
         </div>
         <div class="flex-1 min-w-0">
-          <div class="hidden md:block w-[50px] h-[2px] bg-[#4982C2] mb-[clamp(20px,calc(1.88vw+12.96px),40px)]"></div>
+          <div class="hidden lg:block w-[50px] h-[2px] bg-[#4982C2] mb-[clamp(20px,calc(1.88vw+12.96px),40px)]"></div>
           <div class="font-noto font-medium text-[#333333] leading-loose space-y-6"  style="font-size: var(--fs-body-lg);">
             <p>弊社は1988年の創業以来、茨城県内の行政機関・自治体をはじめ、多くのお客様とともにイベント・式典の企画・運営に携わってまいりました。</p>
             <p>地域の節目を彩る記念式典、地域の絆を育むイベント、未来へのメッセージを伝えるプロモーション映像——。どのプロジェクトにも、お客様の想いと地域への誇りが込められています。弊社はその想いを形にするために、本日に至るまで誠実に取り組んでまいりました。</p>
@@ -197,7 +197,7 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
           title="株式会社イトピック 所在地マップ"
         ></iframe>
       </div>
-      <div data-a="stagger" class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#E0E6EF] rounded-[8px] overflow-hidden">
+      <div data-a="stagger" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-[#E0E6EF] rounded-[8px] overflow-hidden">
         <div class="flex flex-col p-8 md:p-10 bg-[#004896] text-white border-b border-[#ffffff20] md:border-b-0 md:border-r md:border-[#ffffff20]">
           <div class="mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -261,7 +261,7 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
 
   <section id="related-pages" class="w-full bg-white section-md px-6 lg:px-0">
     <div class="inner lg:px-0">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-fluid-related">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-fluid-related">
         {[
           { href: '/service', label: 'Our Works', title: '事業内容', desc: '式典・イベントの企画運営を中心としたワンストップ事業をご紹介します。' },
           { href: '/#strengths', label: 'Our Strengths', title: '私たちの強み', desc: '多彩なイベント・式典をサポートしてきた私たちの強みをご紹介します。' },
