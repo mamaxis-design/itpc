@@ -1,9 +1,13 @@
 ---
+import { Image, getImage } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import { getAllNews, formatDate, formatDatetime } from '../../lib/microcms';
+import ibarakiBg from '../../assets/images/ibaraki_bg.png';
+import newsMb from '../../assets/images/news_mb.png';
 
-const { contents: newsItems, totalCount } = await getAllNews();
+const { contents: newsItems } = await getAllNews();
+const ogImageSrc = (await getImage({ src: newsMb, width: 1200 })).src;
 
 const categoryColors: Record<string, string> = {
   'お知らせ': 'border-[#004896] text-[#004896]',
@@ -11,164 +15,105 @@ const categoryColors: Record<string, string> = {
   '新着情報': 'border-[#004896] text-[#004896]',
 };
 ---
-<Layout title="お知らせ | 株式会社 イトピック">
+<Layout
+  title="お知らせ | 株式会社 イトピック"
+  description="株式会社イトピック（茨城県水戸市）からの最新情報・実績・新着情報をカテゴリ別に掲載。式典・イベントや自治体向けクリエイティブに関するニュースや更新情報をご覧いただけます。"
+  ogType="article"
+  ogImage={ogImageSrc}
+>
 <main>
 
-  <!-- =============================================
-       PAGE HERO
-  ============================================== -->
   <section
     id="page-hero-news"
-    class="w-full bg-white relative overflow-hidden"
-    style="max-height: 455px; min-height: clamp(200px, 28vw, 455px);"
+    class="w-full bg-white relative overflow-hidden max-h-[455px] min-h-[clamp(200px,28vw,455px)]"
   >
     <div
-      class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none"
-      style="left: 50%; transform: translateX(-50%); z-index: 0;"
+      class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0"
       aria-hidden="true"
     >
-      <div class="absolute top-0 right-0"
-           style="width: clamp(260px, 28vw, 420px); height: clamp(260px, 28vw, 420px); opacity: 0.55;">
-        <img src="/images/ibaraki_bg.png" alt=""
-             class="w-full h-full object-contain object-right-top" />
+      <div class="absolute top-0 right-0 w-[clamp(260px,28vw,420px)] h-[clamp(260px,28vw,420px)] opacity-[0.55]">
+        <Image src={ibarakiBg} alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div
-      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
-      style="min-height: clamp(200px, 28vw, 455px);"
-    >
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
-         style="font-size: var(--fs-small); letter-spacing: 0.18em;">News</p>
-      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
-          style="font-size: var(--fs-display);">お知らせ</h1>
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0 min-h-[clamp(200px,28vw,455px)]">
+      <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">News</p>
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"  style="font-size: var(--fs-display);">お知らせ</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
           <li>
-            <a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"
-               style="font-size: var(--fs-small);">ホーム</a>
+            <a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"  style="font-size: var(--fs-small);">ホーム</a>
           </li>
-          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-hidden="true">&gt;</li>
-          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-current="page">お知らせ</li>
+          <li class="font-noto font-medium text-[#333333]"  aria-hidden="true" style="font-size: var(--fs-small);">&gt;</li>
+          <li class="font-noto font-medium text-[#333333]"  aria-current="page" style="font-size: var(--fs-small);">お知らせ</li>
         </ol>
       </nav>
     </div>
   </section>
 
-  <!-- =============================================
-       MAIN VISUAL
-  ============================================== -->
-  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
-    <img src="/images/news_mb.png" alt="お知らせメインビジュアル"
-         loading="eager"
-         class="absolute inset-0 w-full h-full object-cover object-center" />
+  <div data-mv-parallax class="relative w-full overflow-hidden h-[clamp(240px,40vw,600px)]">
+    <Image src={newsMb} alt="お知らせメインビジュアル"
+           loading="eager"
+           class="mv-parallax-img absolute w-full object-cover object-center" />
   </div>
 
-  <!-- =============================================
-       NEWS LIST
-  ============================================== -->
   <section id="news-list" class="w-full bg-white section-lg">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
 
-      <!-- セクションヘッダー -->
       <div data-a="fade" class="mb-12 lg:mb-16">
-        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
-           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Latest News</p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight"
-            style="font-size: var(--fs-h2);">お知らせ</h2>
+        <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">Latest News</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h2);">お知らせ</h2>
       </div>
 
-      <!-- カテゴリフィルター -->
-      <div data-a="fade" class="flex flex-wrap items-center gap-3 mb-10 lg:mb-14"
-           role="list" aria-label="カテゴリ絞り込み">
-        <button
-          type="button"
-          data-filter="all"
-          class="filter-btn active font-noto font-medium text-white bg-[#004896]
-                 px-5 py-2 rounded-full border border-[#004896]
-                 transition-colors duration-200"
-          style="font-size: var(--fs-caption);"
-        >
-          すべて
-        </button>
-        <button
-          type="button"
-          data-filter="お知らせ"
-          class="filter-btn font-noto font-medium text-[#004896] bg-white
-                 px-5 py-2 rounded-full border border-[#004896]
-                 hover:bg-[#004896] hover:text-white transition-colors duration-200"
-          style="font-size: var(--fs-caption);"
-        >
-          お知らせ
-        </button>
-        <button
-          type="button"
-          data-filter="実績"
-          class="filter-btn font-noto font-medium text-[#004896] bg-white
-                 px-5 py-2 rounded-full border border-[#004896]
-                 hover:bg-[#004896] hover:text-white transition-colors duration-200"
-          style="font-size: var(--fs-caption);"
-        >
-          実績
-        </button>
-        <button
-          type="button"
-          data-filter="新着情報"
-          class="filter-btn font-noto font-medium text-[#004896] bg-white
-                 px-5 py-2 rounded-full border border-[#004896]
-                 hover:bg-[#004896] hover:text-white transition-colors duration-200"
-          style="font-size: var(--fs-caption);"
-        >
-          新着情報
-        </button>
+      <div data-a="fade" class="flex flex-wrap items-center gap-3 mb-10 lg:mb-14" role="list" aria-label="カテゴリ絞り込み">
+        {[
+          { filter: 'all', label: 'すべて', active: true },
+          { filter: 'お知らせ', label: 'お知らせ', active: false },
+          { filter: '実績', label: '実績', active: false },
+          { filter: '新着情報', label: '新着情報', active: false },
+        ].map((btn) => (
+          <button
+            type="button"
+            data-filter={btn.filter}
+            class:list={[
+              'filter-btn font-noto font-medium px-5 py-2 rounded-full border border-[#004896] transition-colors duration-200' ,
+              btn.active
+                ? 'active text-white bg-[#004896]'
+                : 'text-[#004896] bg-white hover:bg-[#004896] hover:text-white',
+            ]}
+           style="font-size: var(--fs-caption);">
+            {btn.label}
+          </button>
+        ))}
       </div>
 
-      <!-- ニュース一覧 -->
       <div id="news-list-items" class="border-t border-[#E0E6EF]">
         {newsItems.map((item) => (
-          <article
-            data-a="fade"
-            class="news-article"
-            data-category={item.category}
-          >
+          <article data-a="fade" class="news-article" data-category={item.category}>
             <a
               href={`/news/${item.id}`}
-              class="group flex flex-col sm:flex-row sm:items-center
-                     gap-3 sm:gap-6
-                     py-8 md:py-10
-                     border-b border-[#E0E6EF]
-                     hover:opacity-75 transition-opacity duration-200"
+              class="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 py-8 md:py-10 border-b border-[#E0E6EF] hover:opacity-75 transition-opacity duration-200"
             >
-              <!-- 日付 -->
               <time
                 datetime={formatDatetime(item.publishedAt)}
-                class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap"
-                style="font-size: var(--fs-small);"
-              >
+                class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap" 
+               style="font-size: var(--fs-small);">
                 {formatDate(item.publishedAt)}
               </time>
 
-              <!-- カテゴリタグ -->
               <span
-                class={`flex-shrink-0 font-noto font-medium border
-                        px-3 py-0.5 text-center whitespace-nowrap rounded-[2px]
-                        ${categoryColors[item.category] ?? 'border-[#999] text-[#999]'}`}
-                style="font-size: 12px; min-width: 80px;"
-              >
+                class:list={[
+                  'flex-shrink-0 font-noto font-medium border px-3 py-0.5 text-center whitespace-nowrap rounded-[2px] min-w-[80px]' ,
+                  categoryColors[item.category] ?? 'border-[#999] text-[#999]',
+                ]}
+               style="font-size: 12px;">
                 {item.category}
               </span>
 
-              <!-- タイトル -->
-              <p
-                class="font-noto font-medium text-[#333333] leading-relaxed flex-1 min-w-0"
-                style="font-size: var(--fs-body);"
-              >
+              <p class="font-noto font-medium text-[#333333] leading-relaxed flex-1 min-w-0"  style="font-size: var(--fs-body);">
                 {item.title}
               </p>
 
-              <!-- 詳細矢印 -->
-              <span class="hidden sm:flex flex-shrink-0 w-9 h-9 rounded-full border border-[#004896]
-                           items-center justify-center text-[#004896] ml-auto
-                           group-hover:bg-[#004896] group-hover:text-white transition-colors duration-200">
+              <span class="hidden sm:flex flex-shrink-0 w-9 h-9 rounded-full border border-[#004896] items-center justify-center text-[#004896] ml-auto group-hover:bg-[#004896] group-hover:text-white transition-colors duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      class="w-4 h-4">
@@ -180,21 +125,16 @@ const categoryColors: Record<string, string> = {
         ))}
       </div>
 
-      <!-- フィルター結果なし表示 -->
       <p id="news-empty"
-         class="hidden font-noto font-medium text-[#999] text-center py-20"
-         style="font-size: var(--fs-body);">
+         class="hidden font-noto font-medium text-[#999] text-center py-20"  style="font-size: var(--fs-body);">
         該当するお知らせはありません。
       </p>
 
-      <!-- ページネーション -->
-      <nav aria-label="ページナビゲーション"
-           class="flex items-center justify-center gap-2 mt-16">
+      <nav aria-label="ページナビゲーション" class="flex items-center justify-center gap-2 mt-16">
         <button
           type="button"
           disabled
-          class="w-10 h-10 flex items-center justify-center rounded-[4px]
-                 border border-[#E0E6EF] text-[#CCCCCC] cursor-not-allowed"
+          class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#CCCCCC] cursor-not-allowed"
           aria-label="前のページ"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -204,47 +144,11 @@ const categoryColors: Record<string, string> = {
           </svg>
         </button>
 
-        <button
-          type="button"
-          class="w-10 h-10 flex items-center justify-center rounded-[4px]
-                 border border-[#004896] bg-[#004896] text-white
-                 font-inter font-bold"
-          style="font-size: 14px;"
-          aria-current="page"
-          aria-label="1ページ目"
-        >
-          1
-        </button>
-        <button
-          type="button"
-          class="w-10 h-10 flex items-center justify-center rounded-[4px]
-                 border border-[#E0E6EF] text-[#333333]
-                 font-inter font-bold
-                 hover:border-[#004896] hover:text-[#004896] transition-colors duration-200"
-          style="font-size: 14px;"
-          aria-label="2ページ目"
-        >
-          2
-        </button>
-        <button
-          type="button"
-          class="w-10 h-10 flex items-center justify-center rounded-[4px]
-                 border border-[#E0E6EF] text-[#333333]
-                 font-inter font-bold
-                 hover:border-[#004896] hover:text-[#004896] transition-colors duration-200"
-          style="font-size: 14px;"
-          aria-label="3ページ目"
-        >
-          3
-        </button>
+        <button type="button" class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#004896] bg-[#004896] text-white font-inter font-bold"  aria-current="page" aria-label="1ページ目" style="font-size: 14px;">1</button>
+        <button type="button" class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] font-inter font-bold hover:border-[#004896] hover:text-[#004896] transition-colors duration-200"  aria-label="2ページ目" style="font-size: 14px;">2</button>
+        <button type="button" class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] font-inter font-bold hover:border-[#004896] hover:text-[#004896] transition-colors duration-200"  aria-label="3ページ目" style="font-size: 14px;">3</button>
 
-        <button
-          type="button"
-          class="w-10 h-10 flex items-center justify-center rounded-[4px]
-                 border border-[#E0E6EF] text-[#333333]
-                 hover:border-[#004896] hover:text-[#004896] transition-colors duration-200"
-          aria-label="次のページ"
-        >
+        <button type="button" class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] hover:border-[#004896] hover:text-[#004896] transition-colors duration-200" aria-label="次のページ">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                class="w-4 h-4">
@@ -262,16 +166,19 @@ const categoryColors: Record<string, string> = {
 </Layout>
 
 <script>
-  (function () {
+  function initNewsFilter() {
+    if (!document.querySelector('.filter-btn')) return;
+
     const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
     const articles   = document.querySelectorAll<HTMLElement>('.news-article');
     const empty      = document.getElementById('news-empty');
 
     filterBtns.forEach(function (btn) {
+      if (btn.dataset.filterBound === 'true') return;
+      btn.dataset.filterBound = 'true';
       btn.addEventListener('click', function () {
         const filter = btn.getAttribute('data-filter') ?? 'all';
 
-        // アクティブ状態の切り替え（全カテゴリ #004896 統一）
         filterBtns.forEach(function (b) {
           b.classList.remove('active', 'text-white', 'bg-[#004896]');
           b.classList.add('text-[#004896]', 'bg-white');
@@ -279,7 +186,6 @@ const categoryColors: Record<string, string> = {
         btn.classList.remove('text-[#004896]', 'bg-white');
         btn.classList.add('active', 'text-white', 'bg-[#004896]');
 
-        // 表示切り替え
         let visibleCount = 0;
         articles.forEach(function (article) {
           const cat = article.getAttribute('data-category') ?? '';
@@ -296,5 +202,7 @@ const categoryColors: Record<string, string> = {
         }
       });
     });
-  })();
+  }
+
+  document.addEventListener('astro:page-load', initNewsFilter);
 </script>

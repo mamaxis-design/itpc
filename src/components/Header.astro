@@ -1,71 +1,65 @@
 ---
+import { Image } from 'astro:assets';
+import itpcLogo from '../assets/images/itpc-logo.svg';
 ---
-<header class="w-full bg-white shadow-sm sticky top-0 z-50 relative">
+<header transition:persist="site-header" class="w-full bg-white shadow-sm sticky top-0 z-50 relative">
   <div class="flex items-stretch">
 
     <!-- ── Left: Logo + Company Name ───────────────── -->
     <div class="flex items-center flex-shrink-0 pl-6 md:pl-8 lg:pl-12 pr-6 py-3">
       <a href="/" class="flex items-center gap-3" aria-label="株式会社 イトピック トップへ">
-        <img
-          src="/images/itpc-logo.svg"
+        <Image
+          src={itpcLogo}
           alt="イトピックロゴ"
           class="w-[70px] h-auto flex-shrink-0"
         />
-        <span class="font-noto font-bold text-[#333333] whitespace-nowrap leading-none" style="font-size: var(--fs-h4);">
-  株式会社 イトピック
-</span>
+        <span class="font-noto font-bold text-[#333333] whitespace-nowrap leading-none"  style="font-size: var(--fs-h4);">
+          株式会社 イトピック
+        </span>
       </a>
     </div>
 
     <!-- ── Right: Nav + Contact Button ─────────────── -->
     <div class="hidden lg:flex items-stretch flex-1 justify-end">
 
-      <!-- Nav Links -->
       <nav class="flex items-center gap-1 xl:gap-2 pr-6 xl:pr-10" aria-label="グローバルナビゲーション">
         <a
           href="/service"
-          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
-          style="font-size: var(--fs-small);"
-        >
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap" 
+         style="font-size: var(--fs-small);">
           業務内容
         </a>
         <a
           href="/#strengths"
-          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
-          style="font-size: var(--fs-small);"
-        >
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap" 
+         style="font-size: var(--fs-small);">
           私たちの強み
         </a>
         <a
           href="/works"
-          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
-          style="font-size: var(--fs-small);"
-        >
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap" 
+         style="font-size: var(--fs-small);">
           取引実績
         </a>
         <a
           href="/company"
-          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
-          style="font-size: var(--fs-small);"
-        >
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap" 
+         style="font-size: var(--fs-small);">
           会社概要
         </a>
         <a
           href="/news"
-          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap"
-          style="font-size: var(--fs-small);"
-        >
+          class="font-noto font-bold text-[#333333] hover:text-[#004896] transition-colors duration-200 px-3 xl:px-4 py-1 whitespace-nowrap" 
+         style="font-size: var(--fs-small);">
           お知らせ
         </a>
       </nav>
 
-      <!-- Contact Button -->
       <a
         href="/contact"
-        class="font-noto font-bold text-white bg-[#004896] hover:bg-[#003a7a] transition-colors duration-200 flex items-center justify-center whitespace-nowrap px-8 xl:px-12 self-stretch"
-        style="font-size: var(--fs-small);"
+        class="font-noto font-bold text-white bg-[#004896] hover:bg-[#003a7a] transition-colors duration-200 flex items-center justify-center whitespace-nowrap px-8 xl:px-12 self-stretch" 
         aria-label="お問い合わせページへ"
-      >
+       style="font-size: var(--fs-small);">
         お問い合わせ
       </a>
     </div>
@@ -86,25 +80,22 @@
       </button>
     </div>
 
-  </div><!-- /flex wrapper -->
+  </div>
 
-  <!-- ── Mobile Menu Drawer ─────────────────────────── -->
   <nav
     id="mobile-menu"
-    class="lg:hidden hidden flex-col bg-white border-t border-gray-100 px-6 pb-6 pt-4
-           absolute top-full left-0 right-0 z-50 shadow-md"
+    class="lg:hidden hidden flex-col bg-white border-t border-gray-100 px-6 pb-6 pt-4 absolute top-full left-0 right-0 z-50 shadow-md"
     aria-label="モバイルナビゲーション"
   >
-    <a href="/service" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">業務内容</a>
-    <a href="/#strengths" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">私たちの強み</a>
-    <a href="/works" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">取引実績</a>
-    <a href="/company" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">会社概要</a>
-    <a href="/news" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block" style="font-size: var(--fs-small);">お知らせ</a>
+    <a href="/service" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block"  style="font-size: var(--fs-small);">業務内容</a>
+    <a href="/#strengths" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block"  style="font-size: var(--fs-small);">私たちの強み</a>
+    <a href="/works" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block"  style="font-size: var(--fs-small);">取引実績</a>
+    <a href="/company" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block"  style="font-size: var(--fs-small);">会社概要</a>
+    <a href="/news" class="font-noto font-bold text-[#333333] hover:text-[#004896] py-5 px-4 border-b border-gray-100 block"  style="font-size: var(--fs-small);">お知らせ</a>
     <a
       href="/contact"
-      class="font-noto font-bold text-white bg-[#004896] hover:bg-[#003a7a] transition-colors duration-200 mt-4 py-3 text-center rounded block"
-      style="font-size: var(--fs-small);"
-    >
+      class="font-noto font-bold text-white bg-[#004896] hover:bg-[#003a7a] transition-colors duration-200 mt-4 py-3 text-center rounded block" 
+     style="font-size: var(--fs-small);">
       お問い合わせ
     </a>
   </nav>

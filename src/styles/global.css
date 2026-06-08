@@ -195,8 +195,33 @@ select.form-input {
 }
 
 /* ─── 下層ページ共通アニメーション: 初期状態 ─── */
-[data-a="fade"] { opacity: 0; }
-[data-a="stagger"] > * { opacity: 0; }
+[data-a="fade"]:not([data-a-init="true"]) { opacity: 0; }
+[data-a="stagger"]:not([data-a-init="true"]) > * { opacity: 0; }
+
+/* ─── MV パララックス画像 ───────────────────────── */
+.mv-parallax-img {
+  inset: 0;
+  height: 100%;
+  will-change: transform;
+}
+
+/* PC: scale なし・高さはみ出しで移動余白を確保（静止時は通常の object-cover 相当） */
+@media (min-width: 768px) {
+  [data-mv-parallax] > .mv-parallax-img {
+    inset: auto;
+    top: -35%;
+    left: 0;
+    height: 170%;
+    transform: none;
+  }
+}
+
+/* ─── View Transitions ───────────────────────── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}
 
 /* ─── #contact グリッドリビール ─────────────────── */
 .contact-grid-overlay {

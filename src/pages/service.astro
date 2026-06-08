@@ -1,59 +1,62 @@
 ---
+import { Image, getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
+import ibarakiBg from '../assets/images/ibaraki_bg.png';
+import seaviceMain from '../assets/images/seavice_main.png';
+import servicesMain from '../assets/images/services_main.JPG';
+import serviceHiroMain from '../assets/images/service_hiro_main.png';
+import printImg from '../assets/images/print_img.png';
+import goodsImg from '../assets/images/goods_img.png';
+import movieImg from '../assets/images/movie_img.png';
+
+const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
 ---
-<Layout title="事業内容 | 株式会社 イトピック">
-<main>
+<Layout
+  title="事業内容 | 株式会社 イトピック"
+  description="式典・イベントの企画から当日運営まで一貫対応。デザイン・印刷、映像制作、ノベルティ・商品手配など、イベント成功に必要なサービスを茨城県水戸市のイトピックがトータルでご提供します。"
+  ogType="article"
+  ogImage={ogImageSrc}
+>
+<main data-page="service">
 
   <!-- PAGE HERO -->
   <section id="page-hero-services"
     class="w-full bg-white relative overflow-hidden"
-    style="max-height: 455px; min-height: clamp(200px, 28vw, 455px);"
+   
   >
-    <div class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none"
-         style="left: 50%; transform: translateX(-50%); z-index: 0;" aria-hidden="true">
-      <div class="absolute top-0 right-0"
-           style="width: clamp(260px, 28vw, 420px); height: clamp(260px, 28vw, 420px); opacity: 0.55;">
-        <img src="/images/ibaraki_bg.png" alt="" class="w-full h-full object-contain object-right-top" />
+    <div class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0" aria-hidden="true">
+      <div class="absolute top-0 right-0 w-[clamp(260px,28vw,420px)] h-[clamp(260px,28vw,420px)] opacity-[0.55]">
+        <Image src={ibarakiBg} alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
-         style="min-height: clamp(200px, 28vw, 455px);">
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
-         style="font-size: var(--fs-small); letter-spacing: 0.18em;">Services</p>
-      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
-          style="font-size: var(--fs-display);">事業内容</h1>
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0 min-h-[clamp(200px,28vw,455px)]">
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 tracking-[0.18em]"  style="font-size: var(--fs-small);">Services</p>
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"  style="font-size: var(--fs-display);">事業内容</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
-          <li><a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"
-                 style="font-size: var(--fs-small);">ホーム</a></li>
-          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-hidden="true">&gt;</li>
-          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-current="page">事業内容</li>
+          <li><a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"  style="font-size: var(--fs-small);">ホーム</a></li>
+          <li class="font-noto font-medium text-[#333333]"  aria-hidden="true" style="font-size: var(--fs-small);">&gt;</li>
+          <li class="font-noto font-medium text-[#333333]"  aria-current="page" style="font-size: var(--fs-small);">事業内容</li>
         </ol>
       </nav>
     </div>
   </section>
 
   <!-- MAIN VISUAL -->
-  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
-    <img src="/images/seavice_main.png" alt="事業内容メインビジュアル"
-         loading="eager"
-         class="absolute inset-0 w-full h-full object-cover object-center" />
+  <div data-mv-parallax class="relative w-full overflow-hidden h-[clamp(240px,40vw,600px)]">
+    <Image src={seaviceMain} alt="事業内容メインビジュアル" loading="eager" class="mv-parallax-img absolute w-full object-cover object-center" />
   </div>
 
   <!-- HERO 01 -->
-  <section id="service-hero-01" class="w-full bg-white flex items-center justify-center"
-           style="min-height: clamp(360px, 50vw, 728px);">
+  <section id="service-hero-01" class="w-full bg-white flex items-center justify-center min-h-[clamp(360px,50vw,728px)]">
       <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8
                 flex flex-col items-center justify-center text-center section-md">
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-6 md:mb-8"
-         style="font-size: var(--fs-small); letter-spacing: 0.2em;">Main Service</p>
-      <h2 class="font-noto font-bold text-[#004896] leading-snug mb-10"
-          style="font-size: var(--fs-h1); letter-spacing: 0.05em;">
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-6 md:mb-8 tracking-[0.2em]"  style="font-size: var(--fs-small);">Main Service</p>
+      <h2 class="font-noto font-bold text-[#004896] leading-snug mb-10 tracking-[0.05em]"  style="font-size: var(--fs-h1);">
         式典・イベントの<br />企画から運営までをサポート。
       </h2>
-      <div class="font-noto font-medium text-[#333333] leading-loose space-y-2 text-left md:text-center w-full"
-           style="font-size: var(--fs-body-lg);">
+      <div class="font-noto font-medium text-[#333333] leading-loose space-y-2 text-left md:text-center w-full"  style="font-size: var(--fs-body-lg);">
         <p>行政機関・自治体向けのイベント企画から運営まで、創業からの実績とノウハウで確かなサポートを提供します。</p>
         <p>記念式典、周年行事、地域イベントなど、あらゆる規模のプロジェクトに対応します。</p>
       </div>
@@ -61,45 +64,32 @@ import ContactSection from '../components/ContactSection.astro';
   </section>
 
   <!-- HERO 02 -->
-  <section id="service-hero-02" class="w-full relative"
-           style="min-height: clamp(600px, 180vw, calc(705px + 750px + 200px));">
-    <div id="svc-hero-bg-wrap" class="absolute top-0 left-0 w-full overflow-hidden"
-         style="height: clamp(220px, 55vw, 1000px); z-index: 0;">
-      <img id="svc-hero-bg-img" src="/images/services_main.JPG" alt="" aria-hidden="true"
-           class="w-full h-full object-cover object-center" />
-      <div class="hidden lg:block absolute inset-0"
-           style="background: linear-gradient(to bottom, rgba(73,145,178,0.52) 0%, rgba(73,145,178,0.38) 28%, rgba(255,255,255,0.72) 62%, rgba(255,255,255,0.96) 82%, rgba(255,255,255,1.0) 100%);"></div>
-      <div class="lg:hidden absolute inset-0"
-           style="background: linear-gradient(to bottom, rgba(73,145,178,0.45) 0%, rgba(73,145,178,0.30) 50%, rgba(73,145,178,0.10) 100%);"></div>
+  <section id="service-hero-02" class="w-full relative min-h-[clamp(600px,180vw,calc(705px+750px+200px))]">
+    <div id="svc-hero-bg-wrap" class="absolute top-0 left-0 w-full overflow-hidden h-[clamp(220px,55vw,1000px)] z-0">
+      <Image id="svc-hero-bg-img" src={servicesMain} alt="" aria-hidden="true" class="w-full h-full object-cover object-center" />
+      <div class="hidden lg:block absolute inset-0 bg-[linear-gradient(to_bottom,rgba(73,145,178,0.52)_0%,rgba(73,145,178,0.38)_28%,rgba(255,255,255,0.72)_62%,rgba(255,255,255,0.96)_82%,rgba(255,255,255,1)_100%)]"></div>
+      <div class="lg:hidden absolute inset-0 bg-[linear-gradient(to_bottom,rgba(73,145,178,0.45)_0%,rgba(73,145,178,0.30)_50%,rgba(73,145,178,0.10)_100%)]"></div>
     </div>
 
     <!-- PC -->
-    <div class="hero-content-wrap hidden lg:block absolute w-full max-w-[1440px] px-0"
-         style="top: 705px; left: 50%; transform: translateX(-50%); z-index: 10;">
-      <div class="flex flex-row items-start" style="column-gap: 7rem; padding-bottom: var(--sp-section-xl);">
-        <div id="svc-hero-pc-img" class="flex-shrink-0 overflow-hidden rounded-[4px] w-[640px]"
-             style="height: clamp(320px, 50vw, 750px);">
-          <img src="/images/service_hiro_main.png" alt="企画・運営の現場"
-               class="w-full h-full object-cover object-center" />
+    <div class="hero-content-wrap hidden lg:block absolute w-full max-w-[1440px] px-0 top-[705px] left-1/2 -translate-x-1/2 z-10">
+      <div class="flex flex-row items-start gap-x-28 pb-[var(--sp-section-xl)]">
+        <div id="svc-hero-pc-img" class="flex-shrink-0 overflow-hidden rounded-[4px] w-[640px] h-[clamp(320px,50vw,750px)]">
+          <Image src={serviceHiroMain} alt="企画・運営の現場" class="w-full h-full object-cover object-center" />
         </div>
-        <div id="svc-hero-pc-txt" class="flex-1 min-w-0" style="padding-top: 0; margin-bottom: 3rem;">
-          <div style="margin-bottom: var(--sp-gap-md);">
-            <span class="font-noto font-bold text-white rounded-[2px]"
-                  style="font-size: var(--fs-h2); background: linear-gradient(to right, #004896, #3C73B5); display: block; width: fit-content; padding: 10px 20px; margin-bottom: 6px;">
+        <div id="svc-hero-pc-txt" class="flex-1 min-w-0 pt-0 mb-12">
+          <div class="mb-[var(--sp-gap-md)]">
+            <span class="font-noto font-bold text-white rounded-[2px] bg-[linear-gradient(to_right,#004896,#3C73B5)] block w-fit py-2.5 px-5 mb-1.5"  style="font-size: var(--fs-h2);">
               企画運営の成功を支える、
             </span>
-            <span class="font-noto font-bold text-white rounded-[2px]"
-                  style="font-size: var(--fs-h2); background: linear-gradient(to right, #004896, #3C73B5); display: block; width: fit-content; padding: 10px 20px;">
+            <span class="font-noto font-bold text-white rounded-[2px] bg-[linear-gradient(to_right,#004896,#3C73B5)] block w-fit py-2.5 px-5"  style="font-size: var(--fs-h2);">
               トータルプロデュースの力
             </span>
           </div>
-          <h3 class="font-noto font-bold text-[#004896]"
-              style="font-size: var(--fs-h3); letter-spacing: 0.02em; line-height: 1.5;
-                     margin-top: var(--sp-gap-lg); margin-bottom: var(--sp-gap-lg);">
+          <h3 class="font-noto font-bold text-[#004896] tracking-[0.02em] leading-normal mt-[var(--sp-gap-lg)] mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h3);">
             企画立案から当日の運営、<br />付随する各種クリエイティブ制作まで。
           </h3>
-          <div class="font-noto font-medium text-[#333333] leading-loose space-y-5"
-               style="font-size: var(--fs-body-lg);">
+          <div class="font-noto font-medium text-[#333333] leading-loose space-y-5"  style="font-size: var(--fs-body-lg);">
             <p>私たちは、イベント成功に必要なすべてのプロセスをワンストップでサポートします。</p>
             <p>記録映像やオープニングムービーの制作、集客のための印刷物、効果的なノベルティ提案など、各分野の専門ノウハウを統合し、主催者様の想いを形にします。</p>
             <p>窓口を一本化することで、一貫性のある高品質なプロモーションを可能にします。</p>
@@ -109,30 +99,24 @@ import ContactSection from '../components/ContactSection.astro';
     </div>
 
     <!-- SP -->
-    <div class="lg:hidden relative z-10 w-full bg-transparent"
-         style="padding-top: clamp(120px, 35vw, 200px); padding-bottom: clamp(32px, 8vw, 60px);">
+    <div class="lg:hidden relative z-10 w-full bg-transparent pt-[clamp(120px,35vw,200px)] pb-[clamp(32px,8vw,60px)]">
       <div class="px-6 py-10 bg-white rounded-t-[16px]">
-        <div class="overflow-hidden rounded-[4px] w-full mb-8" style="height: clamp(240px, 60vw, 420px);">
-          <img src="/images/service_hiro_main.png" alt="企画・運営の現場"
-               class="w-full h-full object-cover object-center" />
+        <div class="overflow-hidden rounded-[4px] w-full mb-8 h-[clamp(240px,60vw,420px)]">
+          <Image src={serviceHiroMain} alt="企画・運営の現場" class="w-full h-full object-cover object-center" />
         </div>
         <div>
-          <div style="margin-bottom: 20px;">
-            <span class="font-noto font-bold text-white rounded-[2px]"
-                  style="font-size: var(--fs-h3); background: linear-gradient(to right, #004896, #3C73B5); display: block; width: fit-content; padding: 8px 16px; margin-bottom: 6px;">
+          <div class="mb-5">
+            <span class="font-noto font-bold text-white rounded-[2px] bg-[linear-gradient(to_right,#004896,#3C73B5)] block w-fit py-2 px-4 mb-1.5"  style="font-size: var(--fs-h3);">
               企画運営の成功を支える、
             </span>
-            <span class="font-noto font-bold text-white rounded-[2px]"
-                  style="font-size: var(--fs-h3); background: linear-gradient(to right, #004896, #3C73B5); display: block; width: fit-content; padding: 8px 16px;">
+            <span class="font-noto font-bold text-white rounded-[2px] bg-[linear-gradient(to_right,#004896,#3C73B5)] block w-fit py-2 px-4"  style="font-size: var(--fs-h3);">
               トータルプロデュースの力
             </span>
           </div>
-          <h3 class="font-noto font-bold text-[#004896]"
-              style="font-size: var(--fs-h4); line-height: 1.5; margin-top: 24px; margin-bottom: 24px;">
+          <h3 class="font-noto font-bold text-[#004896] leading-normal mt-6 mb-6"  style="font-size: var(--fs-h3);">
             企画立案から当日の運営、<br />付随する各種クリエイティブ制作まで。
           </h3>
-          <div class="font-noto font-medium text-[#333333] leading-loose space-y-4"
-               style="font-size: var(--fs-body);">
+          <div class="font-noto font-medium text-[#333333] leading-loose space-y-4"  style="font-size: var(--fs-body);">
             <p>私たちは、イベント成功に必要なすべてのプロセスをワンストップでサポートします。</p>
             <p>記録映像やオープニングムービーの制作、集客のための印刷物、効果的なノベルティ提案など、各分野の専門ノウハウを統合し、主催者様の想いを形にします。</p>
             <p>窓口を一本化することで、一貫性のある高品質なプロモーションを可能にします。</p>
@@ -145,13 +129,10 @@ import ContactSection from '../components/ContactSection.astro';
   <!-- ATTACHED SERVICES -->
   <section id="attached-services" class="w-full bg-[#F0F6FA] section-xl">
     <div class="inner">
-      <div data-a="fade" class="text-center px-6" style="margin-bottom: var(--sp-section-md);">
-        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5"
-           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Attached Services</p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"
-            style="font-size: var(--fs-h2);">合わせてご提供するサービス</h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"
-           style="font-size: var(--fs-body);">
+      <div data-a="fade" class="text-center px-6 mb-[var(--sp-section-md)]">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.18em]"  style="font-size: var(--fs-small);">Attached Services</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"  style="font-size: var(--fs-h2);">合わせてご提供するサービス</h2>
+        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
           式典・イベントに付随する各種クリエイティブも、ワンストップでご対応しています。<br class="hidden md:block" />
           映像制作・デザイン制作・ノベルティ手配など、目的に合わせて最適なプランをご提案します。
         </p>
@@ -163,21 +144,17 @@ import ContactSection from '../components/ContactSection.astro';
         <div id="design" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
             <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
-              <h3 class="font-noto font-bold text-[#333333]"
-                  style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-md);">デザイン・印刷</h3>
-              <div class="h-[3px] bg-[#4982C2] w-[150px]" style="margin-bottom: var(--sp-gap-md);"></div>
-              <p class="font-noto font-bold text-[#004896]"
-                 style="font-size: var(--fs-h4); margin-bottom: var(--sp-gap-lg);">視覚で伝えるデザインと品質</p>
-              <div class="font-noto font-medium text-[#333333] leading-loose space-y-[20px]"
-                   style="font-size: var(--fs-body);">
+              <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">デザイン・印刷</h3>
+              <div class="h-[3px] bg-[#4982C2] w-[150px] mb-[var(--sp-gap-md)]"></div>
+              <p class="font-noto font-bold text-[#004896] mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h4);">視覚で伝えるデザインと品質</p>
+              <div class="font-noto font-medium text-[#333333] leading-loose space-y-[20px]"  style="font-size: var(--fs-body);">
                 <p>招待状、パンフレット、看板など、イベントに必要な各種デザイン・印刷物を制作します。統一感のあるビジュアルで、イベント全体の世界観を構築します。</p>
                 <p>「わかりやすさ」と「高い品格」、そして統一感のあるビジュアル構築により、催事の価値を高めるとともに、来場者を迷わせない確実な会場導線を実現します。</p>
               </div>
             </div>
             <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
                         bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
-              <img src="/images/print_img.png" alt="デザイン・印刷 実績"
-                   class="w-full lg:h-[650px] object-contain" />
+              <Image src={printImg} alt="デザイン・印刷 実績" class="w-full lg:h-[650px] object-contain" />
             </div>
           </div>
         </div>
@@ -186,21 +163,17 @@ import ContactSection from '../components/ContactSection.astro';
         <div id="novelty" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
             <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
-              <h3 class="font-noto font-bold text-[#333333]"
-                  style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-md);">ノベルティ・商品</h3>
-              <div class="h-[3px] bg-[#4982C2] w-[150px]" style="margin-bottom: var(--sp-gap-md);"></div>
-              <p class="font-noto font-bold text-[#004896]"
-                 style="font-size: var(--fs-h4); margin-bottom: var(--sp-gap-lg);">記憶に残るオリジナルグッズと価値</p>
-              <div class="font-noto font-medium text-[#333333] leading-loose space-y-[20px]"
-                   style="font-size: var(--fs-body);">
+              <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">ノベルティ・商品</h3>
+              <div class="h-[3px] bg-[#4982C2] w-[150px] mb-[var(--sp-gap-md)]"></div>
+              <p class="font-noto font-bold text-[#004896] mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h4);">記憶に残るオリジナルグッズと価値</p>
+              <div class="font-noto font-medium text-[#333333] leading-loose space-y-[20px]"  style="font-size: var(--fs-body);">
                 <p>イベントの趣旨や行政事業のテーマに連動した、一貫性のあるオリジナルグッズを提案します。</p>
                 <p>ターゲットの年齢層に合わせたノベルティ選定から、名入れデザイン、製造、会場への確実な納品まで一括で対応。徹底したスケジュール管理により、スムーズな催事運営を支えます。</p>
               </div>
             </div>
             <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
                         bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
-              <img src="/images/goods_img.png" alt="ノベルティ・商品 実績"
-                   class="w-full lg:h-[650px] object-contain" />
+              <Image src={goodsImg} alt="ノベルティ・商品 実績" class="w-full lg:h-[650px] object-contain" />
             </div>
           </div>
         </div>
@@ -209,21 +182,17 @@ import ContactSection from '../components/ContactSection.astro';
         <div id="video" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
             <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
-              <h3 class="font-noto font-bold text-[#333333]"
-                  style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-md);">映像制作</h3>
-              <div class="h-[3px] bg-[#4982C2] w-[150px]" style="margin-bottom: var(--sp-gap-md);"></div>
-              <p class="font-noto font-bold text-[#004896]"
-                 style="font-size: var(--fs-h4); margin-bottom: var(--sp-gap-lg);">イベントを未来へつなぐ記録</p>
-              <div class="font-noto font-medium text-[#333333] leading-loose space-y-[20px]"
-                   style="font-size: var(--fs-body);">
+              <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">映像制作</h3>
+              <div class="h-[3px] bg-[#4982C2] w-[150px] mb-[var(--sp-gap-md)]"></div>
+              <p class="font-noto font-bold text-[#004896] mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h4);">イベントを未来へつなぐ記録</p>
+              <div class="font-noto font-medium text-[#333333] leading-loose space-y-[20px]"  style="font-size: var(--fs-body);">
                 <p>式典やイベントの公式記録映像から、事業の魅力を伝えるPR動画まで、目的に合わせた最適な映像制作をご提供します。</p>
                 <p>行政機関のイベントにふさわしい、「誰にでもわかりやすく、上品な映像」を制作します。ホームページや、その後のPR活動にもそのまま長く使える確実な映像をお届けします。</p>
               </div>
             </div>
             <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
                         bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
-              <img src="/images/movie_img.png" alt="映像制作 実績"
-                   class="w-full lg:h-[650px] object-contain" />
+              <Image src={movieImg} alt="映像制作 実績" class="w-full lg:h-[650px] object-contain" />
             </div>
           </div>
         </div>
@@ -233,26 +202,22 @@ import ContactSection from '../components/ContactSection.astro';
   </section>
 
   <!-- SERVICE FLOW -->
-  <section id="service-flow" class="w-full bg-white"
-           style="padding-top: var(--sp-section-xl); padding-bottom: var(--sp-section-lg);">
-    <div class="inner px-6 lg:px-0">
-      <div data-a="fade" class="text-center" style="margin-bottom: var(--sp-section-md);">
-        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5"
-           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Flow</p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"
-            style="font-size: var(--fs-h2);">サービスの流れ</h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"
-           style="font-size: var(--fs-body);">
+  <section id="service-flow" class="w-full bg-white pt-[var(--sp-section-xl)] pb-[var(--sp-section-sm)]">
+    <div class="inner">
+      <div data-a="fade" class="text-center px-6 lg:px-0 mb-[var(--sp-section-md)]">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.18em]"  style="font-size: var(--fs-small);">Flow</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"  style="font-size: var(--fs-h2);">サービスの流れ</h2>
+        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
           ご相談から納品まで、一貫してサポートします。<br class="hidden md:block" />
           初めてのご依頼でも安心していただけるよう、丁寧なヒアリングと確実な進行管理をおこないます。
         </p>
       </div>
 
       <!-- 全体の流れ -->
-      <div style="margin-bottom: var(--sp-section-md);">
-        <div class="flex items-center gap-3" style="margin-bottom: var(--sp-gap-lg);">
+      <div class="mb-[var(--sp-section-md)]">
+        <div class="flex items-center gap-3 mb-[var(--sp-gap-lg)]">
           <div class="w-8 h-[3px] bg-[#004896]"></div>
-          <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">全体の流れ</p>
+          <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">全体の流れ</p>
         </div>
         <div data-a="fade" class="flex flex-col lg:flex-row items-stretch">
           {[
@@ -262,19 +227,15 @@ import ContactSection from '../components/ContactSection.astro';
             { num: '4', label: '運営\n制作実施', last: false },
             { num: '5', label: '納品\n完了報告', last: true },
           ].map(({ num, label, last }) => (
-            <div class="flex lg:contents flex-col items-center" style="flex: 1 1 0%;">
+            <div class="flex lg:contents flex-col items-center flex-[1_1_0%]">
               <div class="relative overflow-hidden rounded-[6px] flex flex-col justify-end
-                          px-5 pb-5 bg-[#004896] w-[60%] md:w-full mx-auto md:mx-0"
-                   style="min-height: clamp(150px, 12vw, 160px);">
-                <span class="absolute top-2 right-3 font-inter font-bold text-white select-none leading-none"
-                      style="font-size: var(--fs-display); opacity: 0.18;">{num}</span>
-                <p class="font-noto font-bold text-white leading-snug relative z-10"
-                   style="font-size: var(--fs-small);"
+                          px-5 pb-5 bg-[#004896] w-[60%] md:w-full mx-auto md:mx-0 min-h-[clamp(150px,12vw,160px)]">
+                <span class="absolute top-2 right-3 font-inter font-bold text-white select-none leading-none opacity-[0.18]"  style="font-size: var(--fs-display);">{num}</span>
+                <p class="font-noto font-bold text-white leading-snug relative z-10" 
                    set:html={label.replace('\n', '<br />')}></p>
               </div>
               {!last && (
-                <div class="flex items-center justify-center flex-shrink-0 self-center"
-                     style="width: 48px; height: 48px; margin: 0 4px;">
+                <div class="flex items-center justify-center flex-shrink-0 self-center w-12 h-12 mx-1">
                   <div class="w-8 h-8 rounded-full border border-[#004896] flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                          stroke="#004896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -291,12 +252,12 @@ import ContactSection from '../components/ContactSection.astro';
 
       <!-- 各ステップの詳細（アコーディオン） -->
       <div class="mx-0 lg:mx-0">
-        <div class="flex items-center gap-3" style="margin-bottom: var(--sp-gap-lg);">
+        <div class="flex items-center gap-3 mb-[var(--sp-gap-lg)]">
           <div class="w-8 h-[3px] bg-[#004896]"></div>
-          <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">各ステップの詳細</p>
+          <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">各ステップの詳細</p>
         </div>
 
-        <div data-a="stagger" class="space-y-4 w-full mx-0">
+        <div data-a="stagger" class="px-6 lg:px-0 space-y-4 w-full mx-0">
 
           <!-- 1: イベント企画 -->
           <div class="border border-[#D8E4F0] rounded-[8px] overflow-hidden">
@@ -304,7 +265,7 @@ import ContactSection from '../components/ContactSection.astro';
                            px-8 py-8 lg:px-[48px] lg:py-[40px] text-left bg-white
                            hover:bg-[#F0F6FA] transition-colors duration-200"
                     aria-expanded="false" data-target="acc-panel-1">
-              <span class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-h4);">イベント企画</span>
+              <span class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">イベント企画</span>
               <span class="acc-icon flex-shrink-0 w-8 h-8 rounded-full border border-[#004896]
                            text-[#004896] flex items-center justify-center ml-4" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -317,16 +278,16 @@ import ContactSection from '../components/ContactSection.astro';
                 </svg>
               </span>
             </button>
-            <div id="acc-panel-1" class="accordion-panel" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1);">
+            <div id="acc-panel-1" class="accordion-panel accordion-panel-inner max-h-0 overflow-hidden transition-[max-height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <div class="px-8 pb-10 pt-[30px] lg:px-[48px] lg:pb-[40px] bg-white">
                 <ol class="relative">
                   <div class="absolute left-[15px] top-[32px] bottom-[32px] w-[1px] bg-[#D8E4F0]" aria-hidden="true"></div>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">2</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">御見積り</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">3</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">現地調査・企画立案</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">ロケハン・運営マニュアル・設計書等の作成（看板関係、会場図面など）</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">4</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">イベントプラン最終確認</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">催事内容確定・流れ確認</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">5</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">会場設営・管理運営</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">イベント企画の運営・進行管理</p></div></li>
-                  <li class="flex gap-[26px]"><span class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#004896] flex items-center justify-center font-inter font-bold text-[#004896] text-sm relative z-10">6</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">撤去・実施報告書の提出</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">2</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">御見積り</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">3</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">現地調査・企画立案</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">ロケハン・運営マニュアル・設計書等の作成（看板関係、会場図面など）</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">4</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">イベントプラン最終確認</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">催事内容確定・流れ確認</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">5</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">会場設営・管理運営</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">イベント企画の運営・進行管理</p></div></li>
+                  <li class="flex gap-[26px]"><span class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#004896] flex items-center justify-center font-inter font-bold text-[#004896] text-sm relative z-10">6</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">撤去・実施報告書の提出</p></div></li>
                 </ol>
               </div>
             </div>
@@ -338,7 +299,7 @@ import ContactSection from '../components/ContactSection.astro';
                            px-8 py-8 lg:px-[48px] lg:py-[40px] text-left bg-white
                            hover:bg-[#F0F6FA] transition-colors duration-200"
                     aria-expanded="false" data-target="acc-panel-2">
-              <span class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-h4);">式典運営</span>
+              <span class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">式典運営</span>
               <span class="acc-icon flex-shrink-0 w-8 h-8 rounded-full border border-[#004896]
                            text-[#004896] flex items-center justify-center ml-4" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -351,16 +312,16 @@ import ContactSection from '../components/ContactSection.astro';
                 </svg>
               </span>
             </button>
-            <div id="acc-panel-2" class="accordion-panel" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1);">
+            <div id="acc-panel-2" class="accordion-panel accordion-panel-inner max-h-0 overflow-hidden transition-[max-height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <div class="px-8 pb-10 pt-[30px] lg:px-[48px] lg:pb-[40px] bg-white">
                 <ol class="relative">
                   <div class="absolute left-[15px] top-[32px] bottom-[32px] w-[1px] bg-[#D8E4F0]" aria-hidden="true"></div>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">打ち合わせ</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">招待者、式典の規模、会場など</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">2</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">御見積り・ロケハン</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">現地調査を含む</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">3</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">招待状・運営マニュアルの作成</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">招待状・返信ハガキ・案内図・駐車券同封／会場図面、配置図、着板、出席者受付名簿、進行台本など</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">4</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">内容確認・最終調整</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">校正内容のやり取り・流れ確認</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">5</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">会場設営・管理運営</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">式典の運営・進行管理</p></div></li>
-                  <li class="flex gap-[26px]"><span class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#004896] flex items-center justify-center font-inter font-bold text-[#004896] text-sm relative z-10">6</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">撤去・実施報告書の提出</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">招待者、式典の規模、会場など</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">打ち合わせ</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">招待者、式典の規模、会場など</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">2</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">御見積り・ロケハン</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">現地調査を含む</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">3</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">招待状・運営マニュアルの作成</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">招待状・返信ハガキ・案内図・駐車券同封/会場図面、配置図、着板、出席者受付名簿、進行台本など</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">4</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">内容確認・最終調整</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">校正内容のやり取り・流れ確認</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">5</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">会場設営・管理運営</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">式典の運営・進行管理</p></div></li>
+                  <li class="flex gap-[26px]"><span class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#004896] flex items-center justify-center font-inter font-bold text-[#004896] text-sm relative z-10">6</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">撤去・実施報告書の提出</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">招待者、式典の規模、会場など</p></div></li>
                 </ol>
               </div>
             </div>
@@ -372,7 +333,7 @@ import ContactSection from '../components/ContactSection.astro';
                            px-8 py-8 lg:px-[48px] lg:py-[40px] text-left bg-white
                            hover:bg-[#F0F6FA] transition-colors duration-200"
                     aria-expanded="false" data-target="acc-panel-3">
-              <span class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-h4);">印刷・デザイン・ノベルティ・商品</span>
+              <span class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">印刷・デザイン・ノベルティ・商品</span>
               <span class="acc-icon flex-shrink-0 w-8 h-8 rounded-full border border-[#004896]
                            text-[#004896] flex items-center justify-center ml-4" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -385,17 +346,17 @@ import ContactSection from '../components/ContactSection.astro';
                 </svg>
               </span>
             </button>
-            <div id="acc-panel-3" class="accordion-panel" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1);">
+            <div id="acc-panel-3" class="accordion-panel accordion-panel-inner max-h-0 overflow-hidden transition-[max-height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <div class="px-8 pb-10 pt-[30px] lg:px-[48px] lg:pb-[40px] bg-white">
                 <ol class="relative">
                   <div class="absolute left-[15px] top-[32px] bottom-[32px] w-[1px] bg-[#D8E4F0]" aria-hidden="true"></div>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">2</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">仕様・御見積り</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">3</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">ラフデザインの制作</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">デザインの方向性・用紙・サンプル・加工のご確認</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">4</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">取材・撮影など制作作業</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">5</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">校正</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">校正〜校了</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">6</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">データ入稿</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">希望により色校正出力</p></div></li>
-                  <li class="flex gap-[26px]"><span class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#004896] flex items-center justify-center font-inter font-bold text-[#004896] text-sm relative z-10">7</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">納品</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">2</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">仕様・御見積り</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">3</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">ラフデザインの制作</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">デザインの方向性・用紙・サンプル・加工のご確認</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">4</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">取材・撮影など制作作業</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">5</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">校正</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">校正〜校了</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">6</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">データ入稿</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">希望により色校正出力</p></div></li>
+                  <li class="flex gap-[26px]"><span class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#004896] flex items-center justify-center font-inter font-bold text-[#004896] text-sm relative z-10">7</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">納品</p></div></li>
                 </ol>
               </div>
             </div>
@@ -407,7 +368,7 @@ import ContactSection from '../components/ContactSection.astro';
                            px-8 py-8 lg:px-[48px] lg:py-[40px] text-left bg-white
                            hover:bg-[#F0F6FA] transition-colors duration-200"
                     aria-expanded="false" data-target="acc-panel-4">
-              <span class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-h4);">映像制作</span>
+              <span class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">映像制作</span>
               <span class="acc-icon flex-shrink-0 w-8 h-8 rounded-full border border-[#004896]
                            text-[#004896] flex items-center justify-center ml-4" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -420,17 +381,17 @@ import ContactSection from '../components/ContactSection.astro';
                 </svg>
               </span>
             </button>
-            <div id="acc-panel-4" class="accordion-panel" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1);">
+            <div id="acc-panel-4" class="accordion-panel accordion-panel-inner max-h-0 overflow-hidden transition-[max-height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <div class="px-8 pb-10 pt-[30px] lg:px-[48px] lg:pb-[40px] bg-white">
                 <ol class="relative">
                   <div class="absolute left-[15px] top-[32px] bottom-[32px] w-[1px] bg-[#D8E4F0]" aria-hidden="true"></div>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">2</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">仕様・御見積り</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">3</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">取材・撮影など制作作業</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">4</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">構成案・仮編集版のご提出</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">デザイン・構成案の方向性のご確認</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">5</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">校正・修正</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">テロップ・CGなど</p></div></li>
-                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">6</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">データ入稿 / ナレーション取り</p><p class="font-noto font-medium text-[#555555] leading-relaxed" style="font-size: var(--fs-body);">商品等デザイン発注 ／ ナレーション・映像の仕上がり確認</p></div></li>
-                  <li class="flex gap-[26px]"><span class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#004896] flex items-center justify-center font-inter font-bold text-[#004896] text-sm relative z-10">7</span><div><p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-small);">納品</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">2</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">仕様・御見積り</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">3</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">取材・撮影など制作作業</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">4</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">構成案・仮編集版のご提出</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">デザイン・構成案の方向性のご確認</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">5</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">校正・修正</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">テロップ・CGなど</p></div></li>
+                  <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">6</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">データ入稿 / ナレーション取り</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">商品等デザイン発注 / ナレーション・映像の仕上がり確認</p></div></li>
+                  <li class="flex gap-[26px]"><span class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#004896] flex items-center justify-center font-inter font-bold text-[#004896] text-sm relative z-10">7</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">納品</p></div></li>
                 </ol>
               </div>
             </div>
@@ -450,11 +411,9 @@ import ContactSection from '../components/ContactSection.astro';
                   flex flex-row items-center justify-between
                   hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
           <div class="flex-1 pr-4">
-            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
-               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Strengths</p>
-            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">私たちの強み</h3>
-            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
-               style="font-size: var(--fs-small);">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Strengths</p>
+            <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">私たちの強み</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
               多彩なイベント・式典をサポートしてきた私たちの強みをご紹介します。
             </p>
           </div>
@@ -471,11 +430,9 @@ import ContactSection from '../components/ContactSection.astro';
                   flex flex-row items-center justify-between
                   hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
           <div class="flex-1 pr-4">
-            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
-               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Works</p>
-            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">取引実績</h3>
-            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
-               style="font-size: var(--fs-small);">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Works</p>
+            <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">取引実績</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
               行政機関をはじめ、多くの地域の皆様との豊富な取引実績をご紹介します。
             </p>
           </div>
@@ -492,11 +449,9 @@ import ContactSection from '../components/ContactSection.astro';
                   flex flex-row items-center justify-between
                   hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
           <div class="flex-1 pr-4">
-            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
-               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">About Us</p>
-            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">会社概要</h3>
-            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
-               style="font-size: var(--fs-small);">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">About Us</p>
+            <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">会社概要</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
               株式会社イトピックの企業理念や代表挨拶、会社概要をご紹介します。
             </p>
           </div>
@@ -519,165 +474,114 @@ import ContactSection from '../components/ContactSection.astro';
 
 <script>
   // ================================================================
-  // service.astro — GSAP 高度アニメーション ver.2
-  // 1. #service-hero-02: 強烈なパララックス + PC 2カラム大胆フェードイン
-  // 2. #attached-services: 画像コード分解・バラバラ組み上がり演出
+  // service.astro — GSAP アニメーション
+  // 1. #service-hero-02: PC 2カラム 左右からのシンプルフェードイン
+  // 2. #attached-services: 画像シャッターリバール + テキスト左スライド
   // ================================================================
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
 
-  // ──────────────────────────────────────────────────────────────────
-  // 1-A. 背景パララックス ― 「明確な速度差」でスクロールに連動
-  //      yPercent: +25 → -25 = 合計 50% の差 → 手前コンテンツと
-  //      明らかに違う速度で動く交差感を生み出す
-  // ──────────────────────────────────────────────────────────────────
-  const heroBgImg   = document.querySelector<HTMLElement>('#svc-hero-bg-img');
-  const heroSection = document.querySelector<HTMLElement>('#service-hero-02');
+  let serviceMm: ReturnType<typeof gsap.matchMedia> | null = null;
 
-  if (heroBgImg && heroSection) {
-    // scale: 1.35 → 上下に余裕を持たせ、大きく動かしても白隙間ゼロ
-    gsap.set(heroBgImg, { scale: 1.35, transformOrigin: 'center center' });
-    gsap.fromTo(heroBgImg,
-      { yPercent: 25 },
-      {
-        yPercent: -25,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroSection,
-          start: 'top bottom',   // セクション天端が画面下端に入ったとき開始
-          end:   'bottom top',   // セクション下端が画面上端を越えたとき終了
-          scrub: true,           // スクロールに完全同期
-        },
+  function initServiceAnimations() {
+    if (!document.querySelector('[data-page="service"]')) return;
+    if (serviceMm) serviceMm.revert();
+    serviceMm = gsap.matchMedia();
+
+    // ═══════════════════════════════════════════════════════════════════
+    // PC ONLY
+    // ═══════════════════════════════════════════════════════════════════
+    serviceMm.add('(min-width: 1024px)', function () {
+
+      const pcWrap = document.querySelector<HTMLElement>('.hero-content-wrap');
+      const pcImg  = document.querySelector<HTMLElement>('#svc-hero-pc-img');
+      const pcTxt  = document.querySelector<HTMLElement>('#svc-hero-pc-txt');
+
+      if (pcWrap && pcImg && pcTxt) {
+        gsap.set(pcImg, { opacity: 0, x: -48 });
+        gsap.set(pcTxt, { opacity: 0, x: 48 });
+
+        const tlHero = gsap.timeline({
+          scrollTrigger: { trigger: pcWrap, start: 'top 80%', once: true },
+        });
+        tlHero
+          .to(pcImg, { opacity: 1, x: 0, duration: 0.8, ease: 'power2.out' })
+          .to(pcTxt, { opacity: 1, x: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5');
       }
-    );
-  }
 
-  // ──────────────────────────────────────────────────────────────────
-  // レスポンシブ分岐: PC (≥1024px) で大迫力エフェクト、SP はシンプル
-  // ──────────────────────────────────────────────────────────────────
-  const mm = gsap.matchMedia();
+      function buildShutterReveal(card: HTMLElement) {
+        const imgCol = card.querySelector<HTMLElement>('.svc-card-img-col');
+        if (!imgCol) return;
+        const img = imgCol.querySelector<HTMLElement>('img');
+        if (!img) return;
 
-  // ═══════════════════════════════════════════════════════════════════
-  // PC ONLY
-  // ═══════════════════════════════════════════════════════════════════
-  mm.add('(min-width: 1024px)', function () {
+        gsap.set(img, {
+          clipPath: 'inset(0 100% 0 0 round 4px)',
+          scale: 1.08,
+          transformOrigin: 'center center',
+        });
 
-    // ────────────────────────────────────────────────────────────────
-    // 1-B. PC 2カラム: 左写真が先に大きく浮き上がり、右テキストが
-    //      続けて時間差で登場 ― 単なるフェードより立体的な入場感
-    // ────────────────────────────────────────────────────────────────
-    const pcWrap = document.querySelector<HTMLElement>('.hero-content-wrap');
-    const pcImg  = document.querySelector<HTMLElement>('#svc-hero-pc-img');
-    const pcTxt  = document.querySelector<HTMLElement>('#svc-hero-pc-txt');
+        gsap.to(img, {
+          clipPath: 'inset(0 0% 0 0 round 4px)',
+          scale: 1,
+          duration: 1.2,
+          ease: 'power4.inOut',
+          scrollTrigger: {
+            trigger: imgCol,
+            start: 'top 78%',
+            once: true,
+          },
+        });
+      }
 
-    if (pcWrap && pcImg && pcTxt) {
-      // 初期状態: 下に沈んでいる + 少しスケールダウン
-      gsap.set(pcImg, { opacity: 0, y: 90, scale: 0.94 });
-      gsap.set(pcTxt.querySelectorAll<HTMLElement>(':scope > *'), { opacity: 0, y: 60, x: 30 });
-
-      const tlHero = gsap.timeline({
-        scrollTrigger: { trigger: pcWrap, start: 'top 80%', once: true },
-      });
-      tlHero
-        // 左: 写真が勢いよく浮き上がりながらスケールが戻る
-        .to(pcImg, {
-          opacity: 1, y: 0, scale: 1,
-          duration: 1.2, ease: 'power3.out',
-        })
-        // 右: 見出し〜段落が斜め方向から飛び込む
-        .to(
-          pcTxt.querySelectorAll<HTMLElement>(':scope > *'),
-          { opacity: 1, y: 0, x: 0, duration: 1.0, ease: 'power3.out', stagger: 0.15 },
-          '-=0.8'
+      function animateTextCol(card: HTMLElement) {
+        const txtCol = card.querySelector<HTMLElement>('.svc-card-txt-col');
+        if (!txtCol) return;
+        gsap.fromTo(txtCol,
+          { opacity: 0, x: -40 },
+          {
+            opacity: 1, x: 0,
+            duration: 0.8, ease: 'power2.out',
+            scrollTrigger: { trigger: card, start: 'top 76%', once: true },
+          }
         );
-    }
+      }
 
-    // ────────────────────────────────────────────────────────────────
-    // 2. #attached-services 画像シャッターリバール
-    //    - clip-path: inset(0 100% 0 0) → inset(0 0% 0 0) で
-    //      右端からシャッターが開くように画像を表示
-    //    - scale と組み合わせて奥行き感を演出
-    // ────────────────────────────────────────────────────────────────
-    function buildShutterReveal(card: HTMLElement) {
-      const imgCol = card.querySelector<HTMLElement>('.svc-card-img-col');
-      if (!imgCol) return;
-      const img = imgCol.querySelector<HTMLElement>('img');
-      if (!img) return;
-
-      // 初期状態: 右端から完全に覆われ、わずかにズームアウト
-      gsap.set(img, {
-        clipPath: 'inset(0 100% 0 0 round 4px)',
-        scale: 1.08,
-        transformOrigin: 'center center',
-      });
-
-      // シャッターが左へ開きながらスケールが戻る
-      gsap.to(img, {
-        clipPath: 'inset(0 0% 0 0 round 4px)',
-        scale: 1,
-        duration: 1.2,
-        ease: 'power4.inOut',
-        scrollTrigger: {
-          trigger: imgCol,
-          start: 'top 78%',
-          once: true,
-        },
-      });
-    }
-
-    // テキスト列は左から飛び込む + 画像と同時スタート
-    function animateTextCol(card: HTMLElement) {
-      const txtCol = card.querySelector<HTMLElement>('.svc-card-txt-col');
-      if (!txtCol) return;
-      gsap.set(txtCol.querySelectorAll<HTMLElement>(':scope > *'), { opacity: 0, x: -40, y: 20 });
-      gsap.to(txtCol.querySelectorAll<HTMLElement>(':scope > *'), {
-        opacity: 1, x: 0, y: 0,
-        duration: 0.9, ease: 'power2.out',
-        stagger: 0.12,
-        scrollTrigger: { trigger: card, start: 'top 76%', once: true },
-        delay: 0.25,
-      });
-    }
-
-    // 画像・テキスト両方セットアップ
-    const setupAll = () => {
       ['design', 'novelty', 'video'].forEach(function (id) {
         const card = document.getElementById(id);
         if (!card) return;
         buildShutterReveal(card);
         animateTextCol(card);
       });
-    };
 
-    // すでに全リソース読込済みなら即実行
-    if (document.readyState === 'complete') {
-      setupAll();
-    } else {
-      window.addEventListener('load', setupAll, { once: true });
-    }
+    }); // end PC
 
-  }); // end PC
-
-  // ═══════════════════════════════════════════════════════════════════
-  // SP ONLY: シンプルだが気持ちいいフェードイン
-  // ═══════════════════════════════════════════════════════════════════
-  mm.add('(max-width: 1023px)', function () {
-    ['design', 'novelty', 'video'].forEach(function (id) {
-      const card = document.getElementById(id);
-      if (!card) return;
-      gsap.set(card, { opacity: 0, y: 40 });
-      gsap.to(card, {
-        opacity: 1, y: 0, duration: 0.9, ease: 'power2.out',
-        scrollTrigger: { trigger: card, start: 'top 88%', once: true },
+    // ═══════════════════════════════════════════════════════════════════
+    // SP ONLY
+    // ═══════════════════════════════════════════════════════════════════
+    serviceMm.add('(max-width: 1023px)', function () {
+      ['design', 'novelty', 'video'].forEach(function (id) {
+        const card = document.getElementById(id);
+        if (!card) return;
+        gsap.set(card, { opacity: 0, y: 40 });
+        gsap.to(card, {
+          opacity: 1, y: 0, duration: 0.9, ease: 'power2.out',
+          scrollTrigger: { trigger: card, start: 'top 88%', once: true },
+        });
       });
-    });
-  }); // end SP
+    }); // end SP
+  }
+
+  document.addEventListener('astro:page-load', initServiceAnimations);
 </script>
 
 <script>
-  (function () {
+  function initServiceAccordion() {
+    if (!document.querySelector('[data-page="service"]')) return;
     document.querySelectorAll<HTMLButtonElement>('.accordion-trigger').forEach(function (btn) {
+      if (btn.dataset.accordionBound === 'true') return;
+      btn.dataset.accordionBound = 'true';
       btn.addEventListener('click', function () {
         const panelId = btn.getAttribute('data-target')!;
         const panel = document.getElementById(panelId)!;
@@ -697,5 +601,7 @@ import ContactSection from '../components/ContactSection.astro';
         }
       });
     });
-  })();
+  }
+
+  document.addEventListener('astro:page-load', initServiceAccordion);
 </script>

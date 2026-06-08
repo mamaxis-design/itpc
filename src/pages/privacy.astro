@@ -1,6 +1,11 @@
 ---
+import { Image, getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
+import ibarakiBg from '../assets/images/ibaraki_bg.png';
+import privacyMb from '../assets/images/privacy_mb.png';
+
+const ogImageSrc = (await getImage({ src: privacyMb, width: 1200 })).src;
 
 const articles = [
   {
@@ -46,121 +51,86 @@ const articles = [
   },
 ];
 ---
-<Layout title="プライバシーポリシー | 株式会社 イトピック">
+<Layout
+  title="プライバシーポリシー | 株式会社 イトピック"
+  description="株式会社イトピックの個人情報保護方針。個人情報の取得・利用目的、第三者提供の制限、安全管理措置など、お客様の個人情報を適切に保護するための基本方針と取り組みを掲載しています。"
+  ogType="article"
+  ogImage={ogImageSrc}
+>
 <main>
 
-  <!-- =============================================
-       PAGE HERO
-  ============================================== -->
   <section
     id="page-hero-privacy"
-    class="w-full bg-white relative overflow-hidden"
-    style="max-height: 455px; min-height: clamp(200px, 28vw, 455px);"
+    class="w-full bg-white relative overflow-hidden max-h-[455px] min-h-[clamp(200px,28vw,455px)]"
   >
     <div
-      class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none"
-      style="left: 50%; transform: translateX(-50%); z-index: 0;"
+      class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0"
       aria-hidden="true"
     >
-      <div class="absolute top-0 right-0"
-           style="width: clamp(260px, 28vw, 420px); height: clamp(260px, 28vw, 420px); opacity: 0.55;">
-        <img src="/images/ibaraki_bg.png" alt=""
-             class="w-full h-full object-contain object-right-top" />
+      <div class="absolute top-0 right-0 w-[clamp(260px,28vw,420px)] h-[clamp(260px,28vw,420px)] opacity-[0.55]">
+        <Image src={ibarakiBg} alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div
-      class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
-      style="min-height: clamp(200px, 28vw, 455px);"
-    >
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
-         style="font-size: var(--fs-small); letter-spacing: 0.18em;">Privacy Policy</p>
-      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
-          style="font-size: var(--fs-display);">プライバシーポリシー</h1>
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0 min-h-[clamp(200px,28vw,455px)]">
+      <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">Privacy Policy</p>
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"  style="font-size: var(--fs-display);">プライバシーポリシー</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
           <li>
             <a href="/"
-               class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"
-               style="font-size: var(--fs-small);">ホーム</a>
+               class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"  style="font-size: var(--fs-small);">ホーム</a>
           </li>
-          <li class="font-noto font-medium text-[#333333]"
-              style="font-size: var(--fs-small);" aria-hidden="true">&gt;</li>
-          <li class="font-noto font-medium text-[#333333]"
-              style="font-size: var(--fs-small);" aria-current="page">プライバシーポリシー</li>
+          <li class="font-noto font-medium text-[#333333]"  aria-hidden="true" style="font-size: var(--fs-small);">&gt;</li>
+          <li class="font-noto font-medium text-[#333333]"  aria-current="page" style="font-size: var(--fs-small);">プライバシーポリシー</li>
         </ol>
       </nav>
     </div>
   </section>
 
-  <!-- =============================================
-       MAIN VISUAL
-  ============================================== -->
-  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
-    <img src="/images/privacy_mb.png" alt="プライバシーポリシーメインビジュアル"
-         loading="eager"
-         class="absolute inset-0 w-full h-full object-cover object-center" />
+  <div data-mv-parallax class="relative w-full overflow-hidden h-[clamp(240px,40vw,600px)]">
+    <Image src={privacyMb} alt="プライバシーポリシーメインビジュアル"
+           loading="eager"
+           class="mv-parallax-img absolute w-full object-cover object-center" />
   </div>
 
-  <!-- =============================================
-       INTRO
-  ============================================== -->
   <section class="w-full bg-[#F0F6FA] section-md">
     <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0 flex flex-col items-center text-center">
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-8 opacity-70"
-         style="font-size: var(--fs-small); letter-spacing: 0.22em;">Our Commitment</p>
-      <h2 class="font-noto font-bold text-[#004896] leading-tight mb-10"
-          style="font-size: var(--fs-h2);">個人情報保護方針</h2>
-      <p class="font-noto font-medium leading-loose max-w-2xl mx-auto text-center opacity-90 px-6"
-         style="font-size: var(--fs-body-lg);">
+      <p class="font-inter font-bold text-[#4982C2] tracking-[0.22em] mb-6 md:mb-8 opacity-70"  style="font-size: var(--fs-small);">Our Commitment</p>
+      <h2 class="font-noto font-bold text-[#004896] leading-tight mb-10"  style="font-size: var(--fs-h2);">個人情報保護方針</h2>
+      <p class="font-noto font-medium leading-loose max-w-2xl mx-auto text-left opacity-90 px-6"  style="font-size: var(--fs-body-lg);">
         株式会社イトピック（以下「当社」）は、お客様の個人情報保護を重要な経営課題と位置づけ、以下の方針に基づき個人情報の適切な保護に努めます。
       </p>
     </div>
   </section>
 
-  <!-- =============================================
-       ARTICLES
-  ============================================== -->
   <section class="w-full bg-white section-lg">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
 
-      <!-- セクションヘッダー -->
       <div data-a="fade" class="mb-14 lg:mb-20">
-        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
-           style="font-size: var(--fs-small); letter-spacing: 0.18em;">Articles</p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight"
-            style="font-size: var(--fs-h3);">各条項</h2>
+        <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">Articles</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h3);">各条項</h2>
       </div>
 
-      <!-- 条項リスト -->
       <div class="border-t border-[#E0E6EF]">
         {articles.map((article) => (
-          <div data-a="fade" class="grid grid-cols-1 md:grid-cols-[500px_1fr]
-                      border-b border-[#E0E6EF]
-                      py-10 md:py-14
-                      gap-4 md:gap-x-20 md:gap-y-0">
+          <div data-a="fade" class="grid grid-cols-1 md:grid-cols-[500px_1fr] border-b border-[#E0E6EF] py-10 md:py-14 gap-4 md:gap-x-20 md:gap-y-0">
 
-            <!-- 左：条番号 ＋ 条タイトル -->
             <div class="flex flex-col gap-2">
-              <span class="font-inter font-bold text-[#D1D9E6]"
-                    style="font-size: var(--fs-h1); line-height: 1;">
+              <span class="font-inter font-bold text-[#D1D9E6] leading-none"  style="font-size: var(--fs-h1);">
                 {article.num}
               </span>
-              <p class="font-noto font-bold text-[#004896]"
-                 style="font-size: var(--fs-h4); line-height: 1.5;">
+              <p class="font-noto font-bold text-[#004896] leading-normal"  style="font-size: var(--fs-h4);">
                 {article.title}
               </p>
             </div>
 
-            <!-- 右：本文 -->
             <div class="flex flex-col justify-center">
               {article.isContact ? (
                 <div>
-                  <p class="font-noto font-medium text-[#333333] leading-loose mb-5"
-                     style="font-size: var(--fs-body);">
+                  <p class="font-noto font-medium text-[#333333] leading-loose mb-5"  style="font-size: var(--fs-body);">
                     {article.body}
                   </p>
-                  <div class="grid gap-x-4 gap-y-3 font-noto font-medium text-[#333333]"
-                       style="grid-template-columns: 5.5rem 1fr; font-size: var(--fs-body);">
+                  <div class="grid gap-x-4 gap-y-3 font-noto font-medium text-[#333333] grid-cols-[5.5rem_1fr]"  style="font-size: var(--fs-body);">
                     <span class="text-[#004896] font-bold">社名</span>
                     <span>株式会社イトピック</span>
                     <span class="text-[#004896] font-bold">所在地</span>
@@ -184,14 +154,12 @@ const articles = [
                 </div>
               ) : article.items ? (
                 <div>
-                  <p class="font-noto font-medium text-[#333333] leading-loose mb-5"
-                     style="font-size: var(--fs-body);">
+                  <p class="font-noto font-medium text-[#333333] leading-loose mb-5"  style="font-size: var(--fs-body);">
                     {article.body}
                   </p>
                   <ul class="space-y-3">
                     {article.items.map((item: string) => (
-                      <li class="flex items-start gap-2 font-noto font-medium text-[#333333] leading-relaxed"
-                          style="font-size: var(--fs-body);">
+                      <li class="flex items-start gap-2 font-noto font-medium text-[#333333] leading-relaxed"  style="font-size: var(--fs-body);">
                         <span class="flex-shrink-0 text-[#4982C2] font-bold mt-0.5" aria-hidden="true">・</span>
                         <span>{item}</span>
                       </li>
@@ -199,8 +167,7 @@ const articles = [
                   </ul>
                 </div>
               ) : (
-                <p class="font-noto font-medium text-[#333333] leading-loose"
-                   style="font-size: var(--fs-body);">
+                <p class="font-noto font-medium text-[#333333] leading-loose"  style="font-size: var(--fs-body);">
                   {article.body}
                 </p>
               )}
@@ -210,15 +177,11 @@ const articles = [
         ))}
       </div>
 
-      <!-- 制定日 -->
-      <div class="mt-14 lg:mt-20 flex flex-col sm:flex-row sm:items-center sm:justify-between
-                  gap-4 pt-8 border-t border-[#E0E6EF]">
-        <p class="font-noto font-medium text-[#999999]"
-           style="font-size: var(--fs-caption);">
-          制定日：2020年4月1日　／　最終改定日：2026年1月1日
+      <div class="mt-14 lg:mt-20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-8 border-t border-[#E0E6EF]">
+        <p class="font-noto font-medium text-[#999999]"  style="font-size: var(--fs-caption);">
+          制定日：2020年4月1日　/　最終改定日：2026年1月1日
         </p>
-        <p class="font-noto font-bold text-[#333333]"
-           style="font-size: var(--fs-small);">
+        <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-small);">
           株式会社イトピック　代表取締役　藤田 和男
         </p>
       </div>

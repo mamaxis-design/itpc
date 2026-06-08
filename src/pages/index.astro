@@ -1,57 +1,91 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import { SITE_ORIGIN } from '../consts/site';
 import { getLatestNews, formatDate, formatDatetime } from '../lib/microcms';
+import mbBg from '../assets/images/mb_bg.jpg';
+import mb01 from '../assets/images/mb_01.jpg';
+import mb02 from '../assets/images/mb_02.png';
+import mb03 from '../assets/images/mb_03.jpg';
+import ibarakiMap from '../assets/images/ibaraki-map.png';
+import servicesMain from '../assets/images/services_main.JPG';
+import services301 from '../assets/images/services_3_01.jpg';
+import services302 from '../assets/images/services_3_02.png';
+import services303 from '../assets/images/services_3_03.jpg';
+import worksBg from '../assets/images/works_bg.jpg';
+import koumon from '../assets/images/koumon.jpg';
+import oneStop from '../assets/images/one-stop.png';
+import companyMain from '../assets/images/company_main.jpg';
+import contactBg from '../assets/images/contact_bg.png';
 
 const latestNews = await getLatestNews(3);
+
+const description =
+  '茨城県水戸市の株式会社イトピック公式サイト。創業35年超の実績で式典・イベントの企画運営から映像制作・デザイン・ノベルティまで、行政機関・自治体向けクリエイティブをワンストップでご提供します。';
+
+const siteUrl = `${SITE_ORIGIN}/`;
+const logoUrl = `${SITE_ORIGIN}/images/itpc-logo.svg`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: '株式会社イトピック',
+  description,
+  url: siteUrl,
+  logo: logoUrl,
+  image: logoUrl,
+  telephone: '029-253-4387',
+  address: {
+    '@type': 'PostalAddress',
+    postalCode: '311-4163',
+    addressRegion: '茨城県',
+    addressLocality: '水戸市',
+    streetAddress: '加倉井町341-6',
+    addressCountry: 'JP',
+  },
+};
 ---
-<Layout title="株式会社 イトピック | ITPIC">
-<main>
+<Layout
+  title="株式会社 イトピック | ITPIC"
+  description={description}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+<main data-page="index">
 
   <!-- =============================================
        HERO / MAIN VISUAL
   ============================================== -->
   <section
     id="hero"
-    class="relative w-full overflow-hidden"
-    style="min-height: 600px; max-height: 1200px;"
+    class="relative w-full overflow-hidden min-h-[600px] max-h-[1200px]"
     aria-label="メインビジュアル"
   >
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style="background-image: url('/images/mb_bg.jpg');"
-      aria-hidden="true"
-    ></div>
-    <div
-      class="absolute inset-0"
-      style="background: linear-gradient(to right, rgba(8,20,55,0.92) 0%, rgba(8,20,55,0.82) 35%, rgba(8,20,55,0.55) 58%, rgba(8,20,55,0.10) 100%);"
-      aria-hidden="true"
-    ></div>
+    <div class="absolute inset-0 -z-10" aria-hidden="true">
+      <Image src={mbBg} alt="" class="w-full h-full object-cover object-center" />
+    </div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(8,20,55,0.92)_0%,rgba(8,20,55,0.82)_35%,rgba(8,20,55,0.55)_58%,rgba(8,20,55,0.10)_100%)]" aria-hidden="true"></div>
 
     <div
-      class="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-stretch px-6 md:px-8 lg:pl-[60px] lg:pr-0"
-      style="min-height: 600px; max-height: 1200px; gap: 0;"
+      class="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-stretch px-6 md:px-8 lg:pl-[60px] lg:pr-0 min-h-[600px] max-h-[1200px] gap-0"
     >
       <!-- LEFT -->
       <div
-        class="w-full flex flex-col justify-center py-16 lg:py-20 xl:py-28"
-        style="flex: 0 0 55%; min-width: 0;"
+        class="w-full flex flex-col justify-center py-16 lg:py-20 xl:py-28 flex-[0_0_55%] min-w-0"
       >
         <p
-          class="font-inter font-bold text-[#4982C2] mb-6 md:mb-8"
-          style="font-size: var(--fs-body-lg); letter-spacing: 3px;"
-        >
+          class="font-inter font-bold text-[#4982C2] mb-6 md:mb-8 tracking-[3px]" 
+         style="font-size: var(--fs-body-lg);">
           Event Planning &amp; Production
         </p>
         <h1
-          class="font-noto font-bold text-white leading-tight mb-8 md:mb-10 w-full"
-          style="font-size: var(--fs-display); line-height: 1.5; letter-spacing: 2.05px;"
-        >
+          class="font-noto font-bold text-white leading-tight mb-8 md:mb-10 w-full leading-normal tracking-[2.05px]" 
+         style="font-size: var(--fs-display);">
           <span class="text-[#4982C2]">35年超</span>の実績と創造力で、<br class="hidden lg:block" />茨城の魅力を次世代へ。
         </h1>
         <div
-          class="font-noto font-medium text-white mb-10 md:mb-14 space-y-1"
-          style="font-size: var(--fs-body-lg); line-height: 2.0; letter-spacing: 1.15px;"
-        >
+          class="font-noto font-medium text-white mb-10 md:mb-14 space-y-1 leading-[2.0] tracking-[1.15px]" 
+         style="font-size: var(--fs-body-lg);">
           <p>茨城の魅力発信と地域活性化に、</p>
           <p>長年取り組んできました。</p>
           <p>培ってきた確かな技術で、</p>
@@ -60,9 +94,8 @@ const latestNews = await getLatestNews(3);
         <div>
           <a
             href="/contact"
-            class="font-noto font-bold text-white bg-[#4982C2] hover:bg-[#3a6eaa] transition-colors duration-300 inline-flex items-center justify-center gap-3 w-[60%] lg:w-full lg:max-w-[438px] rounded-[32px] py-4 px-8"
-            style="font-size: var(--fs-body-lg);"
-          >
+            class="font-noto font-bold text-white bg-[#4982C2] hover:bg-[#3a6eaa] transition-colors duration-300 inline-flex items-center justify-center gap-3 w-[70%] lg:w-full lg:max-w-[438px] rounded-[32px] py-4 px-8" 
+           style="font-size: var(--fs-body-lg);">
             ご相談窓口はこちら
             <span class="font-inter font-bold text-xl">→</span>
           </a>
@@ -71,58 +104,55 @@ const latestNews = await getLatestNews(3);
 
       <!-- RIGHT: 縦スクロール画像 (PC) -->
       <div
-        class="hidden lg:flex items-start self-stretch overflow-hidden pr-[80px]"
-        style="flex: 1 1 0%; min-width: 0; padding-left:0;"
+        class="hidden lg:flex items-start self-stretch overflow-hidden pr-[80px] flex-[1_1_0%] min-w-0 pl-0"
         aria-hidden="true"
       >
         <div
-          class="marquee-track flex flex-col gap-[60px] pt-4 pb-4 w-full"
-          style="animation: marquee-vertical 18s linear infinite; animation-play-state: running;"
+          class="marquee-track flex flex-col gap-[60px] pt-4 pb-4 w-full animate-marquee-vertical"
         >
           <div class="w-full overflow-hidden">
-            <img src="/images/mb_01.jpg" alt="実績写真1" class="object-cover w-full h-auto" />
+            <Image src={mb01} alt="実績写真1" class="object-cover w-full h-auto" />
           </div>
           <div class="w-full overflow-hidden">
-            <img src="/images/mb_02.png" alt="実績写真2" class="object-cover w-full h-auto" />
+            <Image src={mb02} alt="実績写真2" class="object-cover w-full h-auto" />
           </div>
           <div class="w-full overflow-hidden">
-            <img src="/images/mb_03.jpg" alt="実績写真3" class="object-cover w-full h-auto" />
+            <Image src={mb03} alt="実績写真3" class="object-cover w-full h-auto" />
           </div>
           <div class="w-full overflow-hidden">
-            <img src="/images/mb_01.jpg" alt="" class="object-cover w-full h-auto" aria-hidden="true" />
+            <Image src={mb01} alt="" class="object-cover w-full h-auto" aria-hidden="true" />
           </div>
           <div class="w-full overflow-hidden">
-            <img src="/images/mb_02.png" alt="" class="object-cover w-full h-auto" aria-hidden="true" />
+            <Image src={mb02} alt="" class="object-cover w-full h-auto" aria-hidden="true" />
           </div>
           <div class="w-full overflow-hidden">
-            <img src="/images/mb_03.jpg" alt="" class="object-cover w-full h-auto" aria-hidden="true" />
+            <Image src={mb03} alt="" class="object-cover w-full h-auto" aria-hidden="true" />
           </div>
         </div>
       </div>
 
       <!-- SP: 自動横マーキー（右→左 無限スクロール） -->
       <div class="lg:hidden w-full overflow-hidden pb-8 pt-4" aria-hidden="true">
-        <div class="flex gap-4"
-             style="width: max-content; animation: marquee-horizontal 14s linear infinite;">
+        <div class="flex gap-4 w-max animate-[marquee-horizontal_14s_linear_infinite]">
           <!-- オリジナル3枚 -->
-          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
-            <img src="/images/mb_01.jpg" alt="実績写真1" class="object-cover w-full h-full" />
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+            <Image src={mb01} alt="実績写真1" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
-            <img src="/images/mb_02.png" alt="実績写真2" class="object-cover w-full h-full" />
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+            <Image src={mb02} alt="実績写真2" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
-            <img src="/images/mb_03.jpg" alt="実績写真3" class="object-cover w-full h-full" />
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+            <Image src={mb03} alt="実績写真3" class="object-cover w-full h-full" />
           </div>
           <!-- 複製3枚（シームレスループ用） -->
-          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
-            <img src="/images/mb_01.jpg" alt="" class="object-cover w-full h-full" />
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+            <Image src={mb01} alt="" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
-            <img src="/images/mb_02.png" alt="" class="object-cover w-full h-full" />
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+            <Image src={mb02} alt="" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg" style="width: 72vw; height: 200px;">
-            <img src="/images/mb_03.jpg" alt="" class="object-cover w-full h-full" />
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+            <Image src={mb03} alt="" class="object-cover w-full h-full" />
           </div>
         </div>
       </div>
@@ -137,24 +167,15 @@ const latestNews = await getLatestNews(3);
   ============================================== -->
   <section id="services" class="w-full bg-[#F0F6FA] overflow-hidden">
 
-    <div class="relative max-w-[1440px] mx-auto px-6 md:px-8 xl:pl-0 xl:pr-[120px]"
-     style="padding-top: var(--sp-section-lg); padding-bottom: var(--sp-section-sm);">
+    <div class="relative max-w-[1440px] mx-auto px-6 md:px-8 xl:pl-0 xl:pr-[120px] pt-[var(--sp-section-lg)] pb-[var(--sp-section-sm)]">
 
-      <div class="hidden lg:block absolute top-20 right-0 pointer-events-none"
-           style="width: 528px; height: 552px; z-index: 0;">
-        <img src="/images/ibaraki-map.png" alt="" aria-hidden="true"
-             class="w-full h-full object-contain" />
-        <div class="absolute" style="top: 53%; left: 65%;">
-          <span class="absolute rounded-full border border-[#4982C2]"
-                style="width:100px; height:100px; top:-45px; left:-45px;
-                       animation: ripple 3s ease-out 0s infinite;"></span>
-          <span class="absolute rounded-full border border-[#4982C2]"
-                style="width:100px; height:100px; top:-45px; left:-45px;
-                       animation: ripple 3s ease-out 1s infinite;"></span>
-          <span class="absolute rounded-full border border-[#4982C2]"
-                style="width:100px; height:100px; top:-45px; left:-45px;
-                       animation: ripple 3s ease-out 2s infinite;"></span>
-          <span class="relative flex h-3 w-3" style="margin-top:-1.5px; margin-left:-1.5px;">
+      <div class="hidden lg:block absolute top-20 right-0 pointer-events-none w-[528px] h-[552px] z-0">
+        <Image src={ibarakiMap} alt="" class="w-full h-full object-contain" aria-hidden="true" />
+        <div class="absolute top-[53%] left-[65%]" >
+          <span class="absolute rounded-full border border-[#4982C2] w-[100px] h-[100px] -top-[45px] -left-[45px] ripple-1"></span>
+          <span class="absolute rounded-full border border-[#4982C2] w-[100px] h-[100px] -top-[45px] -left-[45px] ripple-2"></span>
+          <span class="absolute rounded-full border border-[#4982C2] w-[100px] h-[100px] -top-[45px] -left-[45px] ripple-3"></span>
+          <span class="relative flex h-3 w-3 -mt-[1.5px] -ml-[1.5px]" >
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4982C2] opacity-70"></span>
             <span class="relative inline-flex rounded-full h-3 w-3 bg-[#004896] border border-white"></span>
           </span>
@@ -162,21 +183,17 @@ const latestNews = await getLatestNews(3);
       </div>
 
       <div class="relative z-10 max-w-[1030px]">
-        <p class="font-inter font-bold text-[#4982C2] mb-5 tracking-widest"
-           style="font-size: var(--fs-small);">
+        <p class="font-inter font-bold text-[#4982C2] mb-5 tracking-widest"  style="font-size: var(--fs-small);">
           Our Services
         </p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-7"
-            style="font-size: var(--fs-h1);">
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-7"  style="font-size: var(--fs-h1);">
           確かな実現力とサービス
         </h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose mb-10"
-           style="font-size: var(--fs-body-lg);">
+        <p class="font-noto font-medium text-[#333333] leading-loose mb-10"  style="font-size: var(--fs-body-lg);">
           株式会社イトピックでは、式典・イベントの企画運営を中心に、映像制作・デザイン制作・ノベルティ手配まで、プロジェクトに必要な幅広いクリエイティブをワンストップでご提供しています。
         </p>
         <a href="/service"
-           class="group font-noto font-medium text-white inline-flex items-center gap-3 px-8 py-4 rounded-[15px] transition-opacity duration-300 hover:opacity-90"
-           style="background: linear-gradient(to right, #4982C2, #004896); font-size: var(--fs-body);">
+           class="group font-noto font-medium text-white inline-flex items-center gap-3 px-8 py-4 rounded-[15px] transition-opacity duration-300 hover:opacity-90 bg-[linear-gradient(to_right,#4982C2,#004896)]"  style="font-size: var(--fs-body);">
           事業内容はこちら
           <span class="font-inter font-bold inline-block transition-transform duration-300 group-hover:translate-x-2">→</span>
         </a>
@@ -184,36 +201,27 @@ const latestNews = await getLatestNews(3);
     </div>
 
     <!-- 中央：メインサービス（写真＋青ボックス） -->
-    <div class="w-full relative overflow-visible"
+    <div class="w-full relative overflow-visible mb-[var(--sp-section-md)]"
          data-service-hero
-         style="margin-bottom: var(--sp-section-md);">
-      <div class="flex flex-col lg:grid lg:items-center overflow-visible"
-           style="grid-template-columns: 7fr 5fr;">
-        <div class="w-full overflow-hidden" style="height: clamp(300px, 42vw, 756px);">
-          <img src="/images/services_main.JPG"
-               alt="式典・イベントの企画運営"
-               data-service-hero-img
-               class="w-full h-full object-cover object-center" />
+         >
+      <div class="flex flex-col lg:grid lg:items-center overflow-visible lg:grid-cols-[7fr_5fr]">
+        <div class="w-full overflow-hidden h-[clamp(300px,42vw,756px)]" >
+          <Image src={servicesMain} alt="式典・イベントの企画運営" class="w-full h-full object-cover object-center" data-service-hero-img />
         </div>
         <div class="w-full bg-[#004896] flex flex-col justify-center
                     px-10 py-14 lg:pl-14 lg:pr-[8vw] lg:py-16 lg:-ml-[6%] relative z-10
-                    rounded-none lg:rounded-l-[18px]"
-             style="min-height: clamp(280px, 32vw, 560px);"
+                    rounded-none lg:rounded-l-[18px] min-h-[clamp(280px,32vw,560px)]"
              data-service-hero-box
              id="services-blue-box">
-          <div class="hidden lg:block absolute inset-y-0 bg-[#004896] -z-10 pointer-events-none"
-               style="left: 18px; right: calc(-1 * (100vw - 100%) / 2 - 2px);"></div>
-          <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
-             style="font-size: var(--fs-caption); letter-spacing: 3px;">
+          <div class="hidden lg:block absolute inset-y-0 bg-[#004896] -z-10 pointer-events-none left-[18px] right-[calc(-1*(100vw-100%)/2-2px)]"></div>
+          <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 tracking-[3px]"  style="font-size: var(--fs-caption);">
             Main Service
           </p>
-          <h3 class="font-noto font-bold text-white leading-normal mb-5"
-              style="font-size: var(--fs-h3);">
+          <h3 class="font-noto font-bold text-white leading-normal mb-5"  style="font-size: var(--fs-h3);">
             式典・イベントの、<br />企画から運営までサポート。
           </h3>
           <div class="w-10 h-[2px] bg-[#4982C2] mb-6"></div>
-          <p class="font-noto font-medium text-white leading-loose"
-             style="font-size: var(--fs-body);">
+          <p class="font-noto font-medium text-white leading-loose"  style="font-size: var(--fs-body);">
             行政機関・自治体向けのイベント企画から運営まで、創業からの実績とノウハウで確かなサポートを提供します。記念式典、周年行事、地域イベントなど、あらゆる規模のプロジェクトに対応します。
           </p>
         </div>
@@ -221,10 +229,8 @@ const latestNews = await getLatestNews(3);
     </div>
 
     <!-- 下部：3カラム・サービスカード -->
-    <div class="max-w-[1440px] mx-auto px-6 md:px-8 pb-0"
-         style="margin-top: var(--sp-section-lg);">
-      <h3 class="font-noto font-bold text-[#004896] text-center"
-    style="font-size: var(--fs-h3); margin-bottom: var(--sp-gap-lg);">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-8 pb-0 mt-[var(--sp-section-lg)]">
+      <h3 class="font-noto font-bold text-[#004896] text-center mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h3);">
   イベント・式典に合わせて<br class="sm:hidden" />ご提供するサービス。
 </h3>
 
@@ -233,23 +239,19 @@ const latestNews = await getLatestNews(3);
       <div class="hidden lg:flex lg:flex-row lg:justify-center lg:gap-[75px]" data-card-row>
         <a href="/service#design"
            data-fade
-           class="group rounded-[15px] overflow-hidden flex flex-col shrink-0 bg-[#004896]"
-           style="width: 430px; height: 515px;">
-          <div class="relative overflow-hidden shrink-0" style="height: 400px;">
-            <img src="/images/services_3_01.jpg"
-     alt="デザイン・印刷"
-     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-     style="object-position: 50% 50%; transform: scale(1.35); transform-origin: 50% 50%;" />
+           class="group rounded-[15px] overflow-hidden flex flex-col shrink-0 bg-[#004896] w-[430px] h-[515px]">
+          <div class="relative overflow-hidden shrink-0 h-[400px]" >
+            <Image src={services301} alt="デザイン・印刷" class="w-full h-full object-cover object-center scale-[1.35] origin-center transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-[rgba(0,40,110,0.15)] to-transparent p-5">
-              <p class="font-noto font-medium text-white leading-relaxed" style="font-size: var(--fs-small);">
+              <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">
                 招待状、パンフレット、看板など、イベントに必要な各種デザイン・印刷物を制作します。
               </p>
             </div>
           </div>
           <div class="flex items-center justify-between px-5 flex-1 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1" style="font-size: var(--fs-small);">視覚で伝えるデザインと品質</p>
-              <p class="font-noto font-bold text-white" style="font-size: var(--fs-h4);">デザイン・印刷</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">視覚で伝えるデザインと品質</p>
+              <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h4);">デザイン・印刷</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center shrink-0 overflow-hidden">
               <span class="font-inter font-bold text-white text-sm inline-block transition-transform duration-300 group-hover:translate-x-2">→</span>
@@ -259,22 +261,19 @@ const latestNews = await getLatestNews(3);
 
         <a href="/service#novelty"
            data-fade
-           class="group rounded-[15px] overflow-hidden flex flex-col shrink-0 bg-[#004896]"
-           style="width: 430px; height: 515px;">
-          <div class="relative overflow-hidden shrink-0" style="height: 400px;">
-            <img src="/images/services_3_02.png"
-                 alt="ノベルティ・商品"
-                 class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+           class="group rounded-[15px] overflow-hidden flex flex-col shrink-0 bg-[#004896] w-[430px] h-[515px]">
+          <div class="relative overflow-hidden shrink-0 h-[400px]" >
+            <Image src={services302} alt="ノベルティ・商品" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-[rgba(0,40,110,0.15)] to-transparent p-5">
-              <p class="font-noto font-medium text-white leading-relaxed" style="font-size: var(--fs-small);">
+              <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">
                 記念品や配布物など、イベントの印象を残すノベルティをご提案します。
               </p>
             </div>
           </div>
           <div class="flex items-center justify-between px-5 flex-1 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1" style="font-size: var(--fs-small);">記憶に残るオリジナルグッズと価値</p>
-              <p class="font-noto font-bold text-white" style="font-size: var(--fs-h4);">ノベルティ・商品</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">記憶に残るオリジナルグッズと価値</p>
+              <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h4);">ノベルティ・商品</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center shrink-0 overflow-hidden">
               <span class="font-inter font-bold text-white text-sm inline-block transition-transform duration-300 group-hover:translate-x-2">→</span>
@@ -284,23 +283,19 @@ const latestNews = await getLatestNews(3);
 
         <a href="/service#video"
            data-fade
-           class="group rounded-[15px] overflow-hidden flex flex-col shrink-0 bg-[#004896]"
-           style="width: 430px; height: 515px;">
-          <div class="relative overflow-hidden shrink-0" style="height: 400px;">
-            <img src="/images/services_3_03.jpg"
-                 alt="映像制作"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                 style="object-position: 50% 30%;" />
+           class="group rounded-[15px] overflow-hidden flex flex-col shrink-0 bg-[#004896] w-[430px] h-[515px]">
+          <div class="relative overflow-hidden shrink-0 h-[400px]" >
+            <Image src={services303} alt="映像制作" class="w-full h-full object-cover object-[50%_30%] transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-[rgba(0,40,110,0.15)] to-transparent p-5">
-              <p class="font-noto font-medium text-white leading-relaxed" style="font-size: var(--fs-small);">
+              <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">
                 式典やイベントの記録映像から企業PR映像まで、目的に合わせた映像制作をご提供します。
               </p>
             </div>
           </div>
           <div class="flex items-center justify-between px-5 flex-1 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1" style="font-size: var(--fs-small);">イベントを未来へつなぐ記録</p>
-              <p class="font-noto font-bold text-white" style="font-size: var(--fs-h4);">映像制作</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">イベントを未来へつなぐ記録</p>
+              <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h4);">映像制作</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center shrink-0 overflow-hidden">
               <span class="font-inter font-bold text-white text-sm inline-block transition-transform duration-300 group-hover:translate-x-2">→</span>
@@ -313,24 +308,21 @@ const latestNews = await getLatestNews(3);
       <div class="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
         <!-- カード全体の高さを400pxに変更 -->
         <a href="/service#design"
-           class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px]"
-           style="height: 400px;">
+           class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px] h-[400px]">
           <!-- 画像エリアの高さを300pxに変更 -->
-         <div class="relative overflow-hidden shrink-0" style="height: 300px;">
+         <div class="relative overflow-hidden shrink-0 h-[300px]" >
   <!-- クラスから w-full h-full object-cover を削除し、styleで確実に130%拡大させて左上に固定しました -->
-  <img src="/images/services_3_01.jpg" alt="デザイン・印刷"
-       class="transition-transform duration-500 group-hover:scale-110"
-       style="width: 130%; height: 130%; object-fit: cover; object-position: 0% 0%;" />
+  <Image src={services301} alt="デザイン・印刷" class="w-[130%] h-[130%] object-cover object-[0%_0%] transition-transform duration-500 group-hover:scale-110" />
   <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-transparent to-transparent p-5">
-    <p class="font-noto font-medium text-white leading-relaxed" style="font-size: var(--fs-small);">招待状、パンフレット、看板など、イベントに必要な各種デザイン・印刷物を制作します。</p>
+    <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">招待状、パンフレット、看板など、イベントに必要な各種デザイン・印刷物を制作します。</p>
   </div>
 </div>
 
 
           <div class="bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300 flex items-center justify-between px-5 flex-1">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1" style="font-size: var(--fs-small);">提案で伝えるデザイン</p>
-              <p class="font-noto font-bold text-white" style="font-size: var(--fs-h3);">デザイン・印刷</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">視覚で伝えるデザインと品質</p>
+              <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h3);">デザイン・印刷</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center">
               <span class="font-inter font-bold text-white text-sm inline-block transition-transform duration-300 group-hover:translate-x-2">→</span>
@@ -340,20 +332,18 @@ const latestNews = await getLatestNews(3);
         
         <!-- カード全体の高さを400pxに変更 -->
         <a href="/service#novelty"
-           class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px]"
-           style="height: 400px;">
+           class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px] h-[400px]">
           <!-- 画像エリアの高さを300pxに変更 -->
-          <div class="relative overflow-hidden shrink-0" style="height: 300px;">
-            <img src="/images/services_3_02.png" alt="ノベルティ・商品"
-                 class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+          <div class="relative overflow-hidden shrink-0 h-[300px]" >
+            <Image src={services302} alt="ノベルティ・商品" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-transparent to-transparent p-5">
-              <p class="font-noto font-medium text-white leading-relaxed" style="font-size: var(--fs-small);">記念品や配布物など、イベントの印象を残すノベルティをご提案します。</p>
+              <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">記念品や配布物など、イベントの印象を残すノベルティをご提案します。</p>
             </div>
           </div>
           <div class="bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300 flex items-center justify-between px-5 flex-1">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1" style="font-size: var(--fs-small);">記憶に残るオリジナルグッズ</p>
-              <p class="font-noto font-bold text-white" style="font-size: var(--fs-h3);">ノベルティ・商品</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">記憶に残るオリジナルグッズと価値</p>
+              <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h3);">ノベルティ・商品</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center">
               <span class="font-inter font-bold text-white text-sm inline-block transition-transform duration-300 group-hover:translate-x-2">→</span>
@@ -363,21 +353,18 @@ const latestNews = await getLatestNews(3);
         
         <!-- カード全体の高さを400pxに変更 -->
         <a href="/service#video"
-           class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px]"
-           style="height: 400px;">
+           class="group rounded-[15px] overflow-hidden flex flex-col w-full max-w-[430px] h-[400px]">
           <!-- 画像エリアの高さを300pxに変更 -->
-          <div class="relative overflow-hidden shrink-0" style="height: 300px;">
-            <img src="/images/services_3_03.jpg" alt="映像制作"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                 style="object-position: 50% 30%;" />
+          <div class="relative overflow-hidden shrink-0 h-[300px]" >
+            <Image src={services303} alt="映像制作" class="w-full h-full object-cover object-[50%_30%] transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-transparent to-transparent p-5">
-              <p class="font-noto font-medium text-white leading-relaxed" style="font-size: var(--fs-small);">式典やイベントの記録映像から企業PR映像まで、目的に合わせた映像制作をご提供します。</p>
+              <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">式典やイベントの記録映像から企業PR映像まで、目的に合わせた映像制作をご提供します。</p>
             </div>
           </div>
           <div class="bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300 flex items-center justify-between px-5 flex-1">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1" style="font-size: var(--fs-small);">イベントを映像で記録する</p>
-              <p class="font-noto font-bold text-white" style="font-size: var(--fs-h3);">映像制作</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">イベントを未来へつなぐ記録</p>
+              <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h3);">映像制作</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center">
               <span class="font-inter font-bold text-white text-sm inline-block transition-transform duration-300 group-hover:translate-x-2">→</span>
@@ -390,15 +377,13 @@ const latestNews = await getLatestNews(3);
     </div>
 
     <!-- 横スクロール背景テキスト -->
-    <div class="w-full overflow-hidden" style="margin-top: var(--sp-section-sm);" aria-hidden="true">
-      <div class="whitespace-nowrap flex"
-           style="animation: marquee-horizontal 10s linear infinite; animation-play-state: running;">
-        <span class="font-inter font-bold text-[#E3EAF2] shrink-0"
-              style="font-size: clamp(50px, 11vw, 160px); line-height: 1.1; padding-right: 80px;">
+    <div class="w-full overflow-hidden mt-[var(--sp-section-sm)]"  aria-hidden="true">
+      <div class="whitespace-nowrap flex animate-[marquee-horizontal_10s_linear_infinite]">
+        <span class="font-inter font-bold text-[#E3EAF2] shrink-0 leading-[1.1] pr-20"  style="font-size: clamp(50px, 11vw, 160px);">
           We provide a one-stop service.
         </span>
-        <span class="font-inter font-bold text-[#E3EAF2] shrink-0" aria-hidden="true"
-              style="font-size: clamp(50px, 11vw, 160px); line-height: 1.1; padding-right: 80px;">
+        <span class="font-inter font-bold text-[#E3EAF2] shrink-0 leading-[1.1] pr-20"  aria-hidden="true"
+               style="font-size: clamp(50px, 11vw, 160px);">
           We provide a one-stop service.
         </span>
       </div>
@@ -413,28 +398,21 @@ const latestNews = await getLatestNews(3);
   ============================================== -->
   <section id="strengths" class="w-full bg-white relative overflow-hidden">
 
-    <div class="hidden lg:block absolute right-0 pointer-events-none select-none"
-         style="top: 270px; z-index: 0; writing-mode: vertical-rl; text-orientation: mixed; white-space: nowrap;"
+    <div class="hidden lg:block absolute right-0 pointer-events-none select-none top-[270px] z-0 [writing-mode:vertical-rl] [text-orientation:mixed] whitespace-nowrap"
          aria-hidden="true">
-      <span class="font-inter font-bold"
-            style="font-size: clamp(80px, 11vw, 160px); line-height: 1;
-                   color: #ffffff; paint-order: stroke fill;
-                   -webkit-text-stroke: 2px #99abca; letter-spacing: 0.08em;">Our Strengths</span>
+      <span class="font-inter font-bold leading-none text-white [paint-order:stroke_fill] [-webkit-text-stroke:2px_#99abca] tracking-[0.08em]"  style="font-size: clamp(80px, 11vw, 160px);">Our Strengths</span>
     </div>
 
     <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-8 section-lg">
 
       <div class="mb-10 lg:mb-28">
-        <p class="font-inter font-bold text-[#4982C2] mb-4 tracking-widest"
-           style="font-size: var(--fs-small);">
+        <p class="font-inter font-bold text-[#4982C2] mb-4 tracking-widest"  style="font-size: var(--fs-small);">
           Our Strengths
         </p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-7"
-            style="font-size: var(--fs-h1);">
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-7"  style="font-size: var(--fs-h1);">
           私たちの強み
         </h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose"
-           style="font-size: var(--fs-body-lg);">
+        <p class="font-noto font-medium text-[#333333] leading-loose"  style="font-size: var(--fs-body-lg);">
           1988年創業より、官公庁から企業まで数多くのイベント・式典を手がけてきました。<br class="hidden md:block" />
           その経験と信頼が、今も変わらず選ばれ続ける理由です。
         </p>
@@ -443,33 +421,24 @@ const latestNews = await getLatestNews(3);
       <!-- 01: 対応力 -->
       <div class="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-36 mb-20 lg:mb-40" data-strength="ltr">
         <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
-          <div class="relative w-full" style="padding-bottom: 75%;">
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden"
-                 style="transform: translate(16px, 16px);"></div>
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block"
-                 style="transform: translate(40px, 40px);"></div>
+          <div class="relative w-full pb-[75%]" >
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden translate-x-4 translate-y-4"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block translate-x-10 translate-y-10"></div>
             <div class="absolute inset-0 overflow-hidden rounded-[6px] z-10">
-              <img src="/images/mb_bg.jpg"
-                   alt="1988年創業の信頼・対応力"
-                   class="w-full h-full object-cover object-center" />
+              <Image src={mbBg} alt="1988年創業の信頼・対応力" class="w-full h-full object-cover object-center" />
             </div>
           </div>
         </div>
         <div class="flex-1 min-w-0 lg:pl-6" data-strength-text>
           <div class="flex items-baseline gap-4 mb-8">
-            <span class="font-inter font-bold text-[#004896]"
-                  style="font-size: var(--fs-display); line-height: 1;">01</span>
-            <span class="font-inter font-bold text-[#4982C2] tracking-widest"
-                  style="font-size: var(--fs-caption);">Reliability</span>
+            <span class="font-inter font-bold text-[#004896] leading-none"  style="font-size: var(--fs-display);">01</span>
+            <span class="font-inter font-bold text-[#4982C2] tracking-widest"  style="font-size: var(--fs-caption);">Reliability</span>
           </div>
           <div class="border-l-4 border-[#004896] pl-8 mb-8">
-            <p class="font-noto font-medium text-[#333333] mb-1"
-               style="font-size: var(--fs-small);">1988年創業の信頼</p>
-            <h3 class="font-noto font-bold text-[#004896] leading-tight"
-                style="font-size: var(--fs-h2);">対応力</h3>
+            <p class="font-noto font-medium text-[#333333] mb-1"  style="font-size: var(--fs-small);">1988年創業の信頼</p>
+            <h3 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h2);">対応力</h3>
           </div>
-          <p class="font-noto font-medium text-[#333333] leading-loose"
-             style="font-size: var(--fs-body);">
+          <p class="font-noto font-medium text-[#333333] leading-loose"  style="font-size: var(--fs-body);">
             1988年の創業以来、茨城県内の行政機関・自治体との取引実績を重ね、確かな信頼関係を築いてきました。35年を超える経験とノウハウが、プロジェクトの成功を支えます。
           </p>
         </div>
@@ -478,33 +447,24 @@ const latestNews = await getLatestNews(3);
       <!-- 02: 地域密着 -->
       <div class="flex flex-col lg:flex-row-reverse lg:items-center gap-10 lg:gap-36 mb-20 lg:mb-40" data-strength="rtl">
         <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
-          <div class="relative w-full" style="padding-bottom: 75%;">
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden"
-                 style="transform: translate(-16px, 16px);"></div>
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block"
-                 style="transform: translate(-40px, 40px);"></div>
+          <div class="relative w-full pb-[75%]" >
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden -translate-x-4 translate-y-4"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block -translate-x-10 translate-y-10"></div>
             <div class="absolute inset-0 overflow-hidden rounded-[6px] z-10">
-              <img src="/images/koumon.jpg"
-                   alt="茨城県に根ざした地域密着"
-                   class="w-full h-full object-cover object-center" />
+              <Image src={koumon} alt="茨城県に根ざした地域密着" class="w-full h-full object-cover object-center" />
             </div>
           </div>
         </div>
         <div class="flex-1 min-w-0 lg:pr-6" data-strength-text>
           <div class="flex items-baseline gap-4 mb-8">
-            <span class="font-inter font-bold text-[#004896]"
-                  style="font-size: var(--fs-display); line-height: 1;">02</span>
-            <span class="font-inter font-bold text-[#4982C2] tracking-widest"
-                  style="font-size: var(--fs-caption);">Regional Roots</span>
+            <span class="font-inter font-bold text-[#004896] leading-none"  style="font-size: var(--fs-display);">02</span>
+            <span class="font-inter font-bold text-[#4982C2] tracking-widest"  style="font-size: var(--fs-caption);">Regional Roots</span>
           </div>
           <div class="border-l-4 border-[#004896] pl-8 mb-8">
-            <p class="font-noto font-medium text-[#333333] mb-1"
-               style="font-size: var(--fs-small);">茨城県に根ざした</p>
-            <h3 class="font-noto font-bold text-[#004896] leading-tight"
-                style="font-size: var(--fs-h2);">地域密着</h3>
+            <p class="font-noto font-medium text-[#333333] mb-1"  style="font-size: var(--fs-small);">茨城県に根ざした</p>
+            <h3 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h2);">地域密着</h3>
           </div>
-          <p class="font-noto font-medium text-[#333333] leading-loose"
-             style="font-size: var(--fs-body);">
+          <p class="font-noto font-medium text-[#333333] leading-loose"  style="font-size: var(--fs-body);">
             水戸市を拠点に、県内全域のプロジェクトに迅速対応。地域特性を理解した提案力と、フットワークの軽さが強みです。地元ネットワークを活かしたスムーズな進行をお約束します。
           </p>
         </div>
@@ -513,33 +473,24 @@ const latestNews = await getLatestNews(3);
       <!-- 03: ワンストップ -->
       <div class="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-40" data-strength="ltr">
         <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
-          <div class="relative w-full" style="padding-bottom: 75%;">
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden"
-                 style="transform: translate(16px, 16px);"></div>
-            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block"
-                 style="transform: translate(40px, 40px);"></div>
+          <div class="relative w-full pb-[75%]" >
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] md:hidden translate-x-4 translate-y-4"></div>
+            <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden md:block translate-x-10 translate-y-10"></div>
             <div class="absolute inset-0 overflow-hidden rounded-[6px] z-10">
-              <img src="/images/one-stop.png"
-                   alt="企画から納品までワンストップ"
-                   class="w-full h-full object-cover object-center" />
+              <Image src={oneStop} alt="企画から納品までワンストップ" class="w-full h-full object-cover object-center" />
             </div>
           </div>
         </div>
         <div class="flex-1 min-w-0 lg:pl-6" data-strength-text>
           <div class="flex items-baseline gap-4 mb-8">
-            <span class="font-inter font-bold text-[#004896]"
-                  style="font-size: var(--fs-display); line-height: 1;">03</span>
-            <span class="font-inter font-bold text-[#4982C2] tracking-widest"
-                  style="font-size: var(--fs-caption);">One-Stop Service</span>
+            <span class="font-inter font-bold text-[#004896] leading-none"  style="font-size: var(--fs-display);">03</span>
+            <span class="font-inter font-bold text-[#4982C2] tracking-widest"  style="font-size: var(--fs-caption);">One-Stop Service</span>
           </div>
           <div class="border-l-4 border-[#004896] pl-8 mb-8">
-            <p class="font-noto font-medium text-[#333333] mb-1"
-               style="font-size: var(--fs-small);">企画から納品まで</p>
-            <h3 class="font-noto font-bold text-[#004896] leading-tight"
-                style="font-size: var(--fs-h2);">ワンストップ</h3>
+            <p class="font-noto font-medium text-[#333333] mb-1"  style="font-size: var(--fs-small);">企画から納品まで</p>
+            <h3 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h2);">ワンストップ</h3>
           </div>
-          <p class="font-noto font-medium text-[#333333] leading-loose"
-             style="font-size: var(--fs-body);">
+          <p class="font-noto font-medium text-[#333333] leading-loose"  style="font-size: var(--fs-body);">
             イベント企画、会場手配、映像制作、印刷物、ノベルティまで、すべてを一括でご提供。窓口を一本化することで、スムーズな進行とコスト削減を実現します。
           </p>
         </div>
@@ -556,33 +507,26 @@ const latestNews = await getLatestNews(3);
   <section id="results" class="w-full relative overflow-hidden">
 
     <div class="absolute inset-0" aria-hidden="true">
-      <img src="/images/works_bg.jpg" alt="" class="w-full h-full object-cover object-center" />
+      <Image src={worksBg} alt="" class="w-full h-full object-cover object-center" />
     </div>
 
-    <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-8"
-         style="padding-top: var(--sp-section-lg); padding-bottom: var(--sp-section-md);">
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-8 pt-[var(--sp-section-lg)] pb-[var(--sp-section-md)]">
 
       <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-6">
         <div>
-          <p class="font-inter font-bold text-white tracking-widest mb-3 opacity-80"
-             style="font-size: var(--fs-small);">Our Works</p>
-          <h2 class="font-noto font-bold text-white leading-tight"
-              style="font-size: var(--fs-h1);">確かな信頼と実績</h2>
+          <p class="font-inter font-bold text-white tracking-widest mb-3 opacity-80"  style="font-size: var(--fs-small);">Our Works</p>
+          <h2 class="font-noto font-bold text-white leading-tight"  style="font-size: var(--fs-h1);">確かな信頼と実績</h2>
         </div>
         <div class="flex-shrink-0 sm:pt-10">
           <a href="/works"
-             class="group font-noto font-medium text-white border border-white rounded-full
-                    inline-flex items-center gap-3 px-7 py-3 hover:bg-white hover:text-[#004896]
-                    transition-colors duration-300"
-             style="font-size: var(--fs-small);">
+             class="group font-noto font-medium text-white border border-white rounded-full inline-flex items-center gap-3 px-7 py-3 hover:bg-white hover:text-[#004896] transition-colors duration-300"  style="font-size: var(--fs-small);">
             取引実績はこちら
             <span class="font-inter font-bold inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </div>
       </div>
 
-      <p class="font-noto font-medium text-white leading-loose mb-12 opacity-90"
-         style="font-size: var(--fs-body-lg);">
+      <p class="font-noto font-medium text-white leading-loose mb-12 opacity-90"  style="font-size: var(--fs-body-lg);">
         これまでの主な実績をご紹介します。行政機関・自治体・企業・団体など、<br class="hidden md:block" />
         多様なプロジェクトを手がけてきました。
       </p>
@@ -591,53 +535,53 @@ const latestNews = await getLatestNews(3);
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0 mb-10 text-center md:text-left">
         <div class="md:border-r md:border-white md:border-opacity-30 md:pr-12">
-          <p class="font-noto font-medium text-white opacity-80 mb-2" style="font-size: var(--fs-body);">創業からの年数</p>
-          <p class="font-noto font-medium text-white opacity-60 mb-4" style="font-size: var(--fs-caption);">1988年 創業</p>
+          <p class="font-noto font-medium text-white opacity-80 mb-2"   style="font-size: var(--fs-body);">創業からの年数</p>
+          <p class="font-noto font-medium text-white opacity-60 mb-4"   style="font-size: var(--fs-caption);">1988年 創業</p>
           <div class="flex items-baseline gap-2 justify-center md:justify-start">
-            <span class="font-inter font-bold text-white js-counter" data-target="38"
-                  style="font-size: var(--fs-stat); line-height: 1;">38</span>
-            <span class="font-noto font-bold text-white" style="font-size: var(--fs-h2);">年</span>
+            <span class="font-inter font-bold text-white js-counter leading-none"  data-target="38"
+                   style="font-size: var(--fs-stat);">38</span>
+            <span class="font-noto font-bold text-white"   style="font-size: var(--fs-h2);">年</span>
           </div>
         </div>
         <div class="md:pl-12">
-          <p class="font-noto font-medium text-white opacity-80 mb-2" style="font-size: var(--fs-body);">累計取引件数</p>
-          <p class="font-noto font-medium text-white opacity-60 mb-4" style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
+          <p class="font-noto font-medium text-white opacity-80 mb-2"   style="font-size: var(--fs-body);">累計取引件数</p>
+          <p class="font-noto font-medium text-white opacity-60 mb-4"   style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
           <div class="flex items-baseline gap-1 justify-center md:justify-start">
-            <span class="font-inter font-bold text-white" style="font-size: var(--fs-h2);">約</span>
-            <span class="font-inter font-bold text-white js-counter" data-target="3500" data-format="comma"
-                  style="font-size: var(--fs-stat); line-height: 1; margin: 0 4px;">3,500</span>
-            <span class="font-noto font-bold text-white" style="font-size: var(--fs-h2);">件</span>
+            <span class="font-inter font-bold text-white"   style="font-size: var(--fs-h2);">約</span>
+            <span class="font-inter font-bold text-white js-counter leading-none mx-1"  data-target="3500" data-format="comma"
+                   style="font-size: var(--fs-stat);">3,500</span>
+            <span class="font-noto font-bold text-white"   style="font-size: var(--fs-h2);">件</span>
           </div>
         </div>
       </div>
 
       <div class="border-t border-white opacity-30 mb-8"></div>
 
-      <p class="font-noto font-medium text-white opacity-80 mb-8" style="font-size: var(--fs-body);">取引先の構成比率</p>
+      <p class="font-noto font-medium text-white opacity-80 mb-8"   style="font-size: var(--fs-body);">取引先の構成比率</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 text-center sm:text-left">
         <div class="sm:border-r sm:border-white sm:border-opacity-30 sm:pr-10">
-          <p class="font-noto font-medium text-white opacity-70 mb-4" style="font-size: var(--fs-small);">行政機関・県関連</p>
+          <p class="font-noto font-medium text-white opacity-70 mb-4"   style="font-size: var(--fs-small);">行政機関・県関連</p>
           <div class="flex items-baseline gap-1 justify-center md:justify-start">
-            <span class="font-inter font-bold text-white js-counter" data-target="70"
-                  style="font-size: var(--fs-stat); line-height: 1;">70</span>
-            <span class="font-inter font-bold text-white" style="font-size: var(--fs-h3);">%</span>
+            <span class="font-inter font-bold text-white js-counter leading-none"  data-target="70"
+                   style="font-size: var(--fs-stat);">70</span>
+            <span class="font-inter font-bold text-white"   style="font-size: var(--fs-h3);">%</span>
           </div>
         </div>
         <div class="sm:border-r sm:border-white sm:border-opacity-30 sm:px-10">
-          <p class="font-noto font-medium text-white opacity-70 mb-4" style="font-size: var(--fs-small);">市町村・自治体</p>
+          <p class="font-noto font-medium text-white opacity-70 mb-4"   style="font-size: var(--fs-small);">市町村・自治体</p>
           <div class="flex items-baseline gap-1 justify-center md:justify-start">
-            <span class="font-inter font-bold text-white js-counter" data-target="20"
-                  style="font-size: var(--fs-stat); line-height: 1;">20</span>
-            <span class="font-inter font-bold text-white" style="font-size: var(--fs-h3);">%</span>
+            <span class="font-inter font-bold text-white js-counter leading-none"  data-target="20"
+                   style="font-size: var(--fs-stat);">20</span>
+            <span class="font-inter font-bold text-white"   style="font-size: var(--fs-h3);">%</span>
           </div>
         </div>
         <div class="sm:pl-10">
-          <p class="font-noto font-medium text-white opacity-70 mb-4" style="font-size: var(--fs-small);">一般企業・団体</p>
+          <p class="font-noto font-medium text-white opacity-70 mb-4"   style="font-size: var(--fs-small);">一般企業・団体</p>
           <div class="flex items-baseline gap-1 justify-center md:justify-start">
-            <span class="font-inter font-bold text-white js-counter" data-target="10"
-                  style="font-size: var(--fs-stat); line-height: 1;">10</span>
-            <span class="font-inter font-bold text-white" style="font-size: var(--fs-h3);">%</span>
+            <span class="font-inter font-bold text-white js-counter leading-none"  data-target="10"
+                   style="font-size: var(--fs-stat);">10</span>
+            <span class="font-inter font-bold text-white"   style="font-size: var(--fs-h3);">%</span>
           </div>
         </div>
       </div>
@@ -655,16 +599,11 @@ const latestNews = await getLatestNews(3);
       <div class="flex flex-col lg:flex-row lg:gap-20 xl:gap-28">
 
 <div class="flex-shrink-0 lg:w-[260px] xl:w-[300px] mb-6 lg:mb-0 lg:pt-2">
-          <p class="font-inter font-bold text-[#004896] mb-4 tracking-wider"
-             style="font-size: var(--fs-body);">News</p>
+          <p class="font-inter font-bold text-[#004896] mb-4 tracking-wider"  style="font-size: var(--fs-body);">News</p>
           
-          <h2 class="font-noto font-bold text-[#333333] leading-tight mb-6 lg:mb-10"
-              style="font-size: var(--fs-h2);">お知らせ</h2>
+          <h2 class="font-noto font-bold text-[#333333] leading-tight mb-6 lg:mb-10"  style="font-size: var(--fs-h2);">お知らせ</h2>
           <a href="/news"
-             class="group font-noto font-medium text-white inline-flex items-center justify-between
-                    w-full max-w-[260px] px-7 py-4 rounded-[32px]
-                    transition-opacity duration-300 hover:opacity-85"
-             style="background: linear-gradient(to right, #4982C2, #004896); font-size: var(--fs-body);">
+             class="group font-noto font-medium text-white inline-flex items-center justify-between w-full max-w-[260px] px-7 py-4 rounded-[32px] transition-opacity duration-300 hover:opacity-85 bg-[linear-gradient(to_right,#4982C2,#004896)]"  style="font-size: var(--fs-body);">
             一覧はこちら
             <span class="font-inter font-bold inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
@@ -677,20 +616,18 @@ const latestNews = await getLatestNews(3);
                  class={`group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5
                          py-9 border-b border-[#E0E6EF] hover:opacity-70 transition-opacity duration-200`}>
                 <time
-                  class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap"
+                  class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap" 
                   datetime={formatDatetime(item.publishedAt)}
-                  style="font-size: var(--fs-small);"
-                >
+                  
+                 style="font-size: var(--fs-small);">
                   {formatDate(item.publishedAt)}
                 </time>
                 <span
-                  class="flex-shrink-0 font-noto font-medium text-[#004896] border border-[#004896]
-                         px-3 py-0.5 text-center"
-                  style="font-size: var(--fs-caption); min-width: 72px;"
-                >
+                  class="flex-shrink-0 font-noto font-medium text-[#004896] border border-[#004896] px-3 py-0.5 text-center min-w-[72px]" 
+                 style="font-size: var(--fs-caption);">
                   {item.category}
                 </span>
-                <p class="font-noto font-medium text-[#333333] leading-relaxed" style="font-size: var(--fs-body);">
+                <p class="font-noto font-medium text-[#333333] leading-relaxed"   style="font-size: var(--fs-body);">
                   {item.title}
                 </p>
               </a>
@@ -710,33 +647,22 @@ const latestNews = await getLatestNews(3);
   ============================================== -->
   <section id="about" class="w-full">
     <div class="flex flex-col lg:flex-row items-stretch">
-      <div class="w-full lg:w-1/2 flex-shrink-0 overflow-hidden"
-           style="min-height: clamp(280px, 40vw, 680px);">
-        <img src="/images/company_main.jpg"
-             alt="株式会社イトピック 本社外観"
-             data-fade
-             class="w-full h-full object-cover object-center" />
+      <div class="w-full lg:w-1/2 flex-shrink-0 overflow-hidden min-h-[clamp(280px,40vw,680px)]">
+        <Image src={companyMain} alt="株式会社イトピック 本社外観" class="w-full h-full object-cover object-center" data-fade />
       </div>
       <div class="w-full lg:flex-1 bg-[#004896] flex flex-col justify-center
                   px-8 py-16 md:px-12 lg:px-16 xl:px-20">
-        <p class="font-inter font-bold text-white tracking-widest mb-6 opacity-80"
-           style="font-size: var(--fs-small); letter-spacing: 3px;">Company</p>
-        <h2 class="font-noto font-bold text-white leading-normal mb-8"
-            style="font-size: var(--fs-h2);">
+        <p class="font-inter font-bold text-white tracking-widest mb-6 opacity-80 tracking-[3px]"  style="font-size: var(--fs-small);">Company</p>
+        <h2 class="font-noto font-bold text-white leading-normal mb-8"  style="font-size: var(--fs-h2);">
           茨城と共に歩む、<br />制作プロダクション。
         </h2>
         <div class="w-10 h-[2px] bg-white opacity-50 mb-8"></div>
-        <p class="font-noto font-medium text-white leading-loose mb-12 opacity-90"
-           style="font-size: var(--fs-body);">
+        <p class="font-noto font-medium text-white leading-loose mb-12 opacity-90"  style="font-size: var(--fs-body);">
           地域に根ざし、信頼と実績を重ねてきた私たちの理念や組織体制についてご紹介します。
         </p>
         <div>
           <a href="/company"
-             class="group font-noto font-medium text-white border border-white
-                    inline-flex items-center justify-between
-                    w-full max-w-[300px] px-7 py-4 rounded-[6px]
-                    hover:bg-white hover:text-[#004896] transition-colors duration-300"
-             style="font-size: var(--fs-body);">
+             class="group font-noto font-medium text-white border border-white inline-flex items-center justify-between w-full max-w-[300px] px-7 py-4 rounded-[6px] hover:bg-white hover:text-[#004896] transition-colors duration-300"  style="font-size: var(--fs-body);">
             会社概要はこちら
             <span class="font-inter font-bold inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
@@ -753,46 +679,35 @@ const latestNews = await getLatestNews(3);
   <section id="contact" class="w-full relative overflow-hidden">
 
     <div class="absolute inset-0" aria-hidden="true">
-      <img src="/images/company_bg.JPG" alt=""
-           class="w-full h-[180%] md:h-full object-cover object-center md:object-[center_70%]" />
-      <div class="absolute inset-0" style="background: rgba(20, 28, 50, 0.8);"></div>
+      <Image src={contactBg} alt="" class="w-full h-[180%] md:h-full object-cover object-center md:object-[center_70%]" />
+      <div class="absolute inset-0 bg-[rgba(20,28,50,0.8)]" ></div>
     </div>
 
     <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 section-md">
 
-      <p class="font-inter font-bold text-white text-center tracking-widest mb-5 opacity-90"
-         style="font-size: var(--fs-small); letter-spacing: 4px;">Contact</p>
-      <h2 class="font-noto font-bold text-white text-center leading-tight mb-8"
-          style="font-size: var(--fs-h1);">お問い合わせ</h2>
-      <p class="font-noto font-medium text-white text-center opacity-90 mb-16 leading-loose md:leading-relaxed"
-         style="font-size: var(--fs-body);">
+      <p class="font-inter font-bold text-white text-center tracking-widest mb-5 opacity-90 tracking-[4px]"  style="font-size: var(--fs-small);">Contact</p>
+      <h2 class="font-noto font-bold text-white text-center leading-tight mb-8"  style="font-size: var(--fs-h1);">お問い合わせ</h2>
+      <p class="font-noto font-medium text-white text-center opacity-90 mb-16 leading-loose md:leading-relaxed"  style="font-size: var(--fs-body);">
         お客様のご要望に応じ様々なご提案が可能です。<br class="block md:hidden" />お気軽にご相談ください。
       </p>
 
       <div class="w-full bg-white">
         <div class="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-[#E0E6EF]">
           <div class="flex-1 flex flex-col items-center justify-center px-8 py-14 md:py-16">
-            <p class="font-noto font-bold text-[#333333] mb-8 text-center"
-               style="font-size: var(--fs-h4);">フォームでのお問い合わせ</p>
+            <p class="font-noto font-bold text-[#333333] mb-8 text-center"  style="font-size: var(--fs-h4);">フォームでのお問い合わせ</p>
             <a href="/contact"
-               class="group font-noto font-medium text-white inline-flex items-center justify-between
-                      w-full max-w-[320px] px-7 py-4 rounded-[8px]
-                      transition-opacity duration-300 hover:opacity-85"
-               style="background: linear-gradient(to right, #4982C2, #004896); font-size: var(--fs-body);">
+               class="group font-noto font-medium text-white inline-flex items-center justify-between w-full max-w-[320px] px-7 py-4 rounded-[8px] transition-opacity duration-300 hover:opacity-85 bg-[linear-gradient(to_right,#4982C2,#004896)]"  style="font-size: var(--fs-body);">
               お問い合わせフォーム
               <span class="font-inter font-bold inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
           <div class="flex-1 flex flex-col items-center justify-center px-8 py-14 md:py-16">
-            <p class="font-noto font-bold text-[#333333] mb-6 text-center"
-               style="font-size: var(--fs-h4);">お電話でのお問い合わせ</p>
+            <p class="font-noto font-bold text-[#333333] mb-6 text-center"  style="font-size: var(--fs-h4);">お電話でのお問い合わせ</p>
             <a href="tel:0292534387"
-               class="font-inter font-bold text-[#004896] hover:opacity-75 transition-opacity duration-200 mb-3"
-               style="font-size: var(--fs-h1); letter-spacing: 0.02em; line-height: 1;">
+               class="font-inter font-bold text-[#004896] hover:opacity-75 transition-opacity duration-200 mb-3 tracking-[0.02em] leading-none"  style="font-size: var(--fs-h1);">
               029-253-4387
             </a>
-            <p class="font-noto font-medium text-[#333333] opacity-60"
-               style="font-size: var(--fs-caption);">（平日9:00〜18:00）</p>
+            <p class="font-noto font-medium text-[#333333] opacity-60"  style="font-size: var(--fs-caption);">（平日9:00〜18:00）</p>
           </div>
         </div>
       </div>
@@ -809,90 +724,113 @@ const latestNews = await getLatestNews(3);
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
 
-  // ── カウンターアニメーション ──────────────────────
-  function animateCounter(el: HTMLElement) {
-    const target = parseInt((el as HTMLElement & { dataset: { target: string; format?: string } }).dataset.target, 10);
-    const isComma = (el as HTMLElement & { dataset: { format?: string } }).dataset.format === 'comma';
-    const duration = 1800;
-    const start = performance.now();
-    function format(n: number) {
-      return isComma ? Math.floor(n).toLocaleString('ja-JP') : Math.floor(n).toString();
-    }
-    function step(now: number) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 4);
-      el.textContent = format(target * ease);
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = format(target);
-    }
-    requestAnimationFrame(step);
+  function killIndexScrollTriggers() {
+    const root = document.querySelector<HTMLElement>('[data-page="index"]');
+    if (!root) return;
+    ScrollTrigger.getAll().forEach(function(st) {
+      const t = st.trigger as Element | null;
+      if (!t || !root.contains(t)) return;
+      // Layout.astro が管理するアニメーションは破棄しない（#contact グリッドリビール等）
+      if (
+        t.id === 'contact' ||
+        t.matches('[data-a="fade"], [data-a="stagger"]') ||
+        t.hasAttribute('data-mv-parallax')
+      ) return;
+      st.kill();
+    });
   }
-  document.querySelectorAll<HTMLElement>('.js-counter').forEach(function(el) {
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 85%',
-      once: true,
-      onEnter: function() { animateCounter(el); },
-    });
-  });
 
-  // ── メインサービス：写真（左→右）＋青ボックス（右→左）──
-  const serviceHero    = document.querySelector<HTMLElement>('[data-service-hero]');
-  const serviceHeroImg = document.querySelector<HTMLElement>('[data-service-hero-img]');
-  const serviceHeroBox = document.querySelector<HTMLElement>('[data-service-hero-box]');
-  if (serviceHero && serviceHeroImg && serviceHeroBox) {
-    const tlHero = gsap.timeline({
-      scrollTrigger: { trigger: serviceHero, start: 'top 78%', once: true },
+  function initIndexAnimations() {
+    if (!document.querySelector('[data-page="index"]')) return;
+    killIndexScrollTriggers();
+
+    // ── カウンターアニメーション ──────────────────────
+    function animateCounter(el: HTMLElement) {
+      const target = parseInt((el as HTMLElement & { dataset: { target: string; format?: string } }).dataset.target, 10);
+      const isComma = (el as HTMLElement & { dataset: { format?: string } }).dataset.format === 'comma';
+      const duration = 1800;
+      const start = performance.now();
+      function format(n: number) {
+        return isComma ? Math.floor(n).toLocaleString('ja-JP') : Math.floor(n).toString();
+      }
+      function step(now: number) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 4);
+        el.textContent = format(target * ease);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = format(target);
+      }
+      requestAnimationFrame(step);
+    }
+    document.querySelectorAll<HTMLElement>('.js-counter').forEach(function(el) {
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: function() { animateCounter(el); },
+      });
     });
-    tlHero
-      .fromTo(serviceHeroImg,
-        { opacity: 0, x: -60 },
-        { opacity: 1, x: 0, duration: 1.0, ease: 'power2.out' }
-      )
-      .fromTo(serviceHeroBox,
-        { opacity: 0, x: 60 },
-        { opacity: 1, x: 0, duration: 1.0, ease: 'power2.out' },
-        '-=0.7'
+
+    // ── メインサービス：写真（左→右）＋青ボックス（右→左）──
+    const serviceHero    = document.querySelector<HTMLElement>('[data-service-hero]');
+    const serviceHeroImg = document.querySelector<HTMLElement>('[data-service-hero-img]');
+    const serviceHeroBox = document.querySelector<HTMLElement>('[data-service-hero-box]');
+    if (serviceHero && serviceHeroImg && serviceHeroBox) {
+      const tlHero = gsap.timeline({
+        scrollTrigger: { trigger: serviceHero, start: 'top 78%', once: true },
+      });
+      tlHero
+        .fromTo(serviceHeroImg,
+          { opacity: 0, x: -60 },
+          { opacity: 1, x: 0, duration: 1.0, ease: 'power2.out' }
+        )
+        .fromTo(serviceHeroBox,
+          { opacity: 0, x: 60 },
+          { opacity: 1, x: 0, duration: 1.0, ease: 'power2.out' },
+          '-=0.7'
+        );
+    }
+
+    // ── 単体フェードイン（[data-fade] / card-row 以外）──
+    gsap.utils.toArray<HTMLElement>('[data-fade]').forEach(function(el) {
+      if (el.closest('[data-card-row]')) return;
+      gsap.fromTo(el,
+        { opacity: 0, y: 22 },
+        {
+          opacity: 1, y: 0, duration: 0.85, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        }
       );
-  }
-
-  // ── 単体フェードイン（[data-fade] / card-row 以外）──
-  gsap.utils.toArray<HTMLElement>('[data-fade]').forEach(function(el) {
-    if (el.closest('[data-card-row]')) return;
-    gsap.fromTo(el,
-      { opacity: 0, y: 22 },
-      {
-        opacity: 1, y: 0, duration: 0.85, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-      }
-    );
-  });
-
-  // ── サービスカード3枚：スタガーフェードイン ──────
-  const cardRow = document.querySelector<HTMLElement>('[data-card-row]');
-  if (cardRow) {
-    gsap.fromTo(
-      cardRow.querySelectorAll('[data-fade]'),
-      { opacity: 0, y: 48 },
-      {
-        opacity: 1, y: 0, duration: 0.9, ease: 'power2.out', stagger: 0.18,
-        scrollTrigger: { trigger: cardRow, start: 'top 75%', once: true },
-      }
-    );
-  }
-
-  // ── 強みセクション：左右スライドイン ────────────
-  gsap.utils.toArray<HTMLElement>('[data-strength]').forEach(function(item) {
-    const isRtl = item.dataset.strength === 'rtl';
-    const imgW  = item.querySelector<HTMLElement>('[data-strength-img]');
-    const txtW  = item.querySelector<HTMLElement>('[data-strength-text]');
-    if (!imgW || !txtW) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: { trigger: item, start: 'top 75%', once: true },
     });
-    tl.fromTo(imgW, { opacity: 0, x: isRtl ? 70 : -70 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power2.out' })
-      .fromTo(txtW, { opacity: 0, x: isRtl ? -70 : 70 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power2.out' }, '-=0.6');
-  });
+
+    // ── サービスカード3枚：スタガーフェードイン ──────
+    const cardRow = document.querySelector<HTMLElement>('[data-card-row]');
+    if (cardRow) {
+      gsap.fromTo(
+        cardRow.querySelectorAll('[data-fade]'),
+        { opacity: 0, y: 48 },
+        {
+          opacity: 1, y: 0, duration: 0.9, ease: 'power2.out', stagger: 0.18,
+          scrollTrigger: { trigger: cardRow, start: 'top 75%', once: true },
+        }
+      );
+    }
+
+    // ── 強みセクション：左右スライドイン ────────────
+    gsap.utils.toArray<HTMLElement>('[data-strength]').forEach(function(item) {
+      const isRtl = item.dataset.strength === 'rtl';
+      const imgW  = item.querySelector<HTMLElement>('[data-strength-img]');
+      const txtW  = item.querySelector<HTMLElement>('[data-strength-text]');
+      if (!imgW || !txtW) return;
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: item, start: 'top 75%', once: true },
+      });
+      tl.fromTo(imgW, { opacity: 0, x: isRtl ? 70 : -70 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power2.out' })
+        .fromTo(txtW, { opacity: 0, x: isRtl ? -70 : 70 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power2.out' }, '-=0.6');
+    });
+  }
+
+  document.addEventListener('astro:page-load', initIndexAnimations);
 </script>

@@ -1,53 +1,63 @@
 ---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
+import ibarakiBg from '../assets/images/ibaraki_bg.png';
+import worksMb from '../assets/images/works_mb.jpg';
+import worksMain from '../assets/images/works_main.JPG';
+import worksBg from '../assets/images/works_bg.jpg';
+
+const worksImageModules = import.meta.glob<{ default: ImageMetadata }>('../assets/images/works_*.{jpg,JPG,png}', { eager: true });
+const worksImageMap: Record<string, ImageMetadata> = {};
+for (const [path, mod] of Object.entries(worksImageModules)) {
+  const filename = path.split('/').pop() ?? '';
+  worksImageMap[filename] = mod.default;
+}
+
+const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
 ---
-<Layout title="取引実績 | 株式会社 イトピック">
+<Layout
+  title="取引実績 | 株式会社 イトピック"
+  description="イベント・式典、デザイン・印刷、ノベルティ・商品、映像制作のカテゴリ別実績を掲載。茨城県庁をはじめ自治体・企業との豊富な取引実績と、数字で見るイトピックの歩みをご紹介します。"
+  ogType="article"
+  ogImage={ogImageSrc}
+>
 <main>
 
   <!-- PAGE HERO -->
   <section id="page-hero-works"
     class="w-full bg-white relative overflow-hidden"
-    style="max-height: 455px; min-height: clamp(200px, 28vw, 455px);"
+   
   >
-    <div class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none"
-         style="left: 50%; transform: translateX(-50%); z-index: 0;" aria-hidden="true">
-      <div class="absolute top-0 right-0"
-           style="width: clamp(260px, 28vw, 420px); height: clamp(260px, 28vw, 420px); opacity: 0.55;">
-        <img src="/images/ibaraki_bg.png" alt="" class="w-full h-full object-contain object-right-top" />
+    <div class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0" aria-hidden="true">
+      <div class="absolute top-0 right-0 w-[clamp(260px,28vw,420px)] h-[clamp(260px,28vw,420px)] opacity-[0.55]">
+        <Image src={ibarakiBg} alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0"
-         style="min-height: clamp(200px, 28vw, 455px);">
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4"
-         style="font-size: var(--fs-small); letter-spacing: 0.18em;">Our Works</p>
-      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"
-          style="font-size: var(--fs-display);">取引実績</h1>
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0 min-h-[clamp(200px,28vw,455px)]">
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 tracking-[0.18em]"  style="font-size: var(--fs-small);">Our Works</p>
+      <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"  style="font-size: var(--fs-display);">取引実績</h1>
       <nav aria-label="パンくずリスト">
         <ol class="flex items-center gap-2 flex-wrap">
-          <li><a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"
-                 style="font-size: var(--fs-small);">ホーム</a></li>
-          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-hidden="true">&gt;</li>
-          <li class="font-noto font-medium text-[#333333]" style="font-size: var(--fs-small);" aria-current="page">取引実績</li>
+          <li><a href="/" class="font-noto font-medium text-[#333333] hover:text-[#004896] transition-colors duration-200"  style="font-size: var(--fs-small);">ホーム</a></li>
+          <li class="font-noto font-medium text-[#333333]"  aria-hidden="true" style="font-size: var(--fs-small);">&gt;</li>
+          <li class="font-noto font-medium text-[#333333]"  aria-current="page" style="font-size: var(--fs-small);">取引実績</li>
         </ol>
       </nav>
     </div>
   </section>
 
   <!-- MAIN VISUAL -->
-  <div data-mv-parallax class="relative w-full overflow-hidden" style="height: clamp(240px, 40vw, 600px);">
-    <img src="/images/works_mb.jpg" alt="取引実績メインビジュアル"
-         loading="eager"
-         class="absolute inset-0 w-full h-full object-cover object-center" />
+  <div data-mv-parallax class="relative w-full overflow-hidden h-[clamp(240px,40vw,600px)]">
+    <Image src={worksMb} alt="取引実績メインビジュアル" loading="eager" class="mv-parallax-img absolute w-full object-cover object-center" />
   </div>
 
   <!-- HERO 01 -->
   <section id="works-hero-01" class="w-full bg-white flex items-center justify-center py-14 lg:py-36">
     <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0 flex flex-col items-center justify-center text-center">
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 lg:mb-8"
-         style="font-size: var(--fs-small); letter-spacing: 0.2em;">Achievements since 1988</p>
-      <h2 class="font-noto font-bold text-[#004896] leading-snug"
-          style="font-size: var(--fs-h1); letter-spacing: 0.05em;">
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 lg:mb-8 tracking-[0.2em]"  style="font-size: var(--fs-small);">Achievements since 1988</p>
+      <h2 class="font-noto font-bold text-[#004896] leading-snug tracking-[0.05em]"  style="font-size: var(--fs-h1);">
         創業以来の歩みと実績
       </h2>
     </div>
@@ -56,26 +66,21 @@ import ContactSection from '../components/ContactSection.astro';
   <!-- HERO 02 -->
   <section id="works-hero-02" class="w-full bg-white">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
-      <div class="flex flex-col lg:flex-row lg:items-start"
-           style="column-gap: 7rem; padding-top:0; padding-bottom: var(--sp-section-lg);">
+      <div class="flex flex-col lg:flex-row lg:items-start gap-x-28 pt-0 pb-[var(--sp-section-lg)]">
         <div data-a="fade" class="flex-1 min-w-0 md:px-0">
-          <h3 class="font-noto font-bold text-[#333333] leading-normal mb-6"
-              style="font-size: var(--fs-h3); letter-spacing: 0.02em;">
+          <h3 class="font-noto font-bold text-[#333333] leading-normal mb-6 tracking-[0.02em]"  style="font-size: var(--fs-h3);">
             創業以来、変わらぬ姿勢で<br />プロジェクトに向き合ってきました。
           </h3>
           <div class="w-[60px] h-[3px] bg-[#4982C2] mb-8"></div>
-          <div class="font-noto font-medium text-[#333333] leading-loose space-y-5"
-               style="font-size: var(--fs-body-lg);">
+          <div class="font-noto font-medium text-[#333333] leading-loose space-y-5"  style="font-size: var(--fs-body-lg);">
             <p>1988年の創業以来、私たちは行政機関・自治体・企業・団体の皆様とともに、地域の魅力を伝える多様なプロジェクトに携わってきました。式典・イベントの企画運営をはじめ、映像制作、デザイン制作、広報支援など、地域のコミュニケーション活動を幅広くサポートしてきた実績があります。</p>
             <p>長年にわたり積み重ねてきた経験と信頼は、私たちの大きな財産です。地域の特性を理解した提案力、丁寧な進行管理、確かな技術力を強みに、これからもお客様の目的に寄り添ったプロジェクトを実現していきます。</p>
             <p>ここでは、直近の代表的な実績をカテゴリ別にご紹介します。掲載内容はクライアントの許諾範囲内での表記となります。</p>
           </div>
         </div>
         <div data-a="fade" class="flex-shrink-0 overflow-hidden rounded-[4px]
-                    w-full md:px-0 mt-10 lg:mt-0 lg:w-[560px]"
-             style="height: clamp(280px, 38vw, 560px);">
-          <img src="/images/works_main.JPG" alt="創業以来の歩みと実績"
-               class="w-full h-full object-cover object-center" />
+                    w-full md:px-0 mt-10 lg:mt-0 lg:w-[560px] h-[clamp(280px,38vw,560px)]">
+          <Image src={worksMain} alt="創業以来の歩みと実績" class="w-full h-full object-cover object-center" />
         </div>
       </div>
     </div>
@@ -84,63 +89,58 @@ import ContactSection from '../components/ContactSection.astro';
   <!-- NUMBERS -->
   <section id="works-numbers" class="w-full relative overflow-hidden">
     <div class="absolute inset-0" aria-hidden="true">
-      <img src="/images/works_bg.jpg" alt="" class="w-full h-full object-cover object-center" />
+      <Image src={worksBg} alt="" class="w-full h-full object-cover object-center" />
     </div>
     <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0 section-lg">
       <div data-a="fade" class="text-left md:text-center mb-16 lg:mb-20">
-        <p class="font-inter font-bold text-white tracking-widest mb-5 opacity-80"
-           style="font-size: var(--fs-small); letter-spacing: 0.2em;">Numbers</p>
-        <h2 class="font-noto font-bold text-white leading-tight mb-6"
-            style="font-size: var(--fs-h2);">数字で見る、これまでの歩み</h2>
-        <p class="font-noto font-medium text-white opacity-85 leading-loose text-left md:text-center"
-           style="font-size: var(--fs-body);">
+        <p class="font-inter font-bold text-white tracking-widest mb-5 opacity-80 tracking-[0.2em]"  style="font-size: var(--fs-small);">Numbers</p>
+        <h2 class="font-noto font-bold text-white leading-tight mb-6"  style="font-size: var(--fs-h2);">数字で見る、これまでの歩み</h2>
+        <p class="font-noto font-medium text-white opacity-85 leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
           創業からの年数、累計取引件数、取引先団体数など、これまでの歩みを数字でご紹介します。
         </p>
       </div>
       <div data-a="stagger" class="grid grid-cols-1 md:grid-cols-3 gap-0">
         <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-10 md:pb-0 md:border-r md:border-white md:border-opacity-25">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
-          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left" style="font-size: var(--fs-body);">創業からの年数</p>
-          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left" style="font-size: var(--fs-caption);">1988年 創業</p>
+          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left"  style="font-size: var(--fs-body);">創業からの年数</p>
+          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left"  style="font-size: var(--fs-caption);">1988年 創業</p>
           <div class="flex items-baseline justify-center md:justify-start gap-2 mb-8">
             <span class="font-inter font-bold text-white js-counter" data-target="38"
-                  style="font-size: var(--fs-stat); line-height: 1;">38</span>
-            <span class="font-noto font-bold text-white" style="font-size: var(--fs-h2);">年</span>
+                  class="leading-none"  style="font-size: var(--fs-stat);">38</span>
+            <span class="font-noto font-bold text-white"  style="font-size: var(--fs-h2);">年</span>
           </div>
           <div class="border border-white border-opacity-40 rounded-[4px] p-5">
-            <p class="font-noto font-medium text-white opacity-85 leading-loose" style="font-size: var(--fs-small);">
+            <p class="font-noto font-medium text-white opacity-85 leading-loose"  style="font-size: var(--fs-small);">
               創業から38年。いつの時代も、地域の皆様の大切な式典や行事をすぐそばで全力でサポートしてきました。
             </p>
           </div>
         </div>
         <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-10 md:pb-0 md:border-r md:border-white md:border-opacity-25">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
-          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left" style="font-size: var(--fs-body);">累計取引件数</p>
-          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left" style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
+          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left"  style="font-size: var(--fs-body);">累計取引件数</p>
+          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left"  style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
           <div class="flex items-baseline justify-center md:justify-start gap-1 mb-8">
-            <span class="font-inter font-bold text-white" style="font-size: var(--fs-h2);">約</span>
-            <span class="font-inter font-bold text-white js-counter" data-target="600"
-                  style="font-size: var(--fs-stat); line-height: 1; margin: 0 4px;">600</span>
-            <span class="font-noto font-bold text-white" style="font-size: var(--fs-h2);">件</span>
+            <span class="font-inter font-bold text-white"  style="font-size: var(--fs-h2);">約</span>
+            <span class="font-inter font-bold text-white js-counter leading-none mx-1"  data-target="600" style="font-size: var(--fs-stat);">600</span>
+            <span class="font-noto font-bold text-white"  style="font-size: var(--fs-h2);">件</span>
           </div>
           <div class="border border-white border-opacity-40 rounded-[4px] p-5">
-            <p class="font-noto font-medium text-white opacity-85 leading-loose" style="font-size: var(--fs-small);">
+            <p class="font-noto font-medium text-white opacity-85 leading-loose"  style="font-size: var(--fs-small);">
               これまで手がけた豊富な実績数が私たちの誇り。事前準備から当日の進行・運営まで安心してお任せください。
             </p>
           </div>
         </div>
         <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-0">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
-          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left" style="font-size: var(--fs-body);">取引先団体数</p>
-          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left" style="font-size: var(--fs-caption);">行政機関・企業・団体</p>
+          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left"  style="font-size: var(--fs-body);">取引先団体数</p>
+          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left"  style="font-size: var(--fs-caption);">行政機関・企業・団体</p>
           <div class="flex items-baseline justify-center md:justify-start gap-1 mb-8">
-            <span class="font-inter font-bold text-white" style="font-size: var(--fs-h2);">約</span>
-            <span class="font-inter font-bold text-white js-counter" data-target="100"
-                  style="font-size: var(--fs-stat); line-height: 1; margin: 0 4px;">100</span>
-            <span class="font-noto font-bold text-white" style="font-size: var(--fs-h2);">団体</span>
+            <span class="font-inter font-bold text-white"  style="font-size: var(--fs-h2);">約</span>
+            <span class="font-inter font-bold text-white js-counter leading-none mx-1"  data-target="100" style="font-size: var(--fs-stat);">100</span>
+            <span class="font-noto font-bold text-white"  style="font-size: var(--fs-h2);">団体</span>
           </div>
           <div class="border border-white border-opacity-40 rounded-[4px] p-5">
-            <p class="font-noto font-medium text-white opacity-85 leading-loose" style="font-size: var(--fs-small);">
+            <p class="font-noto font-medium text-white opacity-85 leading-loose"  style="font-size: var(--fs-small);">
               地域の自治体や多くの公的機関の皆様と、信頼のパートナーとして地域の未来へ確かな絆を築いています。
             </p>
           </div>
@@ -153,22 +153,18 @@ import ContactSection from '../components/ContactSection.astro';
   <section id="works-ratio" class="w-full bg-[#F0F6FA] section-lg">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
       <div data-a="fade" class="text-left md:text-center mb-14 lg:mb-20">
-        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5"
-           style="font-size: var(--fs-small); letter-spacing: 0.2em;">Data Visualization</p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"
-            style="font-size: var(--fs-h2);">取引先の構成比率</h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"
-           style="font-size: var(--fs-body);">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.2em]"  style="font-size: var(--fs-small);">Data Visualization</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"  style="font-size: var(--fs-h2);">取引先の構成比率</h2>
+        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
           全体の8割が行政・自治体関連の公的案件であり、そのうち半分が県関連の事業です。<br class="hidden md:block" />
           県庁や市町村、公社、商工会から民間企業まで、多様なクライアントとパートナーシップを築いています。
         </p>
       </div>
       <div data-a="fade" class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
-        <div class="flex-shrink-0 flex flex-col items-center justify-center"
-             style="width: 100%; max-width: 432px; margin: 0 auto;">
-          <div class="relative" style="width: 400px; height: 400px;">
+        <div class="flex-shrink-0 flex flex-col items-center justify-center w-full max-w-[432px] mx-auto">
+          <div class="relative w-[400px] h-[400px]">
             <svg id="donut-chart" viewBox="0 0 200 200"
-                 style="width: 400px; height: 400px; transform: rotate(-90deg);">
+                 class="w-[400px] h-[400px] -rotate-90">
               <circle cx="100" cy="100" r="75" fill="none" stroke="#E2E8F0" stroke-width="28" />
               <circle id="seg1" cx="100" cy="100" r="75" fill="none" stroke="#004896" stroke-width="28"
                       stroke-dasharray="0 471" stroke-linecap="butt" data-pct="50" />
@@ -178,44 +174,44 @@ import ContactSection from '../components/ContactSection.astro';
                       stroke-dasharray="0 471" stroke-linecap="butt" data-pct="20" data-offset="80" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <p class="font-inter font-bold text-[#004896]" style="font-size: var(--fs-caption); letter-spacing: 0.15em; opacity: 0.6;">構成比率</p>
-              <p class="font-inter font-bold text-[#004896]" id="donut-center-num" style="font-size: clamp(40px, 3.5vw, 60px); line-height: 1; margin: 2px 0;">0</p>
-              <p class="font-inter font-bold text-[#004896]" style="font-size: var(--fs-body); opacity: 0.7;">団体</p>
+              <p class="font-inter font-bold text-[#004896] tracking-[0.15em] opacity-60"  style="font-size: var(--fs-caption);">構成比率</p>
+              <p class="font-inter font-bold text-[#004896] leading-none my-0.5"  id="donut-center-num" style="font-size: clamp(40px, 3.5vw, 60px);">0</p>
+              <p class="font-inter font-bold text-[#004896] opacity-[0.7]"  style="font-size: var(--fs-body);">団体</p>
             </div>
           </div>
         </div>
         <div class="flex-1 min-w-0 flex flex-col gap-5 lg:max-w-[750px]">
           <div class="bg-white rounded-[8px] px-6 py-5 flex items-center justify-between border-l-4 border-[#004896]">
             <div>
-              <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body-lg);">行政機関・県関連</p>
-              <p class="font-noto font-medium text-[#666666]" style="font-size: var(--fs-caption);">茨城県庁各課・公社など</p>
+              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body-lg);">行政機関・県関連</p>
+              <p class="font-noto font-medium text-[#666666]"  style="font-size: var(--fs-caption);">茨城県庁各課・公社など</p>
             </div>
             <div class="flex items-baseline gap-1 flex-shrink-0 ml-4">
               <span class="font-inter font-bold text-[#004896] js-ratio-counter" data-target="50"
-                    style="font-size: var(--fs-stat); line-height: 1;">50</span>
-              <span class="font-inter font-bold text-[#004896]" style="font-size: var(--fs-h3);">%</span>
+                    class="leading-none"  style="font-size: var(--fs-stat);">50</span>
+              <span class="font-inter font-bold text-[#004896]"  style="font-size: var(--fs-h3);">%</span>
             </div>
           </div>
           <div class="bg-white rounded-[8px] px-6 py-5 flex items-center justify-between border-l-4 border-[#4982C2]">
             <div>
-              <p class="font-noto font-bold text-[#4982C2] mb-1" style="font-size: var(--fs-body-lg);">市町村・自治体</p>
-              <p class="font-noto font-medium text-[#666666]" style="font-size: var(--fs-caption);">県内市役所・町村役場・商工会など</p>
+              <p class="font-noto font-bold text-[#4982C2] mb-1"  style="font-size: var(--fs-body-lg);">市町村・自治体</p>
+              <p class="font-noto font-medium text-[#666666]"  style="font-size: var(--fs-caption);">県内市役所・町村役場・商工会など</p>
             </div>
             <div class="flex items-baseline gap-1 flex-shrink-0 ml-4">
               <span class="font-inter font-bold text-[#4982C2] js-ratio-counter" data-target="30"
-                    style="font-size: var(--fs-stat); line-height: 1;">30</span>
-              <span class="font-inter font-bold text-[#4982C2]" style="font-size: var(--fs-h3);">%</span>
+                    class="leading-none"  style="font-size: var(--fs-stat);">30</span>
+              <span class="font-inter font-bold text-[#4982C2]"  style="font-size: var(--fs-h3);">%</span>
             </div>
           </div>
           <div class="bg-white rounded-[8px] px-6 py-5 flex items-center justify-between border-l-4 border-[#B8C8DC]">
             <div>
-              <p class="font-noto font-bold text-[#333333] mb-1" style="font-size: var(--fs-body-lg);">一般企業・団体</p>
-              <p class="font-noto font-medium text-[#666666]" style="font-size: var(--fs-caption);">民間企業・主要団体・医療法人など</p>
+              <p class="font-noto font-bold text-[#333333] mb-1"  style="font-size: var(--fs-body-lg);">一般企業・団体</p>
+              <p class="font-noto font-medium text-[#666666]"  style="font-size: var(--fs-caption);">民間企業・主要団体・医療法人など</p>
             </div>
             <div class="flex items-baseline gap-1 flex-shrink-0 ml-4">
               <span class="font-inter font-bold text-[#333333] js-ratio-counter" data-target="20"
-                    style="font-size: var(--fs-stat); line-height: 1;">20</span>
-              <span class="font-inter font-bold text-[#333333]" style="font-size: var(--fs-h3);">%</span>
+                    class="leading-none"  style="font-size: var(--fs-stat);">20</span>
+              <span class="font-inter font-bold text-[#333333]"  style="font-size: var(--fs-h3);">%</span>
             </div>
           </div>
         </div>
@@ -227,12 +223,9 @@ import ContactSection from '../components/ContactSection.astro';
   <section id="works-list" class="w-full bg-white section-lg">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
       <div data-a="fade" class="text-left md:text-center mb-12 lg:mb-16">
-        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5"
-           style="font-size: var(--fs-small); letter-spacing: 0.2em;">Works</p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"
-            style="font-size: var(--fs-h2);">カテゴリ別 実績一覧</h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"
-           style="font-size: var(--fs-body);">
+        <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.2em]"  style="font-size: var(--fs-small);">Works</p>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"  style="font-size: var(--fs-h2);">カテゴリ別 実績一覧</h2>
+        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
           これまでの代表的な実績と、直近の掲載可能な実績一覧です。<br class="hidden md:block" />
           サービスカテゴリを選んでご覧ください。
         </p>
@@ -242,41 +235,36 @@ import ContactSection from '../components/ContactSection.astro';
       <div class="grid grid-cols-2 md:grid-cols-5 mb-[58px] border border-[#D1D1D1] divide-x divide-[#D1D1D1]" id="works-tab-nav">
         <button onclick="worksShowTab('event', this)"
                 class="works-tab-btn active flex flex-col items-center text-center px-0 pb-0
-                       font-noto font-medium text-[#004896] whitespace-nowrap transition-colors duration-200"
-                style="padding-top: 0.7rem;">
-          <span class="font-inter text-[#4982C2] mb-1" style="font-size:10px; letter-spacing:0.12em;">Event</span>
+                       font-noto font-medium text-[#004896] whitespace-nowrap transition-colors duration-200 pt-[0.7rem]">
+          <span class="font-inter text-[#4982C2] mb-1 tracking-[0.12em]"  style="font-size: 10px;">Event</span>
           イベント
           <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#004896] rounded-full transition-all duration-200"></span>
         </button>
         <button onclick="worksShowTab('ceremony', this)"
                 class="works-tab-btn flex flex-col items-center text-center px-0 pb-0
-                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896]"
-                style="padding-top: 0.7rem;">
-          <span class="font-inter text-[#4982C2] mb-1" style="font-size:10px; letter-spacing:0.12em;">ceremony</span>
+                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896] pt-[0.7rem]">
+          <span class="font-inter text-[#4982C2] mb-1 tracking-[0.12em]"  style="font-size: 10px;">ceremony</span>
           式典
           <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#D1D1D1] rounded-full transition-all duration-200"></span>
         </button>
         <button onclick="worksShowTab('design', this)"
                 class="works-tab-btn flex flex-col items-center text-center px-0 pb-0
-                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896]"
-                style="padding-top: 0.7rem;">
-          <span class="font-inter text-[#4982C2] mb-1" style="font-size:10px; letter-spacing:0.12em;">Design and Printing</span>
+                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896] pt-[0.7rem]">
+          <span class="font-inter text-[#4982C2] mb-1 tracking-[0.12em]"  style="font-size: 10px;">Design and Printing</span>
           デザイン・印刷
           <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#D1D1D1] rounded-full transition-all duration-200"></span>
         </button>
         <button onclick="worksShowTab('novelty', this)"
                 class="works-tab-btn flex flex-col items-center text-center px-0 pb-0
-                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896]"
-                style="padding-top: 0.7rem;">
-          <span class="font-inter text-[#4982C2] mb-1" style="font-size:10px; letter-spacing:0.12em;">Promotional items</span>
+                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896] pt-[0.7rem]">
+          <span class="font-inter text-[#4982C2] mb-1 tracking-[0.12em]"  style="font-size: 10px;">Promotional items</span>
           ノベルティ・商品
           <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#D1D1D1] rounded-full transition-all duration-200"></span>
         </button>
         <button onclick="worksShowTab('video', this)"
                 class="works-tab-btn col-span-2 md:col-span-1 flex flex-col items-center text-center px-0 pb-0
-                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896]"
-                style="padding-top: 0.7rem;">
-          <span class="font-inter text-[#4982C2] mb-1" style="font-size:10px; letter-spacing:0.12em;">Video production</span>
+                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896] pt-[0.7rem]">
+          <span class="font-inter text-[#4982C2] mb-1 tracking-[0.12em]"  style="font-size: 10px;">Video production</span>
           映像制作
           <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#D1D1D1] rounded-full transition-all duration-200"></span>
         </button>
@@ -286,7 +274,7 @@ import ContactSection from '../components/ContactSection.astro';
       <div id="works-panel-event" class="works-tab-panel active">
         <div class="flex items-center gap-3 mb-8">
           <div class="w-8 h-[3px] bg-[#004896]"></div>
-          <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">イベント実績</p>
+          <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">イベント実績</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 lg:mb-24">
           {[
@@ -300,13 +288,12 @@ import ContactSection from '../components/ContactSection.astro';
             { img: 'works_event_08.jpg', title: '民族芸能大会2015', client: '茨城県' },
             { img: 'works_event_09.jpg', title: 'ミルクメッセいばらき', client: '茨城県牛乳普及協会' },
           ].map(({ img, title, client }) => (
-            <div class="group cursor-pointer">
-              <div class="overflow-hidden rounded-[6px] mb-3" style="aspect-ratio:4/3;">
-                <img src={`/images/${img}`} alt={title}
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div>
+              <div class="overflow-hidden rounded-[6px] mb-3 aspect-[4/3]">
+                {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="w-full h-full object-cover" />}
               </div>
-              <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body);">{title}</p>
-              <p class="font-noto font-medium text-[#666]" style="font-size: var(--fs-caption);">{client}</p>
+              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body);">{title}</p>
+              <p class="font-noto font-medium text-[#666]"  style="font-size: var(--fs-caption);">{client}</p>
             </div>
           ))}
         </div>
@@ -349,8 +336,8 @@ import ContactSection from '../components/ContactSection.astro';
               ['霞ヶ浦環境科学センター10周年記念式典・講演会（2015）', '茨城県環境科学センター'],
             ].map(([title, client]) => (
               <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
-                <p class="font-noto font-medium text-[#333]" style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0" style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -361,7 +348,7 @@ import ContactSection from '../components/ContactSection.astro';
       <div id="works-panel-ceremony" class="works-tab-panel">
         <div class="flex items-center gap-3 mb-8">
           <div class="w-8 h-[3px] bg-[#004896]"></div>
-          <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">式典実績</p>
+          <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">式典実績</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
@@ -375,13 +362,12 @@ import ContactSection from '../components/ContactSection.astro';
             { img: 'works_ceremony_08.jpg', title: '偕楽園見晴亭落成式',                       client: '茨城県水戸土木事務所' },
             { img: 'works_ceremony_09.jpg', title: '国道245号線湊大橋開通式典',                client: '茨城県水戸土木事務所' },
           ].map(({ img, title, client }) => (
-            <div class="group cursor-pointer">
-              <div class="overflow-hidden rounded-[6px] mb-3" style="aspect-ratio:4/3;">
-                <img src={`/images/${img}`} alt={title}
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div>
+              <div class="overflow-hidden rounded-[6px] mb-3 aspect-[4/3]">
+                {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="w-full h-full object-cover" />}
               </div>
-              <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body);">{title}</p>
-              <p class="font-noto font-medium text-[#666]" style="font-size: var(--fs-caption);">{client}</p>
+              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body);">{title}</p>
+              <p class="font-noto font-medium text-[#666]"  style="font-size: var(--fs-caption);">{client}</p>
             </div>
           ))}
         </div>
@@ -477,8 +463,8 @@ import ContactSection from '../components/ContactSection.astro';
               ['筑西市誕生10周年記念式典（2015）', '筑西市'],
             ].map(([title, client]) => (
               <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
-                <p class="font-noto font-medium text-[#333]" style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0" style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -489,7 +475,7 @@ import ContactSection from '../components/ContactSection.astro';
       <div id="works-panel-design" class="works-tab-panel">
         <div class="flex items-center gap-3 mb-8">
           <div class="w-8 h-[3px] bg-[#004896]"></div>
-          <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">デザイン・印刷実績</p>
+          <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">デザイン・印刷実績</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
@@ -503,13 +489,12 @@ import ContactSection from '../components/ContactSection.astro';
             { img: 'works_design_08.jpg', title: '金砂郷町記念誌',             client: '金砂郷町' },
             { img: 'works_design_09.jpg', title: '御前山村記念誌',             client: '御前山村' },
           ].map(({ img, title, client }) => (
-            <div class="group cursor-pointer">
-              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center" style="aspect-ratio: 4/3;">
-                <img src={`/images/${img}`} alt={title}
-                     class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+            <div>
+              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center aspect-[4/3]">
+                {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="w-full h-full object-contain" />}
               </div>
-              <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body);">{title}</p>
-              <p class="font-noto font-medium text-[#666]" style="font-size: var(--fs-caption);">{client}</p>
+              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body);">{title}</p>
+              <p class="font-noto font-medium text-[#666]"  style="font-size: var(--fs-caption);">{client}</p>
             </div>
           ))}
         </div>
@@ -532,8 +517,8 @@ import ContactSection from '../components/ContactSection.astro';
               ['秦仁会江隆会グループ創立20周年記念誌（2015）', '秦仁会'],
             ].map(([title, client]) => (
               <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
-                <p class="font-noto font-medium text-[#333]" style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0" style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -546,11 +531,11 @@ import ContactSection from '../components/ContactSection.astro';
           <div class="border border-[#D1D9E6] rounded-[8px] p-6">
             <div class="flex items-center gap-2 mb-5">
               <div class="w-5 h-[2px] bg-[#4982C2]"></div>
-              <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-h4);">記念誌</p>
+              <p class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">記念誌</p>
             </div>
             <ul class="space-y-3">
               {['水府村閉村記念誌', '御前山村閉村記念誌', '金砂郷町閉村記念誌'].map((item) => (
-                <li class="flex items-start gap-2 font-noto font-medium text-[#333]" style="font-size: var(--fs-small);">
+                <li class="flex items-start gap-2 font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">
                   <span class="text-[#4982C2] flex-shrink-0 mt-0.5">・</span>
                   <span>{item}</span>
                 </li>
@@ -562,11 +547,11 @@ import ContactSection from '../components/ContactSection.astro';
           <div class="border border-[#D1D9E6] rounded-[8px] p-6">
             <div class="flex items-center gap-2 mb-5">
               <div class="w-5 h-[2px] bg-[#4982C2]"></div>
-              <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-h4);">要覧</p>
+              <p class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">要覧</p>
             </div>
             <ul class="flex flex-wrap gap-x-4 gap-y-2">
               {['大宮町', '笠間市', '美和村', '緒川村', '麻生町', '里美村', '山方町', '小川町', '常北町', '那珂町', '那珂市', '城里町', '大洗町', '金砂郷町', '水府村', '桂村', '大子町'].map((item) => (
-                <li class="font-noto font-medium text-[#333] flex-shrink-0" style="font-size: var(--fs-small);">
+                <li class="font-noto font-medium text-[#333] flex-shrink-0"  style="font-size: var(--fs-small);">
                   ・{item}
                 </li>
               ))}
@@ -577,16 +562,16 @@ import ContactSection from '../components/ContactSection.astro';
           <div class="border border-[#D1D9E6] rounded-[8px] p-6">
             <div class="flex items-center gap-2 mb-5">
               <div class="w-5 h-[2px] bg-[#4982C2]"></div>
-              <p class="font-noto font-bold text-[#004896]" style="font-size: var(--fs-h4);">コミック</p>
+              <p class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">コミック</p>
             </div>
             <ul class="space-y-3">
               {[
                 { title: '湖沼浄化啓発コミック', client: '茨城町' },
                 { title: '徳川光圀一代記', client: '（株）パロス' },
               ].map(({ title, client }) => (
-                <li class="font-noto font-medium text-[#333]" style="font-size: var(--fs-small);">
+                <li class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">
                   <span>・{title}</span>
-                  <span class="block ml-4 text-[#999]" style="font-size: var(--fs-caption);">{client}</span>
+                  <span class="block ml-4 text-[#999]"  style="font-size: var(--fs-caption);">{client}</span>
                 </li>
               ))}
             </ul>
@@ -599,7 +584,7 @@ import ContactSection from '../components/ContactSection.astro';
       <div id="works-panel-novelty" class="works-tab-panel">
         <div class="flex items-center gap-3 mb-8">
           <div class="w-8 h-[3px] bg-[#004896]"></div>
-          <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">ノベルティ・商品実績</p>
+          <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">ノベルティ・商品実績</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
@@ -613,13 +598,12 @@ import ContactSection from '../components/ContactSection.astro';
             { img: 'works_goods_08.jpg', title: 'オリジナル扇子',                         client: 'JA茨城県中央会' },
             { img: 'works_goods_09.jpg', title: '国民文化祭・いばらきノベルティ各種',     client: '茨城県' },
           ].map(({ img, title, client }) => (
-            <div class="group cursor-pointer">
-              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center" style="aspect-ratio: 4/3;">
-                <img src={`/images/${img}`} alt={title}
-                     class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+            <div>
+              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center aspect-[4/3]">
+                {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="w-full h-full object-contain" />}
               </div>
-              <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body);">{title}</p>
-              <p class="font-noto font-medium text-[#666]" style="font-size: var(--fs-caption);">{client}</p>
+              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body);">{title}</p>
+              <p class="font-noto font-medium text-[#666]"  style="font-size: var(--fs-caption);">{client}</p>
             </div>
           ))}
         </div>
@@ -667,8 +651,8 @@ import ContactSection from '../components/ContactSection.astro';
               ['那珂高等学校のぼり', '那珂高等学校'],
             ].map(([title, client]) => (
               <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
-                <p class="font-noto font-medium text-[#333]" style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0" style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -679,7 +663,7 @@ import ContactSection from '../components/ContactSection.astro';
       <div id="works-panel-video" class="works-tab-panel">
         <div class="flex items-center gap-3 mb-8">
           <div class="w-8 h-[3px] bg-[#004896]"></div>
-          <p class="font-noto font-bold text-[#333333]" style="font-size: var(--fs-h4);">映像制作実績</p>
+          <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">映像制作実績</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
@@ -693,13 +677,12 @@ import ContactSection from '../components/ContactSection.astro';
             { img: 'works_movie_08.jpg', title: '第56回全国植樹祭DVD・ビデオ',                           client: '茨城県' },
             { img: 'works_movie_09.jpg', title: '第74回全国学校歯科保健研究大会ホームページ',             client: 'トップツアー（株）水戸支店' },
           ].map(({ img, title, client }) => (
-            <div class="group cursor-pointer">
-              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center" style="aspect-ratio: 4/3;">
-                <img src={`/images/${img}`} alt={title}
-                     class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+            <div>
+              <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center aspect-[4/3]">
+                {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="w-full h-full object-contain" />}
               </div>
-              <p class="font-noto font-bold text-[#004896] mb-1" style="font-size: var(--fs-body);">{title}</p>
-              <p class="font-noto font-medium text-[#666]" style="font-size: var(--fs-caption);">{client}</p>
+              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body);">{title}</p>
+              <p class="font-noto font-medium text-[#666]"  style="font-size: var(--fs-caption);">{client}</p>
             </div>
           ))}
         </div>
@@ -730,8 +713,8 @@ import ContactSection from '../components/ContactSection.astro';
               ['「研究所紹介ビデオ」（会社案内・15分）', '（財）真空科学研究所'],
             ].map(([title, client]) => (
               <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
-                <p class="font-noto font-medium text-[#333]" style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0" style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -750,11 +733,9 @@ import ContactSection from '../components/ContactSection.astro';
                   flex flex-row items-center justify-between
                   hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
           <div class="flex-1 pr-4">
-            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
-               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Works</p>
-            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">事業内容</h3>
-            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
-               style="font-size: var(--fs-small);">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Works</p>
+            <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">事業内容</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
               式典・イベントの企画運営を中心としたワンストップ事業をご紹介します。
             </p>
           </div>
@@ -771,11 +752,9 @@ import ContactSection from '../components/ContactSection.astro';
                   flex flex-row items-center justify-between
                   hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
           <div class="flex-1 pr-4">
-            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
-               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">Our Strengths</p>
-            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">私たちの強み</h3>
-            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
-               style="font-size: var(--fs-small);">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Strengths</p>
+            <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">私たちの強み</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
               多彩なイベント・式典をサポートしてきた私たちの強みをご紹介します。
             </p>
           </div>
@@ -792,11 +771,9 @@ import ContactSection from '../components/ContactSection.astro';
                   flex flex-row items-center justify-between
                   hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
           <div class="flex-1 pr-4">
-            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3"
-               style="font-size: var(--fs-caption); letter-spacing: 0.15em;">About Us</p>
-            <h3 class="font-noto font-bold text-white mb-3" style="font-size: var(--fs-h3);">会社概要</h3>
-            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"
-               style="font-size: var(--fs-small);">
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">About Us</p>
+            <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">会社概要</h3>
+            <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
               株式会社イトピックの企業理念や代表挨拶、会社概要をご紹介します。
             </p>
           </div>
@@ -818,7 +795,6 @@ import ContactSection from '../components/ContactSection.astro';
 </Layout>
 
 <script>
-  // タブ切り替え
   function worksShowTab(id: string, btn: HTMLElement) {
     document.querySelectorAll('.works-tab-panel').forEach(function(p) {
       p.classList.remove('active');
@@ -837,10 +813,12 @@ import ContactSection from '../components/ContactSection.astro';
     const activeSpan = btn.querySelector<HTMLElement>('span:last-child');
     if (activeSpan) activeSpan.style.backgroundColor = '#004896';
   }
-  (window as any).worksShowTab = worksShowTab;
 
-  // カウンターアニメーション（Numbers section）
-  (function () {
+  function initWorksPage() {
+    if (!document.querySelector('.works-tab-panel')) return;
+    (window as any).worksShowTab = worksShowTab;
+
+    // カウンターアニメーション（Numbers section）
     function easeOutQuart(t: number) { return 1 - Math.pow(1 - t, 4); }
 
     function animateCounter(el: HTMLElement) {
@@ -869,10 +847,8 @@ import ContactSection from '../components/ContactSection.astro';
       }, { threshold: 0.4 });
       counters.forEach(function (el) { obs.observe(el); });
     }
-  })();
 
-  // ドーナツチャート + 比率カウンター
-  (function () {
+    // ドーナツチャート + 比率カウンター
     const CIRCUMFERENCE = 2 * Math.PI * 75;
     function easeOutQuart(t: number) { return 1 - Math.pow(1 - t, 4); }
 
@@ -937,5 +913,7 @@ import ContactSection from '../components/ContactSection.astro';
       }, { threshold: 0.25 });
       obs.observe(section);
     }
-  })();
+  }
+
+  document.addEventListener('astro:page-load', initWorksPage);
 </script>
