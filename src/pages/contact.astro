@@ -16,12 +16,12 @@ const ogImageSrc = (await getImage({ src: contactMb, width: 1200 })).src;
 
   <section id="page-hero-contact"
            class="w-full bg-white relative overflow-hidden max-h-[455px] min-h-[clamp(200px,28vw,455px)]">
-    <div class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0" aria-hidden="true">
+    <div class="hidden lg:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0" aria-hidden="true">
       <div class="absolute top-0 right-0 w-[clamp(260px,28vw,420px)] h-[clamp(260px,28vw,420px)] opacity-[0.55]">
         <Image src={ibarakiBg} alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0 min-h-[clamp(200px,28vw,455px)]">
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 lg:px-0 min-h-[clamp(200px,28vw,455px)]">
       <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">Contact</p>
       <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"  style="font-size: var(--fs-display);">お問い合わせ</h1>
       <nav aria-label="パンくずリスト">
@@ -41,11 +41,11 @@ const ogImageSrc = (await getImage({ src: contactMb, width: 1200 })).src;
   </div>
 
   <section id="contact-form" class="w-full bg-bg-white pt-[var(--sp-section-lg)] pb-[var(--sp-section-md)]">
-    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
       <div data-a="fade" class="mb-12 lg:mb-16 text-center max-w-[600px] mx-auto">
         <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">Mail Form</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6 md:mb-10"  style="font-size: var(--fs-h2);">メールフォーム</h2>
-        <p class="font-noto font-medium text-[#555] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
+        <p class="font-noto font-medium text-[#555] leading-loose text-left lg:text-center"  style="font-size: var(--fs-body);">
           内容を確認の上、担当者より2営業日以内にご連絡いたします。
         </p>
       </div>
@@ -55,7 +55,7 @@ const ogImageSrc = (await getImage({ src: contactMb, width: 1200 })).src;
         <input type="hidden" name="_redirect"
                value="https://cloudflare-workers-autoconfig-itpc.snsstartdiary.workers.dev/thanks/" />
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
           <div>
             <label class="block font-noto font-bold text-[#333333] mb-2"  style="font-size: var(--fs-small);">
               お名前<span class="required-badge">必須</span>
@@ -70,7 +70,7 @@ const ogImageSrc = (await getImage({ src: contactMb, width: 1200 })).src;
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
           <div>
             <label class="block font-noto font-bold text-[#333333] mb-2"  style="font-size: var(--fs-small);">
               メールアドレス<span class="required-badge">必須</span>
@@ -151,9 +151,9 @@ const ogImageSrc = (await getImage({ src: contactMb, width: 1200 })).src;
   </section>
 
   <section class="w-full bg-white pb-[var(--sp-section-sm)]">
-    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
       <div data-a="fade" class="bg-[#004896] rounded-[16px] overflow-hidden py-[clamp(36px,5vw,70px)] px-[clamp(24px,5vw,80px)]">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
           <div>
             <p class="font-inter font-bold text-white tracking-[0.18em] mb-3 opacity-60"  style="font-size: var(--fs-caption);">PHONE</p>
             <p class="font-noto font-bold text-white mb-2"  style="font-size: var(--fs-h3);">お電話でのお問い合わせ</p>
@@ -176,7 +176,7 @@ const ogImageSrc = (await getImage({ src: contactMb, width: 1200 })).src;
   </section>
 
   <section class="w-full bg-bg-white pb-[var(--sp-section-md)]">
-    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
       <ul class="font-noto font-medium text-[#777777] leading-loose space-y-2"  style="font-size: var(--fs-caption);">
         <li>※ お問い合わせの内容によっては、回答までにお時間をいただく場合がございます。</li>
         <li>※ 土日祝日・年末年始のお問い合わせは、翌営業日以降のご返答となります。</li>

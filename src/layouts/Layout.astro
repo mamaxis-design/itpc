@@ -151,8 +151,8 @@ const ogImageUrl = ogImage.startsWith('http')
         if (t && t.hasAttribute('data-mv-parallax')) st.kill();
       });
 
-      // スマホ (< 768px) は負荷を避けてスキップ
-      if (window.innerWidth < 768) return;
+      // モバイル・タブレット (< 1024px) は負荷を避けてスキップ
+      if (window.innerWidth < 1024) return;
 
       // 静止時 scale なし（自然な object-cover）+ 上下にはみ出しで派手めに移動
       const MV_SHIFT = 0.35;  // コンテナ高さの 35% 分、上方向へ移動
@@ -201,8 +201,8 @@ const ogImageUrl = ogImage.startsWith('http')
         section.querySelector('.contact-grid-overlay')?.remove();
         delete section.dataset.gridAnim;
 
-        const cols = window.innerWidth < 768 ? 10 : 15;
-        const rows = window.innerWidth < 768 ? 8 : 10;
+        const cols = window.innerWidth < 1024 ? 10 : 15;
+        const rows = window.innerWidth < 1024 ? 8 : 10;
 
         const overlay = document.createElement('div');
         overlay.className = 'contact-grid-overlay';

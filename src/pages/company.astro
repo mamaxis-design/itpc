@@ -21,14 +21,14 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
     class="w-full bg-white relative overflow-hidden max-h-[455px] min-h-[clamp(200px,28vw,455px)]"
   >
     <div
-      class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0"
+      class="hidden lg:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0"
       aria-hidden="true"
     >
       <div class="absolute top-0 right-0 w-[clamp(260px,28vw,420px)] h-[clamp(260px,28vw,420px)] opacity-[0.55]">
         <Image src={ibarakiBg} alt="" class="w-full h-full object-contain object-right-top" />
       </div>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 xl:px-0 min-h-[clamp(200px,28vw,455px)]">
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col justify-center px-6 md:px-8 lg:px-0 min-h-[clamp(200px,28vw,455px)]">
       <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">About Us</p>
       <h1 data-title-anim class="font-noto font-bold text-[#333333] leading-tight mb-6"  style="font-size: var(--fs-display);">会社概要</h1>
       <nav aria-label="パンくずリスト">
@@ -50,7 +50,7 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
   </div>
 
   <section id="company-philosophy" class="w-full bg-[#004896] section-lg lg:section-xl">
-    <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0 flex flex-col items-center text-center">
+    <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0 flex flex-col items-center text-center">
       <p class="font-inter font-bold text-white tracking-[0.22em] opacity-70 mb-[clamp(16px,calc(1.5vw+10.38px),32px)]"  style="font-size: var(--fs-small);">Philosophy</p>
       <h2 class="font-noto font-bold text-white leading-tight mb-[clamp(20px,calc(1.88vw+12.96px),40px)]"  style="font-size: var(--fs-h1);">企業理念</h2>
       <p class="font-noto font-bold text-white leading-snug tracking-[0.04em] mb-[clamp(28px,calc(2.63vw+18.14px),56px)]"  style="font-size: var(--fs-h3);">地域の想いを、形にする。</p>
@@ -68,14 +68,14 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
         CEO Message
       </span>
     </div>
-    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
       <div data-a="fade" class="mb-[clamp(32px,calc(4.51vw+15.1px),80px)]">
         <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-[clamp(12px,calc(0.38vw+10.59px),16px)]"  style="font-size: var(--fs-small);">Message</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h2);">代表挨拶</h2>
       </div>
 
       <div data-a="fade" class="flex flex-col lg:flex-row lg:items-start gap-[clamp(28px,calc(4.88vw+9.69px),80px)]">
-        <div class="flex-shrink-0 lg:w-[420px] xl:w-[460px]">
+        <div class="flex-shrink-0 lg:w-[420px] lg:w-[460px]">
           <div class="flex gap-6 items-start">
             <div class="flex-shrink-0 w-[3px] bg-[#004896] self-stretch"></div>
             <div>
@@ -105,7 +105,7 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
   </section>
 
   <section id="company-info" class="w-full bg-white section-lg">
-    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
       <div data-a="fade" class="mb-12 lg:mb-16">
         <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">Company Info</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h2);">会社情報</h2>
@@ -115,8 +115,8 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
           ['商号', '株式会社イトピック'],
           ['本社所在地', '茨城県水戸市加倉井町341-6'],
         ].map(([label, value]) => (
-          <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
-            <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+          <div class="flex flex-col lg:flex-row border-b border-[#E0E6EF]">
+            <div class="w-full lg:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
               <p class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-small);">{label}</p>
             </div>
             <div class="flex-1 bg-white px-8 py-5 flex items-center">
@@ -124,8 +124,8 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
             </div>
           </div>
         ))}
-        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
-          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-start md:items-center">
+        <div class="flex flex-col lg:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full lg:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-start lg:items-center">
             <p class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-small);">役員氏名</p>
           </div>
           <div class="flex-1 bg-white px-8 py-5">
@@ -149,8 +149,8 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
           ['従業員数', '4名'],
           ['主な取引先（敬称略）', '茨城県庁、（一社）茨城県観光物産協会、各土木事務所、茨城県商工会連合会、水戸市、常陸大宮市、笠間市、城里町、大子町、大洗町、東海村、他県内市町村、（株）茨城新聞社、JA茨城県中央会、日本赤十字社茨城県支部、（公財）茨城県開発公社、（公社）茨城県農林振興公社、コマツ茨城工場'],
         ].map(([label, value]) => (
-          <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
-            <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+          <div class="flex flex-col lg:flex-row border-b border-[#E0E6EF]">
+            <div class="w-full lg:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
               <p class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-small);">{label}</p>
             </div>
             <div class="flex-1 bg-white px-8 py-5 flex items-center">
@@ -158,8 +158,8 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
             </div>
           </div>
         ))}
-        <div class="flex flex-col md:flex-row border-b border-[#E0E6EF]">
-          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+        <div class="flex flex-col lg:flex-row border-b border-[#E0E6EF]">
+          <div class="w-full lg:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
             <p class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-small);">取引金融機関</p>
           </div>
           <div class="flex-1 bg-white px-8 py-5 flex items-center">
@@ -168,8 +168,8 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
             </div>
           </div>
         </div>
-        <div class="flex flex-col md:flex-row">
-          <div class="w-full md:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
+        <div class="flex flex-col lg:flex-row">
+          <div class="w-full lg:w-[220px] flex-shrink-0 bg-[#F0F6FA] px-6 py-5 flex items-center">
             <p class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-small);">関連会社</p>
           </div>
           <div class="flex-1 bg-white px-8 py-5 flex items-center">
@@ -181,7 +181,7 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
   </section>
 
   <section id="company-access" class="w-full bg-white pb-[var(--sp-section-lg)]">
-    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 xl:px-0">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
       <div data-a="fade" class="mb-10 lg:mb-14">
         <p class="font-inter font-bold text-[#4982C2] tracking-[0.18em] mb-4"  style="font-size: var(--fs-small);">Access</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight"  style="font-size: var(--fs-h2);">所在地・アクセス</h2>
@@ -197,8 +197,8 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
           title="株式会社イトピック 所在地マップ"
         ></iframe>
       </div>
-      <div data-a="stagger" class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#E0E6EF] rounded-[8px] overflow-hidden">
-        <div class="flex flex-col p-8 lg:p-10 bg-[#004896] text-white border-b border-[#ffffff20] md:border-b-0 md:border-r md:border-[#ffffff20]">
+      <div data-a="stagger" class="grid grid-cols-1 lg:grid-cols-3 gap-0 border border-[#E0E6EF] rounded-[8px] overflow-hidden">
+        <div class="flex flex-col p-8 lg:p-10 bg-[#004896] text-white border-b border-[#ffffff20] lg:border-b-0 lg:border-r lg:border-[#ffffff20]">
           <div class="mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
@@ -214,7 +214,7 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
             <p class="mt-3">TEL：<a href="tel:0292534387" class="underline underline-offset-4 hover:opacity-70 transition-opacity duration-200">029-253-4387</a></p>
           </address>
         </div>
-        <div class="flex flex-col p-8 lg:p-10 bg-white border-b border-[#E0E6EF] md:border-b-0 md:border-r md:border-[#E0E6EF]">
+        <div class="flex flex-col p-8 lg:p-10 bg-white border-b border-[#E0E6EF] lg:border-b-0 lg:border-r lg:border-[#E0E6EF]">
           <div class="mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                  stroke="#004896" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
@@ -259,9 +259,9 @@ const ogImageSrc = (await getImage({ src: companyMain, width: 1200 })).src;
     </div>
   </section>
 
-  <section id="related-pages" class="w-full bg-white py-[80px] px-6 md:px-0">
-    <div class="inner md:px-0">
-      <div class="flex flex-col md:flex-row gap-8 md:gap-[75px]">
+  <section id="related-pages" class="w-full bg-white py-[80px] px-6 lg:px-0">
+    <div class="inner lg:px-0">
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-[75px]">
         {[
           { href: '/service', label: 'Our Works', title: '事業内容', desc: '式典・イベントの企画運営を中心としたワンストップ事業をご紹介します。' },
           { href: '/#strengths', label: 'Our Strengths', title: '私たちの強み', desc: '多彩なイベント・式典をサポートしてきた私たちの強みをご紹介します。' },
