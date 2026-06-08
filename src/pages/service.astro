@@ -56,7 +56,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
       <h2 class="font-noto font-bold text-[#004896] leading-snug mb-10 tracking-[0.05em]"  style="font-size: var(--fs-h1);">
         式典・イベントの<br />企画から運営までをサポート。
       </h2>
-      <div class="font-noto font-medium text-[#333333] leading-loose space-y-2 text-left md:text-center w-full"  style="font-size: var(--fs-body-lg);">
+      <div class="font-noto font-medium text-[#333333] leading-loose space-y-2 text-left lg:text-center w-full"  style="font-size: var(--fs-body-lg);">
         <p>行政機関・自治体向けのイベント企画から運営まで、創業からの実績とノウハウで確かなサポートを提供します。</p>
         <p>記念式典、周年行事、地域イベントなど、あらゆる規模のプロジェクトに対応します。</p>
       </div>
@@ -64,7 +64,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
   </section>
 
   <!-- HERO 02 -->
-  <section id="service-hero-02" class="w-full relative min-h-[clamp(600px,180vw,calc(705px+750px+200px))]">
+  <section id="service-hero-02" class="w-full relative min-h-0 lg:min-h-[clamp(600px,180vw,calc(705px+750px+200px))]">
     <div id="svc-hero-bg-wrap" class="absolute top-0 left-0 w-full overflow-hidden h-[clamp(220px,55vw,1000px)] z-0">
       <Image id="svc-hero-bg-img" src={servicesMain} alt="" aria-hidden="true" class="w-full h-full object-cover object-center" />
       <div class="hidden md:block absolute inset-0 bg-[linear-gradient(to_bottom,rgba(73,145,178,0.52)_0%,rgba(73,145,178,0.38)_28%,rgba(255,255,255,0.72)_62%,rgba(255,255,255,0.96)_82%,rgba(255,255,255,1)_100%)]"></div>
@@ -141,7 +141,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
       <div class="space-y-[var(--sp-section-md)] md:space-y-[var(--sp-section-xl)]">
 
         <!-- 01: デザイン・印刷 -->
-        <div id="design" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-full mx-auto">
+        <div id="design" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-[90%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
             <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 md:px-[clamp(32px,5.5vw,84px)] md:py-[clamp(48px,6.5vw,96px)]">
               <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">デザイン・印刷</h3>
@@ -160,7 +160,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
         </div>
 
         <!-- 02: ノベルティ・商品 -->
-        <div id="novelty" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-full mx-auto">
+        <div id="novelty" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-[90%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
             <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 md:px-[clamp(32px,5.5vw,84px)] md:py-[clamp(48px,6.5vw,96px)]">
               <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">ノベルティ・商品</h3>
@@ -179,7 +179,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
         </div>
 
         <!-- 03: 映像制作 -->
-        <div id="video" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-full mx-auto">
+        <div id="video" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-[90%] lg:w-full mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-stretch">
             <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 md:px-[clamp(32px,5.5vw,84px)] md:py-[clamp(48px,6.5vw,96px)]">
               <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">映像制作</h3>
@@ -227,9 +227,9 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
             { num: '4', label: '運営\n制作実施', last: false },
             { num: '5', label: '納品\n完了報告', last: true },
           ].map(({ num, label, last }) => (
-            <div class="flex md:contents flex-col items-center flex-[1_1_0%]">
+            <div class="flex lg:contents flex-col items-center flex-[1_1_0%]">
               <div class="relative overflow-hidden rounded-[6px] flex flex-col justify-end
-                          px-5 pb-5 bg-[#004896] w-[60%] md:w-full mx-auto md:mx-0 min-h-[clamp(150px,12vw,160px)]">
+                          px-5 pb-5 bg-[#004896] w-[60%] lg:w-full mx-auto lg:mx-0 min-h-[clamp(150px,12vw,160px)]">
                 <span class="absolute top-2 right-3 font-inter font-bold text-white select-none leading-none opacity-[0.18]"  style="font-size: var(--fs-display);">{num}</span>
                 <p class="font-noto font-bold text-white leading-snug relative z-10" 
                    set:html={label.replace('\n', '<br />')}></p>
@@ -239,7 +239,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
                   <div class="w-8 h-8 rounded-full border border-[#004896] flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                          stroke="#004896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="w-4 h-4 rotate-90 md:rotate-0">
+                         class="w-4 h-4 rotate-90 lg:rotate-0">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                   </div>

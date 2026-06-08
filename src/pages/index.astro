@@ -79,9 +79,9 @@ const jsonLd = {
           Event Planning &amp; Production
         </p>
         <h1
-          class="font-noto font-bold text-white leading-tight mb-8 md:mb-10 w-full leading-normal tracking-[2.05px]" 
+          class="font-noto font-bold text-white leading-loose mb-8 md:mb-10 w-full leading-normal tracking-[2.05px]" 
          style="font-size: var(--fs-display);">
-          <span class="text-[#4982C2]">35年超</span>の実績と創造力で、<br class="hidden lg:block" />茨城の魅力を次世代へ。
+          <span class="text-[#4982C2]">35年超</span>の実績と創造力で、<br class="hidden md:block" />茨城の魅力を次世代へ。
         </h1>
         <div
           class="font-noto font-medium text-white mb-10 md:mb-14 space-y-1 leading-[2.0] tracking-[1.15px]" 
@@ -135,23 +135,23 @@ const jsonLd = {
       <div class="lg:hidden w-full overflow-hidden pb-8 pt-4" aria-hidden="true">
         <div class="flex gap-4 w-max animate-[marquee-horizontal_14s_linear_infinite]">
           <!-- オリジナル3枚 -->
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
             <Image src={mb01} alt="実績写真1" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
             <Image src={mb02} alt="実績写真2" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
             <Image src={mb03} alt="実績写真3" class="object-cover w-full h-full" />
           </div>
           <!-- 複製3枚（シームレスループ用） -->
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
             <Image src={mb01} alt="" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
             <Image src={mb02} alt="" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[72vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
             <Image src={mb03} alt="" class="object-cover w-full h-full" />
           </div>
         </div>
@@ -239,8 +239,8 @@ const jsonLd = {
       <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-fluid-related max-w-full" data-card-row>
         <a href="/service#design"
            data-fade
-           class="group rounded-[15px] overflow-hidden flex flex-col min-w-0 w-full bg-[#004896] h-[clamp(400px,38vw,515px)]">
-          <div class="relative overflow-hidden shrink-0 flex-1 min-h-0" >
+           class="group rounded-[15px] overflow-hidden flex flex-col min-w-0 w-full bg-[#004896] md:h-auto lg:h-[clamp(400px,38vw,515px)]">
+          <div class="relative overflow-hidden shrink-0 flex-1 min-h-0 md:flex-none md:h-[clamp(280px,35vw,380px)] lg:flex-1 lg:min-h-0" >
             <Image src={services301} alt="デザイン・印刷" class="w-full h-full object-cover object-center scale-[1.35] origin-center transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-[rgba(0,40,110,0.15)] to-transparent p-5">
               <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">
@@ -248,9 +248,9 @@ const jsonLd = {
               </p>
             </div>
           </div>
-          <div class="flex items-center justify-between px-5 flex-1 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
+          <div class="flex items-center justify-between px-5 py-3 md:py-2.5 lg:py-4 shrink-0 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">視覚で伝えるデザインと品質</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-0.5 lg:mb-1"   style="font-size: var(--fs-small);">視覚で伝えるデザインと品質</p>
               <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h4);">デザイン・印刷</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center shrink-0 overflow-hidden">
@@ -261,8 +261,8 @@ const jsonLd = {
 
         <a href="/service#novelty"
            data-fade
-           class="group rounded-[15px] overflow-hidden flex flex-col min-w-0 w-full bg-[#004896] h-[clamp(400px,38vw,515px)]">
-          <div class="relative overflow-hidden shrink-0 flex-1 min-h-0" >
+           class="group rounded-[15px] overflow-hidden flex flex-col min-w-0 w-full bg-[#004896] md:h-auto lg:h-[clamp(400px,38vw,515px)]">
+          <div class="relative overflow-hidden shrink-0 flex-1 min-h-0 md:flex-none md:h-[clamp(280px,35vw,380px)] lg:flex-1 lg:min-h-0" >
             <Image src={services302} alt="ノベルティ・商品" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-[rgba(0,40,110,0.15)] to-transparent p-5">
               <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">
@@ -270,9 +270,9 @@ const jsonLd = {
               </p>
             </div>
           </div>
-          <div class="flex items-center justify-between px-5 flex-1 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
+          <div class="flex items-center justify-between px-5 py-3 md:py-2.5 lg:py-4 shrink-0 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">記憶に残るオリジナルグッズと価値</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-0.5 lg:mb-1"   style="font-size: var(--fs-small);">記憶に残るオリジナルグッズと価値</p>
               <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h4);">ノベルティ・商品</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center shrink-0 overflow-hidden">
@@ -283,8 +283,8 @@ const jsonLd = {
 
         <a href="/service#video"
            data-fade
-           class="group rounded-[15px] overflow-hidden flex flex-col min-w-0 w-full bg-[#004896] h-[clamp(400px,38vw,515px)]">
-          <div class="relative overflow-hidden shrink-0 flex-1 min-h-0" >
+           class="group rounded-[15px] overflow-hidden flex flex-col min-w-0 w-full bg-[#004896] md:h-auto lg:h-[clamp(400px,38vw,515px)]">
+          <div class="relative overflow-hidden shrink-0 flex-1 min-h-0 md:flex-none md:h-[clamp(280px,35vw,380px)] lg:flex-1 lg:min-h-0" >
             <Image src={services303} alt="映像制作" class="w-full h-full object-cover object-[50%_30%] transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,40,110,0.68)] via-[rgba(0,40,110,0.15)] to-transparent p-5">
               <p class="font-noto font-medium text-white leading-relaxed"   style="font-size: var(--fs-small);">
@@ -292,9 +292,9 @@ const jsonLd = {
               </p>
             </div>
           </div>
-          <div class="flex items-center justify-between px-5 flex-1 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
+          <div class="flex items-center justify-between px-5 py-3 md:py-2.5 lg:py-4 shrink-0 rounded-b-[15px] bg-[#004896] group-hover:bg-[#003a7a] transition-colors duration-300">
             <div>
-              <p class="font-noto font-medium text-[#4982C2] mb-1"   style="font-size: var(--fs-small);">イベントを未来へつなぐ記録</p>
+              <p class="font-noto font-medium text-[#4982C2] mb-0.5 lg:mb-1"   style="font-size: var(--fs-small);">イベントを未来へつなぐ記録</p>
               <p class="font-noto font-bold text-white"   style="font-size: var(--fs-h4);">映像制作</p>
             </div>
             <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center shrink-0 overflow-hidden">
