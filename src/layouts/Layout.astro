@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SiteLoader from '../components/SiteLoader.astro';
 import { SITE_ORIGIN } from '../consts/site';
 import '../styles/global.css';
 
@@ -52,9 +53,22 @@ const ogImageUrl = ogImage.startsWith('http')
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet" />
+  <script is:inline>
+    (function () {
+      try {
+        if (
+          sessionStorage.getItem('itpc-loader-seen') ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ) {
+          document.documentElement.classList.add('loader-skip');
+        }
+      } catch (e) { /* noop */ }
+    })();
+  </script>
   <ViewTransitions />
 </head>
 <body class={bodyClass}>
+  <SiteLoader />
   <Header />
   <div id="page-content" transition:animate="fade">
     <slot />
@@ -256,7 +270,17 @@ const ogImageUrl = ogImage.startsWith('http')
     }
 
     // View Transitions: 初回ロード・ページ遷移のたびに再実行
-    document.addEventListener('astro:page-load', initAll);
+    // 初回はスプラッシュ完了（loader:complete）後に初期化
+    let isFirstPageLoad = true;
+    document.addEventListener('astro:page-load', function () {
+      if (!isFirstPageLoad) {
+        initAll();
+        return;
+      }
+      isFirstPageLoad = false;
+      if (!document.getElementById('site-loader')) initAll();
+    });
+    document.addEventListener('loader:complete', initAll);
   </script>
 
   <script>

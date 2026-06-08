@@ -98,6 +98,36 @@
   animation: marquee-horizontal 30s linear infinite;
 }
 
+/* ─── Site loader (初回スプラッシュ) ─────────── */
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.site-loader__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-loader__logo {
+  width: clamp(100px, 22vw, 148px);
+  height: auto;
+}
+
+html.loader-skip #site-loader {
+  display: none !important;
+}
+
+body.is-loading {
+  overflow: hidden;
+}
+
 /* ─── Ripple effect ──────────────────────────── */
 @keyframes ripple {
   0%   { transform: scale(0.5); opacity: 0.6; }

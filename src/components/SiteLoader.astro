@@ -1,0 +1,141 @@
+---
+/** 初回セッション訪問時のブランドスプラッシュ（itpc-logo.svg パーツ組み立て） */
+---
+<div
+  id="site-loader"
+  class="site-loader"
+  role="status"
+  aria-live="polite"
+  aria-label="読み込み中"
+>
+  <div class="site-loader__inner">
+    <svg
+      class="site-loader__logo"
+      width="148"
+      height="118"
+      viewBox="0 0 148 118"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        data-logo-part
+        data-logo-order="5"
+        d="M140.48 41.18L120.03 56.23L140.6 71.09L140.62 83.86L99.93 56.37L140.39 27.89L140.48 41.18Z"
+        fill="#004896"
+      />
+      <path
+        data-logo-part
+        data-logo-order="1"
+        d="M17.93 14.49C19.35 16.76 18.92 20.38 17.36 22.51C15.37 25 12.39 26.35 9.20001 25.35C6.79001 24.43 4.44001 22.15 3.95001 19.6C3.31001 16.33 4.73001 13.49 7.29001 11.65C9.07001 10.44 11.69 10.16 13.82 10.87C15.46 11.37 17.02 12.93 17.94 14.49H17.93Z"
+        fill="#004896"
+      />
+      <path
+        data-logo-part
+        data-logo-order="2"
+        d="M16.86 84.21L5.49998 84.09L5.47998 28.67L16.86 28.61V84.21Z"
+        fill="#004896"
+      />
+      <path
+        data-logo-part
+        data-logo-order="3"
+        d="M41.06 42.9L52.36 42.84V54.5L41.43 54.6L41.41 83.78L29.43 83.86V54.82L18.78 54.81L18.86 43.01L29.84 42.96L29.93 28.54H41L41.06 42.9Z"
+        fill="#004896"
+      />
+      <path
+        data-logo-part
+        data-logo-order="4"
+        d="M54.57 28.76V117.08L66.18 117.05L66.21 84.13L100.08 60.06L54.57 28.75V28.76ZM66.35 51.12L79.77 60.2L66.27 69.65L66.35 51.12Z"
+        fill="#004896"
+      />
+    </svg>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const STORAGE_KEY = 'itpc-loader-seen';
+
+  function getLogoParts(loader: HTMLElement) {
+    return Array.from(
+      loader.querySelectorAll<SVGPathElement>('[data-logo-part]')
+    ).sort(function (a, b) {
+      return Number(a.dataset.logoOrder) - Number(b.dataset.logoOrder);
+    });
+  }
+
+  function finishLoader(loader: HTMLElement) {
+    document.body.classList.remove('is-loading');
+    document.documentElement.classList.add('loader-skip');
+    loader.remove();
+    document.dispatchEvent(new CustomEvent('loader:complete'));
+  }
+
+  function runSiteLoader() {
+    const loader = document.getElementById('site-loader');
+    if (!loader) {
+      document.dispatchEvent(new CustomEvent('loader:complete'));
+      return;
+    }
+
+    if (document.documentElement.classList.contains('loader-skip')) {
+      finishLoader(loader);
+      return;
+    }
+
+    try {
+      sessionStorage.setItem(STORAGE_KEY, '1');
+    } catch {
+      /* private browsing 等 */
+    }
+
+    document.body.classList.add('is-loading');
+
+    const logo = loader.querySelector<SVGElement>('.site-loader__logo');
+    const parts = getLogoParts(loader);
+
+    gsap.set(parts, {
+      opacity: 0,
+      scale: 0.72,
+      transformOrigin: 'center center',
+    });
+
+    if (logo) gsap.set(logo, { scale: 1, transformOrigin: 'center center' });
+
+    const tl = gsap.timeline({
+      onComplete: function () {
+        gsap.to(loader, {
+          opacity: 0,
+          duration: 0.75,
+          ease: 'power2.inOut',
+          onComplete: function () {
+            finishLoader(loader);
+          },
+        });
+      },
+    });
+
+    tl.to({}, { duration: 0.35 })
+      .to(parts, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.55,
+        stagger: 0.2,
+        ease: 'back.out(1.4)',
+      })
+      .to({}, { duration: 0.4 })
+      .to(logo, { scale: 1.04, duration: 0.45, ease: 'power2.out' })
+      .to(logo, { scale: 1, duration: 0.4, ease: 'power2.inOut' })
+      .to({}, { duration: 0.7 });
+  }
+
+  let started = false;
+  function initSiteLoader() {
+    if (started) return;
+    started = true;
+    runSiteLoader();
+  }
+
+  document.addEventListener('astro:page-load', initSiteLoader);
+</script>
