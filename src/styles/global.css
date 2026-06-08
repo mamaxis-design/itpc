@@ -120,6 +120,11 @@
   height: auto;
 }
 
+/* GSAP 初期化前のフラッシュ防止（opacity のみ・scale は使わない） */
+.site-loader [data-logo-part] {
+  opacity: 0;
+}
+
 html.loader-skip #site-loader {
   display: none !important;
 }
