@@ -30,7 +30,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
     class="w-full bg-white relative overflow-hidden"
    
   >
-    <div class="hidden lg:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0" aria-hidden="true">
+    <div class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0" aria-hidden="true">
       <div class="absolute top-0 right-0 w-[clamp(260px,28vw,420px)] h-[clamp(260px,28vw,420px)] opacity-[0.55]">
         <Image src={ibarakiBg} alt="" class="w-full h-full object-contain object-right-top" />
       </div>
@@ -54,9 +54,9 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
   </div>
 
   <!-- HERO 01 -->
-  <section id="works-hero-01" class="w-full bg-white flex items-center justify-center py-14 lg:py-36">
+  <section id="works-hero-01" class="w-full bg-white flex items-center justify-center py-14 md:py-36">
     <div data-a="fade" class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0 flex flex-col items-center justify-center text-center">
-      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 lg:mb-8 tracking-[0.2em]"  style="font-size: var(--fs-small);">Achievements since 1988</p>
+      <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-4 md:mb-8 tracking-[0.2em]"  style="font-size: var(--fs-small);">Achievements since 1988</p>
       <h2 class="font-noto font-bold text-[#004896] leading-snug tracking-[0.05em]"  style="font-size: var(--fs-h1);">
         創業以来の歩みと実績
       </h2>
@@ -66,8 +66,8 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
   <!-- HERO 02 -->
   <section id="works-hero-02" class="w-full bg-white">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
-      <div class="flex flex-col lg:flex-row lg:items-start gap-x-28 pt-0 pb-[var(--sp-section-lg)]">
-        <div data-a="fade" class="flex-1 min-w-0 lg:px-0">
+      <div class="flex flex-col md:flex-row md:items-start gap-fluid-2col pt-0 pb-[var(--sp-section-lg)]">
+        <div data-a="fade" class="flex-1 min-w-0">
           <h3 class="font-noto font-bold text-[#333333] leading-normal mb-6 tracking-[0.02em]"  style="font-size: var(--fs-h3);">
             創業以来、変わらぬ姿勢で<br />プロジェクトに向き合ってきました。
           </h3>
@@ -78,8 +78,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
             <p>ここでは、直近の代表的な実績をカテゴリ別にご紹介します。掲載内容はクライアントの許諾範囲内での表記となります。</p>
           </div>
         </div>
-        <div data-a="fade" class="flex-shrink-0 overflow-hidden rounded-[4px]
-                    w-full lg:px-0 mt-10 lg:mt-0 lg:w-[560px] h-[clamp(280px,38vw,560px)]">
+        <div data-a="fade" class="col-media overflow-hidden rounded-[4px] mt-10 md:mt-0 h-[clamp(280px,38vw,560px)]">
           <Image src={worksMain} alt="創業以来の歩みと実績" class="w-full h-full object-cover object-center" />
         </div>
       </div>
@@ -92,19 +91,19 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
       <Image src={worksBg} alt="" class="w-full h-full object-cover object-center" />
     </div>
     <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0 section-lg">
-      <div data-a="fade" class="text-left lg:text-center mb-16 lg:mb-20">
+      <div data-a="fade" class="text-left md:text-center mb-16 md:mb-20">
         <p class="font-inter font-bold text-white tracking-widest mb-5 opacity-80 tracking-[0.2em]"  style="font-size: var(--fs-small);">Numbers</p>
         <h2 class="font-noto font-bold text-white leading-tight mb-6"  style="font-size: var(--fs-h2);">数字で見る、これまでの歩み</h2>
-        <p class="font-noto font-medium text-white opacity-85 leading-loose text-left lg:text-center"  style="font-size: var(--fs-body);">
+        <p class="font-noto font-medium text-white opacity-85 leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
           創業からの年数、累計取引件数、取引先団体数など、これまでの歩みを数字でご紹介します。
         </p>
       </div>
-      <div data-a="stagger" class="grid grid-cols-1 lg:grid-cols-3 gap-0">
-        <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-10 lg:pb-0 lg:border-r lg:border-white lg:border-opacity-25">
+      <div data-a="stagger" class="grid grid-cols-1 md:grid-cols-3 gap-0">
+        <div class="flex flex-col px-6 md:px-8 md:px-12 pb-10 md:pb-0 md:border-r md:border-white md:border-opacity-25">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
-          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center lg:text-left"  style="font-size: var(--fs-body);">創業からの年数</p>
-          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center lg:text-left"  style="font-size: var(--fs-caption);">1988年 創業</p>
-          <div class="flex items-baseline justify-center lg:justify-start gap-2 mb-8">
+          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left"  style="font-size: var(--fs-body);">創業からの年数</p>
+          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left"  style="font-size: var(--fs-caption);">1988年 創業</p>
+          <div class="flex items-baseline justify-center md:justify-start gap-2 mb-8">
             <span class="font-inter font-bold text-white js-counter" data-target="38"
                   class="leading-none"  style="font-size: var(--fs-stat);">38</span>
             <span class="font-noto font-bold text-white"  style="font-size: var(--fs-h2);">年</span>
@@ -115,11 +114,11 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
             </p>
           </div>
         </div>
-        <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-10 lg:pb-0 lg:border-r lg:border-white lg:border-opacity-25">
+        <div class="flex flex-col px-6 md:px-8 md:px-12 pb-10 md:pb-0 md:border-r md:border-white md:border-opacity-25">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
-          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center lg:text-left"  style="font-size: var(--fs-body);">累計取引件数</p>
-          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center lg:text-left"  style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
-          <div class="flex items-baseline justify-center lg:justify-start gap-1 mb-8">
+          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left"  style="font-size: var(--fs-body);">累計取引件数</p>
+          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left"  style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
+          <div class="flex items-baseline justify-center md:justify-start gap-1 mb-8">
             <span class="font-inter font-bold text-white"  style="font-size: var(--fs-h2);">約</span>
             <span class="font-inter font-bold text-white js-counter leading-none mx-1"  data-target="600" style="font-size: var(--fs-stat);">600</span>
             <span class="font-noto font-bold text-white"  style="font-size: var(--fs-h2);">件</span>
@@ -130,11 +129,11 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
             </p>
           </div>
         </div>
-        <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-0">
+        <div class="flex flex-col px-6 md:px-8 md:px-12 pb-0">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
-          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center lg:text-left"  style="font-size: var(--fs-body);">取引先団体数</p>
-          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center lg:text-left"  style="font-size: var(--fs-caption);">行政機関・企業・団体</p>
-          <div class="flex items-baseline justify-center lg:justify-start gap-1 mb-8">
+          <p class="font-noto font-medium text-white opacity-75 mb-2 text-center md:text-left"  style="font-size: var(--fs-body);">取引先団体数</p>
+          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center md:text-left"  style="font-size: var(--fs-caption);">行政機関・企業・団体</p>
+          <div class="flex items-baseline justify-center md:justify-start gap-1 mb-8">
             <span class="font-inter font-bold text-white"  style="font-size: var(--fs-h2);">約</span>
             <span class="font-inter font-bold text-white js-counter leading-none mx-1"  data-target="100" style="font-size: var(--fs-stat);">100</span>
             <span class="font-noto font-bold text-white"  style="font-size: var(--fs-h2);">団体</span>
@@ -152,19 +151,19 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
   <!-- RATIO -->
   <section id="works-ratio" class="w-full bg-[#F0F6FA] section-lg">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
-      <div data-a="fade" class="text-left lg:text-center mb-14 lg:mb-20">
+      <div data-a="fade" class="text-left md:text-center mb-14 md:mb-20">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.2em]"  style="font-size: var(--fs-small);">Data Visualization</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"  style="font-size: var(--fs-h2);">取引先の構成比率</h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose text-left lg:text-center"  style="font-size: var(--fs-body);">
-          全体の8割が行政・自治体関連の公的案件であり、そのうち半分が県関連の事業です。<br class="hidden lg:block" />
+        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
+          全体の8割が行政・自治体関連の公的案件であり、そのうち半分が県関連の事業です。<br class="hidden md:block" />
           県庁や市町村、公社、商工会から民間企業まで、多様なクライアントとパートナーシップを築いています。
         </p>
       </div>
-      <div data-a="fade" class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
-        <div class="flex-shrink-0 flex flex-col items-center justify-center w-full max-w-[432px] mx-auto">
-          <div class="relative w-[400px] h-[400px]">
+      <div data-a="fade" class="flex flex-col md:flex-row md:items-center gap-fluid-2col">
+        <div class="flex-shrink-0 flex flex-col items-center justify-center w-full min-w-0 max-w-[min(432px,100%)] mx-auto">
+          <div class="relative w-full max-w-[400px] aspect-square">
             <svg id="donut-chart" viewBox="0 0 200 200"
-                 class="w-[400px] h-[400px] -rotate-90">
+                 class="w-full h-full -rotate-90">
               <circle cx="100" cy="100" r="75" fill="none" stroke="#E2E8F0" stroke-width="28" />
               <circle id="seg1" cx="100" cy="100" r="75" fill="none" stroke="#004896" stroke-width="28"
                       stroke-dasharray="0 471" stroke-linecap="butt" data-pct="50" />
@@ -180,7 +179,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
             </div>
           </div>
         </div>
-        <div class="flex-1 min-w-0 flex flex-col gap-5 lg:max-w-[750px]">
+        <div class="flex-1 min-w-0 flex flex-col gap-5 md:max-w-[750px]">
           <div class="bg-white rounded-[8px] px-6 py-5 flex items-center justify-between border-l-4 border-[#004896]">
             <div>
               <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body-lg);">行政機関・県関連</p>
@@ -222,17 +221,17 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
   <!-- WORKS LIST -->
   <section id="works-list" class="w-full bg-white section-lg">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
-      <div data-a="fade" class="text-left lg:text-center mb-12 lg:mb-16">
+      <div data-a="fade" class="text-left md:text-center mb-12 md:mb-16">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.2em]"  style="font-size: var(--fs-small);">Works</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"  style="font-size: var(--fs-h2);">カテゴリ別 実績一覧</h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose text-left lg:text-center"  style="font-size: var(--fs-body);">
-          これまでの代表的な実績と、直近の掲載可能な実績一覧です。<br class="hidden lg:block" />
+        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
+          これまでの代表的な実績と、直近の掲載可能な実績一覧です。<br class="hidden md:block" />
           サービスカテゴリを選んでご覧ください。
         </p>
       </div>
 
       <!-- タブナビ -->
-      <div class="grid grid-cols-2 lg:grid-cols-5 mb-[58px] border border-[#D1D1D1] divide-x divide-[#D1D1D1]" id="works-tab-nav">
+      <div class="grid grid-cols-2 md:grid-cols-5 mb-[58px] border border-[#D1D1D1] divide-x divide-[#D1D1D1]" id="works-tab-nav">
         <button onclick="worksShowTab('event', this)"
                 class="works-tab-btn active flex flex-col items-center text-center px-0 pb-0
                        font-noto font-medium text-[#004896] whitespace-nowrap transition-colors duration-200 pt-[0.7rem]">
@@ -262,7 +261,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#D1D1D1] rounded-full transition-all duration-200"></span>
         </button>
         <button onclick="worksShowTab('video', this)"
-                class="works-tab-btn col-span-2 lg:col-span-1 flex flex-col items-center text-center px-0 pb-0
+                class="works-tab-btn col-span-2 md:col-span-1 flex flex-col items-center text-center px-0 pb-0
                        font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896] pt-[0.7rem]">
           <span class="font-inter text-[#4982C2] mb-1 tracking-[0.12em]"  style="font-size: 10px;">Video production</span>
           映像制作
@@ -276,7 +275,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">イベント実績</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 lg:mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 md:mb-24">
           {[
             { img: 'works_event_01.jpg', title: '下水道フェア', client: '茨城県流域下水道事務所' },
             { img: 'works_event_02.jpg', title: '茨城空港1000万人達成イベント', client: '茨城県' },
@@ -335,9 +334,9 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
               ['第57回関東ブロック民俗芸能大会（2015）', '茨城県教育庁総務企画部文化課'],
               ['霞ヶ浦環境科学センター10周年記念式典・講演会（2015）', '茨城県環境科学センター'],
             ].map(([title, client]) => (
-              <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center py-4 px-2 gap-1 lg:gap-0">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
                 <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] lg:text-right lg:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -350,7 +349,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">式典実績</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
           {[
             { img: 'works_ceremony_01.jpg', title: '主要地方道つくば野田線菅生大橋開通式典',   client: '茨城県石下土木事務所' },
             { img: 'works_ceremony_02.jpg', title: '筑西つくば線バイパス開通式典',             client: '筑西土木事務所' },
@@ -462,9 +461,9 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
               ['ファミリーサポートセンター10周年記念式典（2015）', '水戸ファミリー・サポートセンター'],
               ['筑西市誕生10周年記念式典（2015）', '筑西市'],
             ].map(([title, client]) => (
-              <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center py-4 px-2 gap-1 lg:gap-0">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
                 <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] lg:text-right lg:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -477,7 +476,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">デザイン・印刷実績</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
           {[
             { img: 'works_design_01.jpg', title: '会社案内パンフレット',       client: 'ひたちなかエネルギーロジテック（株）' },
             { img: 'works_design_02.jpg', title: 'いばらきの初詣',             client: '茨城県' },
@@ -516,16 +515,16 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
               ['サングリーンやさとパンフ（2015）', '医療法人江隆会'],
               ['秦仁会江隆会グループ創立20周年記念誌（2015）', '秦仁会'],
             ].map(([title, client]) => (
-              <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center py-4 px-2 gap-1 lg:gap-0">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
                 <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] lg:text-right lg:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
         </div>
 
         <!-- 記念誌 / 要覧 / コミック -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           <!-- 記念誌 -->
           <div class="border border-[#D1D9E6] rounded-[8px] p-6">
@@ -586,7 +585,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">ノベルティ・商品実績</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
           {[
             { img: 'works_goods_01.jpg', title: '茨城空港プリンタブルマスク',             client: '茨城県' },
             { img: 'works_goods_02.jpg', title: '法被',                                   client: '茨城県観光物産協会' },
@@ -650,9 +649,9 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
               ['下妻第二高等学校ポケットティッシュ', '下妻第二高等学校'],
               ['那珂高等学校のぼり', '那珂高等学校'],
             ].map(([title, client]) => (
-              <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center py-4 px-2 gap-1 lg:gap-0">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
                 <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] lg:text-right lg:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -665,7 +664,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">映像制作実績</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
           {[
             { img: 'works_movie_01.jpg', title: 'やまびこ厚生園紹介',                                     client: 'やまびこ厚生園' },
             { img: 'works_movie_02.jpg', title: '鹿島港50周年記念講演会・祝賀会記録映像',                 client: '鹿島港振興協会' },
@@ -712,9 +711,9 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
               ['「人・輝き・夢」（総合紹介・30分）', '美野里町'],
               ['「研究所紹介ビデオ」（会社案内・15分）', '（財）真空科学研究所'],
             ].map(([title, client]) => (
-              <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center py-4 px-2 gap-1 lg:gap-0">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
                 <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
-                <p class="font-noto font-medium text-[#999] lg:text-right lg:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
             ))}
           </div>
@@ -725,14 +724,14 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
   </section>
 
   <!-- RELATED PAGES -->
-  <section id="related-pages" class="w-full bg-white py-[80px] px-6 lg:px-0">
+  <section id="related-pages" class="w-full bg-white section-md px-6 lg:px-0">
     <div class="inner px-6 lg:px-0">
-      <div class="flex flex-col lg:flex-row gap-8 lg:gap-[75px]">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-fluid-related">
       <a href="/service"
-           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+           class="group min-w-0 bg-[#004896] rounded-[16px] px-[clamp(20px,3vw,32px)] py-[clamp(28px,4vw,40px)]
                   flex flex-row items-center justify-between
-                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
-          <div class="flex-1 pr-4">
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[clamp(160px,18vw,180px)]">
+          <div class="flex-1 min-w-0 pr-3">
             <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Works</p>
             <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">事業内容</h3>
             <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
@@ -748,10 +747,10 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           </div>
         </a>
         <a href="/#strengths"
-           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+           class="group min-w-0 bg-[#004896] rounded-[16px] px-[clamp(20px,3vw,32px)] py-[clamp(28px,4vw,40px)]
                   flex flex-row items-center justify-between
-                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
-          <div class="flex-1 pr-4">
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[clamp(160px,18vw,180px)]">
+          <div class="flex-1 min-w-0 pr-3">
             <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Strengths</p>
             <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">私たちの強み</h3>
             <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
@@ -767,10 +766,10 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           </div>
         </a>
         <a href="/company"
-           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+           class="group min-w-0 bg-[#004896] rounded-[16px] px-[clamp(20px,3vw,32px)] py-[clamp(28px,4vw,40px)]
                   flex flex-row items-center justify-between
-                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
-          <div class="flex-1 pr-4">
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[clamp(160px,18vw,180px)]">
+          <div class="flex-1 min-w-0 pr-3">
             <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">About Us</p>
             <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">会社概要</h3>
             <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">

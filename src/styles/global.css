@@ -37,6 +37,18 @@
   --sp-gap-md:  clamp(20px, calc(1.13vw + 15.8px), 32px);
   --sp-gap-lg:  clamp(32px, calc(2.25vw + 23.5px), 56px);
   --sp-gap-xl:  clamp(48px, calc(3.00vw + 36.7px), 80px);
+
+  /* 2カラム行間（gap-x-28 等の固定値代替）375px→24px, 1440px→112px */
+  --sp-gap-2col: clamp(24px, calc(8.26vw - 6.98px), 112px);
+
+  /* 強み・実績など広めの2カラム間隔 375px→32px, 1440px→144px */
+  --sp-gap-strength: clamp(32px, calc(10.52vw - 7.45px), 144px);
+
+  /* 関連ページ・横並びカード列間 375px→12px, 1440px→40px */
+  --sp-gap-related: clamp(12px, calc(2.35vw + 3.2px), 40px);
+
+  /* 2カラム：メディア列の幅（画像・図版） */
+  --col-media-width: clamp(280px, 38vw, 560px);
 }
 
 /* ─── Font utility classes ──────────────────── */
@@ -183,6 +195,22 @@ select.form-input {
   .section-md { padding-top: var(--sp-section-md);  padding-bottom: var(--sp-section-md); }
   .section-lg { padding-top: var(--sp-section-lg);  padding-bottom: var(--sp-section-lg); }
   .section-xl { padding-top: var(--sp-section-xl);  padding-bottom: var(--sp-section-xl); }
+
+  .gap-fluid-2col     { gap: var(--sp-gap-2col); }
+  .gap-x-fluid-2col   { column-gap: var(--sp-gap-2col); }
+  .gap-fluid-strength { gap: var(--sp-gap-strength); }
+  .gap-fluid-related  { gap: var(--sp-gap-related); }
+
+  /* 2カラム右（画像）列：幅をビューポートに追従、はみ出し防止 */
+  .col-media {
+    width: 100%;
+    min-width: 0;
+    flex: 0 1 var(--col-media-width);
+    max-width: 48%;
+  }
+  @media (max-width: 767px) {
+    .col-media { max-width: 100%; flex: 1 1 auto; }
+  }
 }
 
 /* ─── GSAP scroll animations: prevent flash before JS ── */

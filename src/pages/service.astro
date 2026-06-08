@@ -25,7 +25,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
     class="w-full bg-white relative overflow-hidden"
    
   >
-    <div class="hidden lg:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0" aria-hidden="true">
+    <div class="hidden md:block absolute inset-y-0 right-0 w-full max-w-[1440px] pointer-events-none select-none left-1/2 -translate-x-1/2 z-0" aria-hidden="true">
       <div class="absolute top-0 right-0 w-[clamp(260px,28vw,420px)] h-[clamp(260px,28vw,420px)] opacity-[0.55]">
         <Image src={ibarakiBg} alt="" class="w-full h-full object-contain object-right-top" />
       </div>
@@ -56,7 +56,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
       <h2 class="font-noto font-bold text-[#004896] leading-snug mb-10 tracking-[0.05em]"  style="font-size: var(--fs-h1);">
         式典・イベントの<br />企画から運営までをサポート。
       </h2>
-      <div class="font-noto font-medium text-[#333333] leading-loose space-y-2 text-left lg:text-center w-full"  style="font-size: var(--fs-body-lg);">
+      <div class="font-noto font-medium text-[#333333] leading-loose space-y-2 text-left md:text-center w-full"  style="font-size: var(--fs-body-lg);">
         <p>行政機関・自治体向けのイベント企画から運営まで、創業からの実績とノウハウで確かなサポートを提供します。</p>
         <p>記念式典、周年行事、地域イベントなど、あらゆる規模のプロジェクトに対応します。</p>
       </div>
@@ -67,14 +67,14 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
   <section id="service-hero-02" class="w-full relative min-h-[clamp(600px,180vw,calc(705px+750px+200px))]">
     <div id="svc-hero-bg-wrap" class="absolute top-0 left-0 w-full overflow-hidden h-[clamp(220px,55vw,1000px)] z-0">
       <Image id="svc-hero-bg-img" src={servicesMain} alt="" aria-hidden="true" class="w-full h-full object-cover object-center" />
-      <div class="hidden lg:block absolute inset-0 bg-[linear-gradient(to_bottom,rgba(73,145,178,0.52)_0%,rgba(73,145,178,0.38)_28%,rgba(255,255,255,0.72)_62%,rgba(255,255,255,0.96)_82%,rgba(255,255,255,1)_100%)]"></div>
-      <div class="lg:hidden absolute inset-0 bg-[linear-gradient(to_bottom,rgba(73,145,178,0.45)_0%,rgba(73,145,178,0.30)_50%,rgba(73,145,178,0.10)_100%)]"></div>
+      <div class="hidden md:block absolute inset-0 bg-[linear-gradient(to_bottom,rgba(73,145,178,0.52)_0%,rgba(73,145,178,0.38)_28%,rgba(255,255,255,0.72)_62%,rgba(255,255,255,0.96)_82%,rgba(255,255,255,1)_100%)]"></div>
+      <div class="md:hidden absolute inset-0 bg-[linear-gradient(to_bottom,rgba(73,145,178,0.45)_0%,rgba(73,145,178,0.30)_50%,rgba(73,145,178,0.10)_100%)]"></div>
     </div>
 
     <!-- PC -->
-    <div class="hero-content-wrap hidden lg:block absolute w-full max-w-[1440px] px-0 top-[705px] left-1/2 -translate-x-1/2 z-10">
-      <div class="flex flex-row items-start gap-x-28 pb-[var(--sp-section-xl)]">
-        <div id="svc-hero-pc-img" class="flex-shrink-0 overflow-hidden rounded-[4px] w-[640px] h-[clamp(320px,50vw,750px)]">
+    <div class="hero-content-wrap hidden md:block absolute w-full max-w-[1440px] px-0 top-[705px] left-1/2 -translate-x-1/2 z-10">
+      <div class="flex flex-row items-start gap-x-fluid-2col pb-[var(--sp-section-xl)]">
+        <div id="svc-hero-pc-img" class="col-media overflow-hidden rounded-[4px] h-[clamp(320px,50vw,750px)]">
           <Image src={serviceHiroMain} alt="企画・運営の現場" class="w-full h-full object-cover object-center" />
         </div>
         <div id="svc-hero-pc-txt" class="flex-1 min-w-0 pt-0 mb-12">
@@ -99,7 +99,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
     </div>
 
     <!-- SP -->
-    <div class="lg:hidden relative z-10 w-full bg-transparent pt-[clamp(120px,35vw,200px)] pb-[clamp(32px,8vw,60px)]">
+    <div class="md:hidden relative z-10 w-full bg-transparent pt-[clamp(120px,35vw,200px)] pb-[clamp(32px,8vw,60px)]">
       <div class="px-6 py-10 bg-white rounded-t-[16px]">
         <div class="overflow-hidden rounded-[4px] w-full mb-8 h-[clamp(240px,60vw,420px)]">
           <Image src={serviceHiroMain} alt="企画・運営の現場" class="w-full h-full object-cover object-center" />
@@ -132,18 +132,18 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
       <div data-a="fade" class="text-center px-6 mb-[var(--sp-section-md)]">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.18em]"  style="font-size: var(--fs-small);">Attached Services</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"  style="font-size: var(--fs-h2);">合わせてご提供するサービス</h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose text-left lg:text-center"  style="font-size: var(--fs-body);">
-          式典・イベントに付随する各種クリエイティブも、ワンストップでご対応しています。<br class="hidden lg:block" />
+        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
+          式典・イベントに付随する各種クリエイティブも、ワンストップでご対応しています。<br class="hidden md:block" />
           映像制作・デザイン制作・ノベルティ手配など、目的に合わせて最適なプランをご提案します。
         </p>
       </div>
 
-      <div class="space-y-[60px] lg:space-y-[120px]">
+      <div class="space-y-[var(--sp-section-md)] md:space-y-[var(--sp-section-xl)]">
 
         <!-- 01: デザイン・印刷 -->
-        <div id="design" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
-          <div class="flex flex-col lg:flex-row lg:items-stretch">
-            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
+        <div id="design" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-full mx-auto">
+          <div class="flex flex-col md:flex-row md:items-stretch">
+            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 md:px-[clamp(32px,5.5vw,84px)] md:py-[clamp(48px,6.5vw,96px)]">
               <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">デザイン・印刷</h3>
               <div class="h-[3px] bg-[#4982C2] w-[150px] mb-[var(--sp-gap-md)]"></div>
               <p class="font-noto font-bold text-[#004896] mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h4);">視覚で伝えるデザインと品質</p>
@@ -152,17 +152,17 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
                 <p>「わかりやすさ」と「高い品格」、そして統一感のあるビジュアル構築により、催事の価値を高めるとともに、来場者を迷わせない確実な会場導線を実現します。</p>
               </div>
             </div>
-            <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
-                        bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
-              <Image src={printImg} alt="デザイン・印刷 実績" class="w-full lg:h-[650px] object-contain" />
+            <div class="svc-card-img-col flex-shrink-0 w-full md:w-[45%] flex items-center justify-center
+                        bg-white px-6 py-8 md:px-[clamp(24px,4vw,60px)] md:py-[clamp(40px,4.5vw,64px)]">
+              <Image src={printImg} alt="デザイン・印刷 実績" class="w-full md:h-[clamp(320px,45vw,650px)] object-contain" />
             </div>
           </div>
         </div>
 
         <!-- 02: ノベルティ・商品 -->
-        <div id="novelty" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
-          <div class="flex flex-col lg:flex-row lg:items-stretch">
-            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
+        <div id="novelty" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-full mx-auto">
+          <div class="flex flex-col md:flex-row md:items-stretch">
+            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 md:px-[clamp(32px,5.5vw,84px)] md:py-[clamp(48px,6.5vw,96px)]">
               <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">ノベルティ・商品</h3>
               <div class="h-[3px] bg-[#4982C2] w-[150px] mb-[var(--sp-gap-md)]"></div>
               <p class="font-noto font-bold text-[#004896] mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h4);">記憶に残るオリジナルグッズと価値</p>
@@ -171,17 +171,17 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
                 <p>ターゲットの年齢層に合わせたノベルティ選定から、名入れデザイン、製造、会場への確実な納品まで一括で対応。徹底したスケジュール管理により、スムーズな催事運営を支えます。</p>
               </div>
             </div>
-            <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
-                        bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
-              <Image src={goodsImg} alt="ノベルティ・商品 実績" class="w-full lg:h-[650px] object-contain" />
+            <div class="svc-card-img-col flex-shrink-0 w-full md:w-[45%] flex items-center justify-center
+                        bg-white px-6 py-8 md:px-[clamp(24px,4vw,60px)] md:py-[clamp(40px,4.5vw,64px)]">
+              <Image src={goodsImg} alt="ノベルティ・商品 実績" class="w-full md:h-[clamp(320px,45vw,650px)] object-contain" />
             </div>
           </div>
         </div>
 
         <!-- 03: 映像制作 -->
-        <div id="video" class="bg-white rounded-[12px] overflow-hidden w-[95%] lg:w-full mx-auto">
-          <div class="flex flex-col lg:flex-row lg:items-stretch">
-            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 lg:px-[84px] lg:py-[96px]">
+        <div id="video" class="bg-white rounded-[12px] overflow-hidden w-[95%] md:w-full mx-auto">
+          <div class="flex flex-col md:flex-row md:items-stretch">
+            <div class="svc-card-txt-col flex-1 min-w-0 px-6 py-8 md:px-[clamp(32px,5.5vw,84px)] md:py-[clamp(48px,6.5vw,96px)]">
               <h3 class="font-noto font-bold text-[#333333] mb-[var(--sp-gap-md)]"  style="font-size: var(--fs-h3);">映像制作</h3>
               <div class="h-[3px] bg-[#4982C2] w-[150px] mb-[var(--sp-gap-md)]"></div>
               <p class="font-noto font-bold text-[#004896] mb-[var(--sp-gap-lg)]"  style="font-size: var(--fs-h4);">イベントを未来へつなぐ記録</p>
@@ -190,9 +190,9 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
                 <p>行政機関のイベントにふさわしい、「誰にでもわかりやすく、上品な映像」を制作します。ホームページや、その後のPR活動にもそのまま長く使える確実な映像をお届けします。</p>
               </div>
             </div>
-            <div class="svc-card-img-col flex-shrink-0 w-full lg:w-[45%] flex items-center justify-center
-                        bg-white px-6 py-8 lg:px-[60px] lg:py-[64px]">
-              <Image src={movieImg} alt="映像制作 実績" class="w-full lg:h-[650px] object-contain" />
+            <div class="svc-card-img-col flex-shrink-0 w-full md:w-[45%] flex items-center justify-center
+                        bg-white px-6 py-8 md:px-[clamp(24px,4vw,60px)] md:py-[clamp(40px,4.5vw,64px)]">
+              <Image src={movieImg} alt="映像制作 実績" class="w-full md:h-[clamp(320px,45vw,650px)] object-contain" />
             </div>
           </div>
         </div>
@@ -207,8 +207,8 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
       <div data-a="fade" class="text-center px-6 lg:px-0 mb-[var(--sp-section-md)]">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.18em]"  style="font-size: var(--fs-small);">Flow</p>
         <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"  style="font-size: var(--fs-h2);">サービスの流れ</h2>
-        <p class="font-noto font-medium text-[#333333] leading-loose text-left lg:text-center"  style="font-size: var(--fs-body);">
-          ご相談から納品まで、一貫してサポートします。<br class="hidden lg:block" />
+        <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
+          ご相談から納品まで、一貫してサポートします。<br class="hidden md:block" />
           初めてのご依頼でも安心していただけるよう、丁寧なヒアリングと確実な進行管理をおこないます。
         </p>
       </div>
@@ -219,7 +219,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">全体の流れ</p>
         </div>
-        <div data-a="fade" class="flex flex-col lg:flex-row items-stretch">
+        <div data-a="fade" class="flex flex-col md:flex-row items-stretch">
           {[
             { num: '1', label: '打ち合わせ\n御見積り', last: false },
             { num: '2', label: '企画\n制作準備', last: false },
@@ -227,9 +227,9 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
             { num: '4', label: '運営\n制作実施', last: false },
             { num: '5', label: '納品\n完了報告', last: true },
           ].map(({ num, label, last }) => (
-            <div class="flex lg:contents flex-col items-center flex-[1_1_0%]">
+            <div class="flex md:contents flex-col items-center flex-[1_1_0%]">
               <div class="relative overflow-hidden rounded-[6px] flex flex-col justify-end
-                          px-5 pb-5 bg-[#004896] w-[60%] lg:w-full mx-auto lg:mx-0 min-h-[clamp(150px,12vw,160px)]">
+                          px-5 pb-5 bg-[#004896] w-[60%] md:w-full mx-auto md:mx-0 min-h-[clamp(150px,12vw,160px)]">
                 <span class="absolute top-2 right-3 font-inter font-bold text-white select-none leading-none opacity-[0.18]"  style="font-size: var(--fs-display);">{num}</span>
                 <p class="font-noto font-bold text-white leading-snug relative z-10" 
                    set:html={label.replace('\n', '<br />')}></p>
@@ -239,7 +239,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
                   <div class="w-8 h-8 rounded-full border border-[#004896] flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                          stroke="#004896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="w-4 h-4 rotate-90 lg:rotate-0">
+                         class="w-4 h-4 rotate-90 md:rotate-0">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                   </div>
@@ -251,7 +251,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
       </div>
 
       <!-- 各ステップの詳細（アコーディオン） -->
-      <div class="mx-0 lg:mx-0">
+      <div class="mx-0 md:mx-0">
         <div class="flex items-center gap-3 mb-[var(--sp-gap-lg)]">
           <div class="w-8 h-[3px] bg-[#004896]"></div>
           <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">各ステップの詳細</p>
@@ -262,7 +262,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
           <!-- 1: イベント企画 -->
           <div class="border border-[#D8E4F0] rounded-[8px] overflow-hidden">
             <button type="button" class="accordion-trigger w-full flex items-center justify-between
-                           px-8 py-8 lg:px-[48px] lg:py-[40px] text-left bg-white
+                           px-8 py-8 md:px-[48px] md:py-[40px] text-left bg-white
                            hover:bg-[#F0F6FA] transition-colors duration-200"
                     aria-expanded="false" data-target="acc-panel-1">
               <span class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">イベント企画</span>
@@ -279,7 +279,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
               </span>
             </button>
             <div id="acc-panel-1" class="accordion-panel accordion-panel-inner max-h-0 overflow-hidden transition-[max-height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-              <div class="px-8 pb-10 pt-[30px] lg:px-[48px] lg:pb-[40px] bg-white">
+              <div class="px-8 pb-10 pt-[30px] md:px-[48px] md:pb-[40px] bg-white">
                 <ol class="relative">
                   <div class="absolute left-[15px] top-[32px] bottom-[32px] w-[1px] bg-[#D8E4F0]" aria-hidden="true"></div>
                   <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
@@ -296,7 +296,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
           <!-- 2: 式典運営 -->
           <div class="border border-[#D8E4F0] rounded-[8px] overflow-hidden">
             <button type="button" class="accordion-trigger w-full flex items-center justify-between
-                           px-8 py-8 lg:px-[48px] lg:py-[40px] text-left bg-white
+                           px-8 py-8 md:px-[48px] md:py-[40px] text-left bg-white
                            hover:bg-[#F0F6FA] transition-colors duration-200"
                     aria-expanded="false" data-target="acc-panel-2">
               <span class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">式典運営</span>
@@ -313,7 +313,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
               </span>
             </button>
             <div id="acc-panel-2" class="accordion-panel accordion-panel-inner max-h-0 overflow-hidden transition-[max-height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-              <div class="px-8 pb-10 pt-[30px] lg:px-[48px] lg:pb-[40px] bg-white">
+              <div class="px-8 pb-10 pt-[30px] md:px-[48px] md:pb-[40px] bg-white">
                 <ol class="relative">
                   <div class="absolute left-[15px] top-[32px] bottom-[32px] w-[1px] bg-[#D8E4F0]" aria-hidden="true"></div>
                   <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">打ち合わせ</p><p class="font-noto font-medium text-[#555555] leading-relaxed"  style="font-size: var(--fs-body);">招待者、式典の規模、会場など</p></div></li>
@@ -330,7 +330,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
           <!-- 3: 印刷・デザイン・ノベルティ -->
           <div class="border border-[#D8E4F0] rounded-[8px] overflow-hidden">
             <button type="button" class="accordion-trigger w-full flex items-center justify-between
-                           px-8 py-8 lg:px-[48px] lg:py-[40px] text-left bg-white
+                           px-8 py-8 md:px-[48px] md:py-[40px] text-left bg-white
                            hover:bg-[#F0F6FA] transition-colors duration-200"
                     aria-expanded="false" data-target="acc-panel-3">
               <span class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">印刷・デザイン・ノベルティ・商品</span>
@@ -347,7 +347,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
               </span>
             </button>
             <div id="acc-panel-3" class="accordion-panel accordion-panel-inner max-h-0 overflow-hidden transition-[max-height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-              <div class="px-8 pb-10 pt-[30px] lg:px-[48px] lg:pb-[40px] bg-white">
+              <div class="px-8 pb-10 pt-[30px] md:px-[48px] md:pb-[40px] bg-white">
                 <ol class="relative">
                   <div class="absolute left-[15px] top-[32px] bottom-[32px] w-[1px] bg-[#D8E4F0]" aria-hidden="true"></div>
                   <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
@@ -365,7 +365,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
           <!-- 4: 映像制作 -->
           <div class="border border-[#D8E4F0] rounded-[8px] overflow-hidden">
             <button type="button" class="accordion-trigger w-full flex items-center justify-between
-                           px-8 py-8 lg:px-[48px] lg:py-[40px] text-left bg-white
+                           px-8 py-8 md:px-[48px] md:py-[40px] text-left bg-white
                            hover:bg-[#F0F6FA] transition-colors duration-200"
                     aria-expanded="false" data-target="acc-panel-4">
               <span class="font-noto font-bold text-[#004896]"  style="font-size: var(--fs-h4);">映像制作</span>
@@ -382,7 +382,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
               </span>
             </button>
             <div id="acc-panel-4" class="accordion-panel accordion-panel-inner max-h-0 overflow-hidden transition-[max-height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-              <div class="px-8 pb-10 pt-[30px] lg:px-[48px] lg:pb-[40px] bg-white">
+              <div class="px-8 pb-10 pt-[30px] md:px-[48px] md:pb-[40px] bg-white">
                 <ol class="relative">
                   <div class="absolute left-[15px] top-[32px] bottom-[32px] w-[1px] bg-[#D8E4F0]" aria-hidden="true"></div>
                   <li class="flex gap-[26px] mb-[40px]"><span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#004896] flex items-center justify-center font-inter font-bold text-white text-sm relative z-10">1</span><div><p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-small);">打ち合わせ</p></div></li>
@@ -403,14 +403,14 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
   </section>
 
   <!-- RELATED PAGES -->
-  <section id="related-pages" class="w-full bg-white py-[80px] px-6 lg:px-0">
+  <section id="related-pages" class="w-full bg-white section-md px-6 lg:px-0">
     <div class="inner px-6 lg:px-0">
-      <div class="flex flex-col lg:flex-row gap-8 lg:gap-[75px]">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-fluid-related">
         <a href="/#strengths"
-           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+           class="group min-w-0 bg-[#004896] rounded-[16px] px-[clamp(20px,3vw,32px)] py-[clamp(28px,4vw,40px)]
                   flex flex-row items-center justify-between
-                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
-          <div class="flex-1 pr-4">
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[clamp(160px,18vw,180px)]">
+          <div class="flex-1 min-w-0 pr-3">
             <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Strengths</p>
             <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">私たちの強み</h3>
             <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
@@ -426,10 +426,10 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
           </div>
         </a>
         <a href="/works"
-           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+           class="group min-w-0 bg-[#004896] rounded-[16px] px-[clamp(20px,3vw,32px)] py-[clamp(28px,4vw,40px)]
                   flex flex-row items-center justify-between
-                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
-          <div class="flex-1 pr-4">
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[clamp(160px,18vw,180px)]">
+          <div class="flex-1 min-w-0 pr-3">
             <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Works</p>
             <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">取引実績</h3>
             <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
@@ -445,10 +445,10 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
           </div>
         </a>
         <a href="/company"
-           class="group flex-1 bg-[#004896] rounded-[16px] px-8 py-10
+           class="group min-w-0 bg-[#004896] rounded-[16px] px-[clamp(20px,3vw,32px)] py-[clamp(28px,4vw,40px)]
                   flex flex-row items-center justify-between
-                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[180px]">
-          <div class="flex-1 pr-4">
+                  hover:bg-[#003a7a] transition-colors duration-300 min-h-[clamp(160px,18vw,180px)]">
+          <div class="flex-1 min-w-0 pr-3">
             <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">About Us</p>
             <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">会社概要</h3>
             <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
@@ -492,7 +492,7 @@ const ogImageSrc = (await getImage({ src: seaviceMain, width: 1200 })).src;
     // ═══════════════════════════════════════════════════════════════════
     // PC ONLY
     // ═══════════════════════════════════════════════════════════════════
-    serviceMm.add('(min-width: 1024px)', function () {
+    serviceMm.add('(min-width: 768px)', function () {
 
       const pcWrap = document.querySelector<HTMLElement>('.hero-content-wrap');
       const pcImg  = document.querySelector<HTMLElement>('#svc-hero-pc-img');
