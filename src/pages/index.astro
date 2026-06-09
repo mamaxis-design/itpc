@@ -94,8 +94,8 @@ const jsonLd = {
         <div>
           <a
             href="/contact"
-            class="font-noto font-bold text-white bg-[#4982C2] hover:bg-[#3a6eaa] transition-colors duration-300 inline-flex items-center justify-center gap-3 w-[70%] max-w-full lg:max-w-[438px] rounded-[32px] py-4 px-8" 
-           style="font-size: var(--fs-body-lg);">
+            class="font-noto font-bold text-white bg-[#4982C2] hover:bg-[#3a6eaa] transition-colors duration-300 inline-flex items-center justify-center gap-3 w-[80%] max-w-[280px] md:max-w-[320px] lg:w-[80%] lg:max-w-[438px] rounded-[32px] py-4 px-8" 
+           style="font-size: var(--fs-body);">
             ご相談窓口はこちら
             <span class="font-inter font-bold text-xl">→</span>
           </a>
@@ -135,23 +135,23 @@ const jsonLd = {
       <div class="lg:hidden w-full overflow-hidden pb-8 pt-4" aria-hidden="true">
         <div class="flex gap-4 w-max animate-[marquee-horizontal_14s_linear_infinite]">
           <!-- オリジナル3枚 -->
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[42vw] max-w-[200px] md:w-[28vw] md:max-w-[280px] aspect-[4/3]" >
             <Image src={mb01} alt="実績写真1" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[42vw] max-w-[200px] md:w-[28vw] md:max-w-[280px] aspect-[4/3]" >
             <Image src={mb02} alt="実績写真2" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[42vw] max-w-[200px] md:w-[28vw] md:max-w-[280px] aspect-[4/3]" >
             <Image src={mb03} alt="実績写真3" class="object-cover w-full h-full" />
           </div>
           <!-- 複製3枚（シームレスループ用） -->
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[42vw] max-w-[200px] md:w-[28vw] md:max-w-[280px] aspect-[4/3]" >
             <Image src={mb01} alt="" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[42vw] max-w-[200px] md:w-[28vw] md:max-w-[280px] aspect-[4/3]" >
             <Image src={mb02} alt="" class="object-cover w-full h-full" />
           </div>
-          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[40vw] h-[200px]" >
+          <div class="flex-shrink-0 overflow-hidden rounded-lg w-[42vw] max-w-[200px] md:w-[28vw] md:max-w-[280px] aspect-[4/3]" >
             <Image src={mb03} alt="" class="object-cover w-full h-full" />
           </div>
         </div>
@@ -420,7 +420,7 @@ const jsonLd = {
 
       <!-- 01: 対応力 -->
       <div class="flex flex-col lg:flex-row lg:items-center gap-[var(--sp-gap-md)] lg:gap-[var(--sp-gap-strength)] mb-[var(--sp-section-md)] lg:mb-[var(--sp-section-xl)]" data-strength="ltr">
-        <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
+        <div class="flex-shrink-0 w-full lg:w-[48%] mb-6 md:mb-8 lg:mb-0" data-strength-img>
           <div class="relative w-full pb-[75%]" >
             <div class="absolute inset-0 bg-[#004896] rounded-[6px] lg:hidden translate-x-4 translate-y-4"></div>
             <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden lg:block translate-x-10 translate-y-10"></div>
@@ -446,7 +446,7 @@ const jsonLd = {
 
       <!-- 02: 地域密着 -->
       <div class="flex flex-col lg:flex-row-reverse lg:items-center gap-[var(--sp-gap-md)] lg:gap-[var(--sp-gap-strength)] mb-[var(--sp-section-md)] lg:mb-[var(--sp-section-xl)]" data-strength="rtl">
-        <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
+        <div class="flex-shrink-0 w-full lg:w-[48%] mb-6 md:mb-8 lg:mb-0" data-strength-img>
           <div class="relative w-full pb-[75%]" >
             <div class="absolute inset-0 bg-[#004896] rounded-[6px] lg:hidden -translate-x-4 translate-y-4"></div>
             <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden lg:block -translate-x-10 translate-y-10"></div>
@@ -472,7 +472,7 @@ const jsonLd = {
 
       <!-- 03: ワンストップ -->
       <div class="flex flex-col lg:flex-row lg:items-center gap-[var(--sp-gap-md)] lg:gap-[var(--sp-gap-strength)]" data-strength="ltr">
-        <div class="flex-shrink-0 w-full lg:w-[48%]" data-strength-img>
+        <div class="flex-shrink-0 w-full lg:w-[48%] mb-6 md:mb-8 lg:mb-0" data-strength-img>
           <div class="relative w-full pb-[75%]" >
             <div class="absolute inset-0 bg-[#004896] rounded-[6px] lg:hidden translate-x-4 translate-y-4"></div>
             <div class="absolute inset-0 bg-[#004896] rounded-[6px] hidden lg:block translate-x-10 translate-y-10"></div>
@@ -647,7 +647,7 @@ const jsonLd = {
   ============================================== -->
   <section id="about" class="w-full">
     <div class="flex flex-col lg:flex-row items-stretch">
-      <div class="w-full lg:w-1/2 flex-shrink-0 overflow-hidden min-h-[clamp(280px,40vw,680px)]">
+      <div class="w-full lg:w-1/2 flex-shrink-0 overflow-hidden lg:min-h-[clamp(280px,40vw,680px)]">
         <Image src={companyMain} alt="株式会社イトピック 本社外観" class="w-full h-full object-cover object-center" data-fade />
       </div>
       <div class="w-full lg:flex-1 bg-[#004896] flex flex-col justify-center
