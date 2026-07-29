@@ -277,9 +277,8 @@ select.form-input {
   opacity: 0;
 }
 
-/* ─── 下層ページ共通アニメーション: 初期状態 ─── */
-[data-a="fade"]:not([data-a-init="true"]) { opacity: 0; }
-[data-a="stagger"]:not([data-a-init="true"]) > * { opacity: 0; }
+/* ─── 下層ページ共通アニメーション ──────────────── */
+/* opacity:0 は GSAP 側のみで制御（CSS で隠すと JS 未実行時に永久非表示になる） */
 
 /* ─── MV パララックス画像 ───────────────────────── */
 .mv-parallax-img {

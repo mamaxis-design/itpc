@@ -108,6 +108,27 @@ const ogImageUrl = ogImage.startsWith('http')
       return rect.top < window.innerHeight * threshold && rect.bottom > 0;
     }
 
+    function resetAnimationState() {
+      document.querySelectorAll<HTMLElement>('[data-a="fade"], [data-a="stagger"]').forEach(function (el) {
+        delete el.dataset.aInit;
+      });
+    }
+
+    function ensureVisibleFallback() {
+      window.setTimeout(function () {
+        document.querySelectorAll<HTMLElement>('[data-a="fade"]').forEach(function (el) {
+          if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+            gsap.set(el, { opacity: 1, y: 0 });
+          }
+        });
+        document.querySelectorAll<HTMLElement>('[data-a="stagger"] > *').forEach(function (el) {
+          if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+            gsap.set(el, { opacity: 1, y: 0 });
+          }
+        });
+      }, 2000);
+    }
+
     // ================================================================
     // 共通フェード / スタガー
     // ================================================================
@@ -127,7 +148,7 @@ const ogImageUrl = ogImage.startsWith('http')
             { opacity: 0, y: 24 },
             {
               ...tweenVars,
-              scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+              scrollTrigger: { trigger: el, start: 'top 95%', once: true },
             }
           );
         }
@@ -151,7 +172,7 @@ const ogImageUrl = ogImage.startsWith('http')
             { opacity: 0, y: 28 },
             {
               ...tweenVars,
-              scrollTrigger: { trigger: container, start: 'top 82%', once: true },
+              scrollTrigger: { trigger: container, start: 'top 95%', once: true },
             }
           );
         }
@@ -267,25 +288,35 @@ const ogImageUrl = ogImage.startsWith('http')
     // ================================================================
     function initAll() {
       killLayoutScrollTriggers();
+      resetAnimationState();
       initFadeAnimations();
       setupMvParallax();
       setupContactGridReveal();
+      ScrollTrigger.refresh();
+      ensureVisibleFallback();
     }
 
-    // View Transitions: 初回ロード・ページ遷移のたびに再実行
-    // 初回はスプラッシュ完了（loader:complete）後に初期化
-    let isFirstPageLoad = true;
+    function scheduleInitAll() {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          initAll();
+        });
+      });
+    }
+
+    // 毎回のページロード / 遷移で必ず初期化（ローダー待ちで init がスキップされないようにする）
     document.addEventListener('astro:page-load', function () {
       document.body.classList.remove('is-loading');
-
-      if (!isFirstPageLoad) {
-        initAll();
-        return;
-      }
-      isFirstPageLoad = false;
-      if (!document.getElementById('site-loader')) initAll();
+      scheduleInitAll();
     });
-    document.addEventListener('loader:complete', initAll);
+    document.addEventListener('loader:complete', scheduleInitAll);
+
+    // 開発中 HMR：保存後に再初期化
+    if (import.meta.env.DEV) {
+      import.meta.hot?.on('vite:afterUpdate', function () {
+        scheduleInitAll();
+      });
+    }
   </script>
 
   <script>

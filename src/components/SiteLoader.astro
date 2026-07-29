@@ -95,7 +95,7 @@
     const loader = document.getElementById('site-loader');
     if (!loader) return false;
     if (!shouldSkipLoader()) return false;
-    removeLoader(loader);
+    finishLoader(loader);
     return true;
   }
 
