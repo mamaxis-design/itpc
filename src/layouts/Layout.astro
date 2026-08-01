@@ -12,6 +12,7 @@ interface Props {
   bodyClass?: string;
   ogImage?: string;
   ogType?: string;
+  noindex?: boolean;
 }
 
 const SITE_NAME = '株式会社イトピック';
@@ -23,6 +24,7 @@ const {
   bodyClass = 'font-noto text-[#333333] bg-white',
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
+  noindex = false,
 } = Astro.props;
 
 const canonicalUrl = Astro.url.href;
@@ -37,6 +39,7 @@ const ogImageUrl = ogImage.startsWith('http')
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   {description && <meta name="description" content={description} />}
+  {noindex && <meta name="robots" content="noindex, follow" />}
   <link rel="canonical" href={canonicalUrl} />
   <meta property="og:title" content={title} />
   {description && <meta property="og:description" content={description} />}

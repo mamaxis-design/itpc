@@ -19,7 +19,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
 ---
 <Layout
   title="取引実績 | 株式会社 イトピック"
-  description="イベント・式典、デザイン・印刷、ノベルティ・商品、映像制作のカテゴリ別実績を掲載。茨城県庁をはじめ自治体・企業との豊富な取引実績と、数字で見るイトピックの歩みをご紹介します。"
+  description="式典・イベント、デザイン・印刷、ノベルティ・商品、映像制作のカテゴリ別実績を掲載。茨城県庁をはじめ自治体・企業との豊富な取引実績と、数字で見るイトピックの歩みをご紹介します。"
   ogType="article"
   ogImage={ogImageSrc}
 >
@@ -73,7 +73,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           </h3>
           <div class="w-[60px] h-[3px] bg-[#4982C2] mb-8"></div>
           <div class="font-noto font-medium text-[#333333] leading-loose space-y-5"  style="font-size: var(--fs-body-lg);">
-            <p>1988年の創業以来、私たちは行政機関・自治体・企業・団体の皆様とともに、地域の魅力を伝える多様なプロジェクトに携わってきました。式典・イベントの企画運営をはじめ、映像制作、デザイン制作、広報支援など、地域のコミュニケーション活動を幅広くサポートしてきた実績があります。</p>
+            <p>1988年の創業以来、私たちは自治体・県関連団体・民間企業の皆様とともに、地域の魅力を伝える多様なプロジェクトに携わってきました。式典・イベントの企画運営をはじめ、映像制作、デザイン制作、広報支援など、地域のコミュニケーション活動を幅広くサポートしてきた実績があります。</p>
             <p>長年にわたり積み重ねてきた経験と信頼は、私たちの大きな財産です。地域の特性を理解した提案力、丁寧な進行管理、確かな技術力を強みに、これからもお客様の目的に寄り添ったプロジェクトを実現していきます。</p>
             <p>ここでは、直近の代表的な実績をカテゴリ別にご紹介します。掲載内容はクライアントの許諾範囲内での表記となります。</p>
           </div>
@@ -93,7 +93,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
     <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0 section-lg">
       <div data-a="fade" class="text-left md:text-center mb-16 md:mb-20">
         <p class="font-inter font-bold text-white tracking-widest mb-5 opacity-80 tracking-[0.2em]"  style="font-size: var(--fs-small);">Numbers</p>
-        <h2 class="font-noto font-bold text-white leading-tight mb-6"  style="font-size: var(--fs-h2);">数字で見る、これまでの歩み</h2>
+        <h2 class="font-noto font-bold text-white leading-tight mb-8"  style="font-size: var(--fs-h2);">数字で見る、これまでの歩み</h2>
         <p class="font-noto font-medium text-white opacity-85 leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
           創業からの年数、累計取引件数、取引先団体数など、これまでの歩みを数字でご紹介します。
         </p>
@@ -116,10 +116,11 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
         <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-10 lg:pb-0 lg:border-r lg:border-white lg:border-opacity-25">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
           <p class="font-noto font-medium text-white opacity-75 mb-2 text-center lg:text-left"  style="font-size: var(--fs-body);">累計取引件数</p>
-          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center lg:text-left"  style="font-size: var(--fs-caption);">行政機関・民間含む総数</p>
+          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center lg:text-left"  style="font-size: var(--fs-caption);">自治体・民間企業含む総数</p>
           <div class="flex items-baseline justify-center lg:justify-start gap-1 mb-8">
             <span class="font-inter font-bold text-white"  style="font-size: var(--fs-h2);">約</span>
-            <span class="font-inter font-bold text-white js-counter leading-none mx-1 inline-block min-w-[3ch] tabular-nums text-center" data-target="600" style="font-size: var(--fs-stat);">600</span>
+            <span class="font-inter font-bold text-white js-counter leading-none mx-1" data-target="5500" data-format="comma"
+                  style="font-size: var(--fs-stat);">5,500</span>
             <span class="font-noto font-bold text-white"  style="font-size: var(--fs-h2);">件</span>
           </div>
           <div class="border border-white border-opacity-40 rounded-[4px] p-5">
@@ -131,7 +132,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
         <div class="flex flex-col px-6 md:px-8 lg:px-12 pb-0">
           <div class="w-12 h-[2px] bg-white opacity-40 mb-6"></div>
           <p class="font-noto font-medium text-white opacity-75 mb-2 text-center lg:text-left"  style="font-size: var(--fs-body);">取引先団体数</p>
-          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center lg:text-left"  style="font-size: var(--fs-caption);">行政機関・企業・団体</p>
+          <p class="font-noto font-medium text-white opacity-55 mb-6 text-center lg:text-left"  style="font-size: var(--fs-caption);">自治体・県関連団体・民間企業</p>
           <div class="flex items-baseline justify-center lg:justify-start gap-1 mb-8">
             <span class="font-inter font-bold text-white"  style="font-size: var(--fs-h2);">約</span>
             <span class="font-inter font-bold text-white js-counter leading-none mx-1 inline-block min-w-[3ch] tabular-nums text-center" data-target="100" style="font-size: var(--fs-stat);">100</span>
@@ -139,7 +140,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           </div>
           <div class="border border-white border-opacity-40 rounded-[4px] p-5">
             <p class="font-noto font-medium text-white opacity-85 leading-loose"  style="font-size: var(--fs-small);">
-              地域の自治体や多くの公的機関の皆様と、信頼のパートナーとして地域の未来へ確かな絆を築いています。
+              自治体・県関連団体をはじめ、多くの取引先の皆様と、信頼のパートナーとして地域の未来へ確かな絆を築いています。
             </p>
           </div>
         </div>
@@ -152,9 +153,9 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
       <div data-a="fade" class="text-left md:text-center mb-14 md:mb-20">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.2em]"  style="font-size: var(--fs-small);">Data Visualization</p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"  style="font-size: var(--fs-h2);">取引先の構成比率</h2>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"  style="font-size: var(--fs-h2);">取引先の構成比率</h2>
         <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
-          全体の8割が行政・自治体関連の公的案件であり、そのうち半分が県関連の事業です。<br class="hidden md:block" />
+          県・市町村を含む自治体・県関連団体が約6割を占め、そのうち約4割が県関連団体です。<br class="hidden md:block" />
           県庁や市町村、公社、商工会から民間企業まで、多様なクライアントとパートナーシップを築いています。
         </p>
       </div>
@@ -165,50 +166,50 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
                  class="w-full h-full -rotate-90">
               <circle cx="100" cy="100" r="75" fill="none" stroke="#E2E8F0" stroke-width="28" />
               <circle id="seg1" cx="100" cy="100" r="75" fill="none" stroke="#004896" stroke-width="28"
-                      stroke-dasharray="0 471" stroke-linecap="butt" data-pct="50" />
+                      stroke-dasharray="0 471" stroke-linecap="butt" data-pct="44" />
               <circle id="seg2" cx="100" cy="100" r="75" fill="none" stroke="#4982C2" stroke-width="28"
-                      stroke-dasharray="0 471" stroke-linecap="butt" data-pct="30" data-offset="50" />
+                      stroke-dasharray="0 471" stroke-linecap="butt" data-pct="20" data-offset="44" />
               <circle id="seg3" cx="100" cy="100" r="75" fill="none" stroke="#B8C8DC" stroke-width="28"
-                      stroke-dasharray="0 471" stroke-linecap="butt" data-pct="20" data-offset="80" />
+                      stroke-dasharray="0 471" stroke-linecap="butt" data-pct="36" data-offset="64" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
               <p class="font-inter font-bold text-[#004896] tracking-[0.15em] opacity-60"  style="font-size: var(--fs-caption);">構成比率</p>
               <p class="font-inter font-bold text-[#004896] leading-none my-0.5"  id="donut-center-num" style="font-size: clamp(40px, 3.5vw, 60px);">0</p>
-              <p class="font-inter font-bold text-[#004896] opacity-[0.7]"  style="font-size: var(--fs-body);">団体</p>
+              <p class="font-inter font-bold text-[#004896] opacity-[0.7]"  style="font-size: var(--fs-body);">%</p>
             </div>
           </div>
         </div>
         <div class="flex-1 min-w-0 flex flex-col gap-5 md:max-w-[750px]">
           <div class="bg-white rounded-[8px] px-6 py-5 flex items-center justify-between border-l-4 border-[#004896]">
             <div>
-              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body-lg);">行政機関・県関連</p>
+              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body-lg);">県・県関連団体</p>
               <p class="font-noto font-medium text-[#666666]"  style="font-size: var(--fs-caption);">茨城県庁各課・公社など</p>
             </div>
             <div class="flex items-baseline gap-1 flex-shrink-0 ml-4">
-              <span class="font-inter font-bold text-[#004896] js-ratio-counter" data-target="50"
-                    class="leading-none"  style="font-size: var(--fs-stat);">50</span>
+              <span class="font-inter font-bold text-[#004896] js-ratio-counter leading-none" data-target="44"
+                    style="font-size: var(--fs-stat);">44</span>
               <span class="font-inter font-bold text-[#004896]"  style="font-size: var(--fs-h3);">%</span>
             </div>
           </div>
           <div class="bg-white rounded-[8px] px-6 py-5 flex items-center justify-between border-l-4 border-[#4982C2]">
             <div>
-              <p class="font-noto font-bold text-[#4982C2] mb-1"  style="font-size: var(--fs-body-lg);">市町村・自治体</p>
+              <p class="font-noto font-bold text-[#4982C2] mb-1"  style="font-size: var(--fs-body-lg);">市町村</p>
               <p class="font-noto font-medium text-[#666666]"  style="font-size: var(--fs-caption);">県内市役所・町村役場・商工会など</p>
             </div>
             <div class="flex items-baseline gap-1 flex-shrink-0 ml-4">
-              <span class="font-inter font-bold text-[#4982C2] js-ratio-counter" data-target="30"
-                    class="leading-none"  style="font-size: var(--fs-stat);">30</span>
+              <span class="font-inter font-bold text-[#4982C2] js-ratio-counter leading-none" data-target="20"
+                    style="font-size: var(--fs-stat);">20</span>
               <span class="font-inter font-bold text-[#4982C2]"  style="font-size: var(--fs-h3);">%</span>
             </div>
           </div>
           <div class="bg-white rounded-[8px] px-6 py-5 flex items-center justify-between border-l-4 border-[#B8C8DC]">
             <div>
-              <p class="font-noto font-bold text-[#333333] mb-1"  style="font-size: var(--fs-body-lg);">一般企業・団体</p>
+              <p class="font-noto font-bold text-[#333333] mb-1"  style="font-size: var(--fs-body-lg);">民間企業</p>
               <p class="font-noto font-medium text-[#666666]"  style="font-size: var(--fs-caption);">民間企業・主要団体・医療法人など</p>
             </div>
             <div class="flex items-baseline gap-1 flex-shrink-0 ml-4">
-              <span class="font-inter font-bold text-[#333333] js-ratio-counter" data-target="20"
-                    class="leading-none"  style="font-size: var(--fs-stat);">20</span>
+              <span class="font-inter font-bold text-[#333333] js-ratio-counter leading-none" data-target="36"
+                    style="font-size: var(--fs-stat);">36</span>
               <span class="font-inter font-bold text-[#333333]"  style="font-size: var(--fs-h3);">%</span>
             </div>
           </div>
@@ -218,11 +219,11 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
   </section>
 
   <!-- WORKS LIST -->
-  <section id="works-list" class="w-full bg-white section-lg">
+  <section id="works-list" class="w-full bg-white pt-[var(--sp-section-lg)] pb-[var(--sp-section-sm)]">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
       <div data-a="fade" class="text-left md:text-center mb-12 md:mb-16">
         <p class="font-inter font-bold text-[#4982C2] tracking-widest mb-5 tracking-[0.2em]"  style="font-size: var(--fs-small);">Works</p>
-        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-6"  style="font-size: var(--fs-h2);">カテゴリ別 実績一覧</h2>
+        <h2 class="font-noto font-bold text-[#004896] leading-tight mb-8"  style="font-size: var(--fs-h2);">カテゴリ別 実績一覧</h2>
         <p class="font-noto font-medium text-[#333333] leading-loose text-left md:text-center"  style="font-size: var(--fs-body);">
           これまでの代表的な実績と、直近の掲載可能な実績一覧です。<br class="hidden md:block" />
           サービスカテゴリを選んでご覧ください。
@@ -731,8 +732,8 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
                   flex flex-row items-center justify-between
                   hover:bg-[#003a7a] transition-colors duration-300 min-h-[clamp(160px,18vw,180px)]">
           <div class="flex-1 min-w-0 pr-3">
-            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Works</p>
-            <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">事業内容</h3>
+            <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Services</p>
+            <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">業務内容</h3>
             <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
               式典・イベントの企画運営を中心としたワンストップ事業をご紹介します。
             </p>
@@ -753,7 +754,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
             <p class="font-inter font-bold text-white opacity-60 tracking-widest mb-3 tracking-[0.15em]"  style="font-size: var(--fs-caption);">Our Strengths</p>
             <h3 class="font-noto font-bold text-white mb-3"  style="font-size: var(--fs-h3);">私たちの強み</h3>
             <p class="font-noto font-medium text-white opacity-80 leading-relaxed"  style="font-size: var(--fs-small);">
-              多彩なイベント・式典をサポートしてきた私たちの強みをご紹介します。
+              多彩な式典・イベントをサポートしてきた私たちの強みをご紹介します。
             </p>
           </div>
           <div class="flex-shrink-0 w-10 h-10 rounded-full border border-white flex items-center justify-center group-hover:bg-white transition-colors duration-300">
@@ -820,15 +821,20 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
     function easeOutQuart(t: number) { return 1 - Math.pow(1 - t, 4); }
 
     function animateCounter(el: HTMLElement) {
-      const target = parseInt((el as any).dataset.target, 10);
+      const target = parseInt(el.dataset.target ?? '0', 10);
+      const isComma = el.dataset.format === 'comma';
       const duration = 1800;
       const start = performance.now();
+      function format(n: number) {
+        return isComma ? Math.floor(n).toLocaleString('ja-JP') : Math.floor(n).toString();
+      }
       function step(now: number) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-        el.textContent = String(Math.floor(target * easeOutQuart(progress)));
+        const ease = easeOutQuart(progress);
+        el.textContent = format(target * ease);
         if (progress < 1) requestAnimationFrame(step);
-        else el.textContent = String(target);
+        else el.textContent = format(target);
       }
       requestAnimationFrame(step);
     }
@@ -852,9 +858,9 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
 
     function animateDonut() {
       const segs = [
-        { el: document.getElementById('seg1')!, pct: 50, offset: 0,  gap: 2 },
-        { el: document.getElementById('seg2')!, pct: 30, offset: 50, gap: 2 },
-        { el: document.getElementById('seg3')!, pct: 20, offset: 80, gap: 2 },
+        { el: document.getElementById('seg1')!, pct: 44, offset: 0,  gap: 2 },
+        { el: document.getElementById('seg2')!, pct: 20, offset: 44, gap: 2 },
+        { el: document.getElementById('seg3')!, pct: 36, offset: 64, gap: 2 },
       ];
       const centerEl = document.getElementById('donut-center-num')!;
       const TARGET_TOTAL = 100;

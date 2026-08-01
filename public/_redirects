@@ -1,0 +1,50 @@
+# 旧サイト（Flash版）→ 新サイト URL 移行（301 Permanent Redirect）
+# Cloudflare Pages: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# ── トップ ──────────────────────────────────────
+/index.html / 301
+/index.html/ / 301
+
+# ── 事業・サービス系 → /service ─────────────────
+/event/index.html /service 301
+/ceremony/index.html /service 301
+/print/index.html /service 301
+/novelty/index.html /service 301
+/movie/index.html /service 301
+/mc/index.html /service 301
+/order/index.html /service 301
+
+/event/ /service 301
+/event /service 301
+/ceremony/ /service 301
+/ceremony /service 301
+/print/ /service 301
+/print /service 301
+/novelty/ /service 301
+/novelty /service 301
+/movie/ /service 301
+/movie /service 301
+/mc/ /service 301
+/mc /service 301
+/order/ /service 301
+/order /service 301
+
+# ── 会社・問い合わせ ────────────────────────────
+/corporate/index.html /company 301
+/access/index.html /company 301
+/contact/index.html /contact 301
+
+/corporate/ /company 301
+/corporate /company 301
+/access/ /company 301
+/access /company 301
+/contact/ /contact 301
+/contact /contact 301
+
+# ── お知らせ（個別記事は microCMS と ID 不一致のため一覧へ）──
+/news/index.html /news 301
+/news/index.html/ /news 301
+/news/:dir1/:dir2/index.html /news 301
+/news/:dir1/:dir2/index.html/ /news 301
+/news/:dir1/:dir2/ /news 301
+/news/news_2011/* /news 301
