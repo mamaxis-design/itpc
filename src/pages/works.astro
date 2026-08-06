@@ -16,6 +16,36 @@ for (const [path, mod] of Object.entries(worksImageModules)) {
 }
 
 const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
+
+const characterWorksList = [
+  ['高萩市ブランドイメージキャラクター 「はぎまろ」(着ぐるみ・PR ツール)', '高萩市'],
+  ['常陸大宮市マスコットキャラクター 「ひたまる」(着ぐるみ・PR ツール)', '常陸大宮市'],
+  ['牛久市イメージキャラクター 「きゅーちゃん」(着ぐるみ)', '牛久市'],
+  ['笠間市イメージキャラクター 「いな吉」(着ぐるみ)', '笠間市'],
+  ['潮来市イメージキャラクター 「あやめちゃん」(着ぐるみ)', '潮来市'],
+  ['水戸商工会議所イメージキャラクター 「いきいき黄門さま」(着ぐるみ・PR ツール)', '水戸商工会議所'],
+  ['城里町イメージキャラクター 「ホロル」(着ぐるみ)', '城里町'],
+  ['土浦市イメージキャラクター 「つちまる」(着ぐるみ・シール)', '土浦市'],
+  ['五霞町イメージキャラクター 「ごかりん」(着ぐるみ)', '五霞町'],
+  ['筑西市イメージキャラクター 「ちっくん」(着ぐるみ)', '筑西市'],
+  ['いばらき総文 2014 イメージキャラクター 「ふれあちゃん」(着ぐるみ)', '茨城県'],
+  ['アクアワールド茨城県大洗水族館 イメージキャラクター「ピルル・ブルル」(着ぐるみ)', 'アクアワールド茨城県大洗水族館'],
+  ['龍ケ崎市イメージキャラクター 「まいりゅう」(着ぐるみ・PR ツール)', '龍ケ崎市'],
+  ['大洗市ブランドイメージキャラクター 「アライッペ」(着ぐるみ・PR ツール)', '大洗町'],
+  ['つくばみらい市イメージキャラクター 「みらいりんぞう」(着ぐるみ)', 'つくばみらい市'],
+  ['神栖市イメージキャラクター 「カミスココくん」(着ぐるみ)', '神栖市'],
+  ['常陸太田市マスコットキャラクター 「じょうづるさん」(着ぐるみ)', '常陸太田市'],
+  ['牛久市観光協会マスコットキャラクター 「かっぱのキューちゃん」30cmぬいぐるみ', '牛久市観光協会'],
+  ['かすみがうら市公式キャラクター 「かすみがうにゃ」(着ぐるみ)', 'かすみがうら市'],
+  ['土浦市マスコットキャラクター 「キララちゃん」(エアー着ぐるみ)', '土浦市'],
+  ['桜川市マスコットキャラクター 「さくりん」(エアー着ぐるみ)', '桜川市'],
+].reverse();
+
+const characterWorksGrid = characterWorksList.slice(0, 9).map(([title, client], i) => ({
+  img: `works_character_${String(i + 1).padStart(2, '0')}.jpg`,
+  title,
+  client,
+}));
 ---
 <Layout
   title="取引実績 | 株式会社 イトピック"
@@ -231,7 +261,7 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
       </div>
 
       <!-- タブナビ -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-[58px] border border-[#D1D1D1] md:border-0 lg:border divide-x divide-[#D1D1D1]" id="works-tab-nav">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-[58px] border border-[#D1D1D1] md:border-0 lg:border divide-x divide-[#D1D1D1]" id="works-tab-nav">
         <button onclick="worksShowTab('event', this)"
                 class="works-tab-btn active flex flex-col items-center text-center px-0 pb-0
                        font-noto font-medium text-[#004896] whitespace-nowrap transition-colors duration-200 pt-[0.7rem]">
@@ -261,10 +291,17 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
           <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#D1D1D1] rounded-full transition-all duration-200"></span>
         </button>
         <button onclick="worksShowTab('video', this)"
-                class="works-tab-btn col-span-2 md:col-span-1 flex flex-col items-center text-center px-0 pb-0
+                class="works-tab-btn flex flex-col items-center text-center px-0 pb-0
                        font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896] pt-[0.7rem]">
           <span class="font-inter text-[#4982C2] mb-1 tracking-[0.12em]"  style="font-size: 10px;">Video production</span>
           映像制作
+          <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#D1D1D1] rounded-full transition-all duration-200"></span>
+        </button>
+        <button onclick="worksShowTab('character', this)"
+                class="works-tab-btn flex flex-col items-center text-center px-0 pb-0
+                       font-noto font-medium text-[#999] whitespace-nowrap transition-colors duration-200 hover:text-[#004896] pt-[0.7rem]">
+          <span class="font-inter text-[#4982C2] mb-1 tracking-[0.12em]"  style="font-size: 10px;">Character</span>
+          キャラクター
           <span class="block mt-[10px] mx-3 h-[3px] w-full bg-[#D1D1D1] rounded-full transition-all duration-200"></span>
         </button>
       </div>
@@ -278,14 +315,14 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 md:mb-24">
           {[
             { img: 'works_event_01.jpg', title: '下水道フェア', client: '茨城県流域下水道事務所' },
-            { img: 'works_event_02.jpg', title: '茨城空港1000万人達成イベント', client: '茨城県' },
-            { img: 'works_event_03.jpg', title: 'ワールドカップメモリアルフェスティバル', client: '茨城県' },
+            { img: 'works_event_02.jpg', title: '茨城空港台湾フェア', client: '茨城県' },
+            { img: 'works_event_03.jpg', title: '茨城空港フェスタ', client: '茨城県' },
             { img: 'works_event_04.jpg', title: '茨城をたべよう収穫祭', client: '茨城県' },
-            { img: 'works_event_05.jpg', title: 'いばらき絵文プレ大会', client: '茨城県' },
-            { img: 'works_event_06.jpg', title: 'みんなのまいいん大集合', client: '茨城県大子町' },
-            { img: 'works_event_07.jpg', title: 'いばらき夏の観光キャンペーン', client: '（一社）茨城県観光物産協会' },
+            { img: 'works_event_05.jpg', title: 'いばらき総文2014', client: '茨城県' },
+            { img: 'works_event_06.jpg', title: '令和元年石岡市総合防災訓練', client: '石岡市' },
+            { img: 'works_event_07.jpg', title: '防災・トラックフェア', client: '茨城県トラック協会' },
             { img: 'works_event_08.jpg', title: '民族芸能大会2015', client: '茨城県' },
-            { img: 'works_event_09.jpg', title: 'ミルクメッセいばらき', client: '茨城県牛乳普及協会' },
+            { img: 'works_event_09.jpg', title: 'コマツ茨城工場フェア', client: 'コマツ茨城工場' },
           ].map(({ img, title, client }) => (
             <div>
               <div class="overflow-hidden rounded-[6px] mb-3 aspect-[4/3]">
@@ -351,14 +388,14 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
-            { img: 'works_ceremony_01.jpg', title: '主要地方道つくば野田線菅生大橋開通式典',   client: '茨城県石下土木事務所' },
+            { img: 'works_ceremony_01.jpg', title: '茨城県メディカルセンター人間ドック棟竣工式典',   client: '茨城県メディカルセンター' },
             { img: 'works_ceremony_02.jpg', title: '筑西つくば線バイパス開通式典',             client: '筑西土木事務所' },
             { img: 'works_ceremony_03.jpg', title: 'つくばみらい市市制10周年記念式典',         client: 'つくばみらい市' },
             { img: 'works_ceremony_04.jpg', title: '道の駅常陸大宮竣工式典',                   client: '常陸大宮市' },
             { img: 'works_ceremony_05.jpg', title: '茨城県日立港区第3ふ頭併用記念式典',        client: '日立港振興協会' },
-            { img: 'works_ceremony_06.jpg', title: 'つくばみらい市市制10周年記念式典',         client: 'つくばみらい市' },
-            { img: 'works_ceremony_07.jpg', title: '袋田の滝国名勝指定記念式典',               client: '大子町' },
-            { img: 'works_ceremony_08.jpg', title: '偕楽園見晴亭落成式',                       client: '茨城県水戸土木事務所' },
+            { img: 'works_ceremony_06.jpg', title: '茨城県植物園リニューアルオープニングセレモニー',         client: '茨城県' },
+            { img: 'works_ceremony_07.jpg', title: '水郡線全線開通90周年記念セレモニー',               client: '茨城県' },
+            { img: 'works_ceremony_08.jpg', title: '鉾田市合併20周年記念式典',                       client: '鉾田市' },
             { img: 'works_ceremony_09.jpg', title: '国道245号線湊大橋開通式典',                client: '茨城県水戸土木事務所' },
           ].map(({ img, title, client }) => (
             <div>
@@ -482,15 +519,15 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
             { img: 'works_design_02.jpg', title: 'いばらきの初詣',             client: '茨城県' },
             { img: 'works_design_03.jpg', title: '大塚製作所70年の歩み',       client: '大塚製作所' },
             { img: 'works_design_04.jpg', title: '大子町要覧',                 client: '大子町' },
-            { img: 'works_design_05.jpg', title: '城里町要覧',                 client: '城里町' },
-            { img: 'works_design_06.jpg', title: '那珂市要覧',                 client: '那珂市' },
-            { img: 'works_design_07.jpg', title: '水府村記念誌',               client: '水府村' },
-            { img: 'works_design_08.jpg', title: '金砂郷町記念誌',             client: '金砂郷町' },
-            { img: 'works_design_09.jpg', title: '御前山村記念誌',             client: '御前山村' },
+            { img: 'works_design_05.jpg', title: '会社案内パンフレット',                 client: '大縄林業原木株式会社' },
+            { img: 'works_design_06.jpg', title: '臓器移植推進国民大会 ポスター',                 client: '茨城新聞社' },
+            { img: 'works_design_07.jpg', title: '日本組織適合性学会 チラシ',               client: '水戸医療センター' },
+            { img: 'works_design_08.jpg', title: '第54回日本臨床腎移植学会抄録集',             client: '水戸医療センター' },
+            { img: 'works_design_09.jpg', title: '令和元年東日本台風記録誌',             client: '茨城県河川協会' },
           ].map(({ img, title, client }) => (
             <div>
               <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center aspect-[4/3]">
-                {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="w-full h-full object-contain" />}
+                {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="block max-w-full max-h-full w-auto h-auto object-contain border border-[#cccccc]" />}
               </div>
               <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body);">{title}</p>
               <p class="font-noto font-medium text-[#666]"  style="font-size: var(--fs-caption);">{client}</p>
@@ -592,10 +629,10 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
             { img: 'works_goods_03.jpg', title: '茨城空港10周年記念',                     client: '茨城県' },
             { img: 'works_goods_04.jpg', title: 'クリアファイル',                         client: '日本赤十字社茨城県支部' },
             { img: 'works_goods_05.jpg', title: 'はんどちゃんノベルティ',                 client: '茨城県社会福祉協議会' },
-            { img: 'works_goods_06.jpg', title: 'ストップくんカード・他',                 client: '茨城県' },
-            { img: 'works_goods_07.jpg', title: 'ピンバッチ',                             client: '大洗リサイクル機構' },
+            { img: 'works_goods_06.jpg', title: '袋田の滝キャラクターたき丸 ステッカー',                 client: '大子町' },
+            { img: 'works_goods_07.jpg', title: 'スリムペンシル',                             client: '茨城大学' },
             { img: 'works_goods_08.jpg', title: 'オリジナル扇子',                         client: 'JA茨城県中央会' },
-            { img: 'works_goods_09.jpg', title: '国民文化祭・いばらきノベルティ各種',     client: '茨城県' },
+            { img: 'works_goods_09.jpg', title: '桜川市マスコットキャラクター さくりんぬいぐるみ',     client: '桜川市' },
           ].map(({ img, title, client }) => (
             <div>
               <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center aspect-[4/3]">
@@ -666,14 +703,14 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
-            { img: 'works_movie_01.jpg', title: 'やまびこ厚生園紹介',                                     client: 'やまびこ厚生園' },
+            { img: 'works_movie_01.jpg', title: 'いばらき「道の駅」シンポジウム',                                     client: '茨城新聞社' },
             { img: 'works_movie_02.jpg', title: '鹿島港50周年記念講演会・祝賀会記録映像',                 client: '鹿島港振興協会' },
             { img: 'works_movie_03.jpg', title: 'プロモーションビデオ Blu-ray Disc',                      client: '大縄林業株式会社' },
-            { img: 'works_movie_04.jpg', title: 'ぼくの・わたしのリサイクル ～東海村"ごみゼロ"への取組み～DVD', client: '東海村' },
-            { img: 'works_movie_05.jpg', title: '思いやりあふれる看護を伝えようDVD',                      client: '土浦協同病院' },
-            { img: 'works_movie_06.jpg', title: '茨城県原子力安全協定締結30年を振り返って',               client: '茨城県・茨城県原子力安全協定推進協議会' },
-            { img: 'works_movie_07.jpg', title: 'いばらき農産物ネットカタログDVD・ビデオ',               client: '茨城県' },
-            { img: 'works_movie_08.jpg', title: '第56回全国植樹祭DVD・ビデオ',                           client: '茨城県' },
+            { img: 'works_movie_04.jpg', title: 'シルバーリハビリ体操指導士 フォローアップ研修会Ⅰ',                     client: '茨城県立健康プラザ' },
+            { img: 'works_movie_05.jpg', title: 'シルバーリハビリ体操指導士 フォローアップ研修会Ⅱ',                      client: '茨城県立健康プラザ' },
+            { img: 'works_movie_06.jpg', title: '第58回全国スポーツ推進委員研究行議会 茨城大会',               client: '茨城県' },
+            { img: 'works_movie_07.jpg', title: '上下水道の秘密',               client: '守谷市' },
+            { img: 'works_movie_08.jpg', title: '東海村発足70周年記念式典',                           client: '東海村' },
             { img: 'works_movie_09.jpg', title: '第74回全国学校歯科保健研究大会ホームページ',             client: 'トップツアー（株）水戸支店' },
           ].map(({ img, title, client }) => (
             <div>
@@ -711,6 +748,35 @@ const ogImageSrc = (await getImage({ src: worksMb, width: 1200 })).src;
               ['「人・輝き・夢」（総合紹介・30分）', '美野里町'],
               ['「研究所紹介ビデオ」（会社案内・15分）', '（財）真空科学研究所'],
             ].map(([title, client]) => (
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
+                <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
+                <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- キャラクター -->
+      <div id="works-panel-character" class="works-tab-panel">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-8 h-[3px] bg-[#004896]"></div>
+          <p class="font-noto font-bold text-[#333333]"  style="font-size: var(--fs-h4);">キャラクター実績</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {characterWorksGrid.map(({ img, title, client }) => (
+            <div>
+              <div class="overflow-hidden rounded-[6px] mb-3 aspect-[4/3]">
+                {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="w-full h-full object-cover" />}
+              </div>
+              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body);">{title}</p>
+              <p class="font-noto font-medium text-[#666]"  style="font-size: var(--fs-caption);">{client}</p>
+            </div>
+          ))}
+        </div>
+        <div class="border-t border-[#D1D1D1]">
+          <div class="max-h-[600px] overflow-y-auto divide-y divide-[#D1D1D1] [&>div:nth-child(even)]:bg-[#f5f5f5] [&>div:nth-child(odd)]:bg-white">
+            {characterWorksList.map(([title, client]) => (
               <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
                 <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
                 <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
