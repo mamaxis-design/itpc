@@ -31,7 +31,7 @@ const characterWorksList = [
   ['いばらき総文 2014 イメージキャラクター 「ふれあちゃん」(着ぐるみ)', '茨城県'],
   ['アクアワールド茨城県大洗水族館 イメージキャラクター「ピルル・ブルル」(着ぐるみ)', 'アクアワールド茨城県大洗水族館'],
   ['龍ケ崎市イメージキャラクター 「まいりゅう」(着ぐるみ・PR ツール)', '龍ケ崎市'],
-  ['大洗市ブランドイメージキャラクター 「アライッペ」(着ぐるみ・PR ツール)', '大洗町'],
+  ['大洗町ブランドイメージキャラクター 「アライッペ」(着ぐるみ・PR ツール)', '大洗町'],
   ['つくばみらい市イメージキャラクター 「みらいりんぞう」(着ぐるみ)', 'つくばみらい市'],
   ['神栖市イメージキャラクター 「カミスココくん」(着ぐるみ)', '神栖市'],
   ['常陸太田市マスコットキャラクター 「じょうづるさん」(着ぐるみ)', '常陸太田市'],
@@ -40,6 +40,15 @@ const characterWorksList = [
   ['土浦市マスコットキャラクター 「キララちゃん」(エアー着ぐるみ)', '土浦市'],
   ['桜川市マスコットキャラクター 「さくりん」(エアー着ぐるみ)', '桜川市'],
 ].reverse();
+
+function splitCharacterTitle(title: string): { main: string; note: string | null } {
+  const idx = title.lastIndexOf('(');
+  if (idx === -1 || !title.endsWith(')')) return { main: title, note: null };
+  return {
+    main: title.slice(0, idx).trim(),
+    note: title.slice(idx).trim(),
+  };
+}
 
 const characterWorksGrid = characterWorksList.slice(0, 9).map(([title, client], i) => ({
   img: `works_character_${String(i + 1).padStart(2, '0')}.jpg`,
@@ -769,19 +778,35 @@ const characterWorksGrid = characterWorksList.slice(0, 9).map(([title, client], 
               <div class="overflow-hidden rounded-[6px] mb-3 aspect-[4/3]">
                 {worksImageMap[img] && <Image src={worksImageMap[img]} alt={title} class="w-full h-full object-cover" />}
               </div>
-              <p class="font-noto font-bold text-[#004896] mb-1"  style="font-size: var(--fs-body);">{title}</p>
+              <p class="font-noto font-bold text-[#004896] mb-1 leading-relaxed"  style="font-size: var(--fs-body);">
+                {(() => {
+                  const { main, note } = splitCharacterTitle(title);
+                  return (
+                    <>
+                      {main}
+                      {note && (<><br /><span class="font-medium">{note}</span></>)}
+                    </>
+                  );
+                })()}
+              </p>
               <p class="font-noto font-medium text-[#666]"  style="font-size: var(--fs-caption);">{client}</p>
             </div>
           ))}
         </div>
         <div class="border-t border-[#D1D1D1]">
           <div class="max-h-[600px] overflow-y-auto divide-y divide-[#D1D1D1] [&>div:nth-child(even)]:bg-[#f5f5f5] [&>div:nth-child(odd)]:bg-white">
-            {characterWorksList.map(([title, client]) => (
+            {characterWorksList.map(([title, client]) => {
+              const { main, note } = splitCharacterTitle(title);
+              return (
               <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
-                <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
+                <p class="font-noto font-medium text-[#333] leading-relaxed"  style="font-size: var(--fs-small);">
+                  {main}
+                  {note && (<><br />{note}</>)}
+                </p>
                 <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
