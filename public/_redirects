@@ -38,8 +38,8 @@
 /corporate /company 301
 /access/ /company 301
 /access /company 301
-/contact/ /contact 301
-/contact /contact 301
+# ※ /contact/ および /contact へのリダイレクトは新サイト自身のURLと一致するため削除（ループの原因）
+# 旧Flash URL は /contact/index.html → /contact（上記35行目）で対応
 
 # ── お知らせ（個別記事は microCMS と ID 不一致のため一覧へ）──
 /news/index.html /news 301
