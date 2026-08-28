@@ -32,21 +32,26 @@ const characterWorksList = [
   ['アクアワールド茨城県大洗水族館 イメージキャラクター「ピルル・ブルル」(着ぐるみ)', 'アクアワールド茨城県大洗水族館'],
   ['龍ケ崎市イメージキャラクター 「まいりゅう」(着ぐるみ・PR ツール)', '龍ケ崎市'],
   ['大洗町ブランドイメージキャラクター 「アライッペ」(着ぐるみ・PR ツール)', '大洗町'],
-  ['つくばみらい市イメージキャラクター 「みらいりんぞう」(着ぐるみ)', 'つくばみらい市'],
+  ['石岡市マスコットキャラクター 「ししまる君」(着ぐるみ)', '石岡市'],
   ['神栖市イメージキャラクター 「カミスココくん」(着ぐるみ)', '神栖市'],
   ['常陸太田市マスコットキャラクター 「じょうづるさん」(着ぐるみ)', '常陸太田市'],
-  ['牛久市観光協会マスコットキャラクター 「かっぱのキューちゃん」30cmぬいぐるみ', '牛久市観光協会'],
+  ['牛久市観光協会マスコットキャラクター 「かっぱのキューちゃん」(30cmぬいぐるみ)', '牛久市観光協会'],
   ['かすみがうら市公式キャラクター 「かすみがうにゃ」(着ぐるみ)', 'かすみがうら市'],
   ['土浦市マスコットキャラクター 「キララちゃん」(エアー着ぐるみ)', '土浦市'],
-  ['桜川市マスコットキャラクター 「さくりん」(エアー着ぐるみ)', '桜川市'],
+  ['桜川市マスコットキャラクター 「さくりん」(着ぐるみ・ぬいぐるみ)', '桜川市'],
 ].reverse();
 
-function splitCharacterTitle(title: string): { main: string; note: string | null } {
+const characterWorksTableExtra: [string, string][] = [
+  ['稲敷市マスコットキャラクター 「稲敷いなのすけ」(着ぐるみ)', '稲敷市'],
+];
+
+function splitCharacterTitle(title: string): { main: string; note: string | null; inlineNote: boolean } {
   const idx = title.lastIndexOf('(');
-  if (idx === -1 || !title.endsWith(')')) return { main: title, note: null };
+  if (idx === -1 || !title.endsWith(')')) return { main: title, note: null, inlineNote: false };
   return {
     main: title.slice(0, idx).trim(),
     note: title.slice(idx).trim(),
+    inlineNote: title.includes('かっぱのキューちゃん'),
   };
 }
 
@@ -328,7 +333,7 @@ const characterWorksGrid = characterWorksList.slice(0, 9).map(([title, client], 
             { img: 'works_event_03.jpg', title: '茨城空港フェスタ', client: '茨城県' },
             { img: 'works_event_04.jpg', title: '茨城をたべよう収穫祭', client: '茨城県' },
             { img: 'works_event_05.jpg', title: 'いばらき総文2014', client: '茨城県' },
-            { img: 'works_event_06.jpg', title: '令和元年石岡市総合防災訓練', client: '石岡市' },
+            { img: 'works_event_06.jpg', title: '土浦レイクサイドバイクロア4「つくば霞ケ浦りんりんロード利活用推進協議会ブース」', client: '茨城県' },
             { img: 'works_event_07.jpg', title: '防災・トラックフェア', client: '茨城県トラック協会' },
             { img: 'works_event_08.jpg', title: '民族芸能大会2015', client: '茨城県' },
             { img: 'works_event_09.jpg', title: 'コマツ茨城工場フェア', client: 'コマツ茨城工場' },
@@ -399,7 +404,7 @@ const characterWorksGrid = characterWorksList.slice(0, 9).map(([title, client], 
           {[
             { img: 'works_ceremony_01.jpg', title: '茨城県メディカルセンター人間ドック棟竣工式典',   client: '茨城県メディカルセンター' },
             { img: 'works_ceremony_02.jpg', title: '筑西つくば線バイパス開通式典',             client: '筑西土木事務所' },
-            { img: 'works_ceremony_03.jpg', title: 'つくばみらい市市制10周年記念式典',         client: 'つくばみらい市' },
+            { img: 'works_ceremony_03.jpg', title: '桜川市市制施行20周年記念式典',         client: '桜川市' },
             { img: 'works_ceremony_04.jpg', title: '道の駅常陸大宮竣工式典',                   client: '常陸大宮市' },
             { img: 'works_ceremony_05.jpg', title: '茨城県日立港区第3ふ頭併用記念式典',        client: '日立港振興協会' },
             { img: 'works_ceremony_06.jpg', title: '茨城県植物園リニューアルオープニングセレモニー',         client: '茨城県' },
@@ -641,7 +646,7 @@ const characterWorksGrid = characterWorksList.slice(0, 9).map(([title, client], 
             { img: 'works_goods_06.jpg', title: '袋田の滝キャラクターたき丸 ステッカー',                 client: '大子町' },
             { img: 'works_goods_07.jpg', title: 'スリムペンシル',                             client: '茨城大学' },
             { img: 'works_goods_08.jpg', title: 'オリジナル扇子',                         client: 'JA茨城県中央会' },
-            { img: 'works_goods_09.jpg', title: '桜川市マスコットキャラクター さくりんぬいぐるみ',     client: '桜川市' },
+            { img: 'works_goods_09.jpg', title: '大子町ウェットティッシュ',     client: '大子町' },
           ].map(({ img, title, client }) => (
             <div>
               <div class="overflow-hidden rounded-[6px] mb-3 bg-white flex items-center justify-center aspect-[4/3]">
@@ -780,11 +785,12 @@ const characterWorksGrid = characterWorksList.slice(0, 9).map(([title, client], 
               </div>
               <p class="font-noto font-bold text-[#004896] mb-1 leading-relaxed"  style="font-size: var(--fs-body);">
                 {(() => {
-                  const { main, note } = splitCharacterTitle(title);
+                  const { main, note, inlineNote } = splitCharacterTitle(title);
                   return (
                     <>
                       {main}
-                      {note && (<><br /><span class="font-medium">{note}</span></>)}
+                      {note && inlineNote && <span class="font-medium">{note}</span>}
+                      {note && !inlineNote && (<><br /><span class="font-medium">{note}</span></>)}
                     </>
                   );
                 })()}
@@ -795,7 +801,7 @@ const characterWorksGrid = characterWorksList.slice(0, 9).map(([title, client], 
         </div>
         <div class="border-t border-[#D1D1D1]">
           <div class="max-h-[600px] overflow-y-auto divide-y divide-[#D1D1D1] [&>div:nth-child(even)]:bg-[#f5f5f5] [&>div:nth-child(odd)]:bg-white">
-            {characterWorksList.map(([title, client]) => (
+            {[...characterWorksTableExtra, ...characterWorksList].map(([title, client]) => (
               <div class="flex flex-col md:flex-row md:justify-between md:items-center py-4 px-2 gap-1 md:gap-0">
                 <p class="font-noto font-medium text-[#333]"  style="font-size: var(--fs-small);">{title}</p>
                 <p class="font-noto font-medium text-[#999] md:text-right md:ml-6 flex-shrink-0"  style="font-size: var(--fs-caption);">{client}</p>
