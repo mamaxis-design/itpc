@@ -16,7 +16,7 @@ const categoryColors: Record<string, string> = {
 };
 ---
 <Layout
-  title="お知らせ | 株式会社 イトピック"
+  title="お知らせ | 株式会社イトピック"
   description="株式会社イトピック（茨城県水戸市）からの最新情報・実績・新着情報をカテゴリ別に掲載。式典・イベントや自治体向けクリエイティブに関するニュースや更新情報をご覧いただけます。"
   ogType="article"
   ogImage={ogImageSrc}
@@ -56,7 +56,7 @@ const categoryColors: Record<string, string> = {
            class="mv-parallax-img absolute w-full object-cover object-center" />
   </div>
 
-  <section id="news-list" class="w-full bg-white section-lg">
+  <section id="news-list" class="w-full bg-white section-lg lg:pb-[clamp(160px,12vw,240px)]">
     <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-0">
 
       <div data-a="fade" class="mb-12 md:mb-16">
@@ -130,32 +130,7 @@ const categoryColors: Record<string, string> = {
         該当するお知らせはありません。
       </p>
 
-      <nav aria-label="ページナビゲーション" class="flex items-center justify-center gap-2 mt-16">
-        <button
-          type="button"
-          disabled
-          class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#CCCCCC] cursor-not-allowed"
-          aria-label="前のページ"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-               class="w-4 h-4">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-
-        <button type="button" class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#004896] bg-[#004896] text-white font-inter font-bold"  aria-current="page" aria-label="1ページ目" style="font-size: 14px;">1</button>
-        <button type="button" class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] font-inter font-bold hover:border-[#004896] hover:text-[#004896] transition-colors duration-200"  aria-label="2ページ目" style="font-size: 14px;">2</button>
-        <button type="button" class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] font-inter font-bold hover:border-[#004896] hover:text-[#004896] transition-colors duration-200"  aria-label="3ページ目" style="font-size: 14px;">3</button>
-
-        <button type="button" class="w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] hover:border-[#004896] hover:text-[#004896] transition-colors duration-200" aria-label="次のページ">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-               class="w-4 h-4">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-      </nav>
+      <nav id="news-pagination" aria-label="ページナビゲーション" class="hidden items-center justify-center gap-2 mt-16"></nav>
 
     </div>
   </section>
@@ -166,18 +141,127 @@ const categoryColors: Record<string, string> = {
 </Layout>
 
 <script>
-  function initNewsFilter() {
-    if (!document.querySelector('.filter-btn')) return;
+  const NEWS_PER_PAGE = 10;
 
+  function initNewsList() {
     const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-    const articles   = document.querySelectorAll<HTMLElement>('.news-article');
-    const empty      = document.getElementById('news-empty');
+    const articles = document.querySelectorAll<HTMLElement>('.news-article');
+    const empty = document.getElementById('news-empty');
+    const pagination = document.getElementById('news-pagination');
+    const listSection = document.getElementById('news-list');
+
+    if (!filterBtns.length || !articles.length || !pagination) return;
+
+    let currentFilter = 'all';
+    let currentPage = 1;
+
+    function getMatchedArticles(): HTMLElement[] {
+      return Array.from(articles).filter(function (article) {
+        const cat = article.getAttribute('data-category') ?? '';
+        return currentFilter === 'all' || cat === currentFilter;
+      });
+    }
+
+    function renderPagination(totalPages: number) {
+      pagination.innerHTML = '';
+
+      if (totalPages <= 1) {
+        pagination.classList.add('hidden');
+        pagination.classList.remove('flex');
+        return;
+      }
+
+      pagination.classList.remove('hidden');
+      pagination.classList.add('flex');
+
+      const prevBtn = document.createElement('button');
+      prevBtn.type = 'button';
+      prevBtn.setAttribute('aria-label', '前のページ');
+      prevBtn.className = currentPage <= 1
+        ? 'w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#CCCCCC] cursor-not-allowed'
+        : 'w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] hover:border-[#004896] hover:text-[#004896] transition-colors duration-200';
+      prevBtn.disabled = currentPage <= 1;
+      prevBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+      if (currentPage > 1) {
+        prevBtn.addEventListener('click', function () {
+          currentPage -= 1;
+          renderList(true);
+        });
+      }
+      pagination.appendChild(prevBtn);
+
+      for (let page = 1; page <= totalPages; page += 1) {
+        const pageBtn = document.createElement('button');
+        pageBtn.type = 'button';
+        pageBtn.textContent = String(page);
+        pageBtn.setAttribute('aria-label', page + 'ページ目');
+        pageBtn.style.fontSize = '14px';
+
+        if (page === currentPage) {
+          pageBtn.className = 'w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#004896] bg-[#004896] text-white font-inter font-bold';
+          pageBtn.setAttribute('aria-current', 'page');
+        } else {
+          pageBtn.className = 'w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] font-inter font-bold hover:border-[#004896] hover:text-[#004896] transition-colors duration-200';
+          pageBtn.addEventListener('click', function () {
+            currentPage = page;
+            renderList(true);
+          });
+        }
+
+        pagination.appendChild(pageBtn);
+      }
+
+      const nextBtn = document.createElement('button');
+      nextBtn.type = 'button';
+      nextBtn.setAttribute('aria-label', '次のページ');
+      nextBtn.className = currentPage >= totalPages
+        ? 'w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#CCCCCC] cursor-not-allowed'
+        : 'w-10 h-10 flex items-center justify-center rounded-[4px] border border-[#E0E6EF] text-[#333333] hover:border-[#004896] hover:text-[#004896] transition-colors duration-200';
+      nextBtn.disabled = currentPage >= totalPages;
+      nextBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+      if (currentPage < totalPages) {
+        nextBtn.addEventListener('click', function () {
+          currentPage += 1;
+          renderList(true);
+        });
+      }
+      pagination.appendChild(nextBtn);
+    }
+
+    function renderList(scrollToTop: boolean) {
+      const matched = getMatchedArticles();
+      const totalPages = Math.max(1, Math.ceil(matched.length / NEWS_PER_PAGE));
+
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      articles.forEach(function (article) {
+        article.style.display = 'none';
+      });
+
+      matched.forEach(function (article, index) {
+        const page = Math.floor(index / NEWS_PER_PAGE) + 1;
+        if (page === currentPage) {
+          article.style.display = '';
+        }
+      });
+
+      if (empty) {
+        empty.classList.toggle('hidden', matched.length > 0);
+      }
+
+      renderPagination(totalPages);
+
+      if (scrollToTop && listSection) {
+        listSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
 
     filterBtns.forEach(function (btn) {
       if (btn.dataset.filterBound === 'true') return;
       btn.dataset.filterBound = 'true';
       btn.addEventListener('click', function () {
-        const filter = btn.getAttribute('data-filter') ?? 'all';
+        currentFilter = btn.getAttribute('data-filter') ?? 'all';
+        currentPage = 1;
 
         filterBtns.forEach(function (b) {
           b.classList.remove('active', 'text-white', 'bg-[#004896]');
@@ -186,23 +270,12 @@ const categoryColors: Record<string, string> = {
         btn.classList.remove('text-[#004896]', 'bg-white');
         btn.classList.add('active', 'text-white', 'bg-[#004896]');
 
-        let visibleCount = 0;
-        articles.forEach(function (article) {
-          const cat = article.getAttribute('data-category') ?? '';
-          if (filter === 'all' || cat === filter) {
-            article.style.display = '';
-            visibleCount++;
-          } else {
-            article.style.display = 'none';
-          }
-        });
-
-        if (empty) {
-          empty.classList.toggle('hidden', visibleCount > 0);
-        }
+        renderList(false);
       });
     });
+
+    renderList(false);
   }
 
-  document.addEventListener('astro:page-load', initNewsFilter);
+  document.addEventListener('astro:page-load', initNewsList);
 </script>
