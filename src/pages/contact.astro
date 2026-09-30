@@ -1,10 +1,12 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import { SITE_THANKS_URL } from '../consts/site';
 import ibarakiBg from '../assets/images/ibaraki_bg.png';
 import contactMb from '../assets/images/contact_mb.png';
 
 const ogImageSrc = (await getImage({ src: contactMb, width: 1200 })).src;
+const thanksRedirectUrl = SITE_THANKS_URL;
 ---
 <Layout
   title="お問い合わせ | 株式会社イトピック"
@@ -53,7 +55,7 @@ const ogImageSrc = (await getImage({ src: contactMb, width: 1200 })).src;
       <form data-a="fade" action="https://ssgform.com/s/YCmO2VUgUBqf" method="post"
             class="bg-white rounded-[12px] py-0 md:py-14 shadow-sm">
         <input type="hidden" name="_redirect"
-               value="https://cloudflare-workers-autoconfig-itpc.snsstartdiary.workers.dev/thanks/" />
+               value={thanksRedirectUrl} />
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           <div>

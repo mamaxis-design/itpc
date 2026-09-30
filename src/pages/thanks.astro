@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
+import { SITE_HOME_URL } from '../consts/site';
+
+const homeUrl = SITE_HOME_URL;
 ---
 <Layout
   title="送信完了 | 株式会社イトピック"
@@ -50,7 +53,7 @@ import ContactSection from '../components/ContactSection.astro';
         </div>
 
         <div class="fade-up fade-up-4 mt-12 flex flex-col items-center gap-4">
-          <a href="https://cloudflare-workers-autoconfig-itpc.snsstartdiary.workers.dev/"
+          <a href={homeUrl}
              class="group font-noto font-bold text-white inline-flex items-center justify-center gap-3 rounded-[8px] transition-opacity duration-300 hover:opacity-85 bg-[linear-gradient(to_right,#4982C2,#004896)] py-4 px-12"  style="font-size: var(--fs-body-lg);">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -92,7 +95,7 @@ import ContactSection from '../components/ContactSection.astro';
 </main>
 </Layout>
 
-<script>
+<script define:vars={{ homeUrl }}>
   (function () {
     var count = 10;
     var el = document.getElementById('countdown');
@@ -101,7 +104,7 @@ import ContactSection from '../components/ContactSection.astro';
       if (el) el.textContent = String(count);
       if (count <= 0) {
         clearInterval(timer);
-        window.location.href = 'https://cloudflare-workers-autoconfig-itpc.snsstartdiary.workers.dev/';
+        window.location.href = homeUrl;
       }
     }, 1000);
   })();

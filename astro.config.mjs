@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.itpc.co.jp',
+  site: 'https://itpc.co.jp',
   integrations: [
     tailwind({
       applyBaseStyles: false,
