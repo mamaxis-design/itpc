@@ -241,6 +241,15 @@ select.form-input {
 }
 #countdown { font-variant-numeric: tabular-nums; }
 
+/* 固定ヘッダー分（アンカーリンクのスクロール位置調整） */
+#design,
+#novelty,
+#video,
+#strengths,
+#attached-services {
+  scroll-margin-top: clamp(80px, 12vw, 100px);
+}
+
 /* ─── Section padding utilities ─────────────── */
 @layer utilities {
   .section-sm { padding-top: var(--sp-section-sm);  padding-bottom: var(--sp-section-sm); }

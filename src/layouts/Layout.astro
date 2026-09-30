@@ -345,5 +345,30 @@ const ogImageUrl = ogImage.startsWith('http')
 
     document.addEventListener('astro:page-load', initPageTitleAnim);
   </script>
+
+  <script>
+    /** View Transitions 遷移後も /service#design 等のアンカーへスクロールする */
+    function scrollToPageHash() {
+      var hash = window.location.hash;
+      if (!hash || hash.length < 2) return;
+
+      var id = decodeURIComponent(hash.slice(1));
+
+      function run() {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ block: 'start' });
+      }
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          setTimeout(run, 120);
+        });
+      });
+    }
+
+    document.addEventListener('astro:page-load', scrollToPageHash);
+    document.addEventListener('loader:complete', scrollToPageHash);
+  </script>
 </body>
 </html>
