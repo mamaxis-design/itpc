@@ -241,6 +241,17 @@ select.form-input {
 }
 #countdown { font-variant-numeric: tabular-nums; }
 
+/* ロゴリンク: クリック後の青いフォーカス枠・タップハイライトを出さない */
+.site-brand-link {
+  -webkit-tap-highlight-color: transparent;
+}
+.site-brand-link:focus,
+.site-brand-link:focus-visible,
+.site-brand-link:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* 固定ヘッダー分（アンカーリンクのスクロール位置調整） */
 #design,
 #novelty,

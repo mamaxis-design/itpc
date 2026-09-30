@@ -3,7 +3,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SiteLoader from '../components/SiteLoader.astro';
-import { SITE_ORIGIN } from '../consts/site';
+import { GTM_ID, SITE_ORIGIN } from '../consts/site';
 import '../styles/global.css';
 
 interface Props {
@@ -37,6 +37,20 @@ const ogImageUrl = ogImage.startsWith('http')
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Tag Manager -->
+  <script is:inline define:vars={{ gtmId: GTM_ID }}>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', gtmId);
+  </script>
+  <!-- End Google Tag Manager -->
   <title>{title}</title>
   {description && <meta name="description" content={description} />}
   {noindex && <meta name="robots" content="noindex, follow" />}
@@ -74,6 +88,16 @@ const ogImageUrl = ogImage.startsWith('http')
   <ViewTransitions />
 </head>
 <body class={bodyClass}>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe
+      src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+      title="Google Tag Manager"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <SiteLoader />
   <Header />
   <div id="page-content" transition:animate="fade">
@@ -347,28 +371,113 @@ const ogImageUrl = ogImage.startsWith('http')
   </script>
 
   <script>
-    /** View Transitions 遷移後も /service#design 等のアンカーへスクロールする */
+    /**
+     * View Transitions では遷移後に hash が URL から消えることがあるため、
+     * クリック時に保持して復元したうえでスクロールする。
+     */
+    var pendingPageHash = '';
+
+    document.addEventListener(
+      'click',
+      function (e) {
+        var target = e.target;
+        if (!target || !target.closest) return;
+        var a = target.closest('a[href*="#"]');
+        if (!a || a.hasAttribute('data-astro-reload')) return;
+
+        var url;
+        try {
+          url = new URL(a.href, window.location.href);
+        } catch (_) {
+          return;
+        }
+        if (url.origin !== window.location.origin || !url.hash) return;
+        if (
+          url.pathname === window.location.pathname &&
+          url.search === window.location.search
+        ) {
+          return;
+        }
+
+        pendingPageHash = url.hash;
+      },
+      true
+    );
+
     function scrollToPageHash() {
       var hash = window.location.hash;
+      if ((!hash || hash.length < 2) && pendingPageHash) {
+        hash = pendingPageHash;
+        try {
+          history.replaceState(
+            history.state,
+            '',
+            window.location.pathname + window.location.search + hash
+          );
+        } catch (_) {
+          /* noop */
+        }
+        pendingPageHash = '';
+      }
       if (!hash || hash.length < 2) return;
 
       var id = decodeURIComponent(hash.slice(1));
 
-      function run() {
+      function run(attempt) {
         var el = document.getElementById(id);
-        if (!el) return;
+        if (!el) {
+          if (attempt < 20) {
+            setTimeout(function () {
+              run(attempt + 1);
+            }, 80);
+          }
+          return;
+        }
         el.scrollIntoView({ block: 'start' });
+        if (attempt < 5) {
+          setTimeout(function () {
+            run(attempt + 1);
+          }, 280);
+        }
       }
 
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          setTimeout(run, 120);
+          setTimeout(function () {
+            run(0);
+          }, 120);
         });
       });
     }
 
     document.addEventListener('astro:page-load', scrollToPageHash);
     document.addEventListener('loader:complete', scrollToPageHash);
+  </script>
+
+  <script>
+    /** ロゴクリック後にフォーカスが残り青い枠が出るのを防ぐ（View Transitions 含む全ページ） */
+    function blurSiteBrandLinkAfterClick() {
+      document.addEventListener(
+        'click',
+        function (e) {
+          var target = e.target;
+          if (!target || !target.closest) return;
+          var brand = target.closest('a.site-brand-link');
+          if (!brand) return;
+          window.setTimeout(function () {
+            brand.blur();
+          }, 0);
+        },
+        true
+      );
+    }
+    blurSiteBrandLinkAfterClick();
+    document.addEventListener('astro:page-load', function () {
+      var active = document.activeElement;
+      if (active && active.classList && active.classList.contains('site-brand-link')) {
+        active.blur();
+      }
+    });
   </script>
 </body>
 </html>
