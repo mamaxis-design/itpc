@@ -46,13 +46,24 @@ export type MicroCMSListResponse<T> = {
   limit: number;
 };
 
-// ─── 日付フォーマットユーティリティ ─────────────────────────────
+// ─── 日付フォーマットユーティリティ（microCMS 日時は UTC → 表示は JST） ─
+const toJstYmd = (isoString: string): string => {
+  const d = new Date(isoString);
+  if (Number.isNaN(d.getTime())) return isoString.slice(0, 10);
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(d);
+};
+
 export const formatDate = (isoString: string): string => {
-  return isoString.slice(0, 10).replace(/-/g, '.');
+  return toJstYmd(isoString).replace(/-/g, '.');
 };
 
 export const formatDatetime = (isoString: string): string => {
-  return isoString.slice(0, 10);
+  return toJstYmd(isoString);
 };
 
 // ─── meta description 用テキスト整形 ───────────────────────────
