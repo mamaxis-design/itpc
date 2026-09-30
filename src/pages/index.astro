@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { SITE_ORIGIN } from '../consts/site';
-import { getLatestNews, formatDate, formatDatetime } from '../lib/microcms';
+import { getLatestNews, formatDate, formatDatetime, getNewsDisplayDate } from '../lib/microcms';
 import mbBg from '../assets/images/mb_bg.jpg';
 import mb01 from '../assets/images/mb_01.jpg';
 import mb02 from '../assets/images/mb_02.jpg';
@@ -618,10 +618,10 @@ const jsonLd = {
                          py-9 border-b border-[#E0E6EF] hover:opacity-70 transition-opacity duration-200`}>
                 <time
                   class="font-inter font-bold text-[#004896] flex-shrink-0 whitespace-nowrap" 
-                  datetime={formatDatetime(item.publishedAt)}
+                  datetime={formatDatetime(getNewsDisplayDate(item))}
                   
                  style="font-size: var(--fs-small);">
-                  {formatDate(item.publishedAt)}
+                  {formatDate(getNewsDisplayDate(item))}
                 </time>
                 <span
                   class="flex-shrink-0 font-noto font-medium text-[#004896] border border-[#004896] px-3 py-0.5 text-center min-w-[72px]" 

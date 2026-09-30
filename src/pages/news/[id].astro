@@ -2,7 +2,7 @@
 import { Image, getImage } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import ContactSection from '../../components/ContactSection.astro';
-import { getAllNewsIds, getNewsById, formatDate, formatDatetime, buildNewsMetaDescription } from '../../lib/microcms';
+import { getAllNewsIds, getNewsById, formatDate, formatDatetime, getNewsDisplayDate, buildNewsMetaDescription } from '../../lib/microcms';
 import ibarakiBg from '../../assets/images/ibaraki_bg.png';
 import newsMb from '../../assets/images/news_mb.png';
 
@@ -89,10 +89,10 @@ const categoryColors: Record<string, string> = {
               {article.category}
             </span>
             <time
-              datetime={formatDatetime(article.publishedAt)}
+              datetime={formatDatetime(getNewsDisplayDate(article))}
               class="font-inter font-bold text-[#004896]" 
              style="font-size: var(--fs-small);">
-              {formatDate(article.publishedAt)}
+              {formatDate(getNewsDisplayDate(article))}
             </time>
           </div>
 

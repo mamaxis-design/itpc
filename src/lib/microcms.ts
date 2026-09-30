@@ -25,8 +25,18 @@ export type NewsItem = {
   revisedAt: string;
   title: string;
   category: NewsCategory;
+  custom_date?: string;
   body?: string;
 };
+
+/** 一覧・詳細に表示する日付（表示用日付 custom_date があれば優先、なければ公開日時） */
+export const getNewsDisplayDate = (item: Pick<NewsItem, 'custom_date' | 'publishedAt'>): string => {
+  const custom = item.custom_date?.trim();
+  return custom ? custom : item.publishedAt;
+};
+
+const compareNewsByDisplayDate = (a: NewsItem, b: NewsItem): number =>
+  getNewsDisplayDate(b).localeCompare(getNewsDisplayDate(a));
 
 // ─── microCMS レスポンスの型 ─────────────────────────────────────
 export type MicroCMSListResponse<T> = {
@@ -69,13 +79,15 @@ export const buildNewsMetaDescription = (article: Pick<NewsItem, 'title' | 'cate
 // ─── ニュース一覧取得（全件） ──────────────────────────────────
 export const getAllNews = async (): Promise<MicroCMSListResponse<NewsItem>> => {
   try {
-    return await client.getList<NewsItem>({
+    const res = await client.getList<NewsItem>({
       endpoint: 'news',
       queries: {
         orders: '-publishedAt',
         limit: 100,
       },
     });
+    res.contents.sort(compareNewsByDisplayDate);
+    return res;
   } catch (e) {
     console.warn('[microCMS] getAllNews に失敗しました。APIキーを確認してください。', e);
     return { contents: [], totalCount: 0, offset: 0, limit: 100 };
@@ -89,10 +101,10 @@ export const getLatestNews = async (limit = 3): Promise<NewsItem[]> => {
       endpoint: 'news',
       queries: {
         orders: '-publishedAt',
-        limit,
+        limit: 100,
       },
     });
-    return res.contents;
+    return res.contents.sort(compareNewsByDisplayDate).slice(0, limit);
   } catch (e) {
     console.warn('[microCMS] getLatestNews に失敗しました。APIキーを確認してください。', e);
     return [];
